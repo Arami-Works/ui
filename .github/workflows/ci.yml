@@ -63,7 +63,7 @@ jobs:
         run: npm run storybook:build
 
       - name: Run Lost Pixel
-        uses: lost-pixel/lost-pixel@v3
+        uses: lost-pixel/lost-pixel@v3.22.0
         with:
           LOST_PIXEL_MODE: update
 
