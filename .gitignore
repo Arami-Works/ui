@@ -4,3 +4,4 @@ dist/
 *.tsbuildinfo
 .ondevice/storybook.requires.ts
 storybook-static/
+.vercel
