@@ -1,0 +1,32 @@
+appId: com.cheunjm.ui
+---
+- launchApp
+
+# Navigate through all Button variant stories
+- tapOn: "Atoms/Button/Variants"
+- assertVisible: "Filled"
+- tapOn: "Filled"
+- assertVisible: "Filled Button"
+- takeScreenshot: journey-button-filled
+
+- tapOn: "Outlined"
+- assertVisible: "Outlined Button"
+- takeScreenshot: journey-button-outlined
+
+- tapOn: "Text"
+- assertVisible: "Text Button"
+
+- tapOn: "Elevated"
+- assertVisible: "Elevated Button"
+
+- tapOn: "Tonal"
+- assertVisible: "Tonal Button"
+
+- tapOn: "Disabled"
+- assertVisible: "Disabled Button"
+- takeScreenshot: journey-button-disabled
+
+# Navigate to Button states stories
+- back
+- tapOn: "Atoms/Button/States"
+- takeScreenshot: journey-button-states

@@ -1,0 +1,7 @@
+appId: com.cheunjm.ui
+---
+- launchApp
+- tapOn: "Atoms/Button/Variants"
+- tapOn: "Filled"
+- assertVisible: "Filled Button"
+- takeScreenshot: button-filled
