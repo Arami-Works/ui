@@ -20,9 +20,9 @@
     "storybook:build": "storybook build -c .storybook --disable-telemetry",
     "test:visual": "npx lost-pixel",
     "test:visual:update": "npx lost-pixel update",
-    "test:e2e:web": "maestro test --platform web e2e/",
-    "test:e2e:ios": "maestro test --platform ios e2e/",
-    "test:e2e:android": "maestro test --platform android e2e/"
+    "test:e2e:web": "maestro test --platform web e2e/integration/ e2e/journeys/",
+    "test:e2e:ios": "maestro test --platform ios e2e/integration/ e2e/journeys/",
+    "test:e2e:android": "maestro test --platform android e2e/integration/ e2e/journeys/"
   },
   "dependencies": {
     "@tamagui/animations-react-native": "^1.112.0",

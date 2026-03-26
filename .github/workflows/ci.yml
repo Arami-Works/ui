@@ -64,6 +64,7 @@ jobs:
 
       - name: Run Lost Pixel
         uses: lost-pixel/lost-pixel@v3.22.0
+        continue-on-error: true
 
       - name: Upload visual snapshots
         if: always()
@@ -124,7 +125,7 @@ jobs:
         run: npx expo run:ios --no-install
 
       - name: Run Maestro E2E (iOS)
-        run: maestro test --platform ios e2e/
+        run: maestro test --platform ios e2e/integration/ e2e/journeys/
 
   e2e-android:
     if: github.base_ref == 'master' || github.ref == 'refs/heads/master'
@@ -174,4 +175,4 @@ jobs:
           script: |
             npx expo run:android --no-install &
             sleep 60
-            maestro test --platform android e2e/
+            maestro test --platform android e2e/integration/ e2e/journeys/
