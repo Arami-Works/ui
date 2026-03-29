@@ -13,7 +13,7 @@ url: http://localhost:6006
 - takeScreenshot: journey-button-variants
 
 - openLink: http://localhost:6006/?path=/story/atoms-button-anatomy--default
-- assertVisible: "Container"
+- assertVisible: "Button"
 - takeScreenshot: journey-button-anatomy
 
 - openLink: http://localhost:6006/?path=/story/atoms-button-specs--default
