@@ -3,28 +3,18 @@ url: http://localhost:6006
 ---
 - launchApp
 
-# Navigate through all Button variant stories
-- openLink: http://localhost:6006/?path=/story/atoms-button-variants--filled
-- assertVisible: "Filled Button"
-- takeScreenshot: journey-button-filled
+# Navigate through Button doc stories
+- openLink: http://localhost:6006/?path=/story/atoms-button-overview--default
+- assertVisible: "Button"
+- takeScreenshot: journey-button-overview
 
-- openLink: http://localhost:6006/?path=/story/atoms-button-variants--outlined
-- assertVisible: "Outlined Button"
-- takeScreenshot: journey-button-outlined
+- openLink: http://localhost:6006/?path=/story/atoms-button-variants--default
+- assertVisible: "Button"
+- takeScreenshot: journey-button-variants
 
-- openLink: http://localhost:6006/?path=/story/atoms-button-variants--text
-- assertVisible: "Text Button"
+# Anatomy and Specs are doc-only (Tamagui Text), verify page loads via screenshot
+- openLink: http://localhost:6006/?path=/story/atoms-button-anatomy--default
+- takeScreenshot: journey-button-anatomy
 
-- openLink: http://localhost:6006/?path=/story/atoms-button-variants--elevated
-- assertVisible: "Elevated Button"
-
-- openLink: http://localhost:6006/?path=/story/atoms-button-variants--tonal
-- assertVisible: "Tonal Button"
-
-- openLink: http://localhost:6006/?path=/story/atoms-button-variants--disabled
-- assertVisible: "Disabled Button"
-- takeScreenshot: journey-button-disabled
-
-# Navigate to Button states stories
-- openLink: http://localhost:6006/?path=/story/atoms-button-states--default
-- takeScreenshot: journey-button-states
+- openLink: http://localhost:6006/?path=/story/atoms-button-specs--default
+- takeScreenshot: journey-button-specs
