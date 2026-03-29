@@ -2,6 +2,6 @@ appId: com.cheunjm.ui
 url: http://localhost:6006
 ---
 - launchApp
-- openLink: http://localhost:6006/?path=/story/atoms-button-variants--filled
-- assertVisible: "Filled Button"
-- takeScreenshot: button-filled
+- openLink: http://localhost:6006/?path=/story/atoms-button-overview--default
+- assertVisible: "Button"
+- takeScreenshot: button-overview
