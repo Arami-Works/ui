@@ -390,6 +390,8 @@ jobs:
         run: exit 1
 
   visual-baseline-ios:
+    # TODO: remove continue-on-error after INF-421 (worklets/reanimated fix)
+    continue-on-error: true
     if: github.ref == 'refs/heads/main'
     runs-on: [self-hosted, macOS, ARM64]
     steps:
@@ -433,6 +435,8 @@ jobs:
         run: xcrun simctl shutdown all 2>/dev/null || true
 
   visual-regression-ios:
+    # TODO: remove continue-on-error after INF-421 (worklets/reanimated fix)
+    continue-on-error: true
     if: github.event_name == 'pull_request'
     runs-on: [self-hosted, macOS, ARM64]
     steps:
@@ -611,6 +615,8 @@ jobs:
         run: xcrun simctl shutdown all 2>/dev/null || true
 
   visual-baseline-android:
+    # TODO: remove continue-on-error after INF-421 (worklets/reanimated fix) + AVD setup
+    continue-on-error: true
     if: github.ref == 'refs/heads/main'
     runs-on: [self-hosted, macOS, ARM64]
     steps:
@@ -655,6 +661,8 @@ jobs:
         run: adb emu kill 2>/dev/null || true
 
   visual-regression-android:
+    # TODO: remove continue-on-error after INF-421 (worklets/reanimated fix) + AVD setup
+    continue-on-error: true
     if: github.event_name == 'pull_request'
     runs-on: [self-hosted, macOS, ARM64]
     steps:
