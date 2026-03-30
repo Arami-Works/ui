@@ -407,11 +407,13 @@ jobs:
           xcrun simctl boot "iPhone 15 Pro" 2>/dev/null || true
           xcrun simctl bootstatus "iPhone 15 Pro" -b
 
-      - name: Prebuild iOS
-        run: npx expo prebuild --platform ios --clean
+      - name: Prebuild and install pods
+        run: |
+          npx expo prebuild --platform ios --clean
+          cd ios && pod install && cd ..
 
       - name: Build iOS app
-        run: npx expo run:ios --no-install --device "iPhone 15 Pro"
+        run: npx expo run:ios --no-install --device "iPhone 15 Pro" --port 8097
 
       - name: Run visual screenshot flow
         run: |
@@ -448,11 +450,13 @@ jobs:
           xcrun simctl boot "iPhone 15 Pro" 2>/dev/null || true
           xcrun simctl bootstatus "iPhone 15 Pro" -b
 
-      - name: Prebuild iOS
-        run: npx expo prebuild --platform ios --clean
+      - name: Prebuild and install pods
+        run: |
+          npx expo prebuild --platform ios --clean
+          cd ios && pod install && cd ..
 
       - name: Build iOS app
-        run: npx expo run:ios --no-install --device "iPhone 15 Pro"
+        run: npx expo run:ios --no-install --device "iPhone 15 Pro" --port 8097
 
       - name: Restore iOS baselines from cache
         uses: actions/cache/restore@v4
