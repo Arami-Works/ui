@@ -409,13 +409,13 @@ jobs:
           xcrun simctl boot "iPhone 15 Pro" 2>/dev/null || true
           xcrun simctl bootstatus "iPhone 15 Pro" -b
 
-      - name: Prebuild and install pods
+      - name: Build, install and launch iOS app
         run: |
           npx expo prebuild --platform ios --clean
           cd ios && pod install && cd ..
-
-      - name: Build iOS app
-        run: npx expo run:ios --no-install --device "iPhone 15 Pro" --port 8097
+          xcodebuild -workspace ios/cheunjmui.xcworkspace -scheme cheunjmui -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 15 Pro" -derivedDataPath build/ios build 2>&1 | tail -5
+          xcrun simctl install "iPhone 15 Pro" build/ios/Build/Products/Debug-iphonesimulator/cheunjmui.app
+          xcrun simctl launch "iPhone 15 Pro" com.aramiworks.ui.storybook
 
       - name: Run visual screenshot flow
         run: |
@@ -454,13 +454,13 @@ jobs:
           xcrun simctl boot "iPhone 15 Pro" 2>/dev/null || true
           xcrun simctl bootstatus "iPhone 15 Pro" -b
 
-      - name: Prebuild and install pods
+      - name: Build, install and launch iOS app
         run: |
           npx expo prebuild --platform ios --clean
           cd ios && pod install && cd ..
-
-      - name: Build iOS app
-        run: npx expo run:ios --no-install --device "iPhone 15 Pro" --port 8097
+          xcodebuild -workspace ios/cheunjmui.xcworkspace -scheme cheunjmui -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 15 Pro" -derivedDataPath build/ios build 2>&1 | tail -5
+          xcrun simctl install "iPhone 15 Pro" build/ios/Build/Products/Debug-iphonesimulator/cheunjmui.app
+          xcrun simctl launch "iPhone 15 Pro" com.aramiworks.ui.storybook
 
       - name: Restore iOS baselines from cache
         uses: actions/cache/restore@v4
