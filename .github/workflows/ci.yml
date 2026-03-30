@@ -399,8 +399,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Clean install dependencies
+        run: rm -rf node_modules && npm ci
 
       - name: Boot iOS simulator
         run: |
@@ -442,8 +442,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Clean install dependencies
+        run: rm -rf node_modules && npm ci
 
       - name: Boot iOS simulator
         run: |
@@ -620,8 +620,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Clean install dependencies
+        run: rm -rf node_modules && npm ci
 
       - name: Start Android emulator
         run: |
@@ -664,8 +664,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Clean install dependencies
+        run: rm -rf node_modules && npm ci
 
       - name: Start Android emulator
         run: |
