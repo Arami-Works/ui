@@ -29,14 +29,6 @@
       "env": {
         "APP_ENV": "production"
       }
-    }
-  },
-  "submit": {
-    "production": {
-      "ios": {
-        "appleId": "jaemincheun@gmail.com",
-        "ascAppId": "com.aramiworks.ui.storybook"
-      }
     },
     "visual-test": {
       "developmentClient": false,
@@ -49,6 +41,14 @@
       },
       "android": {
         "buildType": "apk"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "appleId": "jaemincheun@gmail.com",
+        "ascAppId": "com.aramiworks.ui.storybook"
       }
     }
   }
