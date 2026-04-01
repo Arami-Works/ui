@@ -36,6 +36,19 @@
       "ios": {
         "simulator": true
       }
+    },
+    "visual-test": {
+      "developmentClient": false,
+      "distribution": "internal",
+      "env": {
+        "APP_ENV": "develop"
+      },
+      "ios": {
+        "simulator": true
+      },
+      "android": {
+        "buildType": "apk"
+      }
     }
   }
 }
