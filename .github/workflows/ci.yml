@@ -127,6 +127,8 @@ jobs:
           autoAcceptChanges: main
           onlyChanged: true
           skip: ${{ github.event.pull_request.draft }}
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
       - name: Prepare Chromatic PR data
         if: always() && github.event_name == 'pull_request'
@@ -134,14 +136,18 @@ jobs:
         with:
           script: |
             const fs = require('fs');
+            const raw = (v, fallback) => {
+              const s = `${v}`;
+              return (!s || s === 'undefined' || s === 'null') ? fallback : s;
+            };
             const output = {
               outcome: '${{ steps.chromatic.outcome }}',
-              buildUrl: '${{ steps.chromatic.outputs.buildUrl }}' || '',
-              storybookUrl: '${{ steps.chromatic.outputs.storybookUrl }}' || '',
-              changeCount: parseInt('${{ steps.chromatic.outputs.changeCount }}' || '0', 10),
-              errorCount: parseInt('${{ steps.chromatic.outputs.errorCount }}' || '0', 10),
-              componentCount: parseInt('${{ steps.chromatic.outputs.componentCount }}' || '0', 10),
-              specCount: parseInt('${{ steps.chromatic.outputs.specCount }}' || '0', 10),
+              buildUrl: raw('${{ steps.chromatic.outputs.buildUrl }}', ''),
+              storybookUrl: raw('${{ steps.chromatic.outputs.storybookUrl }}', ''),
+              changeCount: parseInt(raw('${{ steps.chromatic.outputs.changeCount }}', '0'), 10),
+              errorCount: parseInt(raw('${{ steps.chromatic.outputs.errorCount }}', '0'), 10),
+              componentCount: parseInt(raw('${{ steps.chromatic.outputs.componentCount }}', '0'), 10),
+              specCount: parseInt(raw('${{ steps.chromatic.outputs.specCount }}', '0'), 10),
             };
             fs.mkdirSync('pr-data', { recursive: true });
             fs.writeFileSync('pr-data/visual.json', JSON.stringify(output));
