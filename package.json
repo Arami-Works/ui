@@ -2,7 +2,10 @@
   "name": "@cheunjm/ui",
   "version": "0.0.1",
   "description": "Expo-based design system — Brad Frost atomic design, MD3 interface, Tamagui internals",
-  "main": "src/index.ts",
+  "main": "expo/AppEntry",
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "types": "src/index.ts",
   "private": true,
   "scripts": {
@@ -25,6 +28,9 @@
     "test:e2e:android": "maestro test --platform android e2e/integration/ e2e/journeys/"
   },
   "dependencies": {
+    "@gorhom/bottom-sheet": "^5.2.8",
+    "@react-native-community/datetimepicker": "^9.1.0",
+    "@react-native-community/slider": "^5.1.2",
     "@tamagui/animations-react-native": "^1.112.0",
     "@tamagui/config": "^1.112.0",
     "@tamagui/core": "^1.112.0",
@@ -37,7 +43,10 @@
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-native": "0.83.4",
+    "react-native-gesture-handler": "^2.30.1",
     "react-native-reanimated": "4.2.1",
+    "react-native-safe-area-context": "^5.7.0",
+    "react-native-svg": "^15.15.4",
     "react-native-web": "^0.21.0",
     "react-native-worklets": "0.7.2",
     "tamagui": "^1.112.0"

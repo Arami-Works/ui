@@ -8,6 +8,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   version: "0.0.1",
   orientation: "portrait",
   userInterfaceStyle: "automatic",
+  scheme: "cheunjm-ui",
   platforms: ["ios", "android", "web"],
   ios: {
     bundleIdentifier: "com.aramiworks.ui.storybook",

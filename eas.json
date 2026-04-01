@@ -29,6 +29,16 @@
       "env": {
         "APP_ENV": "production"
       }
+    },
+    "visual-test": {
+      "developmentClient": false,
+      "distribution": "internal",
+      "env": {
+        "APP_ENV": "develop"
+      },
+      "ios": {
+        "simulator": true
+      }
     }
   },
   "submit": {
