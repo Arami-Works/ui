@@ -6,10 +6,14 @@
 set -euo pipefail
 
 UDID="${1:?Usage: $0 <simulator-udid> <output-dir>}"
-OUTPUT_DIR="${2:?Usage: $0 <simulator-udid> <output-dir>}"
+OUTPUT_DIR="$(cd "$(dirname "$2")" 2>/dev/null && pwd)/$(basename "$2")"
+if [ -z "$OUTPUT_DIR" ] || [ "$OUTPUT_DIR" = "/" ]; then
+  OUTPUT_DIR="${2:?Usage: $0 <simulator-udid> <output-dir>}"
+fi
 BUNDLE_ID="com.aramiworks.ui.storybook"
 
 mkdir -p "$OUTPUT_DIR"
+echo "Output directory: $OUTPUT_DIR"
 
 # Story IDs — keep in sync with src/**/*.story.tsx
 STORIES=(
