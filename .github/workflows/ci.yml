@@ -102,101 +102,52 @@ jobs:
           name: pr-data-coverage
           path: pr-data/coverage.json
 
-  visual-baseline:
-    if: github.ref == 'refs/heads/main'
+  chromatic:
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/stage'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: dopplerhq/cli-action@v3
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies
-        run: doppler run -- npm ci
+      - run: npm ci
 
-      - name: Build Storybook
-        run: doppler run -- npm run storybook:build
-
-      - name: Generate baseline screenshots
-        uses: lost-pixel/lost-pixel@v3.22.0
-        env:
-          LOST_PIXEL_MODE: update
-
-      - name: Save baselines to cache
-        uses: actions/cache/save@v4
+      - name: Run Chromatic
+        id: chromatic
+        uses: chromaui/action@latest
         with:
-          path: .lostpixel/baseline/
-          key: lost-pixel-baselines-${{ github.sha }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: storybook:build
+          exitZeroOnChanges: true
+          autoAcceptChanges: main
+          onlyChanged: true
+          skip: ${{ github.event.pull_request.draft }}
 
-  visual-regression:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: dopplerhq/cli-action@v3
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install dependencies
-        run: doppler run -- npm ci
-
-      - name: Build Storybook
-        run: doppler run -- npm run storybook:build
-
-      - name: Restore baselines from cache
-        uses: actions/cache/restore@v4
-        with:
-          path: .lostpixel/baseline/
-          key: lost-pixel-baselines-
-          restore-keys: |
-            lost-pixel-baselines-
-
-      - name: Run Lost Pixel comparison
-        id: lostpixel
-        uses: lost-pixel/lost-pixel@v3.22.0
-        env:
-          LOST_PIXEL_GENERATE_META: "true"
-        continue-on-error: true
-
-      - name: Upload visual diff artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: lost-pixel-diffs
-          path: |
-            .lostpixel/current/
-            .lostpixel/difference/
-
-      - name: Prepare visual PR data
-        if: always()
+      - name: Prepare Chromatic PR data
+        if: always() && github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
-            const metaPath = '.lostpixel/current/meta.json';
             const output = {
-              outcome: '${{ steps.lostpixel.outcome }}',
-              entries: null,
-              baselineExists: fs.existsSync('.lostpixel/baseline'),
+              outcome: '${{ steps.chromatic.outcome }}',
+              buildUrl: '${{ steps.chromatic.outputs.buildUrl }}' || '',
+              storybookUrl: '${{ steps.chromatic.outputs.storybookUrl }}' || '',
+              changeCount: parseInt('${{ steps.chromatic.outputs.changeCount }}' || '0', 10),
+              errorCount: parseInt('${{ steps.chromatic.outputs.errorCount }}' || '0', 10),
+              componentCount: parseInt('${{ steps.chromatic.outputs.componentCount }}' || '0', 10),
+              specCount: parseInt('${{ steps.chromatic.outputs.specCount }}' || '0', 10),
             };
-
-            if (fs.existsSync(metaPath)) {
-              output.entries = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
-            }
-
             fs.mkdirSync('pr-data', { recursive: true });
             fs.writeFileSync('pr-data/visual.json', JSON.stringify(output));
 
-      - name: Upload visual PR data
-        if: always()
+      - name: Upload Chromatic PR data
+        if: always() && github.event_name == 'pull_request'
         uses: actions/upload-artifact@v4
         with:
           name: pr-data-visual
@@ -672,7 +623,7 @@ jobs:
 
   pr-summary:
     if: always() && github.event_name == 'pull_request'
-    needs: [unit-test, visual-regression, e2e-web, visual-regression-ios, visual-regression-android]
+    needs: [unit-test, chromatic, e2e-web, visual-regression-ios, visual-regression-android]
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -757,27 +708,26 @@ jobs:
               : null;
 
             if (!vis) {
-              body += 'Visual regression data not available.\n\n';
-            } else if (vis.outcome === 'success') {
-              body += ':white_check_mark: All screenshots match the baseline.\n\n';
-            } else {
-              body += ':warning: **Changes detected**\n\n';
-              if (vis.entries) {
-                const entries = Object.entries(vis.entries);
-                const changed = entries.filter(([, v]) => !v.isWithinThreshold);
-                body += '| Shot | Pixel Diff | % Diff | Status |\n';
-                body += '|------|-----------|--------|--------|\n';
-                for (const [name, data] of entries) {
-                  const pct = (data.pixelDifferencePercentage * 100).toFixed(2);
-                  const status = data.isWithinThreshold ? ':yellow_circle: Within threshold' : ':red_circle: Changed';
-                  body += `| \`${name}\` | ${data.pixelDifference} | ${pct}% | ${status} |\n`;
-                }
-                body += `\n**${changed.length} shot(s) changed** beyond threshold.\n`;
-              } else if (!vis.baselineExists) {
-                body += ':information_source: No baselines found — expected for first PR.\n';
+              body += 'Chromatic data not available.\n\n';
+            } else if (vis.outcome !== 'success') {
+              body += ':x: Chromatic build failed.\n\n';
+              if (vis.buildUrl) {
+                body += `:link: [View Chromatic build](${vis.buildUrl})\n\n`;
               }
-              const artifactUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-              body += `\n:frame_with_picture: [Download diff images](${artifactUrl})\n\n`;
+            } else if (vis.changeCount > 0) {
+              body += `:warning: **${vis.changeCount} visual change(s) detected** — review and approve in Chromatic.\n\n`;
+              body += `| Metric | Value |\n`;
+              body += `|--------|-------|\n`;
+              body += `| Components | ${vis.componentCount} |\n`;
+              body += `| Stories | ${vis.specCount} |\n`;
+              body += `| Changes | ${vis.changeCount} |\n`;
+              body += `| Errors | ${vis.errorCount} |\n\n`;
+              body += `:link: [Review in Chromatic](${vis.buildUrl})\n\n`;
+            } else {
+              body += ':white_check_mark: No visual changes detected.\n\n';
+              if (vis.buildUrl) {
+                body += `:link: [View Chromatic build](${vis.buildUrl})\n\n`;
+              }
             }
 
             // --- VISUAL REGRESSION (iOS) ---
