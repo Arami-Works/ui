@@ -1,0 +1,126 @@
+import { render, screen, fireEvent } from "@/test-utils";
+import { Dialog } from "./dialog";
+
+describe("Dialog", () => {
+  it("renders when visible", () => {
+    render(
+      <Dialog visible title="Test Dialog" testID="dialog">
+        Hello world
+      </Dialog>,
+    );
+    expect(screen.getByTestId("dialog")).toBeTruthy();
+    expect(screen.getByText("Test Dialog")).toBeTruthy();
+    expect(screen.getByText("Hello world")).toBeTruthy();
+  });
+
+  it("does not render when not visible", () => {
+    render(
+      <Dialog visible={false} title="Hidden" testID="dialog">
+        Hidden content
+      </Dialog>,
+    );
+    expect(screen.queryByTestId("dialog")).toBeNull();
+  });
+
+  it("renders title", () => {
+    render(<Dialog visible title="My Title" testID="dialog" />);
+    expect(screen.getByTestId("dialog-title")).toBeTruthy();
+    expect(screen.getByText("My Title")).toBeTruthy();
+  });
+
+  it("renders icon when provided", () => {
+    render(<Dialog visible icon="info" testID="dialog" />);
+    expect(screen.getByTestId("dialog-icon")).toBeTruthy();
+  });
+
+  it("does not render icon when not provided", () => {
+    render(<Dialog visible testID="dialog" />);
+    expect(screen.queryByTestId("dialog-icon")).toBeNull();
+  });
+
+  it("renders body content", () => {
+    render(
+      <Dialog visible testID="dialog">
+        Body text here
+      </Dialog>,
+    );
+    expect(screen.getByTestId("dialog-body")).toBeTruthy();
+    expect(screen.getByText("Body text here")).toBeTruthy();
+  });
+
+  it("calls onConfirm when confirm button is pressed", () => {
+    const onConfirm = jest.fn();
+    render(
+      <Dialog visible onConfirm={onConfirm} testID="dialog">
+        Confirm me
+      </Dialog>,
+    );
+    fireEvent.press(screen.getByTestId("dialog-confirm"));
+    expect(onConfirm).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls onDismiss when dismiss button is pressed", () => {
+    const onDismiss = jest.fn();
+    render(
+      <Dialog visible onDismiss={onDismiss} testID="dialog">
+        Dismiss me
+      </Dialog>,
+    );
+    fireEvent.press(screen.getByTestId("dialog-dismiss"));
+    expect(onDismiss).toHaveBeenCalledTimes(1);
+  });
+
+  it("uses default button labels", () => {
+    render(
+      <Dialog
+        visible
+        onConfirm={jest.fn()}
+        onDismiss={jest.fn()}
+        testID="dialog"
+      />,
+    );
+    expect(screen.getByText("OK")).toBeTruthy();
+    expect(screen.getByText("Cancel")).toBeTruthy();
+  });
+
+  it("uses custom button labels", () => {
+    render(
+      <Dialog
+        visible
+        confirmLabel="Accept"
+        dismissLabel="Decline"
+        onConfirm={jest.fn()}
+        onDismiss={jest.fn()}
+        testID="dialog"
+      />,
+    );
+    expect(screen.getByText("Accept")).toBeTruthy();
+    expect(screen.getByText("Decline")).toBeTruthy();
+  });
+
+  it("does not render confirm button when onConfirm is not provided", () => {
+    render(<Dialog visible testID="dialog" />);
+    expect(screen.queryByTestId("dialog-confirm")).toBeNull();
+  });
+
+  it("does not render dismiss button when onDismiss is not provided", () => {
+    render(<Dialog visible testID="dialog" />);
+    expect(screen.queryByTestId("dialog-dismiss")).toBeNull();
+  });
+
+  it("calls onDismiss when scrim is pressed", () => {
+    const onDismiss = jest.fn();
+    render(
+      <Dialog visible onDismiss={onDismiss} testID="dialog">
+        Content
+      </Dialog>,
+    );
+    fireEvent.press(screen.getByTestId("dialog-scrim"));
+    expect(onDismiss).toHaveBeenCalledTimes(1);
+  });
+
+  it("renders with custom testID", () => {
+    render(<Dialog visible testID="custom-dialog" />);
+    expect(screen.getByTestId("custom-dialog")).toBeTruthy();
+  });
+});
