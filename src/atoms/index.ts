@@ -24,6 +24,8 @@ export { RadioButton } from "./radio-button";
 export type { RadioButtonProps } from "./radio-button";
 export { SegmentedButton } from "./segmented-button";
 export type { SegmentedButtonProps, SegmentedButtonSegment } from "./segmented-button";
+export { Slider } from "./slider";
+export type { SliderProps, SliderType } from "./slider";
 export { Spacer } from "./spacer";
 export type { SpacerProps } from "./spacer";
 export { Switch } from "./switch";
