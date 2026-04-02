@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# @cheunjm/ui — Service launcher
+# @arami-works/ui — Service launcher
 # Starts dev services in the background and pipes output to logs/*.log
 # so the dashboard can tail them.
 #

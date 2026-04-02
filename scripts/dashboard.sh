@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# @cheunjm/ui — Local Dev Dashboard
+# @arami-works/ui — Local Dev Dashboard
 # Shows live status of dev services, connected devices, running processes, and service logs.
 # Usage: ./scripts/dashboard.sh [--once]
 
@@ -35,7 +35,7 @@ status_dot() {
 
 render() {
   clear
-  printf "${BOLD}@cheunjm/ui — Local Dev Dashboard${RESET}\n"
+  printf "${BOLD}@arami-works/ui — Local Dev Dashboard${RESET}\n"
   printf "${DIM}%s · refreshing every %ds${RESET}\n\n" "$(date '+%H:%M:%S')" "$INTERVAL"
 
   # --- Services ---
@@ -100,7 +100,7 @@ render() {
   printf "${CYAN}Processes${RESET}\n"
 
   local jest_running=false maestro_running=false lint_running=false tsc_running=false
-  check_process "jest.*cheunjm/ui" && jest_running=true
+  check_process "jest.*arami-works/ui" && jest_running=true
   check_process "maestro" && maestro_running=true
   check_process "eslint.*src/" && lint_running=true
   check_process "tsc.*noEmit" && tsc_running=true

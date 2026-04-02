@@ -16,10 +16,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Generate claude-arami bot token
+        id: claude-arami-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.CLAUDE_ARAMI_APP_ID }}
+          private-key: ${{ secrets.CLAUDE_ARAMI_PRIVATE_KEY }}
       - uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ steps.claude-arami-token.outputs.token }}
           claude_args: --allowedTools mcp__github,Bash
           prompt: |
             A PR was just merged. Update CHANGELOG.md (create it if it doesnt exist).
