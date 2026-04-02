@@ -12,3 +12,5 @@ export { Spacer } from "./spacer";
 export type { SpacerProps } from "./spacer";
 export { Text } from "./text";
 export type { TextProps } from "./text";
+export { TextField } from "./text-field";
+export type { TextFieldProps, TextFieldVariant } from "./text-field";
