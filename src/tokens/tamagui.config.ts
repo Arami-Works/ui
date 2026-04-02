@@ -33,8 +33,8 @@ const interFont = createInterFont();
 
 const tokens = createTokens({
   color: colors,
-  space: spacing,
-  size: spacing,
+  space: { ...spacing, true: spacing.md },
+  size: { ...spacing, true: spacing.md },
   radius: radii,
   zIndex: {
     0: 0,
