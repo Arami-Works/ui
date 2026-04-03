@@ -61,7 +61,7 @@ const preview: Preview = {
           'Atoms',
           [
             'Button',
-            ['Overview', 'Variants', 'Anatomy', 'Specs'],
+            ['Overview', 'Anatomy', 'Specs', 'Variants'],
           ],
         ],
       },
