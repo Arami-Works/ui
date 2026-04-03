@@ -3,7 +3,7 @@ import { ExpoConfig, ConfigContext } from "expo/config";
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: "@aramiworks/ui",
-  slug: "aramiworks-ui",
+  slug: "cheunjm-ui",
   owner: "aramiworks",
   version: "0.0.1",
   orientation: "portrait",
