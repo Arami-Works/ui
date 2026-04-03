@@ -51,7 +51,7 @@ function Overview() {
               <TopAppBar
                 type="small"
                 title="My Files"
-                leadingIcon="menu"
+                navigationIcon="menu"
               />
             }
           >
@@ -76,7 +76,7 @@ function Overview() {
               <TopAppBar
                 type="small"
                 title="Search"
-                leadingIcon="arrow-back"
+                navigationIcon="arrow-back"
               />
             }
             headerContent={
@@ -114,7 +114,7 @@ function Overview() {
               <TopAppBar
                 type="small"
                 title="Home"
-                leadingIcon="menu"
+                navigationIcon="menu"
               />
             }
             bottomBar={
