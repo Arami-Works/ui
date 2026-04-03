@@ -11,11 +11,10 @@ const Container = styled(View, {
   minWidth: 112,
   maxWidth: 280,
   paddingVertical: 8,
-  shadowColor: "$shadow",
+  shadowColor: "#000",
   shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.3,
+  shadowOpacity: 0.15,
   shadowRadius: 6,
-  elevation: 3,
 });
 
 export function Menu({ visible, onDismiss, items, testID }: MenuProps) {
@@ -56,11 +55,11 @@ export function Menu({ visible, onDismiss, items, testID }: MenuProps) {
                       <Icon name={item.leadingIcon} size={24} color="$onSurface" />
                     </View>
                   )}
-                  <Text variant="labelLarge" color="$onSurface" flex={1}>
+                  <Text role="label" size="large" color="$onSurface" flex={1}>
                     {item.label}
                   </Text>
                   {item.trailingText && (
-                    <Text variant="labelSmall" color="$onSurfaceVariant" marginLeft={12}>
+                    <Text role="label" size="small" color="$onSurfaceVariant" marginLeft={12}>
                       {item.trailingText}
                     </Text>
                   )}
