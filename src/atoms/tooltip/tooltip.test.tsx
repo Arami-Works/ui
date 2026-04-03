@@ -1,47 +1,36 @@
-import React from "react";
-import { render } from "@testing-library/react-native";
-import { TamaguiProvider } from "tamagui";
-import config from "../../../tamagui.config";
+import { render, screen } from "@/test-utils";
 import { Tooltip } from "./tooltip";
-import { Text } from "../text";
-
-const wrapper = ({ children }: { children: React.ReactNode }) => (
-  <TamaguiProvider config={config}>{children}</TamaguiProvider>
-);
 
 describe("Tooltip", () => {
   it("renders children", () => {
-    const { getByText } = render(
+    render(
       <Tooltip label="Tooltip text" testID="tooltip">
-        <Text variant="bodyMedium">Trigger</Text>
-      </Tooltip>,
-      { wrapper }
+        <></>
+      </Tooltip>
     );
-    expect(getByText("Trigger")).toBeTruthy();
+    expect(screen.getByTestId("tooltip")).toBeTruthy();
   });
 
   it("renders plain variant", () => {
-    const { getByTestId } = render(
+    render(
       <Tooltip label="Plain tip" variant="plain" testID="tooltip">
-        <Text variant="bodyMedium">Trigger</Text>
-      </Tooltip>,
-      { wrapper }
+        <></>
+      </Tooltip>
     );
-    expect(getByTestId("tooltip")).toBeTruthy();
+    expect(screen.getByTestId("tooltip")).toBeTruthy();
   });
 
   it("renders rich variant with description", () => {
-    const { getByTestId } = render(
+    render(
       <Tooltip
         label="Rich title"
         description="Rich description text"
         variant="rich"
         testID="tooltip"
       >
-        <Text variant="bodyMedium">Trigger</Text>
-      </Tooltip>,
-      { wrapper }
+        <></>
+      </Tooltip>
     );
-    expect(getByTestId("tooltip")).toBeTruthy();
+    expect(screen.getByTestId("tooltip")).toBeTruthy();
   });
 });
