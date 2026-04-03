@@ -126,7 +126,7 @@ export function DatePicker({
         <Pressable onPress={(e) => e.stopPropagation()}>
           <Container>
             <XStack justifyContent="space-between" alignItems="center" marginBottom={16}>
-              <Text variant="bodySmall" color="$onSurfaceVariant">Select date</Text>
+              <Text role="body" size="small" color="$onSurfaceVariant">Select date</Text>
               <IconButton
                 variant="standard"
                 icon={displayMode === "calendar" ? "keyboard" : "calendar_today"}
@@ -138,14 +138,14 @@ export function DatePicker({
               <YStack gap={8}>
                 <XStack justifyContent="space-between" alignItems="center">
                   <IconButton variant="standard" icon="chevron_left" onPress={prevMonth} />
-                  <Text variant="titleSmall">{MONTHS[currentMonth]} {currentYear}</Text>
+                  <Text role="title" size="small">{MONTHS[currentMonth]} {currentYear}</Text>
                   <IconButton variant="standard" icon="chevron_right" onPress={nextMonth} />
                 </XStack>
 
                 <XStack justifyContent="space-around">
                   {DAYS_OF_WEEK.map(d => (
                     <View key={d} width={40} alignItems="center">
-                      <Text variant="labelSmall" color="$onSurfaceVariant">{d}</Text>
+                      <Text role="label" size="small" color="$onSurfaceVariant">{d}</Text>
                     </View>
                   ))}
                 </XStack>
@@ -172,7 +172,8 @@ export function DatePicker({
                           borderColor="$primary"
                         >
                           <Text
-                            variant="bodyMedium"
+                            role="body"
+                            size="medium"
                             color={
                               selected ? "$onPrimary"
                               : !cell.thisMonth || disabled ? "$onSurfaceVariant"
