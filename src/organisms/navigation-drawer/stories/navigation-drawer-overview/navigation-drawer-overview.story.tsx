@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { View } from "tamagui";
 import { NavigationDrawer } from "../../navigation-drawer";
 import { Button } from "../../../atoms/button";
@@ -22,7 +23,7 @@ const sections = [
   },
 ];
 
-export const NavigationDrawerOverview = () => {
+function Overview() {
   const [open, setOpen] = useState(false);
   const [activeKey, setActiveKey] = useState("home");
 
@@ -36,14 +37,21 @@ export const NavigationDrawerOverview = () => {
         onClose={() => setOpen(false)}
         sections={sections}
         activeKey={activeKey}
-        onDestinationPress={(key) => {
-          setActiveKey(key);
-          setOpen(false);
-        }}
+        onDestinationPress={(key) => { setActiveKey(key); setOpen(false); }}
         testID="drawer"
       />
     </View>
   );
+}
+
+const meta: Meta = {
+  title: "Organisms/NavigationDrawer/Overview",
+  component: Overview,
+  tags: ["autodocs", "!dev"],
 };
 
-NavigationDrawerOverview.storyName = "NavigationDrawer/Overview";
+export default meta;
+
+type Story = StoryObj;
+
+export const Default: Story = {};
