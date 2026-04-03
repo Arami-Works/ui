@@ -1,4 +1,4 @@
-# @cheunjm/ui — Design System
+# @arami-works/ui — Design System
 
 Expo-based component library. Brad Frost atomic design with MD3 interface and Tamagui internals.
 
