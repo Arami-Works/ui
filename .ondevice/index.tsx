@@ -1,5 +1,5 @@
-import view from "./storybook.requires";
+import { view } from "./storybook.requires";
 
-const StorybookUI = view;
+const StorybookUI = view.getStorybookUI();
 
 export default StorybookUI;
