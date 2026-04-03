@@ -4,6 +4,8 @@ export { Dialog } from "./dialog";
 export type { DialogProps } from "./dialog";
 export { NavigationBar } from "./navigation-bar";
 export type { NavigationBarProps, NavigationDestination } from "./navigation-bar";
+export { NavigationDrawer } from "./navigation-drawer";
+export type { NavigationDrawerProps, DrawerDestination, DrawerSection } from "./navigation-drawer";
 export { Snackbar } from "./snackbar";
 export type { SnackbarProps } from "./snackbar";
 export { TopAppBar } from "./top-app-bar";
