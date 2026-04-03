@@ -2,6 +2,8 @@ export { Badge } from "./badge";
 export type { BadgeProps, BadgeSize } from "./badge";
 export { Button } from "./button";
 export type { ButtonProps } from "./button";
+export { Card } from "./card";
+export type { CardProps, CardVariant } from "./card";
 export { Checkbox } from "./checkbox";
 export type { CheckboxProps, CheckboxState } from "./checkbox";
 export { Chip } from "./chip";
