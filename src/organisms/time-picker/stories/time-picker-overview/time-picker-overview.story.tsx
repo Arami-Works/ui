@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { YStack, Text } from "tamagui";
 import { TimePicker } from "../../time-picker";
-import { Button } from "../../../atoms/button";
+import { Button } from "../../../../atoms/button";
 
 function Overview() {
   const [visible, setVisible] = useState(false);

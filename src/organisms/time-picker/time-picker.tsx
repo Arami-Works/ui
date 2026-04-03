@@ -97,7 +97,7 @@ function ClockFace({ isHours, selected, use24Hour, onSelect }: ClockFaceProps) {
             }}
           >
             <Text
-              variant="bodyMedium"
+              role="body" size="medium"
               color={isActive ? "$onPrimary" : "$onSurface"}
             >
               {String(num).padStart(2, "0")}
@@ -144,7 +144,7 @@ export function TimePicker({
         <Pressable onPress={(e) => e.stopPropagation()}>
           <Container>
             <XStack justifyContent="space-between" alignItems="center" marginBottom={20}>
-              <Text variant="bodySmall" color="$onSurfaceVariant">Enter time</Text>
+              <Text role="body" size="small" color="$onSurfaceVariant">Enter time</Text>
               <IconButton
                 variant="standard"
                 icon={displayMode === "clock" ? "keyboard" : "schedule"}
@@ -155,15 +155,15 @@ export function TimePicker({
             <XStack gap={8} alignItems="center" marginBottom={24}>
               <Pressable onPress={() => setClockFocus("hours")}>
                 <TimeSegment backgroundColor={clockFocus === "hours" && displayMode === "clock" ? "$primaryContainer" : "$surfaceContainerHighest"}>
-                  <Text variant="displaySmall" color="$onSurface">
+                  <Text role="display" size="small" color="$onSurface">
                     {String(displayHour).padStart(2, "0")}
                   </Text>
                 </TimeSegment>
               </Pressable>
-              <Text variant="displaySmall" color="$onSurface">:</Text>
+              <Text role="display" size="small" color="$onSurface">:</Text>
               <Pressable onPress={() => setClockFocus("minutes")}>
                 <TimeSegment backgroundColor={clockFocus === "minutes" && displayMode === "clock" ? "$primaryContainer" : "$surfaceContainerHighest"}>
-                  <Text variant="displaySmall" color="$onSurface">
+                  <Text role="display" size="small" color="$onSurface">
                     {String(minute).padStart(2, "0")}
                   </Text>
                 </TimeSegment>
@@ -172,13 +172,13 @@ export function TimePicker({
                 <YStack borderRadius={8} overflow="hidden" borderWidth={1} borderColor="$outline">
                   <Pressable onPress={() => setPeriod("AM")}>
                     <PeriodButton backgroundColor={period === "AM" ? "$tertiaryContainer" : "transparent"}>
-                      <Text variant="labelMedium" color={period === "AM" ? "$onTertiaryContainer" : "$onSurface"}>AM</Text>
+                      <Text role="label" size="medium" color={period === "AM" ? "$onTertiaryContainer" : "$onSurface"}>AM</Text>
                     </PeriodButton>
                   </Pressable>
                   <View height={1} backgroundColor="$outline" />
                   <Pressable onPress={() => setPeriod("PM")}>
                     <PeriodButton backgroundColor={period === "PM" ? "$tertiaryContainer" : "transparent"}>
-                      <Text variant="labelMedium" color={period === "PM" ? "$onTertiaryContainer" : "$onSurface"}>PM</Text>
+                      <Text role="label" size="medium" color={period === "PM" ? "$onTertiaryContainer" : "$onSurface"}>PM</Text>
                     </PeriodButton>
                   </Pressable>
                 </YStack>
