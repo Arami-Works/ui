@@ -7,11 +7,10 @@ const ElevatedCard = styled(View, {
   backgroundColor: "$surfaceContainerLow",
   borderRadius: 12,
   padding: 16,
-  shadowColor: "$shadow",
+  shadowColor: "#000",
   shadowOffset: { width: 0, height: 1 },
-  shadowOpacity: 0.3,
+  shadowOpacity: 0.15,
   shadowRadius: 2,
-  elevation: 1,
 });
 
 const FilledCard = styled(View, {
