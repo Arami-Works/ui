@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { View } from "tamagui";
 import { Menu } from "../../menu";
 import { Button } from "../../../atoms/button";
 
-export const MenuOverview = () => {
+function Overview() {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -24,6 +25,16 @@ export const MenuOverview = () => {
       />
     </View>
   );
+}
+
+const meta: Meta = {
+  title: "Molecules/Menu/Overview",
+  component: Overview,
+  tags: ["autodocs", "!dev"],
 };
 
-MenuOverview.storyName = "Menu/Overview";
+export default meta;
+
+type Story = StoryObj;
+
+export const Default: Story = {};
