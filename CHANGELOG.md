@@ -1,5 +1,37 @@
 # @aramiworks/ui
 
+## 0.2.0
+
+### Minor Changes
+
+- [#76](https://github.com/aramiworks/ui/pull/76) [`49069b3`](https://github.com/aramiworks/ui/commit/49069b349e22060af4b4c239f6afdd2615e74e7e) Thanks [@cheunjm](https://github.com/cheunjm)! - feat(atoms): [INF-600] add Tooltip atom
+
+- [#82](https://github.com/aramiworks/ui/pull/82) [`99de7bf`](https://github.com/aramiworks/ui/commit/99de7bfef44d83f1da71fe14e5566f5a880d0008) Thanks [@cheunjm](https://github.com/cheunjm)! - feat(organisms): [INF-604] add DatePicker organism
+
+- [#83](https://github.com/aramiworks/ui/pull/83) [`003f70f`](https://github.com/aramiworks/ui/commit/003f70f6a931c02143e120608cdc22fb08ab7cd6) Thanks [@cheunjm](https://github.com/cheunjm)! - feat(organisms): [INF-605] add TimePicker organism
+
+### Patch Changes
+
+- [#103](https://github.com/aramiworks/ui/pull/103) [`df9dc08`](https://github.com/aramiworks/ui/commit/df9dc0870b4935cd43f658e919322c9cb5433540) Thanks [@cheunjm](https://github.com/cheunjm)! - Add Mergify config for automated dependency PR merging.
+
+- [#84](https://github.com/aramiworks/ui/pull/84) [`9717ae1`](https://github.com/aramiworks/ui/commit/9717ae106f4a0737b1222be3ba899fd1b41874e7) Thanks [@cheunjm](https://github.com/cheunjm)! - Restructure Button stories: Anatomy/Overview/Specs as docs pages, Variants split into one story per variant
+
+- [#99](https://github.com/aramiworks/ui/pull/99) [`56bc89b`](https://github.com/aramiworks/ui/commit/56bc89b4dff50b39b580565b28d1666ae7811145) Thanks [@cheunjm](https://github.com/cheunjm)! - Disable Tamagui babel-plugin static extraction to fix Node 24 parse errors caused by v1/v2 version mismatch with @tamagui/static-sync.
+
+- [#90](https://github.com/aramiworks/ui/pull/90) [`55ad9a5`](https://github.com/aramiworks/ui/commit/55ad9a5d05b1dee038eff11b13debfb390830446) Thanks [@cheunjm](https://github.com/cheunjm)! - fix(molecules,organisms): fix Menu and NavigationDrawer Text props and shadow styles
+
+- [#89](https://github.com/aramiworks/ui/pull/89) [`c052247`](https://github.com/aramiworks/ui/commit/c0522479790ea99c4b42bb6499118b472f0bf786) Thanks [@cheunjm](https://github.com/cheunjm)! - Fix incorrect Button import path in menu-overview story.
+
+- [#102](https://github.com/aramiworks/ui/pull/102) [`ce305c1`](https://github.com/aramiworks/ui/commit/ce305c194e0c7aa9c375e10f23dfd14f9c323209) Thanks [@cheunjm](https://github.com/cheunjm)! - Fix zIndex tokens to use named keys and add outline color aliases in tamagui config.
+
+- [#97](https://github.com/aramiworks/ui/pull/97) [`f67477b`](https://github.com/aramiworks/ui/commit/f67477ba302965d43381f9c10b09afc3a98eb495) Thanks [@cheunjm](https://github.com/cheunjm)! - CI overhaul: rename jobs for consistent check names, enable Chromatic visual review gate, fix duplicate changeset check, remove conflicting claude-changelog workflow, add paths-ignore, scope all triggers to main branch only.
+
+- [#100](https://github.com/aramiworks/ui/pull/100) [`8ab74c5`](https://github.com/aramiworks/ui/commit/8ab74c5b6ec828aa89e98e51e65d50d8b4345c78) Thanks [@cheunjm](https://github.com/cheunjm)! - Move expo-updates from devDependencies to dependencies for OTA update channels to work.
+
+- [#101](https://github.com/aramiworks/ui/pull/101) [`8cbcf69`](https://github.com/aramiworks/ui/commit/8cbcf69fb995140720d51a47026a34924fbb5f08) Thanks [@cheunjm](https://github.com/cheunjm)! - Add proactive behavior rules for model switching, agent teams, and convention updates.
+
+- [#104](https://github.com/aramiworks/ui/pull/104) [`f1af9c4`](https://github.com/aramiworks/ui/commit/f1af9c4d1f8515d8e7f9550ca907d991970e5136) Thanks [@cheunjm](https://github.com/cheunjm)! - Rename package scope from @arami-works to @aramiworks to match GitHub org for GitHub Packages publishing.
+
 ## 0.1.0
 
 ### Minor Changes
