@@ -32,17 +32,22 @@ const animations = createAnimations({
 const interFont = createInterFont();
 
 const tokens = createTokens({
-  color: colors,
+  color: {
+    ...colors,
+    outlineColor: colors.outline,
+    outlineVariantColor: colors.outlineVariant,
+  },
   space: { ...spacing, true: spacing.md },
   size: { ...spacing, true: spacing.md },
   radius: radii,
   zIndex: {
-    0: 0,
-    1: 100,
-    2: 200,
-    3: 300,
-    4: 400,
-    5: 500,
+    none: 0,
+    xs: 100,
+    sm: 200,
+    md: 300,
+    lg: 400,
+    xl: 500,
+    true: 300,
   },
 });
 
