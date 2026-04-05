@@ -16,6 +16,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   platforms: ["ios", "android", "web"],
   ios: {
     bundleIdentifier: bundleId,
+    infoPlist: {
+      ITSAppUsesNonExemptEncryption: false,
+    },
   },
   android: {
     package: bundleId,
