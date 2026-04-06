@@ -133,4 +133,38 @@ describe("Search", () => {
     expect(screen.getByText("Recent searches")).toBeTruthy();
     expect(screen.getByText("React Native")).toBeTruthy();
   });
+
+  it("does not call onActiveChange when already active and text changes", () => {
+    const onActiveChange = jest.fn();
+    render(
+      <Search
+        active
+        onActiveChange={onActiveChange}
+        testID="search"
+      />,
+    );
+    fireEvent.changeText(screen.getByTestId("search-bar-input"), "q");
+    expect(onActiveChange).not.toHaveBeenCalled();
+  });
+
+  it("renders without testID", () => {
+    render(<Search active suggestions={suggestions} recentSearches={recentSearches} />);
+    expect(screen.getByText("React Native")).toBeTruthy();
+    expect(screen.getByText("Recent searches")).toBeTruthy();
+  });
+
+  it("renders recent searches without onClearRecent", () => {
+    render(
+      <Search active recentSearches={recentSearches} testID="search" />,
+    );
+    expect(screen.queryByText("Clear all")).toBeNull();
+  });
+
+  it("renders Clear all without testID", () => {
+    const onClearRecent = jest.fn();
+    render(
+      <Search active recentSearches={recentSearches} onClearRecent={onClearRecent} />,
+    );
+    expect(screen.getByText("Clear all")).toBeTruthy();
+  });
 });
