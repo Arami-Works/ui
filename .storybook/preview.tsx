@@ -71,6 +71,7 @@ const preview: Preview = {
             'progress-indicator', ['overview', 'anatomy', 'specs', 'variants'],
             'radio-button', ['overview', 'anatomy', 'specs', 'variants'],
             'segmented-button', ['overview', 'anatomy', 'specs', 'variants'],
+            'skeleton', ['overview', 'anatomy', 'specs', 'variants'],
             'slider', ['overview', 'anatomy', 'specs', 'variants'],
             'spacer', ['overview', 'anatomy', 'specs', 'variants'],
             'switch', ['overview', 'anatomy', 'specs', 'variants'],
