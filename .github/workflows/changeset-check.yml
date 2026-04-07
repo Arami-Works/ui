@@ -1,11 +1,11 @@
-name: Changeset
+name: Changeset Check
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
 
 jobs:
-  check:
+  changeset:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
