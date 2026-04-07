@@ -38,7 +38,7 @@ function createIconComponent(fontFamily: string) {
         }}
         {...props}
       >
-        {name}
+        {name.replace(/-/g, "_")}
       </span>
     );
   }
