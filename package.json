@@ -17,7 +17,7 @@
     "ios": "expo start --ios",
     "android": "expo start --android",
     "web": "expo start --web",
-    "storybook:generate": "sb-rn-get-stories",
+    "storybook:generate": "sb-rn-get-stories --config-path .ondevice",
     "lint": "eslint src/",
     "typecheck": "tsc --noEmit",
     "test": "jest",
