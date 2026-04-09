@@ -60,7 +60,7 @@ export function FullScreenDialog({
           </View>
           <Button
             variant="text"
-            onPress={onAction}
+            onPress={actionDisabled ? undefined : onAction}
             disabled={actionDisabled}
             testID={testID ? `${testID}-action` : undefined}
           >
