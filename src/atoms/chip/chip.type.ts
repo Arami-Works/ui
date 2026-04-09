@@ -23,5 +23,7 @@ export type ChipProps = Omit<GetProps<typeof View>, "children"> & {
   onTrailingIconPress?: () => void;
   /** Accessibility label */
   accessibilityLabel?: string;
+  /** Accessibility hint describing the result of pressing the chip */
+  accessibilityHint?: string;
   testID?: string;
 };

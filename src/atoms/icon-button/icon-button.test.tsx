@@ -49,6 +49,19 @@ describe("IconButton", () => {
     expect(element.props.accessibilityRole).toBe("button");
   });
 
+  it("forwards accessibilityHint", () => {
+    render(
+      <IconButton
+        icon="close"
+        accessibilityHint="Closes the dialog"
+        testID="hint-test"
+      />,
+    );
+    expect(screen.getByTestId("hint-test").props.accessibilityHint).toBe(
+      "Closes the dialog",
+    );
+  });
+
   it("forwards accessibilityLabel", () => {
     render(
       <IconButton icon="close" accessibilityLabel="Close" testID="a11y-ib" />,

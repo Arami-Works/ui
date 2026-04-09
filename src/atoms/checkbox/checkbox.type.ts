@@ -15,5 +15,7 @@ export type CheckboxProps = Omit<GetProps<typeof View>, "children"> & {
   onPress?: () => void;
   /** Accessibility label */
   accessibilityLabel?: string;
+  /** Accessibility hint describing the result of pressing the checkbox */
+  accessibilityHint?: string;
   testID?: string;
 };

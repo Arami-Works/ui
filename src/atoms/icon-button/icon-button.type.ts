@@ -24,4 +24,6 @@ export type IconButtonProps = Omit<
   selected?: boolean;
   /** Disables the button */
   disabled?: boolean;
+  /** Accessibility hint describing the result of pressing the button */
+  accessibilityHint?: string;
 };

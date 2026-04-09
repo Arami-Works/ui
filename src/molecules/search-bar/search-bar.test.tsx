@@ -68,6 +68,15 @@ describe("SearchBar", () => {
     expect(element.props.accessibilityRole).toBe("search");
   });
 
+  it("forwards accessibilityHint to container", () => {
+    render(
+      <SearchBar accessibilityHint="Search for items" testID="hint-test" />,
+    );
+    expect(screen.getByTestId("hint-test").props.accessibilityHint).toBe(
+      "Search for items",
+    );
+  });
+
   it("forwards accessibilityLabel to container", () => {
     render(<SearchBar accessibilityLabel="Search items" testID="a11y-sb" />);
     const element = screen.getByTestId("a11y-sb");

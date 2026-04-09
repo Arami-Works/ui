@@ -52,6 +52,17 @@ describe("Button", () => {
     expect(element.props.accessibilityRole).toBe("button");
   });
 
+  it("forwards accessibilityHint", () => {
+    render(
+      <Button accessibilityHint="Submits the form" testID="hint-test">
+        OK
+      </Button>,
+    );
+    expect(screen.getByTestId("hint-test").props.accessibilityHint).toBe(
+      "Submits the form",
+    );
+  });
+
   it("has correct accessibility state when disabled", () => {
     render(
       <Button disabled testID="a11y-btn">

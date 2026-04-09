@@ -48,6 +48,7 @@ export function RadioButton({
   disabled = false,
   onPress,
   accessibilityLabel,
+  accessibilityHint,
   testID,
   ...props
 }: RadioButtonProps) {
@@ -57,6 +58,7 @@ export function RadioButton({
       accessibilityRole="radio"
       accessibilityState={{ checked: selected, disabled }}
       accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       style={{
         width: 48,
         height: 48,

@@ -94,6 +94,20 @@ describe("SegmentedButton", () => {
     expect(screen.getByTestId("custom-seg")).toBeTruthy();
   });
 
+  it("forwards accessibilityHint", () => {
+    render(
+      <SegmentedButton
+        segments={segments}
+        selected="day"
+        accessibilityHint="Changes the time range"
+        testID="hint-test"
+      />,
+    );
+    expect(screen.getByTestId("hint-test").props.accessibilityHint).toBe(
+      "Changes the time range",
+    );
+  });
+
   it("has tablist accessibility role on group", () => {
     render(
       <SegmentedButton segments={segments} selected="day" testID="a11y-seg" />,

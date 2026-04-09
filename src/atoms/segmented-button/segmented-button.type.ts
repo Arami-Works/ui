@@ -22,5 +22,7 @@ export type SegmentedButtonProps = {
   disabled?: boolean;
   /** Accessibility label */
   accessibilityLabel?: string;
+  /** Accessibility hint describing the result of interacting with the segmented button */
+  accessibilityHint?: string;
   testID?: string;
 };

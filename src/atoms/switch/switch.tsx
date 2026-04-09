@@ -43,6 +43,7 @@ export function Switch({
   disabled = false,
   onPress,
   accessibilityLabel,
+  accessibilityHint,
   testID,
   ...props
 }: SwitchProps) {
@@ -72,6 +73,7 @@ export function Switch({
       accessibilityRole="switch"
       accessibilityState={{ checked: selected, disabled }}
       accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       testID={testID}
       style={{ minWidth: 52, minHeight: 48, justifyContent: "center" }}
     >

@@ -14,4 +14,6 @@ export type ButtonProps = Omit<GetProps<typeof TamaguiButton>, "variant"> & {
   variant?: ButtonVariant;
   /** Disables the button */
   disabled?: boolean;
+  /** Accessibility hint describing the result of pressing the button */
+  accessibilityHint?: string;
 };

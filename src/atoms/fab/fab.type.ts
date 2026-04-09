@@ -20,5 +20,7 @@ export type FabProps = Omit<GetProps<typeof View>, "children"> & {
   onPress?: () => void;
   /** Accessibility label */
   accessibilityLabel?: string;
+  /** Accessibility hint describing the result of pressing the FAB */
+  accessibilityHint?: string;
   testID?: string;
 };

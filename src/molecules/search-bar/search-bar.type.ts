@@ -19,5 +19,7 @@ export type SearchBarProps = {
   disabled?: boolean;
   /** Accessibility label */
   accessibilityLabel?: string;
+  /** Accessibility hint describing the result of interacting with the search bar */
+  accessibilityHint?: string;
   testID?: string;
 };

@@ -61,6 +61,21 @@ describe("Menu", () => {
     expect(element.props.accessibilityRole).toBe("menu");
   });
 
+  it("forwards accessibilityHint to container", () => {
+    render(
+      <Menu
+        visible
+        onDismiss={jest.fn()}
+        items={items}
+        accessibilityHint="Choose an action"
+        testID="hint-test"
+      />,
+    );
+    expect(screen.getByTestId("hint-test").props.accessibilityHint).toBe(
+      "Choose an action",
+    );
+  });
+
   it("has menuitem accessibility role on items", () => {
     render(
       <Menu visible onDismiss={jest.fn()} items={items} testID="a11y-menu" />,

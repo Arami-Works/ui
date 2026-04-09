@@ -49,6 +49,15 @@ describe("Slider", () => {
     expect(element.props.accessibilityRole).toBe("adjustable");
   });
 
+  it("forwards accessibilityHint", () => {
+    render(
+      <Slider accessibilityHint="Adjusts the volume" testID="hint-test" />,
+    );
+    expect(screen.getByTestId("hint-test").props.accessibilityHint).toBe(
+      "Adjusts the volume",
+    );
+  });
+
   it("has correct accessibility value", () => {
     render(<Slider value={50} min={0} max={100} testID="a11y-slider" />);
     const element = screen.getByTestId("a11y-slider");

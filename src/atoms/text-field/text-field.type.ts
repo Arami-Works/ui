@@ -36,6 +36,8 @@ export type TextFieldProps = {
   onBlur?: () => void;
   /** Accessibility label */
   accessibilityLabel?: string;
+  /** Accessibility hint describing the result of interacting with the text field */
+  accessibilityHint?: string;
   testID?: string;
 } & Pick<
   TextInputProps,

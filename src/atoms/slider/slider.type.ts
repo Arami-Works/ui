@@ -20,5 +20,7 @@ export type SliderProps = {
   onValueChange?: (value: number) => void;
   /** Accessibility label */
   accessibilityLabel?: string;
+  /** Accessibility hint describing the result of adjusting the slider */
+  accessibilityHint?: string;
   testID?: string;
 };

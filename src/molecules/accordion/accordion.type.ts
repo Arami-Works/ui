@@ -18,6 +18,8 @@ export type AccordionItemProps = {
   children: ReactNode;
   /** Whether the item is disabled */
   disabled?: boolean;
+  /** Accessibility hint describing the result of pressing the accordion header */
+  accessibilityHint?: string;
   testID?: string;
 };
 

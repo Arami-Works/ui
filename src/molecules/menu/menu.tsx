@@ -1,4 +1,4 @@
-import { Modal, Pressable } from "react-native";
+import { Modal, Pressable, View as RNView } from "react-native";
 import { styled, View, YStack } from "tamagui";
 import { Icon } from "../../atoms/icon";
 import { Text } from "../../atoms/text";
@@ -17,7 +17,13 @@ const Container = styled(View, {
   shadowRadius: 6,
 } as const);
 
-export function Menu({ visible, onDismiss, items, testID }: MenuProps) {
+export function Menu({
+  visible,
+  onDismiss,
+  items,
+  accessibilityHint,
+  testID,
+}: MenuProps) {
   return (
     <Modal
       visible={visible}
@@ -30,56 +36,63 @@ export function Menu({ visible, onDismiss, items, testID }: MenuProps) {
         onPress={onDismiss}
       >
         <Pressable onPress={(e) => e.stopPropagation()}>
-          <Container testID={testID} accessibilityRole="menu">
-            <YStack>
-              {items.map((item) => (
-                <Pressable
-                  key={item.key}
-                  onPress={() => {
-                    if (!item.disabled) {
-                      item.onPress();
-                      onDismiss();
+          <RNView
+            testID={testID}
+            accessible
+            accessibilityRole="menu"
+            accessibilityHint={accessibilityHint}
+          >
+            <Container>
+              <YStack>
+                {items.map((item) => (
+                  <Pressable
+                    key={item.key}
+                    onPress={() => {
+                      if (!item.disabled) {
+                        item.onPress();
+                        onDismiss();
+                      }
+                    }}
+                    style={({ pressed }) => ({
+                      flexDirection: "row",
+                      alignItems: "center",
+                      paddingHorizontal: 12,
+                      paddingVertical: 12,
+                      opacity: item.disabled ? 0.38 : pressed ? 0.7 : 1,
+                    })}
+                    accessibilityRole="menuitem"
+                    accessibilityState={
+                      item.disabled ? { disabled: true } : undefined
                     }
-                  }}
-                  style={({ pressed }) => ({
-                    flexDirection: "row",
-                    alignItems: "center",
-                    paddingHorizontal: 12,
-                    paddingVertical: 12,
-                    opacity: item.disabled ? 0.38 : pressed ? 0.7 : 1,
-                  })}
-                  accessibilityRole="menuitem"
-                  accessibilityState={
-                    item.disabled ? { disabled: true } : undefined
-                  }
-                  testID={`${testID}-item-${item.key}`}
-                >
-                  {item.leadingIcon && (
-                    <View marginRight={12}>
-                      <Icon
-                        name={item.leadingIcon}
-                        size={24}
-                        color="$onSurface"
-                      />
-                    </View>
-                  )}
-                  <Text role="label" size="large" color="$onSurface" flex={1}>
-                    {item.label}
-                  </Text>
-                  {item.trailingText && (
-                    <Text
-                      role="label"
-                      size="small"
-                      color="$onSurfaceVariant"
-                      marginLeft={12}
-                    >
-                      {item.trailingText}
+                    testID={`${testID}-item-${item.key}`}
+                  >
+                    {item.leadingIcon && (
+                      <View marginRight={12}>
+                        <Icon
+                          name={item.leadingIcon}
+                          size={24}
+                          color="$onSurface"
+                        />
+                      </View>
+                    )}
+                    <Text role="label" size="large" color="$onSurface" flex={1}>
+                      {item.label}
                     </Text>
-                  )}
-                </Pressable>
-              ))}
-            </YStack>
-          </Container>
+                    {item.trailingText && (
+                      <Text
+                        role="label"
+                        size="small"
+                        color="$onSurfaceVariant"
+                        marginLeft={12}
+                      >
+                        {item.trailingText}
+                      </Text>
+                    )}
+                  </Pressable>
+                ))}
+              </YStack>
+            </Container>
+          </RNView>
         </Pressable>
       </Pressable>
     </Modal>

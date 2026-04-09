@@ -12,5 +12,7 @@ export type RadioButtonProps = Omit<GetProps<typeof View>, "children"> & {
   onPress?: () => void;
   /** Accessibility label */
   accessibilityLabel?: string;
+  /** Accessibility hint describing the result of pressing the radio button */
+  accessibilityHint?: string;
   testID?: string;
 };

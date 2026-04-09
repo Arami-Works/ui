@@ -112,6 +112,21 @@ describe("AccordionItem", () => {
     expect(pressable.props.accessibilityRole).toBe("button");
   });
 
+  it("forwards accessibilityHint to header pressable", () => {
+    render(
+      <AccordionItem
+        title="Section"
+        accessibilityHint="Expands the section"
+        testID="hint-test"
+      >
+        <Text>Content</Text>
+      </AccordionItem>,
+    );
+    const item = screen.getByTestId("hint-test");
+    const pressable = item.children[0];
+    expect(pressable.props.accessibilityHint).toBe("Expands the section");
+  });
+
   it("has correct accessibility state when expanded", () => {
     render(
       <AccordionItem title="Section" expanded testID="a11y-item">

@@ -36,6 +36,7 @@ export function AccordionItem({
   leadingIcon,
   children,
   disabled = false,
+  accessibilityHint,
   testID,
 }: AccordionItemProps) {
   const isControlled = controlledExpanded !== undefined;
@@ -75,6 +76,7 @@ export function AccordionItem({
         onPress={handleToggle}
         disabled={disabled}
         accessibilityRole="button"
+        accessibilityHint={accessibilityHint}
         accessibilityState={{ expanded: isExpanded }}
         style={{ opacity: disabled ? 0.38 : 1 }}
       >

@@ -46,6 +46,7 @@ export function Chip({
   onPress,
   onTrailingIconPress,
   accessibilityLabel,
+  accessibilityHint,
   testID,
   ...props
 }: ChipProps) {
@@ -63,6 +64,7 @@ export function Chip({
       onPress={onPress}
       disabled={disabled}
       accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="button"
       accessibilityState={{ selected: isSelected, disabled }}
       testID={testID}
