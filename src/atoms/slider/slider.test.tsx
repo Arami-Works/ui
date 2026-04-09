@@ -79,13 +79,23 @@ describe("Slider", () => {
     });
 
     it("renders value label showing clamped display when value exceeds max", () => {
-      render(<Slider min={0} max={100} value={150} showLabel testID="slider" />);
+      render(
+        <Slider min={0} max={100} value={150} showLabel testID="slider" />,
+      );
       expect(screen.getByText("150")).toBeTruthy();
     });
 
     it("renders discrete slider with step prop", () => {
       render(
-        <Slider type="discrete" min={0} max={50} step={10} value={20} showLabel testID="slider" />,
+        <Slider
+          type="discrete"
+          min={0}
+          max={50}
+          step={10}
+          value={20}
+          showLabel
+          testID="slider"
+        />,
       );
       expect(screen.getByText("20")).toBeTruthy();
     });

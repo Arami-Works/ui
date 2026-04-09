@@ -39,9 +39,7 @@ describe("Carousel", () => {
 
     it("does not render dot row for single item", () => {
       const singleItem = [{ key: "only", content: <Text>Only</Text> }];
-      render(
-        <Carousel items={singleItem} showDots testID="carousel" />,
-      );
+      render(<Carousel items={singleItem} showDots testID="carousel" />);
       expect(screen.getByText("Only")).toBeTruthy();
       const carousel = screen.getByTestId("carousel");
       expect(carousel.children.length).toBe(1);
@@ -71,7 +69,7 @@ describe("Carousel", () => {
         <Carousel items={items} showDots testID="carousel" />,
       );
       const tree = JSON.stringify(toJSON());
-      expect(tree).toContain("borderTopLeftRadius\":4");
+      expect(tree).toContain('borderTopLeftRadius":4');
     });
   });
 });
