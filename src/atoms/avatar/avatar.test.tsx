@@ -75,6 +75,21 @@ describe("Avatar", () => {
     expect(screen.getByTestId("avatar-icon")).toBeTruthy();
   });
 
+  it("renders image variant without testID", () => {
+    render(<Avatar source={{ uri: "https://example.com/avatar.png" }} />);
+    expect(screen.getByRole("img")).toBeTruthy();
+  });
+
+  it("renders initials variant without testID", () => {
+    render(<Avatar name="Jane Smith" />);
+    expect(screen.getByText("JS")).toBeTruthy();
+  });
+
+  it("renders icon variant without testID", () => {
+    render(<Avatar />);
+    expect(screen.getByLabelText("person")).toBeTruthy();
+  });
+
   it("propagates testID", () => {
     render(<Avatar testID="custom-avatar" />);
     expect(screen.getByTestId("custom-avatar")).toBeTruthy();
