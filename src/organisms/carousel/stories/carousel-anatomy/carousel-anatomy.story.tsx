@@ -40,16 +40,52 @@ function Anatomy() {
       gap={48}
       alignItems="center"
     >
-      <YStack width={300} height={200} justifyContent="center" alignItems="center">
+      <YStack
+        width={300}
+        height={200}
+        justifyContent="center"
+        alignItems="center"
+      >
         <View position="relative" width={280} height={180}>
-          <View width={280} height={150} flexDirection="row" gap={8} overflow="hidden">
-            <View backgroundColor="#E8DEF8" width={120} height={150} borderRadius={12} />
-            <View backgroundColor="#D0BCFF" width={120} height={150} borderRadius={12} />
+          <View
+            width={280}
+            height={150}
+            flexDirection="row"
+            gap={8}
+            overflow="hidden"
+          >
+            <View
+              backgroundColor="#E8DEF8"
+              width={120}
+              height={150}
+              borderRadius={12}
+            />
+            <View
+              backgroundColor="#D0BCFF"
+              width={120}
+              height={150}
+              borderRadius={12}
+            />
           </View>
           <XStack gap={8} justifyContent="center" marginTop={12}>
-            <View width={8} height={8} borderRadius={4} backgroundColor="#6750A4" />
-            <View width={8} height={8} borderRadius={4} backgroundColor="#CAC4D0" />
-            <View width={8} height={8} borderRadius={4} backgroundColor="#CAC4D0" />
+            <View
+              width={8}
+              height={8}
+              borderRadius={4}
+              backgroundColor="#6750A4"
+            />
+            <View
+              width={8}
+              height={8}
+              borderRadius={4}
+              backgroundColor="#CAC4D0"
+            />
+            <View
+              width={8}
+              height={8}
+              borderRadius={4}
+              backgroundColor="#CAC4D0"
+            />
           </XStack>
           <View position="absolute" top={-10} left={-10}>
             <Callout number={1} />

@@ -29,8 +29,7 @@ export function FAB({
 
   const backgroundColor =
     (theme[bgToken]?.val as string) ?? "$primaryContainer";
-  const iconColor =
-    (theme[iconToken]?.val as string);
+  const iconColor = theme[iconToken]?.val as string;
 
   const isExtended = !!label;
 
@@ -78,11 +77,7 @@ export function FAB({
         color={iconColor}
       />
       {isExtended && (
-        <Text
-          fontSize={14}
-          fontWeight="500"
-          color={iconColor as any}
-        >
+        <Text fontSize={14} fontWeight="500" color={iconColor as any}>
           {label}
         </Text>
       )}

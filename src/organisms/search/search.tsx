@@ -65,7 +65,16 @@ export function Search({
           <Pressable
             onPress={onBack}
             testID={testID ? `${testID}-back` : undefined}
-            style={{ position: "absolute", left: 16, top: 8, width: 56, height: 56, justifyContent: "center", alignItems: "center", zIndex: 1 }}
+            style={{
+              position: "absolute",
+              left: 16,
+              top: 8,
+              width: 56,
+              height: 56,
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 1,
+            }}
             accessibilityRole="button"
             accessibilityLabel="Go back"
           />
@@ -95,9 +104,7 @@ export function Search({
                 <Pressable
                   key={`recent-${index}`}
                   onPress={() => onRecentSearchPress?.(query)}
-                  testID={
-                    testID ? `${testID}-recent-${index}` : undefined
-                  }
+                  testID={testID ? `${testID}-recent-${index}` : undefined}
                 >
                   <SuggestionItem>
                     <Icon name="history" size={24} color="$onSurfaceVariant" />
@@ -114,28 +121,30 @@ export function Search({
 
           {hasSuggestions && (
             <YStack>
-              {suggestions.map((suggestion: SearchSuggestion, index: number) => (
-                <Pressable
-                  key={`suggestion-${index}`}
-                  onPress={suggestion.onPress}
-                  testID={
-                    testID ? `${testID}-suggestion-${index}` : undefined
-                  }
-                >
-                  <SuggestionItem>
-                    {suggestion.icon && (
-                      <Icon
-                        name={suggestion.icon}
-                        size={24}
-                        color="$onSurfaceVariant"
-                      />
-                    )}
-                    <Text role="body" size="large" color="$onSurface">
-                      {suggestion.label}
-                    </Text>
-                  </SuggestionItem>
-                </Pressable>
-              ))}
+              {suggestions.map(
+                (suggestion: SearchSuggestion, index: number) => (
+                  <Pressable
+                    key={`suggestion-${index}`}
+                    onPress={suggestion.onPress}
+                    testID={
+                      testID ? `${testID}-suggestion-${index}` : undefined
+                    }
+                  >
+                    <SuggestionItem>
+                      {suggestion.icon && (
+                        <Icon
+                          name={suggestion.icon}
+                          size={24}
+                          color="$onSurfaceVariant"
+                        />
+                      )}
+                      <Text role="body" size="large" color="$onSurface">
+                        {suggestion.label}
+                      </Text>
+                    </SuggestionItem>
+                  </Pressable>
+                ),
+              )}
             </YStack>
           )}
         </ScrollView>

@@ -32,12 +32,7 @@ describe("Chip", () => {
 
   it("renders with trailing icon for input type", () => {
     render(
-      <Chip
-        label="Tag"
-        type="input"
-        trailingIcon="close"
-        testID="chip"
-      />,
+      <Chip label="Tag" type="input" trailingIcon="close" testID="chip" />,
     );
     expect(screen.getByTestId("chip-trailing")).toBeTruthy();
   });
@@ -65,9 +60,7 @@ describe("Chip", () => {
   });
 
   it("renders disabled without crash", () => {
-    const { toJSON } = render(
-      <Chip label="Disabled" disabled testID="chip" />,
-    );
+    const { toJSON } = render(<Chip label="Disabled" disabled testID="chip" />);
     expect(toJSON()).toBeTruthy();
   });
 

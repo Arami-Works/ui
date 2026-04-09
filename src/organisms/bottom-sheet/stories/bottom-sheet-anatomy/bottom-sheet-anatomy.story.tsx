@@ -40,7 +40,12 @@ function Anatomy() {
       gap={48}
       alignItems="center"
     >
-      <YStack width={280} height={260} justifyContent="center" alignItems="center">
+      <YStack
+        width={280}
+        height={260}
+        justifyContent="center"
+        alignItems="center"
+      >
         <View position="relative" width={260} height={240}>
           <View
             backgroundColor="rgba(0,0,0,0.32)"
@@ -60,9 +65,16 @@ function Anatomy() {
             alignItems="center"
             paddingTop={12}
           >
-            <View width={32} height={4} borderRadius={2} backgroundColor="#CAC4D0" />
+            <View
+              width={32}
+              height={4}
+              borderRadius={2}
+              backgroundColor="#CAC4D0"
+            />
             <View padding={24} width="100%">
-              <Text fontSize={14} color="#1C1B1F">Sheet content</Text>
+              <Text fontSize={14} color="#1C1B1F">
+                Sheet content
+              </Text>
             </View>
           </View>
           <View position="absolute" top={20} right={-10}>

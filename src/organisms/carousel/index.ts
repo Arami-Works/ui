@@ -1,2 +1,6 @@
 export { Carousel } from "./carousel";
-export type { CarouselProps, CarouselItem, CarouselVariant } from "./carousel.type";
+export type {
+  CarouselProps,
+  CarouselItem,
+  CarouselVariant,
+} from "./carousel.type";

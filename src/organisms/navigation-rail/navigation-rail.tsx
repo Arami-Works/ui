@@ -4,7 +4,10 @@ import { Icon } from "../../atoms/icon";
 import { Text } from "../../atoms/text";
 import { Badge } from "../../atoms/badge";
 import { FAB } from "../../atoms/fab";
-import type { NavigationRailProps, RailDestination } from "./navigation-rail.type";
+import type {
+  NavigationRailProps,
+  RailDestination,
+} from "./navigation-rail.type";
 
 const Rail = styled(YStack, {
   name: "NavigationRail",
@@ -70,8 +73,11 @@ export function NavigationRail({
       )}
       {destinations.map((dest: RailDestination, index: number) => {
         const active = index === activeIndex;
-        const iconName = active && dest.activeIcon ? dest.activeIcon : dest.icon;
-        const iconColor = active ? "$onSecondaryContainer" : "$onSurfaceVariant";
+        const iconName =
+          active && dest.activeIcon ? dest.activeIcon : dest.icon;
+        const iconColor = active
+          ? "$onSecondaryContainer"
+          : "$onSurfaceVariant";
         const labelColor = active ? "$onSurface" : "$onSurfaceVariant";
         const Wrapper = active ? ActiveIndicator : IconContainer;
 

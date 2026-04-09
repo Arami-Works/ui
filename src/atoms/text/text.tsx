@@ -19,11 +19,7 @@ const StyledText = styled(TamaguiText, {
   color: "$onSurface",
 });
 
-export function Text({
-  role = "body",
-  size = "medium",
-  ...props
-}: TextProps) {
+export function Text({ role = "body", size = "medium", ...props }: TextProps) {
   const token = toToken(role, size);
 
   return (

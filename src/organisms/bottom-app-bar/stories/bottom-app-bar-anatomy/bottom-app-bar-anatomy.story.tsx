@@ -12,7 +12,9 @@ function Callout({ n }: { n: number }) {
       alignItems="center"
       justifyContent="center"
     >
-      <Text color="white" fontSize={12} fontWeight="700">{n}</Text>
+      <Text color="white" fontSize={12} fontWeight="700">
+        {n}
+      </Text>
     </View>
   );
 }
@@ -35,7 +37,9 @@ function Anatomy() {
         ].map(([n, label]) => (
           <XStack key={n as number} gap={12} alignItems="center">
             <Callout n={n as number} />
-            <Text fontSize={13} color="#49454F">{label as string}</Text>
+            <Text fontSize={13} color="#49454F">
+              {label as string}
+            </Text>
           </XStack>
         ))}
       </YStack>

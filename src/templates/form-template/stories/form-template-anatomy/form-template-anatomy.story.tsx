@@ -18,13 +18,7 @@ function Callout({ number }: { number: number }) {
   );
 }
 
-function LegendItem({
-  number,
-  label,
-}: {
-  number: number;
-  label: string;
-}) {
+function LegendItem({ number, label }: { number: number; label: string }) {
   return (
     <XStack gap={10} alignItems="center">
       <Callout number={number} />
@@ -47,7 +41,12 @@ function Anatomy() {
       alignItems="center"
     >
       {/* Diagram */}
-      <YStack width={300} height={280} justifyContent="center" alignItems="center">
+      <YStack
+        width={300}
+        height={280}
+        justifyContent="center"
+        alignItems="center"
+      >
         <View position="relative" width={200} height={260}>
           {/* Full screen container */}
           <View
@@ -71,7 +70,12 @@ function Anatomy() {
             </View>
 
             {/* Form content */}
-            <View flex={1} padding={8} justifyContent="center" alignItems="center">
+            <View
+              flex={1}
+              padding={8}
+              justifyContent="center"
+              alignItems="center"
+            >
               <Text fontSize={10} color="#49454F">
                 Form Content (scrollable)
               </Text>

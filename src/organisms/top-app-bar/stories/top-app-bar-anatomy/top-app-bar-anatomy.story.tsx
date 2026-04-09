@@ -18,13 +18,7 @@ function Callout({ number }: { number: number }) {
   );
 }
 
-function LegendItem({
-  number,
-  label,
-}: {
-  number: number;
-  label: string;
-}) {
+function LegendItem({ number, label }: { number: number; label: string }) {
   return (
     <XStack gap={10} alignItems="center">
       <Callout number={number} />
@@ -47,7 +41,12 @@ function Anatomy() {
       alignItems="center"
     >
       {/* Diagram */}
-      <YStack width={300} height={120} justifyContent="center" alignItems="center">
+      <YStack
+        width={300}
+        height={120}
+        justifyContent="center"
+        alignItems="center"
+      >
         <View position="relative" width={280} height={64}>
           <XStack
             backgroundColor="#F7F2FA"
@@ -68,7 +67,9 @@ function Anatomy() {
               justifyContent="center"
               alignItems="center"
             >
-              <Text fontSize={10} color="#49454F">&larr;</Text>
+              <Text fontSize={10} color="#49454F">
+                &larr;
+              </Text>
             </View>
 
             {/* Title */}

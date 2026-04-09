@@ -18,13 +18,7 @@ function Callout({ number }: { number: number }) {
   );
 }
 
-function LegendItem({
-  number,
-  label,
-}: {
-  number: number;
-  label: string;
-}) {
+function LegendItem({ number, label }: { number: number; label: string }) {
   return (
     <XStack gap={10} alignItems="center">
       <Callout number={number} />
@@ -47,7 +41,12 @@ function Anatomy() {
       alignItems="center"
     >
       {/* Diagram */}
-      <YStack width={300} height={300} justifyContent="center" alignItems="center">
+      <YStack
+        width={300}
+        height={300}
+        justifyContent="center"
+        alignItems="center"
+      >
         <View position="relative" width={240} height={280}>
           <View
             backgroundColor="#F7F2FA"
@@ -58,12 +57,16 @@ function Anatomy() {
           >
             {/* Header */}
             <View height={40} justifyContent="center" paddingHorizontal={16}>
-              <Text fontSize={14} fontWeight="500" color="#1C1B1F">Mail</Text>
+              <Text fontSize={14} fontWeight="500" color="#1C1B1F">
+                Mail
+              </Text>
             </View>
 
             {/* Section header */}
             <View height={24} justifyContent="center" paddingHorizontal={16}>
-              <Text fontSize={11} fontWeight="500" color="#49454F">Section</Text>
+              <Text fontSize={11} fontWeight="500" color="#49454F">
+                Section
+              </Text>
             </View>
 
             {/* Destination items */}
@@ -94,7 +97,9 @@ function Anatomy() {
                   {label}
                 </Text>
                 {i === 0 && (
-                  <Text fontSize={10} color="#6750A4">24</Text>
+                  <Text fontSize={10} color="#6750A4">
+                    24
+                  </Text>
                 )}
               </XStack>
             ))}

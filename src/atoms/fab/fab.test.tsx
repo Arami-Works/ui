@@ -10,9 +10,7 @@ describe("FAB", () => {
   it("renders all sizes without crash", () => {
     const sizes = ["small", "regular", "large"] as const;
     sizes.forEach((size) => {
-      const { unmount } = render(
-        <FAB icon="add" size={size} testID="fab" />,
-      );
+      const { unmount } = render(<FAB icon="add" size={size} testID="fab" />);
       expect(screen.getByTestId("fab")).toBeTruthy();
       unmount();
     });
@@ -21,9 +19,7 @@ describe("FAB", () => {
   it("renders all color variants", () => {
     const colors = ["primary", "surface", "secondary", "tertiary"] as const;
     colors.forEach((color) => {
-      const { unmount } = render(
-        <FAB icon="add" color={color} testID="fab" />,
-      );
+      const { unmount } = render(<FAB icon="add" color={color} testID="fab" />);
       expect(screen.getByTestId("fab")).toBeTruthy();
       unmount();
     });

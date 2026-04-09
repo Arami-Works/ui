@@ -74,7 +74,12 @@ describe("Snackbar", () => {
   it("does not auto-dismiss when duration is 0", () => {
     const onDismiss = jest.fn();
     render(
-      <Snackbar visible message="Permanent" duration={0} onDismiss={onDismiss} />,
+      <Snackbar
+        visible
+        message="Permanent"
+        duration={0}
+        onDismiss={onDismiss}
+      />,
     );
     act(() => {
       jest.advanceTimersByTime(10000);

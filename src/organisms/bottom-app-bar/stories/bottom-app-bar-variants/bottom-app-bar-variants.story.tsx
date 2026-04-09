@@ -17,16 +17,24 @@ const actions4 = [
 function Variants() {
   return (
     <YStack gap={24}>
-      <Text fontSize={14} fontWeight="600" color="#49454F">With FAB</Text>
+      <Text fontSize={14} fontWeight="600" color="#49454F">
+        With FAB
+      </Text>
       <BottomAppBar fab={fab} actions={actions2} />
 
-      <Text fontSize={14} fontWeight="600" color="#49454F">Without FAB</Text>
+      <Text fontSize={14} fontWeight="600" color="#49454F">
+        Without FAB
+      </Text>
       <BottomAppBar actions={actions2} />
 
-      <Text fontSize={14} fontWeight="600" color="#49454F">2 Actions</Text>
+      <Text fontSize={14} fontWeight="600" color="#49454F">
+        2 Actions
+      </Text>
       <BottomAppBar actions={actions2} />
 
-      <Text fontSize={14} fontWeight="600" color="#49454F">4 Actions</Text>
+      <Text fontSize={14} fontWeight="600" color="#49454F">
+        4 Actions
+      </Text>
       <BottomAppBar actions={actions4} />
     </YStack>
   );

@@ -18,13 +18,7 @@ function Callout({ number }: { number: number }) {
   );
 }
 
-function LegendItem({
-  number,
-  label,
-}: {
-  number: number;
-  label: string;
-}) {
+function LegendItem({ number, label }: { number: number; label: string }) {
   return (
     <XStack gap={10} alignItems="center">
       <Callout number={number} />
@@ -47,7 +41,12 @@ function Anatomy() {
       alignItems="center"
     >
       {/* Diagram */}
-      <YStack width={300} height={300} justifyContent="center" alignItems="center">
+      <YStack
+        width={300}
+        height={300}
+        justifyContent="center"
+        alignItems="center"
+      >
         <View position="relative" width={260} height={280}>
           <View
             backgroundColor="#F7F2FA"
@@ -59,7 +58,9 @@ function Anatomy() {
           >
             {/* Header */}
             <View>
-              <Text fontSize={11} color="#49454F">Select time</Text>
+              <Text fontSize={11} color="#49454F">
+                Select time
+              </Text>
               <XStack gap={4} alignItems="center" marginTop={8}>
                 <View
                   width={48}
@@ -69,9 +70,13 @@ function Anatomy() {
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <Text fontSize={20} fontWeight="500" color="#6750A4">10</Text>
+                  <Text fontSize={20} fontWeight="500" color="#6750A4">
+                    10
+                  </Text>
                 </View>
-                <Text fontSize={20} color="#49454F">:</Text>
+                <Text fontSize={20} color="#49454F">
+                  :
+                </Text>
                 <View
                   width={48}
                   height={40}
@@ -80,7 +85,9 @@ function Anatomy() {
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <Text fontSize={20} fontWeight="500" color="#6750A4">30</Text>
+                  <Text fontSize={20} fontWeight="500" color="#6750A4">
+                    30
+                  </Text>
                 </View>
 
                 {/* Period selector */}
@@ -96,10 +103,14 @@ function Anatomy() {
                     paddingHorizontal={8}
                     paddingVertical={4}
                   >
-                    <Text fontSize={10} fontWeight="500" color="#6750A4">AM</Text>
+                    <Text fontSize={10} fontWeight="500" color="#6750A4">
+                      AM
+                    </Text>
                   </View>
                   <View paddingHorizontal={8} paddingVertical={4}>
-                    <Text fontSize={10} color="#49454F">PM</Text>
+                    <Text fontSize={10} color="#49454F">
+                      PM
+                    </Text>
                   </View>
                 </YStack>
               </XStack>
@@ -125,8 +136,12 @@ function Anatomy() {
 
             {/* Action buttons */}
             <XStack justifyContent="flex-end" gap={8}>
-              <Text fontSize={12} fontWeight="500" color="#6750A4">Cancel</Text>
-              <Text fontSize={12} fontWeight="500" color="#6750A4">OK</Text>
+              <Text fontSize={12} fontWeight="500" color="#6750A4">
+                Cancel
+              </Text>
+              <Text fontSize={12} fontWeight="500" color="#6750A4">
+                OK
+              </Text>
             </XStack>
           </View>
 

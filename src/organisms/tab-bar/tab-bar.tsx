@@ -85,7 +85,12 @@ function PrimaryTab({
         height="100%"
       >
         {tab.icon && <Icon name={tab.icon} size={24} color={iconColor} />}
-        <Text role="label" size="medium" color={labelColor} fontWeight={active ? "700" : undefined}>
+        <Text
+          role="label"
+          size="medium"
+          color={labelColor}
+          fontWeight={active ? "700" : undefined}
+        >
           {tab.label}
         </Text>
         {active && <Indicator />}
@@ -125,7 +130,12 @@ function SecondaryTab({
         height="100%"
       >
         {active && <PillIndicator />}
-        <Text role="label" size="medium" color={labelColor} fontWeight={active ? "700" : undefined}>
+        <Text
+          role="label"
+          size="medium"
+          color={labelColor}
+          fontWeight={active ? "700" : undefined}
+        >
           {tab.label}
         </Text>
       </TabContainer>

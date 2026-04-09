@@ -14,9 +14,7 @@ describe("Checkbox", () => {
   });
 
   it("renders indeterminate state", () => {
-    const { toJSON } = render(
-      <Checkbox state="indeterminate" testID="cb" />,
-    );
+    const { toJSON } = render(<Checkbox state="indeterminate" testID="cb" />);
     expect(screen.getByTestId("cb")).toBeTruthy();
     expect(toJSON()).toBeTruthy();
   });

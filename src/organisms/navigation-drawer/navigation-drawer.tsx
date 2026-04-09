@@ -47,11 +47,21 @@ export function NavigationDrawer({
   }, [open, translateX]);
 
   return (
-    <Modal visible={open} transparent animationType="none" onRequestClose={onClose} testID={testID}>
+    <Modal
+      visible={open}
+      transparent
+      animationType="none"
+      onRequestClose={onClose}
+      testID={testID}
+    >
       <View flex={1} flexDirection="row">
         <Animated.View style={{ transform: [{ translateX }] }}>
           <DrawerContainer>
-            {header && <View paddingHorizontal={16} paddingBottom={8}>{header}</View>}
+            {header && (
+              <View paddingHorizontal={16} paddingBottom={8}>
+                {header}
+              </View>
+            )}
             <YStack>
               {sections.map((section, sIdx) => (
                 <YStack key={sIdx}>
@@ -76,24 +86,39 @@ export function NavigationDrawer({
                         testID={`${testID}-dest-${dest.key}`}
                       >
                         <ActiveIndicator
-                          backgroundColor={isActive ? "$secondaryContainer" : "transparent"}
+                          backgroundColor={
+                            isActive ? "$secondaryContainer" : "transparent"
+                          }
                         >
                           <Icon
-                            name={isActive && dest.activeIcon ? dest.activeIcon : dest.icon}
+                            name={
+                              isActive && dest.activeIcon
+                                ? dest.activeIcon
+                                : dest.icon
+                            }
                             size={24}
-                            color={isActive ? "$onSecondaryContainer" : "$onSurfaceVariant"}
+                            color={
+                              isActive
+                                ? "$onSecondaryContainer"
+                                : "$onSurfaceVariant"
+                            }
                           />
                           <Text
                             role="label"
                             size="large"
-                            color={isActive ? "$onSecondaryContainer" : "$onSurfaceVariant"}
+                            color={
+                              isActive
+                                ? "$onSecondaryContainer"
+                                : "$onSurfaceVariant"
+                            }
                             flex={1}
                           >
                             {dest.label}
                           </Text>
-                          {dest.badgeCount !== undefined && dest.badgeCount > 0 && (
-                            <Badge size="large" count={dest.badgeCount} />
-                          )}
+                          {dest.badgeCount !== undefined &&
+                            dest.badgeCount > 0 && (
+                              <Badge size="large" count={dest.badgeCount} />
+                            )}
                         </ActiveIndicator>
                       </Pressable>
                     );

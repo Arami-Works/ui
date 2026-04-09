@@ -9,17 +9,38 @@ import { ListItem } from "../../../../molecules/list-item";
 import { SectionLabel } from "../../../../storybook";
 
 const sampleItems = [
-  { headline: "Photos", supportingText: "Jan 9, 2024", leadingContent: "image" },
-  { headline: "Recipes", supportingText: "Jan 17, 2024", leadingContent: "restaurant" },
+  {
+    headline: "Photos",
+    supportingText: "Jan 9, 2024",
+    leadingContent: "image",
+  },
+  {
+    headline: "Recipes",
+    supportingText: "Jan 17, 2024",
+    leadingContent: "restaurant",
+  },
   { headline: "Work", supportingText: "Jan 28, 2024", leadingContent: "work" },
-  { headline: "Vacation", supportingText: "Feb 3, 2024", leadingContent: "flight" },
-  { headline: "Personal", supportingText: "Feb 12, 2024", leadingContent: "person" },
+  {
+    headline: "Vacation",
+    supportingText: "Feb 3, 2024",
+    leadingContent: "flight",
+  },
+  {
+    headline: "Personal",
+    supportingText: "Feb 12, 2024",
+    leadingContent: "person",
+  },
 ];
 
 const navDestinations = [
   { icon: "home-outline", activeIcon: "home", label: "Home" },
   { icon: "search", label: "Search" },
-  { icon: "notifications-outline", activeIcon: "notifications", label: "Alerts", badge: 3 },
+  {
+    icon: "notifications-outline",
+    activeIcon: "notifications",
+    label: "Alerts",
+    badge: 3,
+  },
   { icon: "person-outline", activeIcon: "person", label: "Profile" },
 ];
 
@@ -30,14 +51,16 @@ function Overview() {
     <YStack gap={32} padding={16}>
       <YStack gap={8}>
         <SectionLabel label="TopAppBar + List Items" />
-        <View height={360} borderWidth={1} borderColor="#E0E0E0" borderRadius={12} overflow="hidden">
+        <View
+          height={360}
+          borderWidth={1}
+          borderColor="#E0E0E0"
+          borderRadius={12}
+          overflow="hidden"
+        >
           <ListTemplate
             topBar={
-              <TopAppBar
-                type="small"
-                title="My Files"
-                navigationIcon="menu"
-              />
+              <TopAppBar type="small" title="My Files" navigationIcon="menu" />
             }
           >
             {sampleItems.map((item, i) => (
@@ -55,7 +78,13 @@ function Overview() {
 
       <YStack gap={8}>
         <SectionLabel label="TopAppBar + SearchBar + List Items" />
-        <View height={420} borderWidth={1} borderColor="#E0E0E0" borderRadius={12} overflow="hidden">
+        <View
+          height={420}
+          borderWidth={1}
+          borderColor="#E0E0E0"
+          borderRadius={12}
+          overflow="hidden"
+        >
           <ListTemplate
             topBar={
               <TopAppBar
@@ -93,20 +122,19 @@ function Overview() {
 
       <YStack gap={8}>
         <SectionLabel label="TopAppBar + List Items + NavigationBar" />
-        <View height={440} borderWidth={1} borderColor="#E0E0E0" borderRadius={12} overflow="hidden">
+        <View
+          height={440}
+          borderWidth={1}
+          borderColor="#E0E0E0"
+          borderRadius={12}
+          overflow="hidden"
+        >
           <ListTemplate
             topBar={
-              <TopAppBar
-                type="small"
-                title="Home"
-                navigationIcon="menu"
-              />
+              <TopAppBar type="small" title="Home" navigationIcon="menu" />
             }
             bottomBar={
-              <NavigationBar
-                destinations={navDestinations}
-                activeIndex={0}
-              />
+              <NavigationBar destinations={navDestinations} activeIndex={0} />
             }
           >
             {sampleItems.map((item, i) => (

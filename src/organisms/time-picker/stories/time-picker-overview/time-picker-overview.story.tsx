@@ -23,7 +23,11 @@ function Overview() {
         visible={visible}
         hour={hour}
         minute={minute}
-        onConfirm={(h, m) => { setHour(h); setMinute(m); setVisible(false); }}
+        onConfirm={(h, m) => {
+          setHour(h);
+          setMinute(m);
+          setVisible(false);
+        }}
         onDismiss={() => setVisible(false)}
         testID="time-picker"
       />

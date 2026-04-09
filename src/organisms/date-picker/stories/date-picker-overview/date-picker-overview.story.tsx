@@ -17,7 +17,10 @@ function Overview() {
       <DatePicker
         visible={visible}
         value={selected}
-        onConfirm={(date) => { setSelected(date); setVisible(false); }}
+        onConfirm={(date) => {
+          setSelected(date);
+          setVisible(false);
+        }}
         onDismiss={() => setVisible(false)}
         testID="date-picker"
       />

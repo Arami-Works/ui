@@ -14,7 +14,7 @@ describe("ProgressIndicator", () => {
 
   it("renders determinate mode with progress value", () => {
     render(
-      <ProgressIndicator mode="determinate" progress={0.5} testID="progress" />
+      <ProgressIndicator mode="determinate" progress={0.5} testID="progress" />,
     );
     const el = screen.getByTestId("progress");
     expect(el).toBeTruthy();
@@ -35,7 +35,7 @@ describe("ProgressIndicator", () => {
 
   it("clamps progress to 0-1 range", () => {
     render(
-      <ProgressIndicator mode="determinate" progress={1.5} testID="progress" />
+      <ProgressIndicator mode="determinate" progress={1.5} testID="progress" />,
     );
     const el = screen.getByTestId("progress");
     expect(el.props.accessibilityValue.now).toBe(100);
@@ -48,7 +48,13 @@ describe("ProgressIndicator", () => {
   });
 
   it("has correct accessibility value for determinate mode", () => {
-    render(<ProgressIndicator mode="determinate" progress={0.75} testID="a11y-progress" />);
+    render(
+      <ProgressIndicator
+        mode="determinate"
+        progress={0.75}
+        testID="a11y-progress"
+      />,
+    );
     const element = screen.getByTestId("a11y-progress");
     expect(element.props.accessibilityValue).toEqual(
       expect.objectContaining({ min: 0, max: 100, now: 75 }),

@@ -42,7 +42,12 @@ function formatCount(count: number): string {
   return String(count);
 }
 
-export function Badge({ size = "small", count, accessibilityLabel, ...props }: BadgeProps) {
+export function Badge({
+  size = "small",
+  count,
+  accessibilityLabel,
+  ...props
+}: BadgeProps) {
   const defaultLabel =
     size === "large" && count !== undefined
       ? `${formatCount(count)} notifications`

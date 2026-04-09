@@ -66,11 +66,7 @@ export function RadioButton({
       }}
       testID={testID}
     >
-      <OuterCircle
-        selected={selected as any}
-        error={error as any}
-        {...props}
-      >
+      <OuterCircle selected={selected as any} error={error as any} {...props}>
         {selected && <InnerCircle error={error as any} />}
       </OuterCircle>
     </Pressable>

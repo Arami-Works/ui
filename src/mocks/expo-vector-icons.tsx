@@ -23,19 +23,21 @@ function createIconComponent(fontFamily: string) {
         data-testid={testID}
         aria-label={accessibilityLabel || name}
         role="img"
-        style={{
-          fontFamily,
-          fontSize: size,
-          color,
-          display: "inline-block",
-          width: size,
-          height: size,
-          lineHeight: `${size}px`,
-          textAlign: "center",
-          fontFeatureSettings: "'liga'",
-          WebkitFontSmoothing: "antialiased",
-          ...style,
-        } as React.CSSProperties}
+        style={
+          {
+            fontFamily,
+            fontSize: size,
+            color,
+            display: "inline-block",
+            width: size,
+            height: size,
+            lineHeight: `${size}px`,
+            textAlign: "center",
+            fontFeatureSettings: "'liga'",
+            WebkitFontSmoothing: "antialiased",
+            ...style,
+          } as React.CSSProperties
+        }
         {...props}
       >
         {name.replace(/-/g, "_")}

@@ -63,9 +63,15 @@ function indent(s: string, n = 2): string {
 /** Explicit key order within each group to guarantee stable output. */
 const COLOR_GROUP_ORDER: Record<string, string[]> = {
   Surface: [
-    "surface", "onSurface", "surfaceVariant", "onSurfaceVariant",
-    "surfaceContainerLowest", "surfaceContainerLow", "surfaceContainer",
-    "surfaceContainerHigh", "surfaceContainerHighest",
+    "surface",
+    "onSurface",
+    "surfaceVariant",
+    "onSurfaceVariant",
+    "surfaceContainerLowest",
+    "surfaceContainerLow",
+    "surfaceContainer",
+    "surfaceContainerHigh",
+    "surfaceContainerHighest",
   ],
 };
 
@@ -95,9 +101,7 @@ function buildColors(tokens: TokenTree): string {
 
     // Apply explicit ordering if defined, otherwise keep source order
     const order = COLOR_GROUP_ORDER[group.name];
-    const members = order
-      ? order.filter((k) => matched.includes(k))
-      : matched;
+    const members = order ? order.filter((k) => matched.includes(k)) : matched;
 
     lines.push(`  // ${group.name}`);
     for (const key of members) {
@@ -180,12 +184,7 @@ function buildTypography(tokens: TokenTree): string {
       lines.push(`  ${propKey(key)}: ${leaf.$value},`);
     }
 
-    sections.push(
-      `export const ${group} = {`,
-      ...lines,
-      "} as const;",
-      "",
-    );
+    sections.push(`export const ${group} = {`, ...lines, "} as const;", "");
   }
 
   sections.push("export type TypographyToken = keyof typeof fontSize;", "");

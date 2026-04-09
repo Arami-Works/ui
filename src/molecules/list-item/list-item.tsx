@@ -48,8 +48,7 @@ export function ListItem({
   testID,
 }: ListItemProps) {
   const hasLeading = leadingContent != null;
-  const hasTrailing =
-    trailingContent != null || trailingSupportingText != null;
+  const hasTrailing = trailingContent != null || trailingSupportingText != null;
 
   const minHeight = supportingText ? 72 : 56;
 

@@ -13,13 +13,19 @@ const fab = { icon: "add", onPress: () => {}, accessibilityLabel: "Add" };
 function Overview() {
   return (
     <YStack gap={24}>
-      <Text fontSize={14} fontWeight="600" color="#49454F">With FAB + 3 Actions</Text>
+      <Text fontSize={14} fontWeight="600" color="#49454F">
+        With FAB + 3 Actions
+      </Text>
       <BottomAppBar fab={fab} actions={actions} />
 
-      <Text fontSize={14} fontWeight="600" color="#49454F">Without FAB</Text>
+      <Text fontSize={14} fontWeight="600" color="#49454F">
+        Without FAB
+      </Text>
       <BottomAppBar actions={actions} />
 
-      <Text fontSize={14} fontWeight="600" color="#49454F">Actions Only (4)</Text>
+      <Text fontSize={14} fontWeight="600" color="#49454F">
+        Actions Only (4)
+      </Text>
       <BottomAppBar
         actions={[
           ...actions,

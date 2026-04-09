@@ -40,13 +40,31 @@ function Anatomy() {
       gap={48}
       alignItems="center"
     >
-      <YStack width={200} height={120} justifyContent="center" alignItems="center" gap={12}>
-        <View position="relative" width={160} height={16} borderRadius={4} backgroundColor="#E6E1E5">
+      <YStack
+        width={200}
+        height={120}
+        justifyContent="center"
+        alignItems="center"
+        gap={12}
+      >
+        <View
+          position="relative"
+          width={160}
+          height={16}
+          borderRadius={4}
+          backgroundColor="#E6E1E5"
+        >
           <View position="absolute" top={-32} right={-24}>
             <Callout number={1} />
           </View>
         </View>
-        <View position="relative" width={160} height={16} borderRadius={4} backgroundColor="#E6E1E5">
+        <View
+          position="relative"
+          width={160}
+          height={16}
+          borderRadius={4}
+          backgroundColor="#E6E1E5"
+        >
           <View position="absolute" bottom={-32} right={-24}>
             <Callout number={2} />
           </View>

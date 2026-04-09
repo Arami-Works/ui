@@ -52,7 +52,9 @@ export function Card({
         testID={testID}
         accessibilityRole="button"
         accessibilityState={{ disabled }}
-        style={({ pressed }) => ({ opacity: disabled ? 0.38 : pressed ? 0.9 : 1 })}
+        style={({ pressed }) => ({
+          opacity: disabled ? 0.38 : pressed ? 0.9 : 1,
+        })}
       >
         {({ pressed }) => (
           <Container

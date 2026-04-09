@@ -14,7 +14,14 @@ describe("Menu", () => {
   });
 
   it("does not render when not visible", () => {
-    render(<Menu visible={false} onDismiss={jest.fn()} items={items} testID="menu" />);
+    render(
+      <Menu
+        visible={false}
+        onDismiss={jest.fn()}
+        items={items}
+        testID="menu"
+      />,
+    );
     expect(screen.queryByTestId("menu")).toBeNull();
   });
 
@@ -26,7 +33,7 @@ describe("Menu", () => {
         onDismiss={jest.fn()}
         items={[{ key: "a", label: "A", onPress }]}
         testID="menu"
-      />
+      />,
     );
     fireEvent.press(screen.getByTestId("menu-item-a"));
     expect(onPress).toHaveBeenCalled();
@@ -40,7 +47,7 @@ describe("Menu", () => {
         onDismiss={jest.fn()}
         items={[{ key: "d", label: "D", onPress, disabled: true }]}
         testID="menu"
-      />
+      />,
     );
     fireEvent.press(screen.getByTestId("menu-item-d"));
     expect(onPress).not.toHaveBeenCalled();
@@ -48,7 +55,7 @@ describe("Menu", () => {
 
   it("has menu accessibility role on container", () => {
     render(
-      <Menu visible onDismiss={jest.fn()} items={items} testID="a11y-menu" />
+      <Menu visible onDismiss={jest.fn()} items={items} testID="a11y-menu" />,
     );
     const element = screen.getByTestId("a11y-menu");
     expect(element.props.accessibilityRole).toBe("menu");
@@ -56,7 +63,7 @@ describe("Menu", () => {
 
   it("has menuitem accessibility role on items", () => {
     render(
-      <Menu visible onDismiss={jest.fn()} items={items} testID="a11y-menu" />
+      <Menu visible onDismiss={jest.fn()} items={items} testID="a11y-menu" />,
     );
     const item = screen.getByTestId("a11y-menu-item-edit");
     expect(item.props.accessibilityRole).toBe("menuitem");
@@ -64,7 +71,7 @@ describe("Menu", () => {
 
   it("has correct accessibility state on disabled item", () => {
     render(
-      <Menu visible onDismiss={jest.fn()} items={items} testID="a11y-menu" />
+      <Menu visible onDismiss={jest.fn()} items={items} testID="a11y-menu" />,
     );
     const item = screen.getByTestId("a11y-menu-item-disabled");
     expect(item.props.accessibilityState).toEqual(

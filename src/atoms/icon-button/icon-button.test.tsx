@@ -9,12 +9,7 @@ describe("IconButton", () => {
   });
 
   it("renders all MD3 variants without crashing", () => {
-    const variants = [
-      "standard",
-      "filled",
-      "filledTonal",
-      "outlined",
-    ] as const;
+    const variants = ["standard", "filled", "filledTonal", "outlined"] as const;
     variants.forEach((variant) => {
       const { unmount } = render(
         <IconButton icon="settings" variant={variant} testID="ib" />,
@@ -32,9 +27,7 @@ describe("IconButton", () => {
   });
 
   it("renders with disabled prop", () => {
-    const { toJSON } = render(
-      <IconButton icon="close" disabled testID="ib" />,
-    );
+    const { toJSON } = render(<IconButton icon="close" disabled testID="ib" />);
     expect(toJSON()).toBeTruthy();
   });
 
@@ -57,7 +50,9 @@ describe("IconButton", () => {
   });
 
   it("forwards accessibilityLabel", () => {
-    render(<IconButton icon="close" accessibilityLabel="Close" testID="a11y-ib" />);
+    render(
+      <IconButton icon="close" accessibilityLabel="Close" testID="a11y-ib" />,
+    );
     const element = screen.getByTestId("a11y-ib");
     expect(element.props.accessibilityLabel).toBe("Close");
   });

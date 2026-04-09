@@ -37,16 +37,12 @@ export function SegmentedButton({
 }: SegmentedButtonProps) {
   const theme = useTheme();
 
-  const selectedSet = new Set(
-    Array.isArray(selected) ? selected : [selected],
-  );
+  const selectedSet = new Set(Array.isArray(selected) ? selected : [selected]);
 
-  const outlineColor = (theme.outline?.val as string);
-  const secondaryContainerColor =
-    (theme.secondaryContainer?.val as string);
-  const onSecondaryContainerColor =
-    (theme.onSecondaryContainer?.val as string);
-  const onSurfaceColor = (theme.onSurface?.val as string);
+  const outlineColor = theme.outline?.val as string;
+  const secondaryContainerColor = theme.secondaryContainer?.val as string;
+  const onSecondaryContainerColor = theme.onSecondaryContainer?.val as string;
+  const onSurfaceColor = theme.onSurface?.val as string;
 
   function handlePress(value: string) {
     if (disabled) return;
@@ -84,7 +80,10 @@ export function SegmentedButton({
               onPress={() => handlePress(segment.value)}
               disabled={isDisabled}
               accessibilityRole="tab"
-              accessibilityState={{ selected: isSelected, disabled: isDisabled }}
+              accessibilityState={{
+                selected: isSelected,
+                disabled: isDisabled,
+              }}
               testID={testID ? `${testID}-segment-${segment.value}` : undefined}
               style={{
                 flex: 1,
@@ -117,9 +116,7 @@ export function SegmentedButton({
                 />
               )}
               <SegmentLabel
-                color={
-                  isSelected ? "$onSecondaryContainer" : "$onSurface"
-                }
+                color={isSelected ? "$onSecondaryContainer" : "$onSurface"}
               >
                 {segment.label}
               </SegmentLabel>

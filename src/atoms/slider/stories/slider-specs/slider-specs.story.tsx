@@ -7,7 +7,10 @@ const specs = [
   { property: "Touch target", value: "48 x 48 dp" },
   { property: "Tick mark size", value: "4 x 4 dp" },
   { property: "Active track color", value: "md.sys.color.primary" },
-  { property: "Inactive track color", value: "md.sys.color.surface-container-highest" },
+  {
+    property: "Inactive track color",
+    value: "md.sys.color.surface-container-highest",
+  },
   { property: "Thumb color", value: "md.sys.color.primary" },
 ];
 

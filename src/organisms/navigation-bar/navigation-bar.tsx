@@ -3,7 +3,10 @@ import { styled, View } from "tamagui";
 import { Icon } from "../../atoms/icon";
 import { Text } from "../../atoms/text";
 import { Badge } from "../../atoms/badge";
-import type { NavigationBarProps, NavigationDestination } from "./navigation-bar.type";
+import type {
+  NavigationBarProps,
+  NavigationDestination,
+} from "./navigation-bar.type";
 
 const Bar = styled(View, {
   name: "NavigationBar",
@@ -57,8 +60,11 @@ export function NavigationBar({
     <Bar testID={testID}>
       {destinations.map((dest: NavigationDestination, index: number) => {
         const active = index === activeIndex;
-        const iconName = active && dest.activeIcon ? dest.activeIcon : dest.icon;
-        const iconColor = active ? "$onSecondaryContainer" : "$onSurfaceVariant";
+        const iconName =
+          active && dest.activeIcon ? dest.activeIcon : dest.icon;
+        const iconColor = active
+          ? "$onSecondaryContainer"
+          : "$onSurfaceVariant";
         const labelColor = active ? "$onSurface" : "$onSurfaceVariant";
         const Wrapper = active ? ActiveIndicator : IconContainer;
 

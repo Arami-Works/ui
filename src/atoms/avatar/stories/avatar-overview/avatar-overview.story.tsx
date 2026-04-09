@@ -17,18 +17,9 @@ function Overview() {
       <YStack gap={24}>
         <SectionLabel label="Image" />
         <XStack gap={16} alignItems="center">
-          <Avatar
-            source={{ uri: "https://i.pravatar.cc/56" }}
-            size="small"
-          />
-          <Avatar
-            source={{ uri: "https://i.pravatar.cc/56" }}
-            size="medium"
-          />
-          <Avatar
-            source={{ uri: "https://i.pravatar.cc/56" }}
-            size="large"
-          />
+          <Avatar source={{ uri: "https://i.pravatar.cc/56" }} size="small" />
+          <Avatar source={{ uri: "https://i.pravatar.cc/56" }} size="medium" />
+          <Avatar source={{ uri: "https://i.pravatar.cc/56" }} size="large" />
         </XStack>
       </YStack>
 

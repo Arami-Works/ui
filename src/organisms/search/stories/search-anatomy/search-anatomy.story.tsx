@@ -18,13 +18,7 @@ function Callout({ number }: { number: number }) {
   );
 }
 
-function LegendItem({
-  number,
-  label,
-}: {
-  number: number;
-  label: string;
-}) {
+function LegendItem({ number, label }: { number: number; label: string }) {
   return (
     <XStack gap={10} alignItems="center">
       <Callout number={number} />
@@ -59,8 +53,17 @@ function Anatomy() {
             paddingHorizontal={16}
             gap={12}
           >
-            <View width={24} height={24} borderRadius={4} borderWidth={1.5} borderColor="#6750A4" borderStyle="dashed" />
-            <Text fontSize={16} color="#49454F">Search</Text>
+            <View
+              width={24}
+              height={24}
+              borderRadius={4}
+              borderWidth={1.5}
+              borderColor="#6750A4"
+              borderStyle="dashed"
+            />
+            <Text fontSize={16} color="#49454F">
+              Search
+            </Text>
           </View>
           <View position="absolute" top={-12} right={-12}>
             <Callout number={1} />
@@ -79,8 +82,15 @@ function Anatomy() {
           >
             {/* Recent section */}
             <View position="relative">
-              <XStack height={32} alignItems="center" gap={12} paddingHorizontal={4}>
-                <Text fontSize={12} fontWeight="600" color="#49454F">Recent searches</Text>
+              <XStack
+                height={32}
+                alignItems="center"
+                gap={12}
+                paddingHorizontal={4}
+              >
+                <Text fontSize={12} fontWeight="600" color="#49454F">
+                  Recent searches
+                </Text>
               </XStack>
               <View position="absolute" top={4} right={-24}>
                 <Callout number={3} />
@@ -89,9 +99,23 @@ function Anatomy() {
 
             {/* Suggestion item */}
             <View position="relative">
-              <XStack height={40} alignItems="center" gap={12} paddingHorizontal={4}>
-                <View width={20} height={20} borderRadius={4} borderWidth={1.5} borderColor="#6750A4" borderStyle="dashed" />
-                <Text fontSize={14} color="#1C1B1F">Suggestion item</Text>
+              <XStack
+                height={40}
+                alignItems="center"
+                gap={12}
+                paddingHorizontal={4}
+              >
+                <View
+                  width={20}
+                  height={20}
+                  borderRadius={4}
+                  borderWidth={1.5}
+                  borderColor="#6750A4"
+                  borderStyle="dashed"
+                />
+                <Text fontSize={14} color="#1C1B1F">
+                  Suggestion item
+                </Text>
               </XStack>
               <View position="absolute" top={8} right={-24}>
                 <Callout number={4} />

@@ -22,7 +22,7 @@ describe("OverviewLayout", () => {
       <OverviewLayout
         viewName="atoms/badge/overview"
         variants={[{ name: "default", render: () => <Text>Badge</Text> }]}
-      />
+      />,
     );
     expect(screen.getByText("atoms/badge/overview")).toBeTruthy();
   });
@@ -35,7 +35,7 @@ describe("OverviewLayout", () => {
           { name: "filled", render: () => <Text>Filled</Text> },
           { name: "outlined", render: () => <Text>Outlined</Text> },
         ]}
-      />
+      />,
     );
     expect(screen.getByText("filled")).toBeTruthy();
     expect(screen.getByText("outlined")).toBeTruthy();
@@ -45,8 +45,10 @@ describe("OverviewLayout", () => {
     render(
       <OverviewLayout
         viewName="test"
-        variants={[{ name: "v1", render: () => <Text testID="content">Content</Text> }]}
-      />
+        variants={[
+          { name: "v1", render: () => <Text testID="content">Content</Text> },
+        ]}
+      />,
     );
     expect(screen.getByTestId("content")).toBeTruthy();
   });

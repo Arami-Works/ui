@@ -9,7 +9,10 @@ const specs = [
   { property: "Label font", value: "Body Small (12sp)" },
   { property: "Input font", value: "Body Large (16sp)" },
   { property: "Helper text font", value: "Body Small (12sp)" },
-  { property: "Container (filled)", value: "md.sys.color.surface-container-highest" },
+  {
+    property: "Container (filled)",
+    value: "md.sys.color.surface-container-highest",
+  },
   { property: "Indicator (filled)", value: "1 dp bottom border" },
   { property: "Outline (outlined)", value: "1 dp border all sides" },
   { property: "Error color", value: "md.sys.color.error" },

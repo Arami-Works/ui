@@ -6,7 +6,12 @@ import { NavigationRail } from "../../navigation-rail";
 const destinations = [
   { icon: "home-outlined", activeIcon: "home", label: "Home" },
   { icon: "search", label: "Search" },
-  { icon: "notifications-outlined", activeIcon: "notifications", label: "Alerts", badge: 12 },
+  {
+    icon: "notifications-outlined",
+    activeIcon: "notifications",
+    label: "Alerts",
+    badge: 12,
+  },
   { icon: "person-outline", activeIcon: "person", label: "Profile" },
 ];
 

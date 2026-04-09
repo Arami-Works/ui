@@ -4,28 +4,52 @@ import { DatePicker } from "./date-picker";
 describe("DatePicker", () => {
   it("renders when visible", () => {
     render(
-      <DatePicker visible onConfirm={jest.fn()} onDismiss={jest.fn()} testID="date-picker" />
+      <DatePicker
+        visible
+        onConfirm={jest.fn()}
+        onDismiss={jest.fn()}
+        testID="date-picker"
+      />,
     );
     expect(screen.getByTestId("date-picker")).toBeTruthy();
   });
 
   it("does not render when not visible", () => {
     render(
-      <DatePicker visible={false} onConfirm={jest.fn()} onDismiss={jest.fn()} testID="date-picker" />
+      <DatePicker
+        visible={false}
+        onConfirm={jest.fn()}
+        onDismiss={jest.fn()}
+        testID="date-picker"
+      />,
     );
     expect(screen.queryByTestId("date-picker")).toBeNull();
   });
 
   it("calls onDismiss when cancel pressed", () => {
     const onDismiss = jest.fn();
-    render(<DatePicker visible onConfirm={jest.fn()} onDismiss={onDismiss} testID="dp" />);
+    render(
+      <DatePicker
+        visible
+        onConfirm={jest.fn()}
+        onDismiss={onDismiss}
+        testID="dp"
+      />,
+    );
     fireEvent.press(screen.getByText("Cancel"));
     expect(onDismiss).toHaveBeenCalled();
   });
 
   it("calls onConfirm when OK pressed in calendar mode", () => {
     const onConfirm = jest.fn();
-    render(<DatePicker visible onConfirm={onConfirm} onDismiss={jest.fn()} testID="dp" />);
+    render(
+      <DatePicker
+        visible
+        onConfirm={onConfirm}
+        onDismiss={jest.fn()}
+        testID="dp"
+      />,
+    );
     fireEvent.press(screen.getByText("OK"));
     expect(onConfirm).toHaveBeenCalledWith(expect.any(Date));
   });
@@ -33,14 +57,25 @@ describe("DatePicker", () => {
   it("renders with provided value", () => {
     const date = new Date(2026, 3, 15);
     render(
-      <DatePicker visible value={date} onConfirm={jest.fn()} onDismiss={jest.fn()} testID="dp" />
+      <DatePicker
+        visible
+        value={date}
+        onConfirm={jest.fn()}
+        onDismiss={jest.fn()}
+        testID="dp"
+      />,
     );
     expect(screen.getByText("April 2026")).toBeTruthy();
   });
 
   it("shows days of week headers", () => {
     render(
-      <DatePicker visible onConfirm={jest.fn()} onDismiss={jest.fn()} testID="dp" />
+      <DatePicker
+        visible
+        onConfirm={jest.fn()}
+        onDismiss={jest.fn()}
+        testID="dp"
+      />,
     );
     expect(screen.getByText("Su")).toBeTruthy();
     expect(screen.getByText("Mo")).toBeTruthy();
@@ -49,14 +84,25 @@ describe("DatePicker", () => {
 
   it("renders select date label", () => {
     render(
-      <DatePicker visible onConfirm={jest.fn()} onDismiss={jest.fn()} testID="dp" />
+      <DatePicker
+        visible
+        onConfirm={jest.fn()}
+        onDismiss={jest.fn()}
+        testID="dp"
+      />,
     );
     expect(screen.getByText("Select date")).toBeTruthy();
   });
 
   it("starts in input mode when mode prop is input", () => {
     render(
-      <DatePicker visible mode="input" onConfirm={jest.fn()} onDismiss={jest.fn()} testID="dp" />
+      <DatePicker
+        visible
+        mode="input"
+        onConfirm={jest.fn()}
+        onDismiss={jest.fn()}
+        testID="dp"
+      />,
     );
     expect(screen.getByText("Date")).toBeTruthy();
   });
@@ -64,7 +110,13 @@ describe("DatePicker", () => {
   it("confirms from input mode with valid date", () => {
     const onConfirm = jest.fn();
     render(
-      <DatePicker visible mode="input" onConfirm={onConfirm} onDismiss={jest.fn()} testID="dp" />
+      <DatePicker
+        visible
+        mode="input"
+        onConfirm={onConfirm}
+        onDismiss={jest.fn()}
+        testID="dp"
+      />,
     );
     fireEvent.press(screen.getByText("OK"));
     expect(onConfirm).toHaveBeenCalledWith(expect.any(Date));
@@ -73,7 +125,13 @@ describe("DatePicker", () => {
   it("renders calendar grid with day numbers", () => {
     const date = new Date(2026, 3, 15);
     render(
-      <DatePicker visible value={date} onConfirm={jest.fn()} onDismiss={jest.fn()} testID="dp" />
+      <DatePicker
+        visible
+        value={date}
+        onConfirm={jest.fn()}
+        onDismiss={jest.fn()}
+        testID="dp"
+      />,
     );
     expect(screen.getByText("15")).toBeTruthy();
     expect(screen.getAllByText("1").length).toBeGreaterThan(0);
@@ -92,7 +150,7 @@ describe("DatePicker", () => {
         onConfirm={jest.fn()}
         onDismiss={jest.fn()}
         testID="dp"
-      />
+      />,
     );
     expect(screen.getByTestId("dp")).toBeTruthy();
   });
@@ -100,7 +158,12 @@ describe("DatePicker", () => {
   it("defaults to today when no value provided", () => {
     const onConfirm = jest.fn();
     render(
-      <DatePicker visible onConfirm={onConfirm} onDismiss={jest.fn()} testID="dp" />
+      <DatePicker
+        visible
+        onConfirm={onConfirm}
+        onDismiss={jest.fn()}
+        testID="dp"
+      />,
     );
     fireEvent.press(screen.getByText("OK"));
     expect(onConfirm).toHaveBeenCalledTimes(1);

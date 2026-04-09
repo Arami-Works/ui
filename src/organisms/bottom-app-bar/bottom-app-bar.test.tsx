@@ -4,7 +4,12 @@ import { BottomAppBar } from "./bottom-app-bar";
 const actions = [
   { icon: "search", onPress: jest.fn(), accessibilityLabel: "Search" },
   { icon: "delete", onPress: jest.fn(), accessibilityLabel: "Delete" },
-  { icon: "more-vert", onPress: jest.fn(), accessibilityLabel: "More", testID: "action-more" },
+  {
+    icon: "more-vert",
+    onPress: jest.fn(),
+    accessibilityLabel: "More",
+    testID: "action-more",
+  },
 ];
 
 const fab = {
@@ -28,8 +33,15 @@ describe("BottomAppBar", () => {
     const onPress = jest.fn();
     render(
       <BottomAppBar
-        actions={[{ icon: "search", onPress, accessibilityLabel: "Search", testID: "search-btn" }]}
-      />
+        actions={[
+          {
+            icon: "search",
+            onPress,
+            accessibilityLabel: "Search",
+            testID: "search-btn",
+          },
+        ]}
+      />,
     );
     fireEvent.press(screen.getByTestId("search-btn"));
     expect(onPress).toHaveBeenCalledTimes(1);

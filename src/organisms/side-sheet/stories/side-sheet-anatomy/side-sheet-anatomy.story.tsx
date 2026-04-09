@@ -11,7 +11,9 @@ function Callout({ n }: { n: number }) {
       alignItems="center"
       justifyContent="center"
     >
-      <Text color="white" fontSize={12} fontWeight="700">{n}</Text>
+      <Text color="white" fontSize={12} fontWeight="700">
+        {n}
+      </Text>
     </View>
   );
 }
@@ -21,15 +23,23 @@ function Anatomy() {
     <YStack gap={24} padding={16}>
       <YStack gap={12}>
         {[
-          [1, "Scrim — semi-transparent overlay (32% opacity), dismisses sheet on tap"],
-          [2, "Sheet panel — slides in from left or right, configurable width (default 256dp)"],
+          [
+            1,
+            "Scrim — semi-transparent overlay (32% opacity), dismisses sheet on tap",
+          ],
+          [
+            2,
+            "Sheet panel — slides in from left or right, configurable width (default 256dp)",
+          ],
           [3, "Header — optional title + close button (56dp height)"],
           [4, "Content area — children rendered with 16dp padding"],
           [5, "Close button — IconButton that fires onClose"],
         ].map(([n, label]) => (
           <XStack key={n as number} gap={12} alignItems="center">
             <Callout n={n as number} />
-            <Text fontSize={13} color="#49454F" flex={1}>{label as string}</Text>
+            <Text fontSize={13} color="#49454F" flex={1}>
+              {label as string}
+            </Text>
           </XStack>
         ))}
       </YStack>
