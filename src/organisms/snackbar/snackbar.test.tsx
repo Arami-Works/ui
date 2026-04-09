@@ -120,7 +120,9 @@ describe("Snackbar", () => {
 
   describe("dark mode", () => {
     it("renders in dark theme without crashing", () => {
-      render(<Snackbar visible message="Test" testID="dark-test" />, { theme: "dark" });
+      render(<Snackbar visible message="Test" testID="dark-test" />, {
+        theme: "dark",
+      });
       expect(screen.getByTestId("dark-test")).toBeTruthy();
     });
   });
