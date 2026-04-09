@@ -4,45 +4,6 @@
  * These define motion presets used across the design system.
  * Based on MD3 motion guidelines: https://m3.material.io/styles/motion
  */
-export const animation = {
-  /** Standard easing for most transitions */
-  standard: {
-    duration: 300,
-    easing: "cubic-bezier(0.2, 0, 0, 1)",
-  },
-  /** Standard decelerate — elements entering the screen */
-  standardDecelerate: {
-    duration: 250,
-    easing: "cubic-bezier(0, 0, 0, 1)",
-  },
-  /** Standard accelerate — elements leaving the screen */
-  standardAccelerate: {
-    duration: 200,
-    easing: "cubic-bezier(0.3, 0, 1, 1)",
-  },
-  /** Emphasized — full emphasized curve (enter + exit) */
-  emphasized: {
-    duration: 500,
-    easing: "cubic-bezier(0.2, 0, 0, 1)",
-  },
-  /** Emphasized decelerate — entrances with emphasis */
-  emphasizedDecelerate: {
-    duration: 400,
-    easing: "cubic-bezier(0.05, 0.7, 0.1, 1)",
-  },
-  /** Emphasized accelerate — exits with emphasis */
-  emphasizedAccelerate: {
-    duration: 200,
-    easing: "cubic-bezier(0.3, 0, 0.8, 0.15)",
-  },
-  /** Quick interactions (ripples, state changes) */
-  quick: {
-    duration: 100,
-    easing: "cubic-bezier(0.2, 0, 0, 1)",
-  },
-} as const;
-
-export type AnimationToken = keyof typeof animation;
 
 /**
  * Duration scale — MD3 standard duration tokens
@@ -68,3 +29,47 @@ export const duration = {
 } as const;
 
 export type DurationToken = keyof typeof duration;
+
+export const animation = {
+  /** Standard easing for most transitions */
+  standard: {
+    duration: duration.medium2,
+    easing: "cubic-bezier(0.2, 0, 0, 1)",
+  },
+  /** Standard decelerate — elements entering the screen */
+  standardDecelerate: {
+    duration: duration.medium1,
+    easing: "cubic-bezier(0, 0, 0, 1)",
+  },
+  /** Standard accelerate — elements leaving the screen */
+  standardAccelerate: {
+    duration: duration.short4,
+    easing: "cubic-bezier(0.3, 0, 1, 1)",
+  },
+  /** Emphasized — full emphasized path-easing preset (enter + exit).
+   *  MD3 path easing is approximated here with the standard decelerate curve
+   *  because CSS/RN do not natively support path easing.
+   *  See: https://m3.material.io/styles/motion/easing-and-duration/tokens-specs
+   */
+  emphasized: {
+    duration: duration.long2,
+    easing: "cubic-bezier(0.2, 0, 0, 1)",
+  },
+  /** Emphasized decelerate — entrances with emphasis */
+  emphasizedDecelerate: {
+    duration: duration.medium4,
+    easing: "cubic-bezier(0.05, 0.7, 0.1, 1)",
+  },
+  /** Emphasized accelerate — exits with emphasis */
+  emphasizedAccelerate: {
+    duration: duration.short4,
+    easing: "cubic-bezier(0.3, 0, 0.8, 0.15)",
+  },
+  /** Quick interactions (ripples, state changes) */
+  quick: {
+    duration: duration.short2,
+    easing: "cubic-bezier(0.2, 0, 0, 1)",
+  },
+} as const;
+
+export type AnimationToken = keyof typeof animation;
