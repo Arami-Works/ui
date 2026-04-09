@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { YStack, Text } from "tamagui";
+import { YStack } from "tamagui";
+import { Text } from "../../../../atoms/text";
 import { FullScreenDialog } from "../../full-screen-dialog";
 import { Button } from "../../../../atoms/button";
 import { TextField } from "../../../../atoms/text-field";
