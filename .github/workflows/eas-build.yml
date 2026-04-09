@@ -89,8 +89,15 @@ jobs:
             --platform ${{ matrix.platform }} \
             --non-interactive \
             --json | tee /tmp/eas-build-result.json
-          BUILD_URL=$(cat /tmp/eas-build-result.json | jq -r '.[0].buildDetailsPageUrl // empty')
-          echo "build_url=$BUILD_URL" >> "$GITHUB_OUTPUT"
+          BUILD_ID=$(cat /tmp/eas-build-result.json | jq -r '.[0].id // empty')
+          BUILD_STATUS=$(cat /tmp/eas-build-result.json | jq -r '.[0].status // empty')
+          if [ -n "$BUILD_ID" ]; then
+            echo "build_url=https://expo.dev/accounts/aramiworks/projects/cheunjm-ui/builds/$BUILD_ID" >> "$GITHUB_OUTPUT"
+          fi
+          if [ "$BUILD_STATUS" = "ERRORED" ]; then
+            echo "EAS build errored on Expo servers" >&2
+            exit 1
+          fi
 
       - name: Notify Slack
         if: always()
@@ -107,7 +114,7 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{
               \"channel\": \"C0AJD47H6R4\",
-              \"text\": \"${STATUS} *EAS Build* — @aramiworks/ui ${PLATFORM} (${PROFILE})\n• <${LINK}|View build>\"
+              \"text\": \"${STATUS} *EAS Build* — @aramiworks/ui ${PLATFORM} (${PROFILE})\n• <${LINK}|View on Expo>\"
             }"
 
   web:
