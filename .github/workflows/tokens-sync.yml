@@ -40,7 +40,7 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ steps.claude-arami-token.outputs.token }}
-          direct_prompt: |
+          prompt: |
             You are running an automated token sync for the aramiworks/ui design system.
 
             ## Step 1 — Extract Figma Variables
@@ -103,4 +103,4 @@ jobs:
                Automated by Token Sync workflow.
                ```
 
-          allowed_tools: "Bash(git *),Bash(npm *),Bash(npx *),Bash(gh *),Read,Write,Glob,Grep,mcp__claude_ai_Figma__use_figma"
+          claude_args: '--allowedTools "Bash(git *),Bash(npm *),Bash(npx *),Bash(gh *),Read,Write,Glob,Grep,mcp__claude_ai_Figma__use_figma"'
