@@ -30,4 +30,23 @@ npm start          # Expo dev server (press i for iOS, a for Android, w for web)
 - Components use Tamagui `styled()` internally, expose MD3 API externally
 - All visual values come from tokens — no hardcoded colors, spacing, or sizes
 - Stories in `stories/` subfolder with `.story.tsx` extension
-- Token pipeline: Figma Variables → Token Studio → `tokens/generated/*.ts`
+- Token pipeline: Figma Variables → `tokens:sync` → `tokens/generated/*.ts`
+
+## Token Pipeline
+
+Figma Variables (tokens file `81sGJB0y1lYCDY5oB35aBA`) are the source of truth for design tokens. The pipeline fetches variables via the Figma REST API and generates TypeScript files.
+
+```bash
+npm run tokens:fetch <export.json>   # convert Figma plugin output → src/tokens/.figma-raw/*.json
+npm run tokens:build                 # build .figma-raw/ → src/tokens/generated/*.ts
+```
+
+### Workflow
+
+1. **Extract** — Run the Figma Plugin snippet (see `scripts/tokens-fetch.ts` header) via Claude Code `use_figma` or Figma dev console. Save the JSON output to a file.
+2. **Fetch** — `npm run tokens:fetch <export.json>` normalises the plugin output into `.figma-raw/` (gitignored).
+3. **Build** — `npm run tokens:build` generates TypeScript from `.figma-raw/`.
+
+- **Tokens file**: `https://www.figma.com/design/81sGJB0y1lYCDY5oB35aBA/tokens`
+- **FIGMA_ACCESS_TOKEN**: Stored in Doppler (`ui/master`) for future REST API use (requires Enterprise `file_variables:read` scope)
+- Generated files: `colors.ts`, `spacing.ts`, `typography.ts`, `radii.ts`, `elevation.ts` — DO NOT EDIT manually

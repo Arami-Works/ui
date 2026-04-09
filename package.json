@@ -25,6 +25,8 @@
     "test:coverage": "jest --coverage",
     "storybook:web": "storybook dev -p 6006 -c .storybook --disable-telemetry",
     "storybook:build": "storybook build -c .storybook --disable-telemetry",
+    "tokens:fetch": "tsx scripts/tokens-fetch.ts --input",
+    "tokens:build": "tsx scripts/tokens-build.ts",
     "test:e2e:web": "maestro test --platform web e2e/integration/ e2e/journeys/",
     "test:e2e:ios": "maestro test --platform ios e2e/integration/ e2e/journeys/",
     "test:e2e:android": "maestro test --platform android e2e/integration/ e2e/journeys/"
@@ -101,6 +103,7 @@
     "storybook": "^10.3.4",
     "tamagui": "^1.112.0",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.0",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.57.2",
     "vite": "^6.4.1"
