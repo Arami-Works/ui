@@ -246,8 +246,8 @@ export function DatePicker({
         if (start && end && onConfirmRange) {
           const [s, e] = normalizeRange(start, end);
           onConfirmRange(s, e);
-          return;
         }
+        return;
       }
       if (rangeStart && rangeEnd && onConfirmRange) {
         onConfirmRange(rangeStart, rangeEnd);
