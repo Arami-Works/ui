@@ -18,6 +18,7 @@
     "android": "expo start --android",
     "web": "expo start --web",
     "storybook:generate": "sb-rn-get-stories --config-path .ondevice",
+    "eas-build-post-install": "npm run storybook:generate",
     "lint": "eslint src/",
     "typecheck": "tsc --noEmit",
     "test": "jest",
