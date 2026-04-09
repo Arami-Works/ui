@@ -37,14 +37,15 @@ npm start          # Expo dev server (press i for iOS, a for Android, w for web)
 Figma Variables (tokens file `81sGJB0y1lYCDY5oB35aBA`) are the source of truth for design tokens. The pipeline fetches variables via the Figma REST API and generates TypeScript files.
 
 ```bash
-npm run tokens:fetch <export.json>   # convert Figma plugin output → src/tokens/.figma-raw/*.json
+npm run tokens:sync -- <export.json> # fetch + build in one step (recommended)
+npm run tokens:fetch -- <export.json>   # convert Figma plugin output → src/tokens/.figma-raw/*.json
 npm run tokens:build                 # build .figma-raw/ → src/tokens/generated/*.ts
 ```
 
 ### Workflow
 
 1. **Extract** — Run the Figma Plugin snippet (see `scripts/tokens-fetch.ts` header) via Claude Code `use_figma` or Figma dev console. Save the JSON output to a file.
-2. **Fetch** — `npm run tokens:fetch <export.json>` normalises the plugin output into `.figma-raw/` (gitignored).
+2. **Fetch** — `npm run tokens:fetch -- <export.json>` normalises the plugin output into `.figma-raw/` (gitignored).
 3. **Build** — `npm run tokens:build` generates TypeScript from `.figma-raw/`.
 
 - **Tokens file**: `https://www.figma.com/design/81sGJB0y1lYCDY5oB35aBA/tokens`
