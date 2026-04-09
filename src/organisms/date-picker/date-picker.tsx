@@ -465,8 +465,8 @@ export function DatePicker({
                               isEndpoint
                                 ? "$primary"
                                 : selected
-                                ? "$primary"
-                                : "transparent"
+                                  ? "$primary"
+                                  : "transparent"
                             }
                             borderWidth={
                               today_ && !selected && !isEndpoint ? 1 : 0
@@ -480,8 +480,8 @@ export function DatePicker({
                                 isEndpoint || selected
                                   ? "$onPrimary"
                                   : !cell.thisMonth || disabled
-                                  ? "$onSurfaceVariant"
-                                  : "$onSurface"
+                                    ? "$onSurfaceVariant"
+                                    : "$onSurface"
                               }
                               opacity={!cell.thisMonth ? 0.38 : 1}
                             >
