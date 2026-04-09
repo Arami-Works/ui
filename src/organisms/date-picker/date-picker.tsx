@@ -98,7 +98,9 @@ function normalizeRange(a: Date, b: Date): [Date, Date] {
 }
 
 function formatDate(d: Date) {
-  return `${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}/${d.getFullYear()}`;
+  return `${String(d.getMonth() + 1).padStart(2, "0")}/${String(
+    d.getDate(),
+  ).padStart(2, "0")}/${d.getFullYear()}`;
 }
 
 function parseDate(s: string): Date | null {
@@ -149,9 +151,7 @@ export function DatePicker({
   const [selectedDate, setSelectedDate] = useState<Date>(initial);
 
   // Range state
-  const [rangeStart, setRangeStart] = useState<Date | undefined>(
-    startDateProp,
-  );
+  const [rangeStart, setRangeStart] = useState<Date | undefined>(startDateProp);
   const [rangeEnd, setRangeEnd] = useState<Date | undefined>(endDateProp);
 
   // Input state
@@ -383,7 +383,11 @@ export function DatePicker({
                         <Text role="title" size="small">
                           {MONTHS[currentMonth]} {currentYear}
                         </Text>
-                        <Text role="body" size="small" color="$onSurfaceVariant">
+                        <Text
+                          role="body"
+                          size="small"
+                          color="$onSurfaceVariant"
+                        >
                           ▾
                         </Text>
                       </XStack>
@@ -398,7 +402,11 @@ export function DatePicker({
                   <XStack justifyContent="space-around">
                     {DAYS_OF_WEEK.map((d) => (
                       <View key={d} width={40} alignItems="center">
-                        <Text role="label" size="small" color="$onSurfaceVariant">
+                        <Text
+                          role="label"
+                          size="small"
+                          color="$onSurfaceVariant"
+                        >
                           {d}
                         </Text>
                       </View>
@@ -457,8 +465,8 @@ export function DatePicker({
                               isEndpoint
                                 ? "$primary"
                                 : selected
-                                  ? "$primary"
-                                  : "transparent"
+                                ? "$primary"
+                                : "transparent"
                             }
                             borderWidth={
                               today_ && !selected && !isEndpoint ? 1 : 0
@@ -472,8 +480,8 @@ export function DatePicker({
                                 isEndpoint || selected
                                   ? "$onPrimary"
                                   : !cell.thisMonth || disabled
-                                    ? "$onSurfaceVariant"
-                                    : "$onSurface"
+                                  ? "$onSurfaceVariant"
+                                  : "$onSurface"
                               }
                               opacity={!cell.thisMonth ? 0.38 : 1}
                             >
