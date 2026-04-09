@@ -4,7 +4,12 @@ import { NavigationRail } from "./navigation-rail";
 const destinations = [
   { icon: "home-outlined", activeIcon: "home", label: "Home" },
   { icon: "search", label: "Search" },
-  { icon: "notifications-outlined", activeIcon: "notifications", label: "Alerts", badge: 3 },
+  {
+    icon: "notifications-outlined",
+    activeIcon: "notifications",
+    label: "Alerts",
+    badge: 3,
+  },
 ];
 
 describe("NavigationRail", () => {
@@ -38,7 +43,11 @@ describe("NavigationRail", () => {
     render(
       <NavigationRail
         destinations={destinations}
-        fab={{ icon: "edit", onPress: onFabPress, accessibilityLabel: "Compose" }}
+        fab={{
+          icon: "edit",
+          onPress: onFabPress,
+          accessibilityLabel: "Compose",
+        }}
         testID="rail"
       />,
     );
@@ -57,7 +66,11 @@ describe("NavigationRail", () => {
 
   it("sets accessibility role and state on destinations", () => {
     render(
-      <NavigationRail destinations={destinations} activeIndex={1} testID="rail" />,
+      <NavigationRail
+        destinations={destinations}
+        activeIndex={1}
+        testID="rail"
+      />,
     );
     const activeDest = screen.getByTestId("rail-dest-1");
     expect(activeDest.props.accessibilityRole).toBe("tab");

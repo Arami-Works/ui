@@ -8,7 +8,10 @@ const specs = [
   { property: "Corner radius", value: "20 dp (full)" },
   { property: "Container (standard)", value: "transparent" },
   { property: "Container (filled)", value: "md.sys.color.primary" },
-  { property: "Container (filledTonal)", value: "md.sys.color.secondary-container" },
+  {
+    property: "Container (filledTonal)",
+    value: "md.sys.color.secondary-container",
+  },
   { property: "Container (outlined)", value: "transparent + 1dp outline" },
 ];
 

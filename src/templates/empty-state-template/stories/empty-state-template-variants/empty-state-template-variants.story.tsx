@@ -31,7 +31,12 @@ export const WithAction: Story = {
     title: "Nothing Here",
     body: "Start by adding your first item.",
     action: (
-      <View backgroundColor="#6750A4" borderRadius={20} paddingHorizontal={24} paddingVertical={10}>
+      <View
+        backgroundColor="#6750A4"
+        borderRadius={20}
+        paddingHorizontal={24}
+        paddingVertical={10}
+      >
         <Text color="#FFF">Add Item</Text>
       </View>
     ),

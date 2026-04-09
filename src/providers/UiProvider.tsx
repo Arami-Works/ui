@@ -9,7 +9,10 @@ type UiProviderProps = {
   defaultTheme?: ThemeMode;
 };
 
-export function UiProvider({ children, defaultTheme = "light" }: UiProviderProps) {
+export function UiProvider({
+  children,
+  defaultTheme = "light",
+}: UiProviderProps) {
   const [mode, setMode] = useState<ThemeMode>(defaultTheme);
   const systemScheme = useColorScheme();
 

@@ -15,9 +15,17 @@ const specs = [
 function Specs() {
   return (
     <YStack padding={16} gap={0}>
-      <XStack backgroundColor="#E7E0EC" paddingVertical={10} paddingHorizontal={16}>
-        <Text fontSize={13} fontWeight="700" color="#1C1B1F" flex={1}>Property</Text>
-        <Text fontSize={13} fontWeight="700" color="#1C1B1F" flex={1}>Value</Text>
+      <XStack
+        backgroundColor="#E7E0EC"
+        paddingVertical={10}
+        paddingHorizontal={16}
+      >
+        <Text fontSize={13} fontWeight="700" color="#1C1B1F" flex={1}>
+          Property
+        </Text>
+        <Text fontSize={13} fontWeight="700" color="#1C1B1F" flex={1}>
+          Value
+        </Text>
       </XStack>
       {specs.map(([prop, val], i) => (
         <XStack
@@ -28,8 +36,12 @@ function Specs() {
           borderBottomWidth={1}
           borderBottomColor="#E7E0EC"
         >
-          <Text fontSize={13} color="#49454F" flex={1}>{prop}</Text>
-          <Text fontSize={13} color="#1C1B1F" flex={1}>{val}</Text>
+          <Text fontSize={13} color="#49454F" flex={1}>
+            {prop}
+          </Text>
+          <Text fontSize={13} color="#1C1B1F" flex={1}>
+            {val}
+          </Text>
         </XStack>
       ))}
     </YStack>

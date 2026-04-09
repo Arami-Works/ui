@@ -18,13 +18,7 @@ function Callout({ number }: { number: number }) {
   );
 }
 
-function LegendItem({
-  number,
-  label,
-}: {
-  number: number;
-  label: string;
-}) {
+function LegendItem({ number, label }: { number: number; label: string }) {
   return (
     <XStack gap={10} alignItems="center">
       <Callout number={number} />
@@ -47,7 +41,12 @@ function Anatomy() {
       alignItems="center"
     >
       {/* Diagram */}
-      <YStack width={120} height={320} justifyContent="flex-start" alignItems="center">
+      <YStack
+        width={120}
+        height={320}
+        justifyContent="flex-start"
+        alignItems="center"
+      >
         {/* Rail container shape */}
         <View
           position="relative"
@@ -69,7 +68,9 @@ function Anatomy() {
             alignItems="center"
             marginBottom={8}
           >
-            <Text fontSize={18} color="#6750A4">+</Text>
+            <Text fontSize={18} color="#6750A4">
+              +
+            </Text>
           </View>
 
           {/* Active indicator */}
@@ -82,7 +83,9 @@ function Anatomy() {
             alignItems="center"
             marginBottom={4}
           />
-          <Text fontSize={10} color="#49454F" marginBottom={12}>Home</Text>
+          <Text fontSize={10} color="#49454F" marginBottom={12}>
+            Home
+          </Text>
 
           {/* Inactive destination */}
           <View
@@ -92,7 +95,9 @@ function Anatomy() {
             alignItems="center"
             marginBottom={4}
           />
-          <Text fontSize={10} color="#79747E">Search</Text>
+          <Text fontSize={10} color="#79747E">
+            Search
+          </Text>
 
           {/* Callouts */}
           <View position="absolute" top={-12} right={-28}>

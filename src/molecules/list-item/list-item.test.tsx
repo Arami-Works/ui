@@ -22,7 +22,11 @@ describe("ListItem", () => {
 
   it("renders with leading icon", () => {
     const { toJSON } = render(
-      <ListItem headline="With icon" leadingContent="home" testID="list-item" />,
+      <ListItem
+        headline="With icon"
+        leadingContent="home"
+        testID="list-item"
+      />,
     );
     expect(screen.getByTestId("list-item")).toBeTruthy();
     expect(toJSON()).toBeTruthy();
@@ -82,7 +86,14 @@ describe("ListItem", () => {
   });
 
   it("has correct accessibility state when disabled", () => {
-    render(<ListItem headline="Disabled" disabled onPress={jest.fn()} testID="a11y-li" />);
+    render(
+      <ListItem
+        headline="Disabled"
+        disabled
+        onPress={jest.fn()}
+        testID="a11y-li"
+      />,
+    );
     const item = screen.getByTestId("a11y-li");
     const pressable = item.children[0];
     expect(pressable.props.accessibilityState).toEqual(

@@ -17,9 +17,7 @@ describe("Divider", () => {
   it("renders all inset variants", () => {
     const insets = ["none", "insetLeft", "insetRight", "insetBoth"] as const;
     insets.forEach((inset) => {
-      const { unmount } = render(
-        <Divider inset={inset} testID="divider" />,
-      );
+      const { unmount } = render(<Divider inset={inset} testID="divider" />);
       expect(screen.getByTestId("divider")).toBeTruthy();
       unmount();
     });

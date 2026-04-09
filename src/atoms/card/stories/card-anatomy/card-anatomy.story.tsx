@@ -40,7 +40,12 @@ function Anatomy() {
       gap={48}
       alignItems="center"
     >
-      <YStack width={240} height={160} justifyContent="center" alignItems="center">
+      <YStack
+        width={240}
+        height={160}
+        justifyContent="center"
+        alignItems="center"
+      >
         <View position="relative" width={200} height={120}>
           <View
             backgroundColor="#FFFBFE"

@@ -26,14 +26,13 @@ export function Skeleton({
           duration: 700,
           useNativeDriver: true,
         }),
-      ])
+      ]),
     );
     pulse.start();
     return () => pulse.stop();
   }, [opacity]);
 
-  const backgroundColor =
-    (theme.surfaceContainerHighest?.val as string);
+  const backgroundColor = theme.surfaceContainerHighest?.val as string;
 
   return (
     <Animated.View

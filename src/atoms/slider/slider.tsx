@@ -93,7 +93,9 @@ export function Slider({
       if (disabled || trackWidth === 0) return;
       const raw = (locationX / trackWidth) * (max - min) + min;
       const resolved =
-        type === "discrete" ? snapToStep(raw, min, max, step) : clamp(raw, min, max);
+        type === "discrete"
+          ? snapToStep(raw, min, max, step)
+          : clamp(raw, min, max);
       setInternalValue(resolved);
       onValueChange?.(resolved);
     },
@@ -119,10 +121,9 @@ export function Slider({
     setTrackWidth(e.nativeEvent.layout.width);
   }, []);
 
-  const primaryColor = (theme.primary?.val as string);
-  const primaryContainerColor =
-    (theme.primaryContainer?.val as string);
-  const onPrimaryColor = (theme.onPrimary?.val as string);
+  const primaryColor = theme.primary?.val as string;
+  const primaryContainerColor = theme.primaryContainer?.val as string;
+  const onPrimaryColor = theme.onPrimary?.val as string;
   const containerOpacity = disabled ? 0.38 : 1;
 
   const tickMarks = useMemo(() => {
@@ -142,7 +143,16 @@ export function Slider({
       );
     }
     return marks;
-  }, [type, trackWidth, max, min, step, fraction, onPrimaryColor, primaryColor]);
+  }, [
+    type,
+    trackWidth,
+    max,
+    min,
+    step,
+    fraction,
+    onPrimaryColor,
+    primaryColor,
+  ]);
 
   const thumbLeft = fraction * trackWidth - 10;
 
@@ -154,7 +164,11 @@ export function Slider({
       accessibilityLabel={accessibilityLabel}
       accessibilityValue={{ min, max, now: currentValue }}
     >
-      <View position="relative" {...panResponder.panHandlers} onLayout={handleLayout}>
+      <View
+        position="relative"
+        {...panResponder.panHandlers}
+        onLayout={handleLayout}
+      >
         <Track backgroundColor={primaryContainerColor as any} />
         <ActiveTrack
           backgroundColor={primaryColor as any}

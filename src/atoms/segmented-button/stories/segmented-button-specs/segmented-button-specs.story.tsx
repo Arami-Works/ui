@@ -7,7 +7,10 @@ const specs = [
   { property: "Border width", value: "1 dp" },
   { property: "Icon size", value: "18 dp" },
   { property: "Font", value: "Label Large (14sp, Medium)" },
-  { property: "Container (selected)", value: "md.sys.color.secondary-container" },
+  {
+    property: "Container (selected)",
+    value: "md.sys.color.secondary-container",
+  },
   { property: "Container (unselected)", value: "md.sys.color.surface" },
   { property: "Outline color", value: "md.sys.color.outline" },
 ];

@@ -46,11 +46,7 @@ function TextBlockSkeleton() {
 
 function Variants() {
   return (
-    <YStack
-      backgroundColor="#F6F5F7"
-      padding={24}
-      gap={32}
-    >
+    <YStack backgroundColor="#F6F5F7" padding={24} gap={32}>
       <YStack gap={8}>
         <Text fontSize={12} fontWeight="600" color="#49454F" letterSpacing={1}>
           CARD

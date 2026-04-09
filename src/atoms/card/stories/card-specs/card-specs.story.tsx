@@ -6,8 +6,14 @@ const specs = [
   { property: "Padding", value: "16 dp" },
   { property: "Elevation (elevated)", value: "Level 1" },
   { property: "Elevation (filled)", value: "Level 0" },
-  { property: "Container (elevated)", value: "md.sys.color.surface-container-low" },
-  { property: "Container (filled)", value: "md.sys.color.surface-container-highest" },
+  {
+    property: "Container (elevated)",
+    value: "md.sys.color.surface-container-low",
+  },
+  {
+    property: "Container (filled)",
+    value: "md.sys.color.surface-container-highest",
+  },
   { property: "Container (outlined)", value: "md.sys.color.surface" },
   { property: "Outline color", value: "md.sys.color.outline-variant" },
   { property: "Disabled opacity", value: "0.38" },

@@ -7,7 +7,10 @@ const specs = [
   { property: "Thumb size (on)", value: "24 dp" },
   { property: "Corner radius", value: "16 dp (full)" },
   { property: "Touch target", value: "48 dp height" },
-  { property: "Track color (off)", value: "md.sys.color.surface-container-highest" },
+  {
+    property: "Track color (off)",
+    value: "md.sys.color.surface-container-highest",
+  },
   { property: "Track color (on)", value: "md.sys.color.primary" },
   { property: "Thumb color (off)", value: "md.sys.color.outline" },
   { property: "Thumb color (on)", value: "md.sys.color.on-primary" },

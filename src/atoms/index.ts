@@ -27,7 +27,10 @@ export type {
 export { RadioButton } from "./radio-button";
 export type { RadioButtonProps } from "./radio-button";
 export { SegmentedButton } from "./segmented-button";
-export type { SegmentedButtonProps, SegmentedButtonSegment } from "./segmented-button";
+export type {
+  SegmentedButtonProps,
+  SegmentedButtonSegment,
+} from "./segmented-button";
 export { Skeleton } from "./skeleton";
 export type { SkeletonProps } from "./skeleton";
 export { Slider } from "./slider";

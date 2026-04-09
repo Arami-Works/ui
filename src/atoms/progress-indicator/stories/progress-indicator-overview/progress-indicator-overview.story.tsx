@@ -27,33 +27,21 @@ function Overview() {
           <Text fontSize={12} color="#666666">
             Determinate (0%)
           </Text>
-          <ProgressIndicator
-            type="linear"
-            mode="determinate"
-            progress={0}
-          />
+          <ProgressIndicator type="linear" mode="determinate" progress={0} />
         </YStack>
 
         <YStack gap={8}>
           <Text fontSize={12} color="#666666">
             Determinate (50%)
           </Text>
-          <ProgressIndicator
-            type="linear"
-            mode="determinate"
-            progress={0.5}
-          />
+          <ProgressIndicator type="linear" mode="determinate" progress={0.5} />
         </YStack>
 
         <YStack gap={8}>
           <Text fontSize={12} color="#666666">
             Determinate (100%)
           </Text>
-          <ProgressIndicator
-            type="linear"
-            mode="determinate"
-            progress={1}
-          />
+          <ProgressIndicator type="linear" mode="determinate" progress={1} />
         </YStack>
       </YStack>
 

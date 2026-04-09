@@ -40,7 +40,12 @@ function Anatomy() {
       gap={48}
       alignItems="center"
     >
-      <YStack width={240} height={140} justifyContent="center" alignItems="center">
+      <YStack
+        width={240}
+        height={140}
+        justifyContent="center"
+        alignItems="center"
+      >
         <View position="relative" width={200}>
           <View
             height={4}
@@ -67,9 +72,20 @@ function Anatomy() {
             backgroundColor="#6750A4"
           />
 
-          <XStack position="absolute" top={14} width="100%" justifyContent="space-between">
+          <XStack
+            position="absolute"
+            top={14}
+            width="100%"
+            justifyContent="space-between"
+          >
             {[0, 1, 2, 3, 4].map((i) => (
-              <View key={i} width={4} height={4} borderRadius={2} backgroundColor="#49454F" />
+              <View
+                key={i}
+                width={4}
+                height={4}
+                borderRadius={2}
+                backgroundColor="#49454F"
+              />
             ))}
           </XStack>
 

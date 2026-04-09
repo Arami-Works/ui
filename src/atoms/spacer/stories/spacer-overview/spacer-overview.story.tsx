@@ -31,18 +31,38 @@ function Overview() {
       <YStack gap={8}>
         <SectionLabel label="Vertical (16dp)" />
         <XStack alignItems="center">
-          <View backgroundColor="#E8DEF8" height={20} width={60} borderRadius={4} />
+          <View
+            backgroundColor="#E8DEF8"
+            height={20}
+            width={60}
+            borderRadius={4}
+          />
           <Spacer direction="vertical" size={16} />
-          <View backgroundColor="#E8DEF8" height={20} width={60} borderRadius={4} />
+          <View
+            backgroundColor="#E8DEF8"
+            height={20}
+            width={60}
+            borderRadius={4}
+          />
         </XStack>
       </YStack>
 
       <YStack gap={8}>
         <SectionLabel label="Horizontal (16dp)" />
         <YStack>
-          <View backgroundColor="#E8DEF8" height={20} width={120} borderRadius={4} />
+          <View
+            backgroundColor="#E8DEF8"
+            height={20}
+            width={120}
+            borderRadius={4}
+          />
           <Spacer direction="horizontal" size={16} />
-          <View backgroundColor="#E8DEF8" height={20} width={120} borderRadius={4} />
+          <View
+            backgroundColor="#E8DEF8"
+            height={20}
+            width={120}
+            borderRadius={4}
+          />
         </YStack>
       </YStack>
     </YStack>

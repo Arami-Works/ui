@@ -2,11 +2,7 @@ import type { GetProps } from "tamagui";
 import type { XStack } from "tamagui";
 
 /** MD3 TopAppBar type variants */
-export type TopAppBarType =
-  | "center-aligned"
-  | "small"
-  | "medium"
-  | "large";
+export type TopAppBarType = "center-aligned" | "small" | "medium" | "large";
 
 /** Action item for trailing icon buttons */
 export type TopAppBarAction = {
@@ -18,10 +14,7 @@ export type TopAppBarAction = {
   accessibilityLabel?: string;
 };
 
-export type TopAppBarProps = Omit<
-  GetProps<typeof XStack>,
-  "children"
-> & {
+export type TopAppBarProps = Omit<GetProps<typeof XStack>, "children"> & {
   /** MD3 top app bar type. Default: "small" */
   type?: TopAppBarType;
   /** Title text */

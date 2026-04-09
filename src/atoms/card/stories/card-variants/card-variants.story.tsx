@@ -15,7 +15,9 @@ const meta: Meta<CardProps> = {
   args: {
     children: (
       <>
-        <Text fontWeight="600" marginBottom={4}>Card Title</Text>
+        <Text fontWeight="600" marginBottom={4}>
+          Card Title
+        </Text>
         <Text color="#49454F">Card supporting text content.</Text>
       </>
     ),

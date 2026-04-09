@@ -8,7 +8,10 @@ const specs = [
   { property: "Touch target", value: "48 x 48 dp" },
   { property: "Container color (checked)", value: "md.sys.color.primary" },
   { property: "Checkmark color", value: "md.sys.color.on-primary" },
-  { property: "Border color (unchecked)", value: "md.sys.color.on-surface-variant" },
+  {
+    property: "Border color (unchecked)",
+    value: "md.sys.color.on-surface-variant",
+  },
   { property: "Error color", value: "md.sys.color.error" },
 ];
 

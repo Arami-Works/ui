@@ -46,7 +46,9 @@ export function BottomSheet({
 }: BottomSheetProps) {
   const sheetContent = (
     <SheetContainer testID={testID}>
-      {showDragHandle && <DragHandle testID={testID ? `${testID}-handle` : undefined} />}
+      {showDragHandle && (
+        <DragHandle testID={testID ? `${testID}-handle` : undefined} />
+      )}
       <ScrollView>{children}</ScrollView>
     </SheetContainer>
   );

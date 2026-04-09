@@ -57,9 +57,7 @@ describe("SearchBar", () => {
   });
 
   it("renders trailing icon instead of clear button", () => {
-    render(
-      <SearchBar value="text" trailingIcon="mic" testID="sb" />,
-    );
+    render(<SearchBar value="text" trailingIcon="mic" testID="sb" />);
     expect(screen.getByTestId("sb-trailing")).toBeTruthy();
     expect(screen.queryByTestId("sb-clear")).toBeNull();
   });

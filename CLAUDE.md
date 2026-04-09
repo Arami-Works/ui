@@ -54,6 +54,7 @@ npm run tokens:build                 # build .figma-raw/ → src/tokens/generate
 ### CI Automation
 
 The `tokens-sync.yml` workflow automates the full pipeline:
+
 - **Triggers**: `workflow_dispatch` (manual) + weekly cron (Mondays 09:00 UTC)
 - **How**: Claude Code action extracts Figma variables via `use_figma` MCP, runs fetch + build, opens a draft PR if generated files changed
 - **Requires**: `ANTHROPIC_API_KEY`, `CLAUDE_ARAMI_APP_ID`, `CLAUDE_ARAMI_PRIVATE_KEY` GitHub secrets

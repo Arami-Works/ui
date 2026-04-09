@@ -10,16 +10,19 @@ const sections = [
     ],
   },
   {
-    destinations: [
-      { key: "settings", icon: "settings", label: "Settings" },
-    ],
+    destinations: [{ key: "settings", icon: "settings", label: "Settings" }],
   },
 ];
 
 describe("NavigationDrawer", () => {
   it("renders when open", () => {
     render(
-      <NavigationDrawer open onClose={jest.fn()} sections={sections} testID="drawer" />
+      <NavigationDrawer
+        open
+        onClose={jest.fn()}
+        sections={sections}
+        testID="drawer"
+      />,
     );
     expect(screen.getByTestId("drawer")).toBeTruthy();
   });
@@ -33,7 +36,7 @@ describe("NavigationDrawer", () => {
         sections={sections}
         onDestinationPress={onPress}
         testID="drawer"
-      />
+      />,
     );
     fireEvent.press(screen.getByTestId("drawer-dest-home"));
     expect(onPress).toHaveBeenCalledWith("home");
@@ -47,7 +50,7 @@ describe("NavigationDrawer", () => {
         sections={sections}
         activeKey="home"
         testID="drawer"
-      />
+      />,
     );
     expect(screen.getByTestId("drawer-dest-home")).toBeTruthy();
   });

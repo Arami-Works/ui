@@ -7,7 +7,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip label="Tooltip text" testID="tooltip">
         <Text>Trigger</Text>
-      </Tooltip>
+      </Tooltip>,
     );
     expect(screen.getByTestId("tooltip")).toBeTruthy();
   });
@@ -16,7 +16,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip label="Help text" testID="tooltip">
         <Text>Trigger</Text>
-      </Tooltip>
+      </Tooltip>,
     );
     expect(screen.queryByText("Help text")).toBeNull();
   });
@@ -25,7 +25,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip label="Help text" testID="tooltip">
         <Text>Trigger</Text>
-      </Tooltip>
+      </Tooltip>,
     );
     const wrapper = screen.getByTestId("tooltip").children[0];
     fireEvent(wrapper, "touchStart");
@@ -36,7 +36,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip label="Help text" testID="tooltip">
         <Text>Trigger</Text>
-      </Tooltip>
+      </Tooltip>,
     );
     const wrapper = screen.getByTestId("tooltip").children[0];
     fireEvent(wrapper, "touchStart");
@@ -49,7 +49,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip label="Plain tip" testID="tooltip">
         <Text>Trigger</Text>
-      </Tooltip>
+      </Tooltip>,
     );
     const wrapper = screen.getByTestId("tooltip").children[0];
     fireEvent(wrapper, "touchStart");
@@ -58,9 +58,14 @@ describe("Tooltip", () => {
 
   it("renders rich variant with description", () => {
     render(
-      <Tooltip label="Title" description="Description" variant="rich" testID="tooltip">
+      <Tooltip
+        label="Title"
+        description="Description"
+        variant="rich"
+        testID="tooltip"
+      >
         <Text>Trigger</Text>
-      </Tooltip>
+      </Tooltip>,
     );
     const wrapper = screen.getByTestId("tooltip").children[0];
     fireEvent(wrapper, "touchStart");
@@ -72,7 +77,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip label="Title only" variant="rich" testID="tooltip">
         <Text>Trigger</Text>
-      </Tooltip>
+      </Tooltip>,
     );
     const wrapper = screen.getByTestId("tooltip").children[0];
     fireEvent(wrapper, "touchStart");
@@ -82,9 +87,15 @@ describe("Tooltip", () => {
   it("renders rich variant with action button", () => {
     const onAction = jest.fn();
     render(
-      <Tooltip label="Title" variant="rich" actionLabel="Learn more" onAction={onAction} testID="tooltip">
+      <Tooltip
+        label="Title"
+        variant="rich"
+        actionLabel="Learn more"
+        onAction={onAction}
+        testID="tooltip"
+      >
         <Text>Trigger</Text>
-      </Tooltip>
+      </Tooltip>,
     );
     const wrapper = screen.getByTestId("tooltip").children[0];
     fireEvent(wrapper, "touchStart");
@@ -95,7 +106,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip label="Top" placement="top" testID="tooltip">
         <Text>Trigger</Text>
-      </Tooltip>
+      </Tooltip>,
     );
     const wrapper = screen.getByTestId("tooltip").children[0];
     fireEvent(wrapper, "touchStart");
@@ -106,7 +117,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip label="Bottom" placement="bottom" testID="tooltip">
         <Text>Trigger</Text>
-      </Tooltip>
+      </Tooltip>,
     );
     const wrapper = screen.getByTestId("tooltip").children[0];
     fireEvent(wrapper, "touchStart");
@@ -117,7 +128,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip label="Left" placement="left" testID="tooltip">
         <Text>Trigger</Text>
-      </Tooltip>
+      </Tooltip>,
     );
     const wrapper = screen.getByTestId("tooltip").children[0];
     fireEvent(wrapper, "touchStart");
@@ -128,7 +139,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip label="Right" placement="right" testID="tooltip">
         <Text>Trigger</Text>
-      </Tooltip>
+      </Tooltip>,
     );
     const wrapper = screen.getByTestId("tooltip").children[0];
     fireEvent(wrapper, "touchStart");
@@ -139,7 +150,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip label="Help" testID="a11y-tooltip">
         <Text>Trigger</Text>
-      </Tooltip>
+      </Tooltip>,
     );
     const wrapper = screen.getByTestId("a11y-tooltip").children[0];
     fireEvent(wrapper, "touchStart");

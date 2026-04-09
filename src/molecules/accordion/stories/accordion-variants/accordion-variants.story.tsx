@@ -9,7 +9,9 @@ function BasicVariant() {
   return (
     <Accordion>
       <Accordion.Item title="Basic item">
-        <Text role="body" size="medium">Simple accordion content.</Text>
+        <Text role="body" size="medium">
+          Simple accordion content.
+        </Text>
       </Accordion.Item>
     </Accordion>
   );
@@ -19,7 +21,9 @@ function WithSupportingText() {
   return (
     <Accordion>
       <Accordion.Item title="With subtitle" supportingText="Extra details here">
-        <Text role="body" size="medium">Content with supporting text header.</Text>
+        <Text role="body" size="medium">
+          Content with supporting text header.
+        </Text>
       </Accordion.Item>
     </Accordion>
   );
@@ -29,7 +33,9 @@ function WithLeadingIcon() {
   return (
     <Accordion>
       <Accordion.Item title="Settings" leadingIcon="settings">
-        <Text role="body" size="medium">Settings content.</Text>
+        <Text role="body" size="medium">
+          Settings content.
+        </Text>
       </Accordion.Item>
     </Accordion>
   );
@@ -44,7 +50,9 @@ function ControlledVariant() {
         expanded={expanded}
         onToggle={setExpanded}
       >
-        <Text role="body" size="medium">This is controlled externally.</Text>
+        <Text role="body" size="medium">
+          This is controlled externally.
+        </Text>
       </AccordionItem>
     </Accordion>
   );
@@ -54,7 +62,9 @@ function DisabledVariant() {
   return (
     <Accordion>
       <Accordion.Item title="Disabled item" disabled>
-        <Text role="body" size="medium">Cannot expand.</Text>
+        <Text role="body" size="medium">
+          Cannot expand.
+        </Text>
       </Accordion.Item>
     </Accordion>
   );

@@ -11,7 +11,10 @@ const specs = [
   { property: "Font", value: "Label Medium" },
   { property: "Active color (primary)", value: "md.sys.color.primary" },
   { property: "Inactive color", value: "md.sys.color.on-surface-variant" },
-  { property: "Secondary active bg", value: "md.sys.color.secondary-container" },
+  {
+    property: "Secondary active bg",
+    value: "md.sys.color.secondary-container",
+  },
 ];
 
 function SpecRow({

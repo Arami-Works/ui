@@ -18,13 +18,7 @@ function Callout({ number }: { number: number }) {
   );
 }
 
-function LegendItem({
-  number,
-  label,
-}: {
-  number: number;
-  label: string;
-}) {
+function LegendItem({ number, label }: { number: number; label: string }) {
   return (
     <XStack gap={10} alignItems="center">
       <Callout number={number} />
@@ -46,7 +40,12 @@ function Anatomy() {
       gap={48}
       alignItems="center"
     >
-      <YStack width={300} height={320} justifyContent="center" alignItems="center">
+      <YStack
+        width={300}
+        height={320}
+        justifyContent="center"
+        alignItems="center"
+      >
         <View position="relative" width={200} height={300}>
           <View
             backgroundColor="#F7F2FA"
@@ -71,8 +70,18 @@ function Anatomy() {
               <Text fontSize={9} color="#6750A4" marginBottom={4}>
                 Section Title
               </Text>
-              <View backgroundColor="#EDE7F6" height={24} marginBottom={2} borderRadius={4} />
-              <View backgroundColor="#EDE7F6" height={24} marginBottom={2} borderRadius={4} />
+              <View
+                backgroundColor="#EDE7F6"
+                height={24}
+                marginBottom={2}
+                borderRadius={4}
+              />
+              <View
+                backgroundColor="#EDE7F6"
+                height={24}
+                marginBottom={2}
+                borderRadius={4}
+              />
             </View>
 
             <View height={1} backgroundColor="#CAC4D0" />
@@ -81,10 +90,20 @@ function Anatomy() {
               <Text fontSize={9} color="#6750A4" marginBottom={4}>
                 Collapsible Section
               </Text>
-              <View backgroundColor="#EDE7F6" height={24} marginBottom={2} borderRadius={4} />
+              <View
+                backgroundColor="#EDE7F6"
+                height={24}
+                marginBottom={2}
+                borderRadius={4}
+              />
             </View>
 
-            <View flex={1} padding={8} justifyContent="center" alignItems="center">
+            <View
+              flex={1}
+              padding={8}
+              justifyContent="center"
+              alignItems="center"
+            >
               <Text fontSize={10} color="#49454F">
                 Children
               </Text>

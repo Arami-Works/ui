@@ -4,7 +4,12 @@ import { NavigationBar } from "./navigation-bar";
 const destinations = [
   { icon: "home-outlined", activeIcon: "home", label: "Home" },
   { icon: "search", label: "Search" },
-  { icon: "notifications-outlined", activeIcon: "notifications", label: "Alerts", badge: 3 },
+  {
+    icon: "notifications-outlined",
+    activeIcon: "notifications",
+    label: "Alerts",
+    badge: 3,
+  },
 ];
 
 describe("NavigationBar", () => {
@@ -56,7 +61,11 @@ describe("NavigationBar", () => {
 
   it("sets accessibility role and state on destinations", () => {
     render(
-      <NavigationBar destinations={destinations} activeIndex={1} testID="nav" />,
+      <NavigationBar
+        destinations={destinations}
+        activeIndex={1}
+        testID="nav"
+      />,
     );
     const activeDest = screen.getByTestId("nav-dest-1");
     expect(activeDest.props.accessibilityRole).toBe("tab");

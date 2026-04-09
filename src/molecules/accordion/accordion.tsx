@@ -92,7 +92,10 @@ export function AccordionItem({
               </Text>
             ) : null}
           </YStack>
-          <Animated.View style={chevronStyle} testID={testID ? `${testID}-chevron` : undefined}>
+          <Animated.View
+            style={chevronStyle}
+            testID={testID ? `${testID}-chevron` : undefined}
+          >
             <Icon name="expand-more" size={24} color="$onSurfaceVariant" />
           </Animated.View>
         </HeaderRow>
@@ -106,11 +109,7 @@ export function AccordionItem({
 }
 
 function AccordionRoot({ children, testID }: AccordionProps) {
-  return (
-    <YStack testID={testID}>
-      {children}
-    </YStack>
-  );
+  return <YStack testID={testID}>{children}</YStack>;
 }
 
 export const Accordion = Object.assign(AccordionRoot, {

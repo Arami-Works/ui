@@ -20,31 +20,20 @@ describe("ListTemplate", () => {
   });
 
   it("renders topBar slot", () => {
-    render(
-      <ListTemplate
-        testID="lt"
-        topBar={<View testID="top-bar" />}
-      />,
-    );
+    render(<ListTemplate testID="lt" topBar={<View testID="top-bar" />} />);
     expect(screen.getByTestId("top-bar")).toBeTruthy();
   });
 
   it("renders headerContent slot", () => {
     render(
-      <ListTemplate
-        testID="lt"
-        headerContent={<View testID="header" />}
-      />,
+      <ListTemplate testID="lt" headerContent={<View testID="header" />} />,
     );
     expect(screen.getByTestId("header")).toBeTruthy();
   });
 
   it("renders bottomBar slot", () => {
     render(
-      <ListTemplate
-        testID="lt"
-        bottomBar={<View testID="bottom-bar" />}
-      />,
+      <ListTemplate testID="lt" bottomBar={<View testID="bottom-bar" />} />,
     );
     expect(screen.getByTestId("bottom-bar")).toBeTruthy();
   });

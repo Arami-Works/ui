@@ -5,7 +5,12 @@ import { NavigationRail } from "../../navigation-rail";
 const destinations = [
   { icon: "home-outlined", activeIcon: "home", label: "Home" },
   { icon: "search", label: "Search" },
-  { icon: "notifications-outlined", activeIcon: "notifications", label: "Alerts", badge: 5 },
+  {
+    icon: "notifications-outlined",
+    activeIcon: "notifications",
+    label: "Alerts",
+    badge: 5,
+  },
   { icon: "person-outline", activeIcon: "person", label: "Profile" },
 ];
 
@@ -19,7 +24,11 @@ function Variants() {
         <NavigationRail
           destinations={destinations}
           activeIndex={0}
-          fab={{ icon: "edit", onPress: () => {}, accessibilityLabel: "Compose" }}
+          fab={{
+            icon: "edit",
+            onPress: () => {},
+            accessibilityLabel: "Compose",
+          }}
         />
       </YStack>
 
@@ -27,10 +36,7 @@ function Variants() {
         <Text fontSize={14} fontWeight="600" color="#49454F">
           Without FAB
         </Text>
-        <NavigationRail
-          destinations={destinations}
-          activeIndex={1}
-        />
+        <NavigationRail destinations={destinations} activeIndex={1} />
       </YStack>
 
       <YStack gap={8} alignItems="center">
@@ -50,7 +56,11 @@ function Variants() {
         <NavigationRail
           destinations={[
             ...destinations,
-            { icon: "settings-outlined", activeIcon: "settings", label: "Settings" },
+            {
+              icon: "settings-outlined",
+              activeIcon: "settings",
+              label: "Settings",
+            },
           ]}
           activeIndex={0}
         />

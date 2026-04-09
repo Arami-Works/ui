@@ -34,7 +34,10 @@ function LinearProgress({
       accessibilityValue={{
         min: 0,
         max: 100,
-        now: mode === "determinate" ? Math.round(clampedProgress * 100) : undefined,
+        now:
+          mode === "determinate"
+            ? Math.round(clampedProgress * 100)
+            : undefined,
       }}
     >
       <LinearIndicator width={`${widthPercent}%`} />
@@ -81,21 +84,24 @@ function CircularProgress({
       accessibilityValue={{
         min: 0,
         max: 100,
-        now: mode === "determinate" ? Math.round(clampedProgress * 100) : undefined,
+        now:
+          mode === "determinate"
+            ? Math.round(clampedProgress * 100)
+            : undefined,
       }}
       width={size}
       height={size}
     >
-      <CircularTrack
-        width={size}
-        height={size}
-        borderRadius={borderRadius}
-      />
+      <CircularTrack width={size} height={size} borderRadius={borderRadius} />
       <CircularIndicatorArc
         width={size}
         height={size}
         borderRadius={borderRadius}
-        borderTopColor={showRight || showBottom || showLeft || showTopArc ? "$primary" : "transparent"}
+        borderTopColor={
+          showRight || showBottom || showLeft || showTopArc
+            ? "$primary"
+            : "transparent"
+        }
         borderRightColor={showRight ? "$primary" : "transparent"}
         borderBottomColor={showBottom ? "$primary" : "transparent"}
         borderLeftColor={showLeft ? "$primary" : "transparent"}

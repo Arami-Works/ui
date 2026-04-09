@@ -24,7 +24,10 @@ describe("SettingsTemplate", () => {
   const basicSections: SettingsSection[] = [
     {
       title: "General",
-      items: [<Text key="1">Notifications</Text>, <Text key="2">Language</Text>],
+      items: [
+        <Text key="1">Notifications</Text>,
+        <Text key="2">Language</Text>,
+      ],
     },
   ];
 
@@ -73,10 +76,7 @@ describe("SettingsTemplate", () => {
       },
     ];
     render(
-      <SettingsTemplate
-        testID="settings"
-        sections={collapsibleSections}
-      />,
+      <SettingsTemplate testID="settings" sections={collapsibleSections} />,
     );
     expect(screen.getByText("Advanced")).toBeTruthy();
     expect(screen.getByText("Debug Mode")).toBeTruthy();

@@ -16,21 +16,57 @@ const specs = [
   { property: "Animation duration", value: "250 ms" },
 ];
 
-function SpecRow({ property, value, isHeader }: { property: string; value: string; isHeader?: boolean }) {
+function SpecRow({
+  property,
+  value,
+  isHeader,
+}: {
+  property: string;
+  value: string;
+  isHeader?: boolean;
+}) {
   return (
-    <XStack height={36} alignItems="center" borderBottomWidth={1} borderBottomColor="#E0E0E0">
-      <Text width={220} paddingLeft={16} fontSize={14} fontWeight={isHeader ? "600" : "400"} color="#1C1B1F">{property}</Text>
-      <Text flex={1} fontSize={14} fontWeight={isHeader ? "600" : "400"} color="#49454F">{value}</Text>
+    <XStack
+      height={36}
+      alignItems="center"
+      borderBottomWidth={1}
+      borderBottomColor="#E0E0E0"
+    >
+      <Text
+        width={220}
+        paddingLeft={16}
+        fontSize={14}
+        fontWeight={isHeader ? "600" : "400"}
+        color="#1C1B1F"
+      >
+        {property}
+      </Text>
+      <Text
+        flex={1}
+        fontSize={14}
+        fontWeight={isHeader ? "600" : "400"}
+        color="#49454F"
+      >
+        {value}
+      </Text>
     </XStack>
   );
 }
 
 function Specs() {
   return (
-    <XStack backgroundColor="#FFFFFF" borderRadius={12} borderWidth={1} borderColor="#E0E0E0" padding={24}>
+    <XStack
+      backgroundColor="#FFFFFF"
+      borderRadius={12}
+      borderWidth={1}
+      borderColor="#E0E0E0"
+      padding={24}
+    >
       <YStack width={520}>
         <SpecRow property="Property" value="Value" isHeader />
-        {specs.map((s) => (<SpecRow key={s.property} property={s.property} value={s.value} />))}
+        {specs.map((s) => (
+          <SpecRow key={s.property} property={s.property} value={s.value} />
+        ))}
       </YStack>
     </XStack>
   );

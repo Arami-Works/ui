@@ -8,7 +8,13 @@ describe("Button", () => {
   });
 
   it("renders all MD3 variants without crashing", () => {
-    const variants = ["filled", "outlined", "text", "elevated", "tonal"] as const;
+    const variants = [
+      "filled",
+      "outlined",
+      "text",
+      "elevated",
+      "tonal",
+    ] as const;
 
     variants.forEach((variant) => {
       const { unmount } = render(<Button variant={variant}>Click</Button>);
@@ -47,7 +53,11 @@ describe("Button", () => {
   });
 
   it("has correct accessibility state when disabled", () => {
-    render(<Button disabled testID="a11y-btn">Disabled</Button>);
+    render(
+      <Button disabled testID="a11y-btn">
+        Disabled
+      </Button>,
+    );
     const element = screen.getByTestId("a11y-btn");
     expect(element.props.accessibilityState).toEqual(
       expect.objectContaining({ disabled: true }),

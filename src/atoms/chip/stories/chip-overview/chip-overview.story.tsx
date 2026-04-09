@@ -23,13 +23,23 @@ function Overview() {
         <SectionLabel label="Filter" />
         <Chip label="Unselected" type="filter" />
         <Chip label="Selected" type="filter" selected />
-        <Chip label="Selected + Icon" type="filter" selected leadingIcon="check" />
+        <Chip
+          label="Selected + Icon"
+          type="filter"
+          selected
+          leadingIcon="check"
+        />
       </XStack>
 
       <XStack gap={16} flexWrap="wrap" alignItems="center">
         <SectionLabel label="Input" />
         <Chip label="Input" type="input" />
-        <Chip label="With Icons" type="input" leadingIcon="person" trailingIcon="close" />
+        <Chip
+          label="With Icons"
+          type="input"
+          leadingIcon="person"
+          trailingIcon="close"
+        />
       </XStack>
 
       <XStack gap={16} flexWrap="wrap" alignItems="center">

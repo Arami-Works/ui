@@ -17,10 +17,32 @@ function Overview() {
         onDismiss={() => setVisible(false)}
         testID="menu"
         items={[
-          { key: "refresh", label: "Refresh", leadingIcon: "refresh", onPress: () => {} },
-          { key: "settings", label: "Settings", leadingIcon: "settings", onPress: () => {} },
-          { key: "share", label: "Share", leadingIcon: "share", trailingText: "⌘S", onPress: () => {} },
-          { key: "delete", label: "Delete", leadingIcon: "delete", onPress: () => {}, disabled: true },
+          {
+            key: "refresh",
+            label: "Refresh",
+            leadingIcon: "refresh",
+            onPress: () => {},
+          },
+          {
+            key: "settings",
+            label: "Settings",
+            leadingIcon: "settings",
+            onPress: () => {},
+          },
+          {
+            key: "share",
+            label: "Share",
+            leadingIcon: "share",
+            trailingText: "⌘S",
+            onPress: () => {},
+          },
+          {
+            key: "delete",
+            label: "Delete",
+            leadingIcon: "delete",
+            onPress: () => {},
+            disabled: true,
+          },
         ]}
       />
     </View>

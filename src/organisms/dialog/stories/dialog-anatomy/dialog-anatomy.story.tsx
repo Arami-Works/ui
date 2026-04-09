@@ -40,7 +40,12 @@ function Anatomy() {
       gap={48}
       alignItems="center"
     >
-      <YStack width={260} height={240} justifyContent="center" alignItems="center">
+      <YStack
+        width={260}
+        height={240}
+        justifyContent="center"
+        alignItems="center"
+      >
         <View position="relative" width={240} height={220}>
           <View
             backgroundColor="#FFFBFE"
@@ -50,12 +55,36 @@ function Anatomy() {
             padding={24}
             alignItems="center"
           >
-            <View width={24} height={24} borderRadius={12} backgroundColor="#E8DEF8" marginBottom={16} />
-            <Text fontSize={18} fontWeight="600" color="#1C1B1F" marginBottom={8}>Dialog Title</Text>
-            <Text fontSize={14} color="#49454F" textAlign="center" marginBottom={24}>Supporting text</Text>
+            <View
+              width={24}
+              height={24}
+              borderRadius={12}
+              backgroundColor="#E8DEF8"
+              marginBottom={16}
+            />
+            <Text
+              fontSize={18}
+              fontWeight="600"
+              color="#1C1B1F"
+              marginBottom={8}
+            >
+              Dialog Title
+            </Text>
+            <Text
+              fontSize={14}
+              color="#49454F"
+              textAlign="center"
+              marginBottom={24}
+            >
+              Supporting text
+            </Text>
             <XStack gap={12} alignSelf="flex-end">
-              <Text fontSize={14} color="#6750A4">Cancel</Text>
-              <Text fontSize={14} color="#6750A4" fontWeight="600">OK</Text>
+              <Text fontSize={14} color="#6750A4">
+                Cancel
+              </Text>
+              <Text fontSize={14} color="#6750A4" fontWeight="600">
+                OK
+              </Text>
             </XStack>
           </View>
           <View position="absolute" top={-10} right={-10}>

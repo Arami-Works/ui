@@ -10,8 +10,14 @@ const specs = [
   { property: "Padding vertical", value: "12 dp" },
   { property: "FAB bottom padding", value: "8 dp" },
   { property: "Destination gap", value: "4 dp (icon to label)" },
-  { property: "Active indicator color", value: "md.sys.color.secondary-container" },
-  { property: "Active icon color", value: "md.sys.color.on-secondary-container" },
+  {
+    property: "Active indicator color",
+    value: "md.sys.color.secondary-container",
+  },
+  {
+    property: "Active icon color",
+    value: "md.sys.color.on-secondary-container",
+  },
   { property: "Inactive icon color", value: "md.sys.color.on-surface-variant" },
 ];
 

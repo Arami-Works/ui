@@ -93,7 +93,13 @@ describe("Avatar", () => {
   });
 
   it("forwards custom accessibilityLabel over name", () => {
-    render(<Avatar name="John Doe" accessibilityLabel="User avatar" testID="a11y-avatar" />);
+    render(
+      <Avatar
+        name="John Doe"
+        accessibilityLabel="User avatar"
+        testID="a11y-avatar"
+      />,
+    );
     const element = screen.getByTestId("a11y-avatar");
     expect(element.props.accessibilityLabel).toBe("User avatar");
   });

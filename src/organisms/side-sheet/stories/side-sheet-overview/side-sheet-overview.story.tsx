@@ -8,13 +8,11 @@ function Overview() {
 
   return (
     <YStack gap={16} padding={16}>
-      <Text fontSize={14} fontWeight="600" color="#49454F">Interactive (right side)</Text>
+      <Text fontSize={14} fontWeight="600" color="#49454F">
+        Interactive (right side)
+      </Text>
       <Button onPress={() => setOpen(true)}>Open Side Sheet</Button>
-      <SideSheet
-        open={open}
-        onClose={() => setOpen(false)}
-        header="Filters"
-      >
+      <SideSheet open={open} onClose={() => setOpen(false)} header="Filters">
         <YStack gap={12}>
           <Text>Filter option 1</Text>
           <Text>Filter option 2</Text>

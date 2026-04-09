@@ -10,13 +10,23 @@ const sections = [
     destinations: [
       { key: "home", icon: "home", activeIcon: "home", label: "Home" },
       { key: "search", icon: "search", label: "Search", badgeCount: 5 },
-      { key: "bookmarks", icon: "bookmark_border", activeIcon: "bookmark", label: "Bookmarks" },
+      {
+        key: "bookmarks",
+        icon: "bookmark_border",
+        activeIcon: "bookmark",
+        label: "Bookmarks",
+      },
     ],
   },
   {
     header: "Account",
     destinations: [
-      { key: "profile", icon: "person_outline", activeIcon: "person", label: "Profile" },
+      {
+        key: "profile",
+        icon: "person_outline",
+        activeIcon: "person",
+        label: "Profile",
+      },
       { key: "settings", icon: "settings", label: "Settings" },
       { key: "help", icon: "help_outline", label: "Help" },
     ],
@@ -37,7 +47,10 @@ function Overview() {
         onClose={() => setOpen(false)}
         sections={sections}
         activeKey={activeKey}
-        onDestinationPress={(key) => { setActiveKey(key); setOpen(false); }}
+        onDestinationPress={(key) => {
+          setActiveKey(key);
+          setOpen(false);
+        }}
         testID="drawer"
       />
     </View>

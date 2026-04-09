@@ -83,22 +83,37 @@ const COLLECTION_MAP: Record<string, string> = {
 
 // ── Token descriptions (hardcoded for non-Enterprise plans) ──────────
 const SPACING_DESC: Record<string, string> = {
-  none: "0px", xs: "4px", sm: "8px", md: "12px", lg: "16px",
-  xl: "20px", "2xl": "24px", "3xl": "32px", "4xl": "40px",
-  "5xl": "48px", "6xl": "64px",
+  none: "0px",
+  xs: "4px",
+  sm: "8px",
+  md: "12px",
+  lg: "16px",
+  xl: "20px",
+  "2xl": "24px",
+  "3xl": "32px",
+  "4xl": "40px",
+  "5xl": "48px",
+  "6xl": "64px",
 };
 
 const SHAPE_DESC: Record<string, string> = {
-  none: "0px — sharp corners", xs: "4px — extra small rounding",
-  sm: "8px — small rounding", md: "12px — medium rounding",
-  lg: "16px — large rounding", xl: "20px",
-  "2xl": "28px — extra large rounding", full: "9999px — fully rounded (pill)",
+  none: "0px — sharp corners",
+  xs: "4px — extra small rounding",
+  sm: "8px — small rounding",
+  md: "12px — medium rounding",
+  lg: "16px — large rounding",
+  xl: "20px",
+  "2xl": "28px — extra large rounding",
+  full: "9999px — fully rounded (pill)",
 };
 
 const ELEVATION_DESC: Record<string, string> = {
-  level0: "Level 0 — no elevation", level1: "Level 1 — 1dp shadow",
-  level2: "Level 2 — 3dp shadow", level3: "Level 3 — 6dp shadow",
-  level4: "Level 4 — 8dp shadow", level5: "Level 5 — 12dp shadow",
+  level0: "Level 0 — no elevation",
+  level1: "Level 1 — 1dp shadow",
+  level2: "Level 2 — 3dp shadow",
+  level3: "Level 3 — 6dp shadow",
+  level4: "Level 4 — 8dp shadow",
+  level5: "Level 5 — 12dp shadow",
 };
 
 const DESCRIPTIONS: Record<string, Record<string, string>> = {
@@ -109,7 +124,9 @@ const DESCRIPTIONS: Record<string, Record<string, string>> = {
 
 // ── Helpers ──────────────────────────────────────────────────────────
 function isColor(v: unknown): v is FigmaColor {
-  return typeof v === "object" && v !== null && "r" in v && "g" in v && "b" in v;
+  return (
+    typeof v === "object" && v !== null && "r" in v && "g" in v && "b" in v
+  );
 }
 
 function rgbaToHex(c: FigmaColor): string {
@@ -139,8 +156,18 @@ function setNested(obj: TokenTree, path: string[], leaf: TokenLeaf): void {
 
 // ── Sort order for spacing/shape tokens ──────────────────────────────
 const SIZE_ORDER = [
-  "none", "xs", "sm", "md", "lg", "xl",
-  "2xl", "3xl", "4xl", "5xl", "6xl", "full",
+  "none",
+  "xs",
+  "sm",
+  "md",
+  "lg",
+  "xl",
+  "2xl",
+  "3xl",
+  "4xl",
+  "5xl",
+  "6xl",
+  "full",
 ];
 
 function sortBySize(vars: PluginVariable[]): PluginVariable[] {
@@ -156,11 +183,21 @@ function sortBySize(vars: PluginVariable[]): PluginVariable[] {
 
 // ── Typography sort — group by role in display order ─────────────────
 const TYPO_ROLE_ORDER = [
-  "displayLarge", "displayMedium", "displaySmall",
-  "headlineLarge", "headlineMedium", "headlineSmall",
-  "titleLarge", "titleMedium", "titleSmall",
-  "labelLarge", "labelMedium", "labelSmall",
-  "bodyLarge", "bodyMedium", "bodySmall",
+  "displayLarge",
+  "displayMedium",
+  "displaySmall",
+  "headlineLarge",
+  "headlineMedium",
+  "headlineSmall",
+  "titleLarge",
+  "titleMedium",
+  "titleSmall",
+  "labelLarge",
+  "labelMedium",
+  "labelSmall",
+  "bodyLarge",
+  "bodyMedium",
+  "bodySmall",
 ];
 
 function sortTypography(vars: PluginVariable[]): PluginVariable[] {
@@ -195,7 +232,9 @@ function sortTypography(vars: PluginVariable[]): PluginVariable[] {
 function main() {
   const inputIdx = process.argv.indexOf("--input");
   if (inputIdx === -1 || !process.argv[inputIdx + 1]) {
-    console.error("Usage: npx tsx scripts/tokens-fetch.ts --input <plugin-output.json>");
+    console.error(
+      "Usage: npx tsx scripts/tokens-fetch.ts --input <plugin-output.json>",
+    );
     console.error("");
     console.error("See the Figma Plugin snippet in this file's header comment");
     console.error("to produce the input JSON.");
@@ -248,7 +287,9 @@ function main() {
 
     const outPath = join(outDir, `${outputName}.json`);
     writeFileSync(outPath, JSON.stringify(tokens, null, 2) + "\n");
-    console.log(`  ${outputName}.json (${collection.variables.length} variables)`);
+    console.log(
+      `  ${outputName}.json (${collection.variables.length} variables)`,
+    );
   }
 
   console.log("Fetch complete.");

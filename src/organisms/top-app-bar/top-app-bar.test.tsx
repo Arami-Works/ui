@@ -3,21 +3,14 @@ import { TopAppBar } from "./top-app-bar";
 
 describe("TopAppBar", () => {
   it("renders with default small type", () => {
-    const { toJSON } = render(
-      <TopAppBar title="Page Title" testID="tab" />,
-    );
+    const { toJSON } = render(<TopAppBar title="Page Title" testID="tab" />);
     expect(screen.getByTestId("tab")).toBeTruthy();
     expect(screen.getByTestId("top-app-bar-title")).toBeTruthy();
     expect(toJSON()).toBeTruthy();
   });
 
   it("renders all MD3 types without crashing", () => {
-    const types = [
-      "center-aligned",
-      "small",
-      "medium",
-      "large",
-    ] as const;
+    const types = ["center-aligned", "small", "medium", "large"] as const;
     types.forEach((type) => {
       const { unmount } = render(
         <TopAppBar title="Title" type={type} testID="tab" />,
@@ -59,12 +52,7 @@ describe("TopAppBar", () => {
 
   it("fires action onPress callback", () => {
     const onPress = jest.fn();
-    render(
-      <TopAppBar
-        title="Title"
-        actions={[{ icon: "search", onPress }]}
-      />,
-    );
+    render(<TopAppBar title="Title" actions={[{ icon: "search", onPress }]} />);
     fireEvent.press(screen.getByTestId("top-app-bar-action-0"));
     expect(onPress).toHaveBeenCalledTimes(1);
   });

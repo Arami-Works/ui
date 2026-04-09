@@ -20,7 +20,13 @@ type Story = StoryObj<FormTemplateProps>;
 export const WithActions: Story = {
   args: {
     topBar: (
-      <View backgroundColor="#E8DEF8" height={64} width="100%" alignItems="center" justifyContent="center">
+      <View
+        backgroundColor="#E8DEF8"
+        height={64}
+        width="100%"
+        alignItems="center"
+        justifyContent="center"
+      >
         <Text>Top Bar</Text>
       </View>
     ),
@@ -33,10 +39,20 @@ export const WithActions: Story = {
     ),
     actions: (
       <XStack gap={12} justifyContent="flex-end" padding={16}>
-        <View backgroundColor="#E8DEF8" borderRadius={20} paddingHorizontal={24} paddingVertical={10}>
+        <View
+          backgroundColor="#E8DEF8"
+          borderRadius={20}
+          paddingHorizontal={24}
+          paddingVertical={10}
+        >
           <Text>Cancel</Text>
         </View>
-        <View backgroundColor="#6750A4" borderRadius={20} paddingHorizontal={24} paddingVertical={10}>
+        <View
+          backgroundColor="#6750A4"
+          borderRadius={20}
+          paddingHorizontal={24}
+          paddingVertical={10}
+        >
           <Text color="#FFF">Submit</Text>
         </View>
       </XStack>

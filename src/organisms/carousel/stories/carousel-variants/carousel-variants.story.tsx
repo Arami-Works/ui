@@ -6,21 +6,15 @@ import type { CarouselProps } from "../../carousel.type";
 const sampleItems = [
   {
     key: "1",
-    content: (
-      <View backgroundColor="#E8DEF8" height={200} borderRadius={12} />
-    ),
+    content: <View backgroundColor="#E8DEF8" height={200} borderRadius={12} />,
   },
   {
     key: "2",
-    content: (
-      <View backgroundColor="#D0BCFF" height={200} borderRadius={12} />
-    ),
+    content: <View backgroundColor="#D0BCFF" height={200} borderRadius={12} />,
   },
   {
     key: "3",
-    content: (
-      <View backgroundColor="#CCC2DC" height={200} borderRadius={12} />
-    ),
+    content: <View backgroundColor="#CCC2DC" height={200} borderRadius={12} />,
   },
 ];
 

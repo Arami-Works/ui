@@ -23,9 +23,7 @@ describe("FormField", () => {
   });
 
   it("renders character counter", () => {
-    render(
-      <FormField characterCount={{ current: 5, max: 100 }} testID="ff" />,
-    );
+    render(<FormField characterCount={{ current: 5, max: 100 }} testID="ff" />);
     expect(screen.getByText("5/100")).toBeTruthy();
   });
 

@@ -8,7 +8,10 @@ const specs = [
   { property: "Max height", value: "90%" },
   { property: "Scrim opacity", value: "0.32" },
   { property: "Container color", value: "md.sys.color.surface-container-low" },
-  { property: "Drag handle color", value: "md.sys.color.on-surface-variant (0.4)" },
+  {
+    property: "Drag handle color",
+    value: "md.sys.color.on-surface-variant (0.4)",
+  },
 ];
 
 function SpecRow({

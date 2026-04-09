@@ -40,7 +40,12 @@ function Anatomy() {
       gap={48}
       alignItems="center"
     >
-      <YStack width={280} height={300} justifyContent="center" alignItems="center">
+      <YStack
+        width={280}
+        height={300}
+        justifyContent="center"
+        alignItems="center"
+      >
         <View position="relative" width={260} height={280}>
           <View
             backgroundColor="#FFFBFE"
@@ -49,21 +54,42 @@ function Anatomy() {
             height={280}
             overflow="hidden"
           >
-            <View backgroundColor="#E8DEF8" height={80} padding={16} justifyContent="flex-end">
-              <Text fontSize={12} color="#49454F">Select date</Text>
-              <Text fontSize={20} fontWeight="600" color="#1C1B1F">Mon, Aug 14</Text>
+            <View
+              backgroundColor="#E8DEF8"
+              height={80}
+              padding={16}
+              justifyContent="flex-end"
+            >
+              <Text fontSize={12} color="#49454F">
+                Select date
+              </Text>
+              <Text fontSize={20} fontWeight="600" color="#1C1B1F">
+                Mon, Aug 14
+              </Text>
             </View>
             <View padding={12} flex={1}>
               <XStack justifyContent="space-around" marginBottom={8}>
                 {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => (
-                  <Text key={i} fontSize={12} color="#49454F" width={28} textAlign="center">{d}</Text>
+                  <Text
+                    key={i}
+                    fontSize={12}
+                    color="#49454F"
+                    width={28}
+                    textAlign="center"
+                  >
+                    {d}
+                  </Text>
                 ))}
               </XStack>
               <View height={80} backgroundColor="#F5F5F5" borderRadius={8} />
             </View>
             <XStack justifyContent="flex-end" padding={12} gap={8}>
-              <Text fontSize={14} color="#6750A4">Cancel</Text>
-              <Text fontSize={14} color="#6750A4" fontWeight="600">OK</Text>
+              <Text fontSize={14} color="#6750A4">
+                Cancel
+              </Text>
+              <Text fontSize={14} color="#6750A4" fontWeight="600">
+                OK
+              </Text>
             </XStack>
           </View>
           <View position="absolute" top={10} right={-10}>

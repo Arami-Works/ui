@@ -58,7 +58,12 @@ export function Banner({
       <Container accessibilityRole="alert" accessibilityLiveRegion="polite">
         <ContentRow>
           {icon ? (
-            <Icon name={icon} size={24} color="$onSurface" testID={testID ? `${testID}-icon` : undefined} />
+            <Icon
+              name={icon}
+              size={24}
+              color="$onSurface"
+              testID={testID ? `${testID}-icon` : undefined}
+            />
           ) : null}
           <YStack flex={1}>
             <Text role="body" size="medium" color="$onSurface">

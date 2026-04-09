@@ -33,7 +33,11 @@ export const WithError: Story = {
 
 export const WithCharacterCount: Story = {
   name: "With Character Count",
-  args: { label: "Bio", value: "Hello", characterCount: { current: 5, max: 100 } },
+  args: {
+    label: "Bio",
+    value: "Hello",
+    characterCount: { current: 5, max: 100 },
+  },
 };
 
 export const WithHelper: Story = {

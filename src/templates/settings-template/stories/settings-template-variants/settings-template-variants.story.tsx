@@ -19,7 +19,13 @@ type Story = StoryObj<SettingsTemplateProps>;
 export const FlatSections: Story = {
   args: {
     topBar: (
-      <View backgroundColor="#E8DEF8" height={64} width="100%" alignItems="center" justifyContent="center">
+      <View
+        backgroundColor="#E8DEF8"
+        height={64}
+        width="100%"
+        alignItems="center"
+        justifyContent="center"
+      >
         <Text>Top Bar</Text>
       </View>
     ),

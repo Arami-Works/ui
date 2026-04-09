@@ -9,9 +9,7 @@ describe("DetailTemplate", () => {
   });
 
   it("renders topBar slot", () => {
-    render(
-      <DetailTemplate topBar={<Text testID="top-bar">Header</Text>} />,
-    );
+    render(<DetailTemplate topBar={<Text testID="top-bar">Header</Text>} />);
     expect(screen.getByTestId("top-bar")).toBeTruthy();
   });
 

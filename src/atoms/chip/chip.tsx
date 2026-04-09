@@ -54,10 +54,8 @@ export function Chip({
   const isSelected = type === "filter" && selected;
   const hasLeadingIcon = !!leadingIcon || isSelected;
 
-  const iconColor =
-    (theme.onSurfaceVariant?.val as string);
-  const selectedIconColor =
-    (theme.onSecondaryContainer?.val as string);
+  const iconColor = theme.onSurfaceVariant?.val as string;
+  const selectedIconColor = theme.onSecondaryContainer?.val as string;
   const labelColor = isSelected ? selectedIconColor : iconColor;
 
   return (
@@ -77,11 +75,7 @@ export function Chip({
       >
         {isSelected && !leadingIcon && (
           <View marginRight={8}>
-            <MaterialIcons
-              name="check"
-              size={18}
-              color={selectedIconColor}
-            />
+            <MaterialIcons name="check" size={18} color={selectedIconColor} />
           </View>
         )}
 

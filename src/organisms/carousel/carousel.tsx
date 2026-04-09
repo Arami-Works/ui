@@ -41,7 +41,10 @@ export function Carousel({
         horizontal
         pagingEnabled={isPaging}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ gap: variant === "multi-browse" ? 8 : 0, paddingHorizontal: variant === "full-screen" ? 0 : 16 }}
+        contentContainerStyle={{
+          gap: variant === "multi-browse" ? 8 : 0,
+          paddingHorizontal: variant === "full-screen" ? 0 : 16,
+        }}
         onScroll={(e) => {
           const offset = e.nativeEvent.contentOffset.x;
           const index = Math.round(offset / itemWidth);
@@ -65,7 +68,9 @@ export function Carousel({
           {items.map((item, idx) => (
             <Dot
               key={item.key}
-              backgroundColor={idx === activeIndex ? "$onSurface" : "$outlineVariant"}
+              backgroundColor={
+                idx === activeIndex ? "$onSurface" : "$outlineVariant"
+              }
             />
           ))}
         </XStack>

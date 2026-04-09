@@ -34,9 +34,24 @@ export const WithIcons: Story = {
   name: "With Icons",
   args: {
     items: [
-      { key: "cut", label: "Cut", leadingIcon: "content_cut", onPress: () => {} },
-      { key: "copy", label: "Copy", leadingIcon: "content_copy", onPress: () => {} },
-      { key: "paste", label: "Paste", leadingIcon: "content_paste", onPress: () => {} },
+      {
+        key: "cut",
+        label: "Cut",
+        leadingIcon: "content_cut",
+        onPress: () => {},
+      },
+      {
+        key: "copy",
+        label: "Copy",
+        leadingIcon: "content_copy",
+        onPress: () => {},
+      },
+      {
+        key: "paste",
+        label: "Paste",
+        leadingIcon: "content_paste",
+        onPress: () => {},
+      },
     ],
   },
 };
@@ -47,7 +62,12 @@ export const WithTrailingText: Story = {
     items: [
       { key: "cut", label: "Cut", trailingText: "Ctrl+X", onPress: () => {} },
       { key: "copy", label: "Copy", trailingText: "Ctrl+C", onPress: () => {} },
-      { key: "paste", label: "Paste", trailingText: "Ctrl+V", onPress: () => {} },
+      {
+        key: "paste",
+        label: "Paste",
+        trailingText: "Ctrl+V",
+        onPress: () => {},
+      },
     ],
   },
 };

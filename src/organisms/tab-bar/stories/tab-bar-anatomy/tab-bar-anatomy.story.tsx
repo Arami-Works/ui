@@ -18,13 +18,7 @@ function Callout({ number }: { number: number }) {
   );
 }
 
-function LegendItem({
-  number,
-  label,
-}: {
-  number: number;
-  label: string;
-}) {
+function LegendItem({ number, label }: { number: number; label: string }) {
   return (
     <XStack gap={10} alignItems="center">
       <Callout number={number} />
@@ -47,17 +41,58 @@ function Anatomy() {
       alignItems="center"
     >
       {/* Diagram */}
-      <YStack width={300} height={120} justifyContent="center" alignItems="center">
-        <View position="relative" width={280} height={64} backgroundColor="#F7F2FA" borderRadius={0}>
+      <YStack
+        width={300}
+        height={120}
+        justifyContent="center"
+        alignItems="center"
+      >
+        <View
+          position="relative"
+          width={280}
+          height={64}
+          backgroundColor="#F7F2FA"
+          borderRadius={0}
+        >
           {/* Tab items */}
           <XStack height="100%" alignItems="center">
-            <View flex={1} alignItems="center" justifyContent="center" height="100%" position="relative">
-              <View width={18} height={18} borderRadius={4} borderWidth={1.5} borderColor="#6750A4" borderStyle="dashed" opacity={0.7} />
-              <Text fontSize={12} color="#6750A4" marginTop={2}>Home</Text>
-              <View position="absolute" bottom={0} left={0} right={0} height={3} backgroundColor="#6750A4" />
+            <View
+              flex={1}
+              alignItems="center"
+              justifyContent="center"
+              height="100%"
+              position="relative"
+            >
+              <View
+                width={18}
+                height={18}
+                borderRadius={4}
+                borderWidth={1.5}
+                borderColor="#6750A4"
+                borderStyle="dashed"
+                opacity={0.7}
+              />
+              <Text fontSize={12} color="#6750A4" marginTop={2}>
+                Home
+              </Text>
+              <View
+                position="absolute"
+                bottom={0}
+                left={0}
+                right={0}
+                height={3}
+                backgroundColor="#6750A4"
+              />
             </View>
-            <View flex={1} alignItems="center" justifyContent="center" height="100%">
-              <Text fontSize={12} color="#79747E">Search</Text>
+            <View
+              flex={1}
+              alignItems="center"
+              justifyContent="center"
+              height="100%"
+            >
+              <Text fontSize={12} color="#79747E">
+                Search
+              </Text>
             </View>
           </XStack>
 

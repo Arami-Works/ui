@@ -32,11 +32,7 @@ export function DashboardTemplate({
           </XStack>
         ) : null}
 
-        {children ? (
-          <View padding="$lg">
-            {children}
-          </View>
-        ) : null}
+        {children ? <View padding="$lg">{children}</View> : null}
       </ScrollView>
     </View>
   );

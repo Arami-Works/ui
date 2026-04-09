@@ -9,7 +9,7 @@ describe("UiProvider", () => {
     render(
       <UiProvider>
         <Text testID="child">hello</Text>
-      </UiProvider>
+      </UiProvider>,
     );
     expect(screen.getByTestId("child")).toBeTruthy();
   });

@@ -11,7 +11,7 @@ const config: StorybookConfig = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-designs",
-    "@storybook/addon-docs"
+    "@storybook/addon-docs",
   ],
   framework: {
     name: "@storybook/react-vite",

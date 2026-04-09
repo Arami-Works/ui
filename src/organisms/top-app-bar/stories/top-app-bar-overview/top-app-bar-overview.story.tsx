@@ -3,12 +3,7 @@ import { XStack, YStack, Text } from "tamagui";
 import { TopAppBar } from "../../top-app-bar";
 import type { TopAppBarType } from "../../top-app-bar.type";
 
-const types: TopAppBarType[] = [
-  "center-aligned",
-  "small",
-  "medium",
-  "large",
-];
+const types: TopAppBarType[] = ["center-aligned", "small", "medium", "large"];
 
 const typeLabels: Record<TopAppBarType, string> = {
   "center-aligned": "Center-aligned",

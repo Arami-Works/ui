@@ -54,13 +54,12 @@ export function IconButton({
 
   let resolvedColor: string;
   if (iconColor?.startsWith("$")) {
-    resolvedColor =
-      (theme[iconColor.slice(1)]?.val as string) ?? iconColor;
+    resolvedColor = (theme[iconColor.slice(1)]?.val as string) ?? iconColor;
   } else if (iconColor) {
     resolvedColor = iconColor;
   } else {
     const tokenKey = variantIconColor[variant] ?? "onSurfaceVariant";
-    resolvedColor = (theme[tokenKey]?.val as string);
+    resolvedColor = theme[tokenKey]?.val as string;
   }
 
   return (

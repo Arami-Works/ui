@@ -49,19 +49,30 @@ export function Menu({ visible, onDismiss, items, testID }: MenuProps) {
                     opacity: item.disabled ? 0.38 : pressed ? 0.7 : 1,
                   })}
                   accessibilityRole="menuitem"
-                  accessibilityState={item.disabled ? { disabled: true } : undefined}
+                  accessibilityState={
+                    item.disabled ? { disabled: true } : undefined
+                  }
                   testID={`${testID}-item-${item.key}`}
                 >
                   {item.leadingIcon && (
                     <View marginRight={12}>
-                      <Icon name={item.leadingIcon} size={24} color="$onSurface" />
+                      <Icon
+                        name={item.leadingIcon}
+                        size={24}
+                        color="$onSurface"
+                      />
                     </View>
                   )}
                   <Text role="label" size="large" color="$onSurface" flex={1}>
                     {item.label}
                   </Text>
                   {item.trailingText && (
-                    <Text role="label" size="small" color="$onSurfaceVariant" marginLeft={12}>
+                    <Text
+                      role="label"
+                      size="small"
+                      color="$onSurfaceVariant"
+                      marginLeft={12}
+                    >
                       {item.trailingText}
                     </Text>
                   )}

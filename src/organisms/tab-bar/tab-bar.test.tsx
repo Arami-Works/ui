@@ -35,7 +35,9 @@ describe("TabBar", () => {
   });
 
   it("shows icon in primary variant", () => {
-    const { toJSON } = render(<TabBar tabs={tabs} variant="primary" testID="tabbar" />);
+    const { toJSON } = render(
+      <TabBar tabs={tabs} variant="primary" testID="tabbar" />,
+    );
     expect(toJSON()).toBeTruthy();
   });
 
@@ -45,7 +47,9 @@ describe("TabBar", () => {
   });
 
   it("renders with scrollable prop", () => {
-    const { toJSON } = render(<TabBar tabs={tabs} scrollable testID="tabbar" />);
+    const { toJSON } = render(
+      <TabBar tabs={tabs} scrollable testID="tabbar" />,
+    );
     expect(toJSON()).toBeTruthy();
   });
 

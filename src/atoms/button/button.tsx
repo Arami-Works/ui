@@ -47,7 +47,11 @@ const StyledButton = styled(TamaguiButton, {
   },
 } as const);
 
-export function Button({ variant = "filled", disabled, ...props }: ButtonProps) {
+export function Button({
+  variant = "filled",
+  disabled,
+  ...props
+}: ButtonProps) {
   return (
     <StyledButton
       variant={variant as any}

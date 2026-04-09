@@ -29,13 +29,33 @@ const RichContainer = styled(View, {
 function getTooltipOffset(placement: TooltipPlacement): object {
   switch (placement) {
     case "top":
-      return { bottom: "100%", left: "50%", marginBottom: 4, transform: [{ translateX: -50 }] };
+      return {
+        bottom: "100%",
+        left: "50%",
+        marginBottom: 4,
+        transform: [{ translateX: -50 }],
+      };
     case "bottom":
-      return { top: "100%", left: "50%", marginTop: 4, transform: [{ translateX: -50 }] };
+      return {
+        top: "100%",
+        left: "50%",
+        marginTop: 4,
+        transform: [{ translateX: -50 }],
+      };
     case "left":
-      return { right: "100%", top: "50%", marginRight: 4, transform: [{ translateY: -50 }] };
+      return {
+        right: "100%",
+        top: "50%",
+        marginRight: 4,
+        transform: [{ translateY: -50 }],
+      };
     case "right":
-      return { left: "100%", top: "50%", marginLeft: 4, transform: [{ translateY: -50 }] };
+      return {
+        left: "100%",
+        top: "50%",
+        marginLeft: 4,
+        transform: [{ translateY: -50 }],
+      };
   }
 }
 
@@ -59,7 +79,10 @@ export function Tooltip({
 
   return (
     <RNView style={{ position: "relative" }} testID={testID}>
-      <RNView onTouchStart={() => setVisible(true)} onTouchEnd={() => setVisible(false)}>
+      <RNView
+        onTouchStart={() => setVisible(true)}
+        onTouchEnd={() => setVisible(false)}
+      >
         {children}
       </RNView>
       {visible && (

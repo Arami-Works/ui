@@ -19,18 +19,14 @@ describe("Search", () => {
   });
 
   it("shows suggestions when active", () => {
-    render(
-      <Search active suggestions={suggestions} testID="search" />,
-    );
+    render(<Search active suggestions={suggestions} testID="search" />);
     expect(screen.getByTestId("search-suggestions")).toBeTruthy();
     expect(screen.getByText("React Native")).toBeTruthy();
     expect(screen.getByText("Tamagui")).toBeTruthy();
   });
 
   it("hides suggestions when inactive", () => {
-    render(
-      <Search active={false} suggestions={suggestions} testID="search" />,
-    );
+    render(<Search active={false} suggestions={suggestions} testID="search" />);
     expect(screen.queryByTestId("search-suggestions")).toBeNull();
   });
 
@@ -42,9 +38,7 @@ describe("Search", () => {
   });
 
   it("fires suggestion onPress", () => {
-    render(
-      <Search active suggestions={suggestions} testID="search" />,
-    );
+    render(<Search active suggestions={suggestions} testID="search" />);
     fireEvent.press(screen.getByTestId("search-suggestion-0"));
     expect(suggestions[0].onPress).toHaveBeenCalled();
   });
@@ -64,9 +58,7 @@ describe("Search", () => {
   });
 
   it("renders recent searches", () => {
-    render(
-      <Search active recentSearches={recentSearches} testID="search" />,
-    );
+    render(<Search active recentSearches={recentSearches} testID="search" />);
     expect(screen.getByText("button component")).toBeTruthy();
     expect(screen.getByText("navigation bar")).toBeTruthy();
     expect(screen.getByText("Recent searches")).toBeTruthy();
@@ -96,11 +88,7 @@ describe("Search", () => {
   it("fires onActiveChange when typing while inactive", () => {
     const onActiveChange = jest.fn();
     render(
-      <Search
-        active={false}
-        onActiveChange={onActiveChange}
-        testID="search"
-      />,
+      <Search active={false} onActiveChange={onActiveChange} testID="search" />,
     );
     fireEvent.changeText(screen.getByTestId("search-bar-input"), "q");
     expect(onActiveChange).toHaveBeenCalledWith(true);
@@ -115,9 +103,7 @@ describe("Search", () => {
 
   it("renders suggestion without icon", () => {
     const noIconSuggestions = [{ label: "No icon item", onPress: jest.fn() }];
-    render(
-      <Search active suggestions={noIconSuggestions} testID="search" />,
-    );
+    render(<Search active suggestions={noIconSuggestions} testID="search" />);
     expect(screen.getByText("No icon item")).toBeTruthy();
   });
 
@@ -136,34 +122,36 @@ describe("Search", () => {
 
   it("does not call onActiveChange when already active and text changes", () => {
     const onActiveChange = jest.fn();
-    render(
-      <Search
-        active
-        onActiveChange={onActiveChange}
-        testID="search"
-      />,
-    );
+    render(<Search active onActiveChange={onActiveChange} testID="search" />);
     fireEvent.changeText(screen.getByTestId("search-bar-input"), "q");
     expect(onActiveChange).not.toHaveBeenCalled();
   });
 
   it("renders without testID", () => {
-    render(<Search active suggestions={suggestions} recentSearches={recentSearches} />);
+    render(
+      <Search
+        active
+        suggestions={suggestions}
+        recentSearches={recentSearches}
+      />,
+    );
     expect(screen.getByText("React Native")).toBeTruthy();
     expect(screen.getByText("Recent searches")).toBeTruthy();
   });
 
   it("renders recent searches without onClearRecent", () => {
-    render(
-      <Search active recentSearches={recentSearches} testID="search" />,
-    );
+    render(<Search active recentSearches={recentSearches} testID="search" />);
     expect(screen.queryByText("Clear all")).toBeNull();
   });
 
   it("renders Clear all without testID", () => {
     const onClearRecent = jest.fn();
     render(
-      <Search active recentSearches={recentSearches} onClearRecent={onClearRecent} />,
+      <Search
+        active
+        recentSearches={recentSearches}
+        onClearRecent={onClearRecent}
+      />,
     );
     expect(screen.getByText("Clear all")).toBeTruthy();
   });

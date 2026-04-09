@@ -79,7 +79,12 @@ describe("AccordionItem", () => {
   it("disabled state prevents toggle", () => {
     const onToggle = jest.fn();
     render(
-      <AccordionItem title="Disabled" disabled onToggle={onToggle} testID="item">
+      <AccordionItem
+        title="Disabled"
+        disabled
+        onToggle={onToggle}
+        testID="item"
+      >
         <Text>Content</Text>
       </AccordionItem>,
     );

@@ -7,7 +7,7 @@ describe("SideSheet", () => {
     render(
       <SideSheet open onClose={jest.fn()}>
         <Text>Content</Text>
-      </SideSheet>
+      </SideSheet>,
     );
     expect(screen.getByText("Content")).toBeTruthy();
   });
@@ -16,7 +16,7 @@ describe("SideSheet", () => {
     render(
       <SideSheet open={false} onClose={jest.fn()}>
         <Text>Hidden</Text>
-      </SideSheet>
+      </SideSheet>,
     );
     expect(screen.queryByText("Hidden")).toBeNull();
   });
@@ -25,7 +25,7 @@ describe("SideSheet", () => {
     render(
       <SideSheet open onClose={jest.fn()} header="Filters">
         <Text>Content</Text>
-      </SideSheet>
+      </SideSheet>,
     );
     expect(screen.getByText("Filters")).toBeTruthy();
   });
@@ -34,7 +34,7 @@ describe("SideSheet", () => {
     render(
       <SideSheet open onClose={jest.fn()} testID="sheet">
         <Text>Content</Text>
-      </SideSheet>
+      </SideSheet>,
     );
     expect(screen.queryByTestId("sheet-close")).toBeNull();
   });
@@ -44,7 +44,7 @@ describe("SideSheet", () => {
     render(
       <SideSheet open onClose={onClose} header="Filters" testID="sheet">
         <Text>Content</Text>
-      </SideSheet>
+      </SideSheet>,
     );
     fireEvent.press(screen.getByTestId("sheet-close"));
     expect(onClose).toHaveBeenCalledTimes(1);
@@ -54,7 +54,7 @@ describe("SideSheet", () => {
     render(
       <SideSheet open onClose={jest.fn()} testID="sheet">
         <Text>Content</Text>
-      </SideSheet>
+      </SideSheet>,
     );
     expect(screen.getByTestId("sheet")).toBeTruthy();
   });

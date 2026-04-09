@@ -46,7 +46,14 @@ describe("Badge", () => {
   });
 
   it("forwards custom accessibilityLabel", () => {
-    render(<Badge size="large" count={5} accessibilityLabel="5 unread" testID="a11y-badge" />);
+    render(
+      <Badge
+        size="large"
+        count={5}
+        accessibilityLabel="5 unread"
+        testID="a11y-badge"
+      />,
+    );
     const element = screen.getByTestId("a11y-badge");
     expect(element.props.accessibilityLabel).toBe("5 unread");
   });

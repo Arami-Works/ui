@@ -10,8 +10,18 @@ import type { DatePickerMode, DatePickerProps } from "./date-picker.type";
 
 const DAYS_OF_WEEK = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 const MONTHS = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 const Container = styled(View, {
@@ -68,19 +78,23 @@ export function DatePicker({
   const [currentMonth, setCurrentMonth] = useState(initial.getMonth());
   const [selectedDate, setSelectedDate] = useState<Date>(initial);
   const [inputValue, setInputValue] = useState(
-    `${String(initial.getMonth() + 1).padStart(2, "0")}/${String(initial.getDate()).padStart(2, "0")}/${initial.getFullYear()}`
+    `${String(initial.getMonth() + 1).padStart(2, "0")}/${String(initial.getDate()).padStart(2, "0")}/${initial.getFullYear()}`,
   );
 
   const cells = buildCalendarGrid(currentYear, currentMonth);
 
   function prevMonth() {
-    if (currentMonth === 0) { setCurrentMonth(11); setCurrentYear(y => y - 1); }
-    else setCurrentMonth(m => m - 1);
+    if (currentMonth === 0) {
+      setCurrentMonth(11);
+      setCurrentYear((y) => y - 1);
+    } else setCurrentMonth((m) => m - 1);
   }
 
   function nextMonth() {
-    if (currentMonth === 11) { setCurrentMonth(0); setCurrentYear(y => y + 1); }
-    else setCurrentMonth(m => m + 1);
+    if (currentMonth === 11) {
+      setCurrentMonth(0);
+      setCurrentYear((y) => y + 1);
+    } else setCurrentMonth((m) => m + 1);
   }
 
   function isDisabled(day: number) {
@@ -110,7 +124,11 @@ export function DatePicker({
     if (displayMode === "input") {
       const parts = inputValue.split("/");
       if (parts.length === 3) {
-        const parsed = new Date(Number(parts[2]), Number(parts[0]) - 1, Number(parts[1]));
+        const parsed = new Date(
+          Number(parts[2]),
+          Number(parts[0]) - 1,
+          Number(parts[1]),
+        );
         if (!isNaN(parsed.getTime())) {
           onConfirm(parsed);
           return;
@@ -121,31 +139,69 @@ export function DatePicker({
   }
 
   return (
-    <Modal visible={visible} transparent animationType="fade" onRequestClose={onDismiss} testID={testID}>
-      <Pressable style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "rgba(0,0,0,0.32)" }} onPress={onDismiss}>
+    <Modal
+      visible={visible}
+      transparent
+      animationType="fade"
+      onRequestClose={onDismiss}
+      testID={testID}
+    >
+      <Pressable
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "rgba(0,0,0,0.32)",
+        }}
+        onPress={onDismiss}
+      >
         <Pressable onPress={(e) => e.stopPropagation()}>
           <Container>
-            <XStack justifyContent="space-between" alignItems="center" marginBottom={16}>
-              <Text role="body" size="small" color="$onSurfaceVariant">Select date</Text>
+            <XStack
+              justifyContent="space-between"
+              alignItems="center"
+              marginBottom={16}
+            >
+              <Text role="body" size="small" color="$onSurfaceVariant">
+                Select date
+              </Text>
               <IconButton
                 variant="standard"
-                icon={displayMode === "calendar" ? "keyboard" : "calendar_today"}
-                onPress={() => setDisplayMode(m => m === "calendar" ? "input" : "calendar")}
+                icon={
+                  displayMode === "calendar" ? "keyboard" : "calendar_today"
+                }
+                onPress={() =>
+                  setDisplayMode((m) =>
+                    m === "calendar" ? "input" : "calendar",
+                  )
+                }
               />
             </XStack>
 
             {displayMode === "calendar" ? (
               <YStack gap={8}>
                 <XStack justifyContent="space-between" alignItems="center">
-                  <IconButton variant="standard" icon="chevron_left" onPress={prevMonth} />
-                  <Text role="title" size="small">{MONTHS[currentMonth]} {currentYear}</Text>
-                  <IconButton variant="standard" icon="chevron_right" onPress={nextMonth} />
+                  <IconButton
+                    variant="standard"
+                    icon="chevron_left"
+                    onPress={prevMonth}
+                  />
+                  <Text role="title" size="small">
+                    {MONTHS[currentMonth]} {currentYear}
+                  </Text>
+                  <IconButton
+                    variant="standard"
+                    icon="chevron_right"
+                    onPress={nextMonth}
+                  />
                 </XStack>
 
                 <XStack justifyContent="space-around">
-                  {DAYS_OF_WEEK.map(d => (
+                  {DAYS_OF_WEEK.map((d) => (
                     <View key={d} width={40} alignItems="center">
-                      <Text role="label" size="small" color="$onSurfaceVariant">{d}</Text>
+                      <Text role="label" size="small" color="$onSurfaceVariant">
+                        {d}
+                      </Text>
                     </View>
                   ))}
                 </XStack>
@@ -161,13 +217,17 @@ export function DatePicker({
                         key={idx}
                         onPress={() => {
                           if (cell.thisMonth && !disabled) {
-                            setSelectedDate(new Date(currentYear, currentMonth, cell.day));
+                            setSelectedDate(
+                              new Date(currentYear, currentMonth, cell.day),
+                            );
                           }
                         }}
                         disabled={!cell.thisMonth || disabled}
                       >
                         <DayCell
-                          backgroundColor={selected ? "$primary" : "transparent"}
+                          backgroundColor={
+                            selected ? "$primary" : "transparent"
+                          }
                           borderWidth={today_ && !selected ? 1 : 0}
                           borderColor="$primary"
                         >
@@ -175,9 +235,11 @@ export function DatePicker({
                             role="body"
                             size="medium"
                             color={
-                              selected ? "$onPrimary"
-                              : !cell.thisMonth || disabled ? "$onSurfaceVariant"
-                              : "$onSurface"
+                              selected
+                                ? "$onPrimary"
+                                : !cell.thisMonth || disabled
+                                  ? "$onSurfaceVariant"
+                                  : "$onSurface"
                             }
                             opacity={!cell.thisMonth ? 0.38 : 1}
                           >
@@ -201,8 +263,12 @@ export function DatePicker({
             )}
 
             <XStack justifyContent="flex-end" gap={8} marginTop={16}>
-              <Button variant="text" onPress={onDismiss}>Cancel</Button>
-              <Button variant="text" onPress={handleConfirm}>OK</Button>
+              <Button variant="text" onPress={onDismiss}>
+                Cancel
+              </Button>
+              <Button variant="text" onPress={handleConfirm}>
+                OK
+              </Button>
             </XStack>
           </Container>
         </Pressable>
