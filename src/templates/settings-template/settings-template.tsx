@@ -4,7 +4,10 @@ import { View } from "tamagui";
 import { Text } from "../../atoms/text";
 import { Divider } from "../../atoms/divider";
 import { Accordion } from "../../molecules/accordion";
-import type { SettingsSection, SettingsTemplateProps } from "./settings-template.type";
+import type {
+  SettingsSection,
+  SettingsTemplateProps,
+} from "./settings-template.type";
 
 function SectionContent({ section }: { section: SettingsSection }) {
   return (

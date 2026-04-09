@@ -9,17 +9,21 @@ describe("DashboardTemplate", () => {
   });
 
   it("renders topBar slot", () => {
-    render(
-      <DashboardTemplate topBar={<Text>Dashboard Header</Text>} />,
-    );
+    render(<DashboardTemplate topBar={<Text>Dashboard Header</Text>} />);
     expect(screen.getByText("Dashboard Header")).toBeTruthy();
   });
 
   it("renders summary cards", () => {
     const cards = [
-      <View key="1"><Text>Card 1</Text></View>,
-      <View key="2"><Text>Card 2</Text></View>,
-      <View key="3"><Text>Card 3</Text></View>,
+      <View key="1">
+        <Text>Card 1</Text>
+      </View>,
+      <View key="2">
+        <Text>Card 2</Text>
+      </View>,
+      <View key="3">
+        <Text>Card 3</Text>
+      </View>,
     ];
     render(<DashboardTemplate testID="dashboard" summaryCards={cards} />);
     expect(screen.getByTestId("dashboard-grid")).toBeTruthy();
@@ -43,7 +47,11 @@ describe("DashboardTemplate", () => {
   });
 
   it("renders all slots together", () => {
-    const cards = [<View key="1"><Text>Stats</Text></View>];
+    const cards = [
+      <View key="1">
+        <Text>Stats</Text>
+      </View>,
+    ];
     render(
       <DashboardTemplate
         testID="full-dashboard"
@@ -70,7 +78,11 @@ describe("DashboardTemplate", () => {
   });
 
   it("renders grid without testID", () => {
-    const cards = [<View key="1"><Text>Card</Text></View>];
+    const cards = [
+      <View key="1">
+        <Text>Card</Text>
+      </View>,
+    ];
     render(<DashboardTemplate summaryCards={cards} />);
     expect(screen.getByText("Card")).toBeTruthy();
   });

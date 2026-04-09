@@ -7,7 +7,12 @@ const FIGMA_BASE = "https://www.figma.com/design/placeholder?node-id=";
 
 function Card({ label }: { label: string }) {
   return (
-    <View backgroundColor="#F7F2FA" borderRadius={12} padding={16} minHeight={80}>
+    <View
+      backgroundColor="#F7F2FA"
+      borderRadius={12}
+      padding={16}
+      minHeight={80}
+    >
       <Text fontSize={14} color="#49454F">
         {label}
       </Text>
@@ -29,7 +34,13 @@ type Story = StoryObj<DashboardTemplateProps>;
 export const WithCards: Story = {
   args: {
     topBar: (
-      <View backgroundColor="#E8DEF8" height={64} width="100%" alignItems="center" justifyContent="center">
+      <View
+        backgroundColor="#E8DEF8"
+        height={64}
+        width="100%"
+        alignItems="center"
+        justifyContent="center"
+      >
         <Text>Top Bar</Text>
       </View>
     ),

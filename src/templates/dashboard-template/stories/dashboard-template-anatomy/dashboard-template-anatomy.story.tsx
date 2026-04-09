@@ -18,13 +18,7 @@ function Callout({ number }: { number: number }) {
   );
 }
 
-function LegendItem({
-  number,
-  label,
-}: {
-  number: number;
-  label: string;
-}) {
+function LegendItem({ number, label }: { number: number; label: string }) {
   return (
     <XStack gap={10} alignItems="center">
       <Callout number={number} />
@@ -46,7 +40,12 @@ function Anatomy() {
       gap={48}
       alignItems="center"
     >
-      <YStack width={300} height={320} justifyContent="center" alignItems="center">
+      <YStack
+        width={300}
+        height={320}
+        justifyContent="center"
+        alignItems="center"
+      >
         <View position="relative" width={240} height={300}>
           <View
             backgroundColor="#F7F2FA"
@@ -69,23 +68,52 @@ function Anatomy() {
 
             <XStack flexWrap="wrap" padding={4}>
               <View width="50%" padding={4}>
-                <View backgroundColor="#EDE7F6" height={48} borderRadius={8} justifyContent="center" alignItems="center">
-                  <Text fontSize={8} color="#6750A4">Card</Text>
+                <View
+                  backgroundColor="#EDE7F6"
+                  height={48}
+                  borderRadius={8}
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <Text fontSize={8} color="#6750A4">
+                    Card
+                  </Text>
                 </View>
               </View>
               <View width="50%" padding={4}>
-                <View backgroundColor="#EDE7F6" height={48} borderRadius={8} justifyContent="center" alignItems="center">
-                  <Text fontSize={8} color="#6750A4">Card</Text>
+                <View
+                  backgroundColor="#EDE7F6"
+                  height={48}
+                  borderRadius={8}
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <Text fontSize={8} color="#6750A4">
+                    Card
+                  </Text>
                 </View>
               </View>
               <View width="50%" padding={4}>
-                <View backgroundColor="#EDE7F6" height={48} borderRadius={8} justifyContent="center" alignItems="center">
-                  <Text fontSize={8} color="#6750A4">Card</Text>
+                <View
+                  backgroundColor="#EDE7F6"
+                  height={48}
+                  borderRadius={8}
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <Text fontSize={8} color="#6750A4">
+                    Card
+                  </Text>
                 </View>
               </View>
             </XStack>
 
-            <View flex={1} padding={8} justifyContent="center" alignItems="center">
+            <View
+              flex={1}
+              padding={8}
+              justifyContent="center"
+              alignItems="center"
+            >
               <Text fontSize={10} color="#49454F">
                 Children
               </Text>

@@ -16,10 +16,7 @@ function BasicSettings() {
     },
     {
       title: "Preferences",
-      items: [
-        <Text key="1">Language</Text>,
-        <Text key="2">Theme</Text>,
-      ],
+      items: [<Text key="1">Language</Text>, <Text key="2">Theme</Text>],
     },
   ];
 
@@ -36,10 +33,7 @@ function CollapsibleSettings() {
   const sections: SettingsSection[] = [
     {
       title: "General",
-      items: [
-        <Text key="1">Notifications</Text>,
-        <Text key="2">Privacy</Text>,
-      ],
+      items: [<Text key="1">Notifications</Text>, <Text key="2">Privacy</Text>],
     },
     {
       title: "Advanced",
