@@ -133,6 +133,7 @@ export function TextField({
   onFocus,
   onBlur,
   accessibilityLabel,
+  accessibilityHint,
   testID,
   keyboardType,
   autoCapitalize,
@@ -187,6 +188,7 @@ export function TextField({
       secureTextEntry={secureTextEntry}
       multiline={multiline}
       accessibilityLabel={accessibilityLabel ?? label}
+      accessibilityHint={accessibilityHint}
       accessibilityState={disabled ? { disabled: true } : undefined}
       style={{
         flex: 1,

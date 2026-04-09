@@ -33,6 +33,7 @@ export function SegmentedButton({
   onSelectionChange,
   disabled = false,
   accessibilityLabel,
+  accessibilityHint,
   testID,
 }: SegmentedButtonProps) {
   const theme = useTheme();
@@ -63,6 +64,7 @@ export function SegmentedButton({
   return (
     <StyledGroup
       accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="tablist"
       testID={testID}
       opacity={disabled ? 0.38 : 1}

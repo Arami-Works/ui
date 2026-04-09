@@ -47,6 +47,15 @@ describe("Checkbox", () => {
     expect(element.props.accessibilityRole).toBe("checkbox");
   });
 
+  it("forwards accessibilityHint", () => {
+    render(
+      <Checkbox accessibilityHint="Accepts the terms" testID="hint-test" />,
+    );
+    expect(screen.getByTestId("hint-test").props.accessibilityHint).toBe(
+      "Accepts the terms",
+    );
+  });
+
   it("has correct accessibility state when checked", () => {
     render(<Checkbox state="checked" testID="a11y-cb" />);
     const element = screen.getByTestId("a11y-cb");

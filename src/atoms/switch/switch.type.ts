@@ -12,5 +12,7 @@ export type SwitchProps = Omit<GetProps<typeof View>, "children"> & {
   onPress?: () => void;
   /** Accessibility label */
   accessibilityLabel?: string;
+  /** Accessibility hint describing the result of toggling the switch */
+  accessibilityHint?: string;
   testID?: string;
 };

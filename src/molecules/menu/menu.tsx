@@ -17,7 +17,7 @@ const Container = styled(View, {
   shadowRadius: 6,
 } as const);
 
-export function Menu({ visible, onDismiss, items, testID }: MenuProps) {
+export function Menu({ visible, onDismiss, items, accessibilityHint, testID }: MenuProps) {
   return (
     <Modal
       visible={visible}
@@ -30,7 +30,7 @@ export function Menu({ visible, onDismiss, items, testID }: MenuProps) {
         onPress={onDismiss}
       >
         <Pressable onPress={(e) => e.stopPropagation()}>
-          <Container testID={testID} accessibilityRole="menu">
+          <Container testID={testID} accessibilityRole="menu" accessibilityHint={accessibilityHint}>
             <YStack>
               {items.map((item) => (
                 <Pressable

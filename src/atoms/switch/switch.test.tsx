@@ -53,6 +53,15 @@ describe("Switch", () => {
     expect(element.props.accessibilityRole).toBe("switch");
   });
 
+  it("forwards accessibilityHint", () => {
+    render(
+      <Switch accessibilityHint="Toggles dark mode" testID="hint-test" />,
+    );
+    expect(screen.getByTestId("hint-test").props.accessibilityHint).toBe(
+      "Toggles dark mode",
+    );
+  });
+
   it("has correct accessibility state when selected", () => {
     render(<Switch selected testID="a11y-switch" />);
     const element = screen.getByTestId("a11y-switch");

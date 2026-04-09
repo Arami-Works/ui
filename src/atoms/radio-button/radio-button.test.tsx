@@ -41,6 +41,15 @@ describe("RadioButton", () => {
     expect(element.props.accessibilityRole).toBe("radio");
   });
 
+  it("forwards accessibilityHint", () => {
+    render(
+      <RadioButton accessibilityHint="Selects this option" testID="hint-test" />,
+    );
+    expect(screen.getByTestId("hint-test").props.accessibilityHint).toBe(
+      "Selects this option",
+    );
+  });
+
   it("has correct accessibility state when selected", () => {
     render(<RadioButton selected testID="a11y-radio" />);
     const element = screen.getByTestId("a11y-radio");

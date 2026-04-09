@@ -75,6 +75,15 @@ describe("Chip", () => {
     expect(element.props.accessibilityRole).toBe("button");
   });
 
+  it("forwards accessibilityHint", () => {
+    render(
+      <Chip label="Filter" accessibilityHint="Toggles the filter" testID="hint-test" />,
+    );
+    expect(screen.getByTestId("hint-test").props.accessibilityHint).toBe(
+      "Toggles the filter",
+    );
+  });
+
   it("has correct accessibility state for selected filter chip", () => {
     render(<Chip label="Filter" type="filter" selected testID="a11y-chip" />);
     const element = screen.getByTestId("a11y-chip");

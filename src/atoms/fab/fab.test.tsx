@@ -49,6 +49,15 @@ describe("FAB", () => {
     expect(element.props.accessibilityRole).toBe("button");
   });
 
+  it("forwards accessibilityHint", () => {
+    render(
+      <FAB icon="add" accessibilityHint="Creates a new item" testID="hint-test" />,
+    );
+    expect(screen.getByTestId("hint-test").props.accessibilityHint).toBe(
+      "Creates a new item",
+    );
+  });
+
   it("forwards accessibilityLabel", () => {
     render(<FAB icon="add" accessibilityLabel="Add item" testID="a11y-fab" />);
     const element = screen.getByTestId("a11y-fab");

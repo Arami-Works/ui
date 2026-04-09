@@ -17,6 +17,7 @@ export function FAB({
   label,
   onPress,
   accessibilityLabel,
+  accessibilityHint,
   testID,
   ...props
 }: FabProps) {
@@ -67,6 +68,7 @@ export function FAB({
     <Pressable
       onPress={onPress}
       accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="button"
       testID={testID}
       style={containerStyle}

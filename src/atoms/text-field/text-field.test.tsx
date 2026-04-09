@@ -60,6 +60,15 @@ describe("TextField", () => {
     expect(input.props.accessibilityLabel).toBe("Email address");
   });
 
+  it("forwards accessibilityHint to input", () => {
+    render(
+      <TextField accessibilityHint="Enter your email address" testID="hint-test" />,
+    );
+    expect(screen.getByTestId("hint-test-input").props.accessibilityHint).toBe(
+      "Enter your email address",
+    );
+  });
+
   it("defaults accessibilityLabel to label prop", () => {
     render(<TextField label="Email" testID="a11y-tf" />);
     const input = screen.getByTestId("a11y-tf-input");

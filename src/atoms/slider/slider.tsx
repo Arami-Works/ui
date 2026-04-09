@@ -79,6 +79,7 @@ export function Slider({
   disabled = false,
   onValueChange,
   accessibilityLabel,
+  accessibilityHint,
   testID,
 }: SliderProps) {
   const theme = useTheme();
@@ -162,6 +163,7 @@ export function Slider({
       opacity={containerOpacity}
       accessibilityRole="adjustable"
       accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityValue={{ min, max, now: currentValue }}
     >
       <View

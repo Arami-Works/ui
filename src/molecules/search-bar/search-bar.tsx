@@ -34,6 +34,7 @@ export function SearchBar({
   onTrailingIconPress,
   disabled = false,
   accessibilityLabel,
+  accessibilityHint,
   testID,
 }: SearchBarProps) {
   const theme = useTheme();
@@ -70,6 +71,7 @@ export function SearchBar({
       isDisabled={disabled ? true : undefined}
       testID={testID}
       accessibilityLabel={accessibilityLabel ?? placeholder}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="search"
     >
       <View marginRight={12}>

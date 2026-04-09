@@ -20,6 +20,8 @@ export type MenuProps = {
   onDismiss: () => void;
   /** Menu items */
   items: MenuItem[];
+  /** Accessibility hint describing the result of interacting with the menu */
+  accessibilityHint?: string;
   /** Test ID */
   testID?: string;
 };

@@ -40,6 +40,7 @@ export function Checkbox({
   disabled = false,
   onPress,
   accessibilityLabel,
+  accessibilityHint,
   testID,
   ...props
 }: CheckboxProps) {
@@ -64,6 +65,7 @@ export function Checkbox({
       disabled={disabled}
       accessibilityRole="checkbox"
       accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityState={{ checked: state === "checked", disabled }}
       testID={testID}
       style={{
