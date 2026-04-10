@@ -160,6 +160,7 @@ jobs:
         working-directory: storybook-static
         env:
           PROFILE: ${{ needs.resolve-params.outputs.profile }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
         run: |
           PROD_FLAG=""
           if [ "$PROFILE" = "master" ]; then
@@ -170,6 +171,7 @@ jobs:
           echo "deploy_url=$DEPLOY_URL" >> "$GITHUB_OUTPUT"
           if [ "$PROFILE" != "master" ]; then
             npx vercel alias "$DEPLOY_URL" "${{ steps.domain.outputs.url }}" \
+              --scope=$VERCEL_ORG_ID \
               --token=${{ secrets.VERCEL_TOKEN }}
           fi
 
