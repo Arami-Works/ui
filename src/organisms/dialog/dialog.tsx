@@ -48,7 +48,7 @@ export function Dialog({
         testID={testID ? `${testID}-scrim` : undefined}
       >
         <Scrim>
-          <Pressable onPress={(e) => e.stopPropagation()}>
+          <Pressable onPress={(e) => e?.stopPropagation()}>
             <Container testID={testID}>
               <YStack gap={16}>
                 {icon && (

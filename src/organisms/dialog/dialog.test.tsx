@@ -124,6 +124,45 @@ describe("Dialog", () => {
     expect(screen.getByTestId("custom-dialog")).toBeTruthy();
   });
 
+  it("renders without testID", () => {
+    render(
+      <Dialog visible title="No ID" onConfirm={jest.fn()} onDismiss={jest.fn()}>
+        Content
+      </Dialog>,
+    );
+    expect(screen.getByText("No ID")).toBeTruthy();
+    expect(screen.getByText("Content")).toBeTruthy();
+  });
+
+  it("renders icon without testID", () => {
+    render(
+      <Dialog visible icon="info">
+        Content
+      </Dialog>,
+    );
+    expect(screen.getByText("Content")).toBeTruthy();
+  });
+
+  it("renders scrollable body without testID", () => {
+    const { toJSON } = render(
+      <Dialog visible scrollable>
+        <>Scrollable content</>
+      </Dialog>,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("stops propagation when pressing inside the dialog", () => {
+    const onDismiss = jest.fn();
+    render(
+      <Dialog visible onDismiss={onDismiss} testID="dialog">
+        Inner content
+      </Dialog>,
+    );
+    fireEvent.press(screen.getByTestId("dialog"));
+    expect(onDismiss).not.toHaveBeenCalled();
+  });
+
   describe("scrollable body", () => {
     it("renders body as Text when scrollable is false", () => {
       render(
