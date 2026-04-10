@@ -307,6 +307,7 @@ export function DatePicker({
                 icon={
                   displayMode === "calendar" ? "keyboard" : "calendar_today"
                 }
+                testID={testID ? `${testID}-mode-toggle` : undefined}
                 onPress={() => {
                   setDisplayMode((m) =>
                     m === "calendar" ? "input" : "calendar",
@@ -372,6 +373,7 @@ export function DatePicker({
                     <IconButton
                       variant="standard"
                       icon="chevron_left"
+                      testID={testID ? `${testID}-prev-month` : undefined}
                       onPress={prevMonth}
                     />
                     <Pressable
@@ -395,6 +397,7 @@ export function DatePicker({
                     <IconButton
                       variant="standard"
                       icon="chevron_right"
+                      testID={testID ? `${testID}-next-month` : undefined}
                       onPress={nextMonth}
                     />
                   </XStack>
