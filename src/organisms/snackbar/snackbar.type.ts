@@ -13,6 +13,8 @@ export type SnackbarProps = {
   onDismiss?: () => void;
   /** Auto-hide duration in ms. Default: 4000. Set 0 for indefinite. */
   duration?: number;
+  /** Number of text lines. "two" increases height and wraps action below. Default: "single" */
+  lines?: "single" | "two";
   /** Test ID for testing */
   testID?: string;
 };
