@@ -4,6 +4,8 @@ export type SearchSuggestion = {
   onPress: () => void;
 };
 
+export type SearchVariant = "bar" | "fullScreen";
+
 export type SearchProps = {
   value?: string;
   onChangeText?: (text: string) => void;
@@ -16,5 +18,7 @@ export type SearchProps = {
   onClearRecent?: () => void;
   active?: boolean;
   onActiveChange?: (active: boolean) => void;
+  /** Search display variant. "fullScreen" expands to fill the screen. Default: "bar" */
+  variant?: SearchVariant;
   testID?: string;
 };

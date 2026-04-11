@@ -155,4 +155,25 @@ describe("Search", () => {
     );
     expect(screen.getByText("Clear all")).toBeTruthy();
   });
+
+  it("renders in full-screen variant with overlay positioning", () => {
+    render(<Search variant="fullScreen" testID="search" />);
+    expect(screen.getByTestId("search")).toBeTruthy();
+  });
+
+  it("shows suggestions in full-screen variant without active prop", () => {
+    render(
+      <Search
+        variant="fullScreen"
+        recentSearches={["react", "tamagui"]}
+        testID="search"
+      />,
+    );
+    expect(screen.getByTestId("search-suggestions")).toBeTruthy();
+  });
+
+  it("defaults to bar variant", () => {
+    render(<Search testID="search" />);
+    expect(screen.getByTestId("search")).toBeTruthy();
+  });
 });
