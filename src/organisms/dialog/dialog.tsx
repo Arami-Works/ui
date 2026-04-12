@@ -13,10 +13,12 @@ const Scrim = styled(View, {
   alignItems: "center",
 });
 
+const DIALOG_RADIUS = 28;
+
 const Container = styled(View, {
   name: "Dialog",
   backgroundColor: "$surfaceContainerHigh",
-  borderRadius: 28,
+  borderRadius: DIALOG_RADIUS,
   minWidth: 280,
   maxWidth: 560,
   overflow: "hidden",
@@ -57,10 +59,13 @@ export function Dialog({
                   style={{
                     width: "100%",
                     height: 200,
-                    borderTopLeftRadius: 28,
-                    borderTopRightRadius: 28,
+                    // Android doesn't honour Container's overflow:hidden, so we
+                    // replicate the top radius here to clip the image correctly.
+                    borderTopLeftRadius: DIALOG_RADIUS,
+                    borderTopRightRadius: DIALOG_RADIUS,
                   }}
                   resizeMode="cover"
+                  accessible={false}
                   testID={testID ? `${testID}-hero` : undefined}
                 />
               )}
