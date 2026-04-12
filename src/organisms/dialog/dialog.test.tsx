@@ -163,6 +163,39 @@ describe("Dialog", () => {
     expect(onDismiss).not.toHaveBeenCalled();
   });
 
+  it("renders hero image when heroImage prop is provided", () => {
+    render(
+      <Dialog
+        visible
+        heroImage={{ uri: "https://example.com/image.jpg" }}
+        title="Photo"
+        testID="dialog"
+      />,
+    );
+    expect(screen.getByTestId("dialog-hero")).toBeTruthy();
+  });
+
+  it("does not render hero image when heroImage is omitted", () => {
+    render(<Dialog visible title="Basic" testID="dialog" />);
+    expect(screen.queryByTestId("dialog-hero")).toBeNull();
+  });
+
+  it("renders hero image with title and actions together", () => {
+    render(
+      <Dialog
+        visible
+        heroImage={{ uri: "https://example.com/image.jpg" }}
+        title="Photo"
+        onConfirm={() => {}}
+        onDismiss={() => {}}
+        testID="dialog"
+      />,
+    );
+    expect(screen.getByTestId("dialog-hero")).toBeTruthy();
+    expect(screen.getByTestId("dialog-title")).toBeTruthy();
+    expect(screen.getByTestId("dialog-confirm")).toBeTruthy();
+  });
+
   describe("scrollable body", () => {
     it("renders body as Text when scrollable is false", () => {
       render(

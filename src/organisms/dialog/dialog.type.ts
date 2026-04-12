@@ -1,8 +1,11 @@
 import type { ReactNode } from "react";
+import type { ImageSourcePropType } from "react-native";
 
 export type DialogProps = {
   /** Whether the dialog is visible */
   visible: boolean;
+  /** Optional hero image displayed above the title. MD3 full-width variant. */
+  heroImage?: ImageSourcePropType;
   /** Optional icon name (Material Icons) */
   icon?: string;
   /** Optional title text */
