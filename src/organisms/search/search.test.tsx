@@ -192,9 +192,7 @@ describe("Search", () => {
 
   it("fires onBack when back button pressed in fullScreen variant", () => {
     const onBack = jest.fn();
-    render(
-      <Search variant="fullScreen" onBack={onBack} testID="search" />,
-    );
+    render(<Search variant="fullScreen" onBack={onBack} testID="search" />);
     fireEvent.press(screen.getByTestId("search-back"));
     expect(onBack).toHaveBeenCalled();
   });
