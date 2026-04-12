@@ -8,10 +8,14 @@ import type {
   NavigationDestination,
 } from "./navigation-bar.type";
 
+// MD3 NavigationBar height spec: 80dp with labels, 56dp without
+const NAV_BAR_HEIGHT_DEFAULT = 80;
+const NAV_BAR_HEIGHT_COMPACT = 56;
+
 const Bar = styled(View, {
   name: "NavigationBar",
   flexDirection: "row",
-  height: 80,
+  height: NAV_BAR_HEIGHT_DEFAULT,
   backgroundColor: "$surfaceContainer",
   alignItems: "center",
 });
@@ -58,7 +62,7 @@ export function NavigationBar({
   testID,
 }: NavigationBarProps) {
   return (
-    <Bar testID={testID} height={showLabels ? 80 : 56}>
+    <Bar testID={testID} height={showLabels ? NAV_BAR_HEIGHT_DEFAULT : NAV_BAR_HEIGHT_COMPACT}>
       {destinations.map((dest: NavigationDestination, index: number) => {
         const active = index === activeIndex;
         const iconName =
