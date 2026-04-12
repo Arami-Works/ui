@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal, Pressable, View as RNView } from "react-native";
 import { styled, View, YStack } from "tamagui";
 import { Divider } from "../../atoms/divider";
@@ -31,6 +31,12 @@ export function Menu({
   testID,
 }: MenuProps) {
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!visible) {
+      setOpenSubmenu(null);
+    }
+  }, [visible]);
 
   return (
     <Modal
@@ -126,24 +132,29 @@ export function Menu({
                         )}
                       </Pressable>
                       {item.submenu && openSubmenu === item.key && (
-                        <View position="absolute" left="100%" top={0} zIndex={1}>
+                        <View position="absolute" left="100%" top={0} zIndex={1} accessibilityRole="menu">
                           <Container>
                             <YStack>
                               {item.submenu.map((subItem) => (
                                 <Pressable
                                   key={subItem.key}
                                   onPress={() => {
-                                    subItem.onPress();
-                                    onDismiss();
+                                    if (!subItem.disabled) {
+                                      subItem.onPress();
+                                      onDismiss();
+                                    }
                                   }}
                                   style={({ pressed }) => ({
                                     flexDirection: "row",
                                     alignItems: "center",
                                     paddingHorizontal: 12,
                                     paddingVertical: 12,
-                                    opacity: pressed ? 0.7 : 1,
+                                    opacity: subItem.disabled ? 0.38 : pressed ? 0.7 : 1,
                                   })}
                                   accessibilityRole="menuitem"
+                                  accessibilityState={
+                                    subItem.disabled ? { disabled: true } : undefined
+                                  }
                                   testID={`${testID}-item-${item.key}-${subItem.key}`}
                                 >
                                   <Text
