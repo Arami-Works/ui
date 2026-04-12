@@ -93,4 +93,116 @@ describe("Menu", () => {
       expect.objectContaining({ disabled: true }),
     );
   });
+
+  it("renders divider between items", () => {
+    render(
+      <Menu
+        visible
+        onDismiss={() => {}}
+        items={[
+          { key: "a", label: "Item A", onPress: () => {} },
+          { key: "div", type: "divider" },
+          { key: "b", label: "Item B", onPress: () => {} },
+        ]}
+        testID="menu"
+      />,
+    );
+    expect(screen.getByTestId("menu-item-a")).toBeTruthy();
+    expect(screen.getByTestId("menu-item-b")).toBeTruthy();
+  });
+
+  it("renders chevron for items with submenu", () => {
+    render(
+      <Menu
+        visible
+        onDismiss={() => {}}
+        items={[
+          {
+            key: "more",
+            label: "More options",
+            onPress: () => {},
+            submenu: [{ key: "sub1", label: "Sub item", onPress: () => {} }],
+          },
+        ]}
+        testID="menu"
+      />,
+    );
+    expect(screen.getByTestId("menu-item-more")).toBeTruthy();
+  });
+
+  it("pressing parent item opens submenu, pressing again closes it", () => {
+    render(
+      <Menu
+        visible
+        onDismiss={() => {}}
+        items={[
+          {
+            key: "more",
+            label: "More options",
+            onPress: () => {},
+            submenu: [{ key: "sub1", label: "Sub item", onPress: () => {} }],
+          },
+        ]}
+        testID="menu"
+      />,
+    );
+    expect(screen.queryByTestId("menu-item-more-sub1")).toBeNull();
+    fireEvent.press(screen.getByTestId("menu-item-more"));
+    expect(screen.getByTestId("menu-item-more-sub1")).toBeTruthy();
+    fireEvent.press(screen.getByTestId("menu-item-more"));
+    expect(screen.queryByTestId("menu-item-more-sub1")).toBeNull();
+  });
+
+  it("pressing subitem fires its onPress and calls onDismiss", () => {
+    const subOnPress = jest.fn();
+    const onDismiss = jest.fn();
+    render(
+      <Menu
+        visible
+        onDismiss={onDismiss}
+        items={[
+          {
+            key: "more",
+            label: "More options",
+            onPress: () => {},
+            submenu: [{ key: "sub1", label: "Sub item", onPress: subOnPress }],
+          },
+        ]}
+        testID="menu"
+      />,
+    );
+    fireEvent.press(screen.getByTestId("menu-item-more"));
+    fireEvent.press(screen.getByTestId("menu-item-more-sub1"));
+    expect(subOnPress).toHaveBeenCalled();
+    expect(onDismiss).toHaveBeenCalled();
+  });
+
+  it("does not call subitem onPress when subitem is disabled", () => {
+    const subOnPress = jest.fn();
+    render(
+      <Menu
+        visible
+        onDismiss={() => {}}
+        items={[
+          {
+            key: "more",
+            label: "More options",
+            onPress: () => {},
+            submenu: [
+              {
+                key: "sub1",
+                label: "Sub item",
+                onPress: subOnPress,
+                disabled: true,
+              },
+            ],
+          },
+        ]}
+        testID="menu"
+      />,
+    );
+    fireEvent.press(screen.getByTestId("menu-item-more"));
+    fireEvent.press(screen.getByTestId("menu-item-more-sub1"));
+    expect(subOnPress).not.toHaveBeenCalled();
+  });
 });
