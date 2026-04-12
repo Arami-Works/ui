@@ -64,10 +64,7 @@ export function Dialog({
                   testID={testID ? `${testID}-hero` : undefined}
                 />
               )}
-              <View
-                padding={24}
-                paddingTop={heroImage ? 16 : 24}
-              >
+              <View padding={24} paddingTop={heroImage ? 16 : 24}>
                 <YStack gap={16}>
                   {icon && (
                     <View alignItems="center">
@@ -97,7 +94,11 @@ export function Dialog({
                         style={{ maxHeight: 300 }}
                         testID={testID ? `${testID}-body` : undefined}
                       >
-                        <Text role="body" size="medium" color="$onSurfaceVariant">
+                        <Text
+                          role="body"
+                          size="medium"
+                          color="$onSurfaceVariant"
+                        >
                           {children}
                         </Text>
                       </ScrollView>
