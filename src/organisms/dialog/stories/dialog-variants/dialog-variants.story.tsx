@@ -36,3 +36,14 @@ export const WithIcon: Story = {
     children: <Text>Body text for the dialog.</Text>,
   },
 };
+
+export const HeroImage: Story = {
+  args: {
+    heroImage: { uri: "https://picsum.photos/560/200" },
+    title: "Summer Collection",
+    children: "Check out our latest arrivals for the season.",
+    confirmLabel: "View",
+    onConfirm: () => {},
+    onDismiss: () => {},
+  },
+};

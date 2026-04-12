@@ -52,3 +52,14 @@ export const FiveItems: Story = {
     ],
   },
 };
+
+export const LabelLess: Story = {
+  args: {
+    showLabels: false,
+    destinations: [
+      { icon: "home", label: "Home" },
+      { icon: "search", label: "Search" },
+      { icon: "person", label: "Profile" },
+    ],
+  },
+};
