@@ -122,12 +122,16 @@ describe("Slider", () => {
   });
 
   it("renders range variant", () => {
-    render(<Slider variant="range" lowValue={20} highValue={80} testID="slider" />);
+    render(
+      <Slider variant="range" lowValue={20} highValue={80} testID="slider" />,
+    );
     expect(screen.getByTestId("slider")).toBeTruthy();
   });
 
   it("renders two thumbs in range variant", () => {
-    render(<Slider variant="range" lowValue={20} highValue={80} testID="slider" />);
+    render(
+      <Slider variant="range" lowValue={20} highValue={80} testID="slider" />,
+    );
     expect(screen.getByTestId("slider-thumb-low")).toBeTruthy();
     expect(screen.getByTestId("slider-thumb-high")).toBeTruthy();
   });
