@@ -62,7 +62,10 @@ export function NavigationBar({
   testID,
 }: NavigationBarProps) {
   return (
-    <Bar testID={testID} height={showLabels ? NAV_BAR_HEIGHT_DEFAULT : NAV_BAR_HEIGHT_COMPACT}>
+    <Bar
+      testID={testID}
+      height={showLabels ? NAV_BAR_HEIGHT_DEFAULT : NAV_BAR_HEIGHT_COMPACT}
+    >
       {destinations.map((dest: NavigationDestination, index: number) => {
         const active = index === activeIndex;
         const iconName =
