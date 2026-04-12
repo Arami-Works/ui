@@ -86,10 +86,25 @@ export const WithDisabledItem: Story = {
 export const WithDivider: Story = {
   args: {
     items: [
-      { key: "cut", label: "Cut", leadingIcon: "content-cut", onPress: () => {} },
-      { key: "copy", label: "Copy", leadingIcon: "content-copy", onPress: () => {} },
+      {
+        key: "cut",
+        label: "Cut",
+        leadingIcon: "content-cut",
+        onPress: () => {},
+      },
+      {
+        key: "copy",
+        label: "Copy",
+        leadingIcon: "content-copy",
+        onPress: () => {},
+      },
       { key: "div1", type: "divider" },
-      { key: "paste", label: "Paste", leadingIcon: "content-paste", onPress: () => {} },
+      {
+        key: "paste",
+        label: "Paste",
+        leadingIcon: "content-paste",
+        onPress: () => {},
+      },
     ],
   },
 };

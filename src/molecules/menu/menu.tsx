@@ -132,7 +132,13 @@ export function Menu({
                         )}
                       </Pressable>
                       {item.submenu && openSubmenu === item.key && (
-                        <View position="absolute" left="100%" top={0} zIndex={1} accessibilityRole="menu">
+                        <View
+                          position="absolute"
+                          left="100%"
+                          top={0}
+                          zIndex={1}
+                          accessibilityRole="menu"
+                        >
                           <Container>
                             <YStack>
                               {item.submenu.map((subItem) => (
@@ -149,11 +155,17 @@ export function Menu({
                                     alignItems: "center",
                                     paddingHorizontal: 12,
                                     paddingVertical: 12,
-                                    opacity: subItem.disabled ? 0.38 : pressed ? 0.7 : 1,
+                                    opacity: subItem.disabled
+                                      ? 0.38
+                                      : pressed
+                                        ? 0.7
+                                        : 1,
                                   })}
                                   accessibilityRole="menuitem"
                                   accessibilityState={
-                                    subItem.disabled ? { disabled: true } : undefined
+                                    subItem.disabled
+                                      ? { disabled: true }
+                                      : undefined
                                   }
                                   testID={`${testID}-item-${item.key}-${subItem.key}`}
                                 >
