@@ -77,7 +77,7 @@ export function Snackbar({
   return (
     <Container testID={testID} {...(isTwoLine && { minHeight: 68 })}>
       {isTwoLine ? (
-        <YStack gap={4}>
+        <YStack gap="$xs">
           <Text
             role="body"
             size="medium"
