@@ -1,4 +1,9 @@
-import { KeyboardAvoidingView, Modal, Platform, ScrollView } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Modal,
+  Platform,
+  ScrollView,
+} from "react-native";
 import { styled, View, XStack } from "tamagui";
 import { IconButton } from "../../atoms/icon-button";
 import { Text } from "../../atoms/text";
