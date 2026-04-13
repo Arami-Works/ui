@@ -18,6 +18,6 @@ export type ShowConfirmDialogOptions = {
 export type UseConfirmDialogReturn = {
   /** Imperatively show the confirm dialog */
   showConfirmDialog: (options: ShowConfirmDialogOptions) => void;
-  /** Render this portal in your view's JSX to enable the dialog */
+  /** Render this in your view's JSX to enable the dialog */
   ConfirmDialogPortal: () => ReactElement | null;
 };
