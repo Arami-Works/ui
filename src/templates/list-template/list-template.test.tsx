@@ -57,9 +57,7 @@ describe("ListTemplate", () => {
   });
 
   it("renders fab slot", () => {
-    render(
-      <ListTemplate testID="lt" fab={<Text testID="fab">FAB</Text>} />,
-    );
+    render(<ListTemplate testID="lt" fab={<Text testID="fab">FAB</Text>} />);
     expect(screen.getByTestId("fab")).toBeTruthy();
   });
 });
