@@ -406,7 +406,7 @@ describe("DatePicker", () => {
     it("renders without crash", () => {
       render(
         <DatePicker
-          visible={false}
+          visible={true}
           variant="docked"
           onConfirm={jest.fn()}
           onDismiss={jest.fn()}
@@ -416,7 +416,7 @@ describe("DatePicker", () => {
       expect(screen.getByTestId("dp-docked")).toBeTruthy();
     });
 
-    it("is visible without visible prop being true", () => {
+    it("does not render when visible is false", () => {
       render(
         <DatePicker
           visible={false}
@@ -426,13 +426,13 @@ describe("DatePicker", () => {
           testID="dp-docked"
         />,
       );
-      expect(screen.getByTestId("dp-docked")).toBeTruthy();
+      expect(screen.queryByTestId("dp-docked")).toBeNull();
     });
 
     it("renders calendar by default", () => {
       render(
         <DatePicker
-          visible={false}
+          visible={true}
           variant="docked"
           onConfirm={jest.fn()}
           onDismiss={jest.fn()}
@@ -445,7 +445,7 @@ describe("DatePicker", () => {
     it("renders confirm and cancel buttons", () => {
       render(
         <DatePicker
-          visible={false}
+          visible={true}
           variant="docked"
           onConfirm={jest.fn()}
           onDismiss={jest.fn()}
@@ -460,7 +460,7 @@ describe("DatePicker", () => {
       const onDismiss = jest.fn();
       render(
         <DatePicker
-          visible={false}
+          visible={true}
           variant="docked"
           onConfirm={jest.fn()}
           onDismiss={onDismiss}
@@ -471,10 +471,25 @@ describe("DatePicker", () => {
       expect(onDismiss).toHaveBeenCalled();
     });
 
+    it("calls onConfirm when OK pressed in docked variant", () => {
+      const onConfirm = jest.fn();
+      render(
+        <DatePicker
+          visible={true}
+          variant="docked"
+          onConfirm={onConfirm}
+          onDismiss={jest.fn()}
+          testID="dp-docked"
+        />,
+      );
+      fireEvent.press(screen.getByText("OK"));
+      expect(onConfirm).toHaveBeenCalled();
+    });
+
     it("renders docked variant in dark mode", () => {
       render(
         <DatePicker
-          visible={false}
+          visible={true}
           variant="docked"
           onConfirm={jest.fn()}
           onDismiss={jest.fn()}

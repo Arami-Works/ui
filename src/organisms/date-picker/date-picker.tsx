@@ -502,6 +502,7 @@ export function DatePicker({
   );
 
   if (variant === "docked") {
+    if (visible === false) return null;
     return content;
   }
 
