@@ -38,9 +38,11 @@ describe("useConfirmDialog", () => {
       });
     });
     // Simulate confirm press by extracting props
-    const portal = result.current.ConfirmDialogPortal() as ReactElement;
+    const portal = result.current.ConfirmDialogPortal() as ReactElement<
+      Record<string, unknown>
+    >;
     act(() => {
-      portal.props.onConfirm();
+      (portal.props.onConfirm as () => void)();
     });
     expect(onConfirm).toHaveBeenCalledTimes(1);
   });
@@ -56,9 +58,11 @@ describe("useConfirmDialog", () => {
         onDismiss,
       });
     });
-    const portal = result.current.ConfirmDialogPortal() as ReactElement;
+    const portal = result.current.ConfirmDialogPortal() as ReactElement<
+      Record<string, unknown>
+    >;
     act(() => {
-      portal.props.onDismiss();
+      (portal.props.onDismiss as () => void)();
     });
     expect(onDismiss).toHaveBeenCalledTimes(1);
   });
@@ -72,7 +76,9 @@ describe("useConfirmDialog", () => {
         onConfirm: jest.fn(),
       });
     });
-    const portal = result.current.ConfirmDialogPortal() as ReactElement;
+    const portal = result.current.ConfirmDialogPortal() as ReactElement<
+      Record<string, unknown>
+    >;
     expect(portal.props.confirmLabel).toBe("확인");
     expect(portal.props.dismissLabel).toBe("취소");
   });
