@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { act, renderHook } from "@testing-library/react-native";
 import { useConfirmDialog } from "./use-confirm-dialog";
 
@@ -37,7 +38,7 @@ describe("useConfirmDialog", () => {
       });
     });
     // Simulate confirm press by extracting props
-    const portal = result.current.ConfirmDialogPortal() as React.ReactElement;
+    const portal = result.current.ConfirmDialogPortal() as ReactElement;
     act(() => {
       portal.props.onConfirm();
     });
@@ -55,7 +56,7 @@ describe("useConfirmDialog", () => {
         onDismiss,
       });
     });
-    const portal = result.current.ConfirmDialogPortal() as React.ReactElement;
+    const portal = result.current.ConfirmDialogPortal() as ReactElement;
     act(() => {
       portal.props.onDismiss();
     });
@@ -71,7 +72,7 @@ describe("useConfirmDialog", () => {
         onConfirm: jest.fn(),
       });
     });
-    const portal = result.current.ConfirmDialogPortal() as React.ReactElement;
+    const portal = result.current.ConfirmDialogPortal() as ReactElement;
     expect(portal.props.confirmLabel).toBe("확인");
     expect(portal.props.dismissLabel).toBe("취소");
   });

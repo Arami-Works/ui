@@ -1,3 +1,5 @@
+import type { ReactElement } from "react";
+
 export type ShowConfirmDialogOptions = {
   /** Dialog title */
   title: string;
@@ -17,5 +19,5 @@ export type UseConfirmDialogReturn = {
   /** Imperatively show the confirm dialog */
   showConfirmDialog: (options: ShowConfirmDialogOptions) => void;
   /** Render this portal in your view's JSX to enable the dialog */
-  ConfirmDialogPortal: () => React.ReactElement | null;
+  ConfirmDialogPortal: () => ReactElement | null;
 };
