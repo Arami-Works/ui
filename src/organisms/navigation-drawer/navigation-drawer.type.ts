@@ -20,11 +20,7 @@ export type DrawerSection = {
   destinations: DrawerDestination[];
 };
 
-export type NavigationDrawerProps = {
-  /** Whether the drawer is open */
-  open: boolean;
-  /** Close handler */
-  onClose: () => void;
+type DrawerSharedProps = {
   /** Navigation sections */
   sections: DrawerSection[];
   /** Currently active destination key */
@@ -36,3 +32,21 @@ export type NavigationDrawerProps = {
   /** Test ID */
   testID?: string;
 };
+
+type DrawerModalProps = DrawerSharedProps & {
+  variant?: "modal";
+  /** Whether the drawer is open */
+  open: boolean;
+  /** Close handler */
+  onClose: () => void;
+};
+
+type DrawerStandardProps = DrawerSharedProps & {
+  variant: "standard";
+  /** Ignored — standard variant is always visible */
+  open?: boolean;
+  /** Ignored — standard variant has no close gesture */
+  onClose?: () => void;
+};
+
+export type NavigationDrawerProps = DrawerModalProps | DrawerStandardProps;

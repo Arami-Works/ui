@@ -72,3 +72,19 @@ export const WithSections: Story = {
     ],
   },
 };
+
+export const Standard: Story = {
+  args: {
+    variant: "standard",
+    open: false,
+    sections: [
+      {
+        destinations: [
+          { icon: "inbox", label: "Inbox", key: "inbox" },
+          { icon: "send", label: "Sent", key: "sent" },
+          { icon: "drafts", label: "Drafts", key: "drafts" },
+        ],
+      },
+    ],
+  },
+};

@@ -1,3 +1,4 @@
+import { Modal } from "react-native";
 import { render, screen, fireEvent } from "@/test-utils";
 import { NavigationDrawer } from "./navigation-drawer";
 
@@ -53,5 +54,85 @@ describe("NavigationDrawer", () => {
       />,
     );
     expect(screen.getByTestId("drawer-dest-home")).toBeTruthy();
+  });
+
+  describe("standard variant", () => {
+    it("renders standard variant without crash", () => {
+      render(
+        <NavigationDrawer
+          open={false}
+          onClose={jest.fn()}
+          sections={sections}
+          variant="standard"
+          testID="drawer"
+        />,
+      );
+      expect(screen.getByTestId("drawer")).toBeTruthy();
+    });
+
+    it("standard variant renders drawer content without Modal", () => {
+      const { UNSAFE_queryByType } = render(
+        <NavigationDrawer
+          open={false}
+          onClose={jest.fn()}
+          sections={sections}
+          variant="standard"
+          testID="drawer"
+        />,
+      );
+      expect(UNSAFE_queryByType(Modal)).toBeNull();
+    });
+
+    it("standard variant is always visible regardless of open prop", () => {
+      const { rerender } = render(
+        <NavigationDrawer
+          open={false}
+          onClose={jest.fn()}
+          sections={sections}
+          variant="standard"
+          testID="drawer"
+        />,
+      );
+      expect(screen.getByTestId("drawer")).toBeTruthy();
+      rerender(
+        <NavigationDrawer
+          open={true}
+          onClose={jest.fn()}
+          sections={sections}
+          variant="standard"
+          testID="drawer"
+        />,
+      );
+      expect(screen.getByTestId("drawer")).toBeTruthy();
+    });
+
+    it("standard variant renders destinations", () => {
+      render(
+        <NavigationDrawer
+          open={false}
+          onClose={jest.fn()}
+          sections={sections}
+          variant="standard"
+          testID="drawer"
+        />,
+      );
+      expect(screen.getByTestId("drawer-dest-home")).toBeTruthy();
+      expect(screen.getByTestId("drawer-dest-search")).toBeTruthy();
+      expect(screen.getByTestId("drawer-dest-settings")).toBeTruthy();
+    });
+
+    it("dark mode renders standard variant", () => {
+      render(
+        <NavigationDrawer
+          open={false}
+          onClose={jest.fn()}
+          sections={sections}
+          variant="standard"
+          testID="drawer"
+        />,
+        { theme: "dark" },
+      );
+      expect(screen.getByTestId("drawer")).toBeTruthy();
+    });
   });
 });
