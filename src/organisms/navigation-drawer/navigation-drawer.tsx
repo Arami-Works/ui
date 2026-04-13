@@ -40,18 +40,94 @@ export function NavigationDrawer({
   onDestinationPress,
   header,
   testID,
+  variant = "modal",
 }: NavigationDrawerProps) {
   const translateX = useSharedValue(-DRAWER_WIDTH);
 
   useEffect(() => {
-    translateX.value = withTiming(open ? 0 : -DRAWER_WIDTH, {
-      duration: 250,
-    });
-  }, [open, translateX]);
+    if (variant === "modal") {
+      translateX.value = withTiming(open ? 0 : -DRAWER_WIDTH, {
+        duration: 250,
+      });
+    }
+  }, [open, translateX, variant]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: translateX.value }],
   }));
+
+  const drawerContent = (
+    <DrawerContainer testID={variant === "standard" ? testID : undefined}>
+      {header && (
+        <View paddingHorizontal={16} paddingBottom={8}>
+          {header}
+        </View>
+      )}
+      <YStack>
+        {sections.map((section, sIdx) => (
+          <YStack key={sIdx}>
+            {section.header && (
+              <Text
+                role="title"
+                size="small"
+                color="$onSurfaceVariant"
+                paddingLeft={16}
+                paddingTop={16}
+                paddingBottom={4}
+              >
+                {section.header}
+              </Text>
+            )}
+            {section.destinations.map((dest) => {
+              const isActive = dest.key === activeKey;
+              return (
+                <Pressable
+                  key={dest.key}
+                  onPress={() => onDestinationPress?.(dest.key)}
+                  testID={`${testID}-dest-${dest.key}`}
+                >
+                  <ActiveIndicator
+                    backgroundColor={
+                      isActive ? "$secondaryContainer" : "transparent"
+                    }
+                  >
+                    <Icon
+                      name={
+                        isActive && dest.activeIcon
+                          ? dest.activeIcon
+                          : dest.icon
+                      }
+                      size={24}
+                      color={
+                        isActive ? "$onSecondaryContainer" : "$onSurfaceVariant"
+                      }
+                    />
+                    <Text
+                      role="label"
+                      size="large"
+                      color={
+                        isActive ? "$onSecondaryContainer" : "$onSurfaceVariant"
+                      }
+                      flex={1}
+                    >
+                      {dest.label}
+                    </Text>
+                    {dest.badgeCount !== undefined && dest.badgeCount > 0 && (
+                      <Badge size="large" count={dest.badgeCount} />
+                    )}
+                  </ActiveIndicator>
+                </Pressable>
+              );
+            })}
+          </YStack>
+        ))}
+      </YStack>
+    </DrawerContainer>
+  );
+
+  if (variant === "standard") {
+    return drawerContent;
+  }
 
   return (
     <Modal
@@ -62,79 +138,7 @@ export function NavigationDrawer({
       testID={testID}
     >
       <View flex={1} flexDirection="row">
-        <Animated.View style={animatedStyle}>
-          <DrawerContainer>
-            {header && (
-              <View paddingHorizontal={16} paddingBottom={8}>
-                {header}
-              </View>
-            )}
-            <YStack>
-              {sections.map((section, sIdx) => (
-                <YStack key={sIdx}>
-                  {section.header && (
-                    <Text
-                      role="title"
-                      size="small"
-                      color="$onSurfaceVariant"
-                      paddingLeft={16}
-                      paddingTop={16}
-                      paddingBottom={4}
-                    >
-                      {section.header}
-                    </Text>
-                  )}
-                  {section.destinations.map((dest) => {
-                    const isActive = dest.key === activeKey;
-                    return (
-                      <Pressable
-                        key={dest.key}
-                        onPress={() => onDestinationPress?.(dest.key)}
-                        testID={`${testID}-dest-${dest.key}`}
-                      >
-                        <ActiveIndicator
-                          backgroundColor={
-                            isActive ? "$secondaryContainer" : "transparent"
-                          }
-                        >
-                          <Icon
-                            name={
-                              isActive && dest.activeIcon
-                                ? dest.activeIcon
-                                : dest.icon
-                            }
-                            size={24}
-                            color={
-                              isActive
-                                ? "$onSecondaryContainer"
-                                : "$onSurfaceVariant"
-                            }
-                          />
-                          <Text
-                            role="label"
-                            size="large"
-                            color={
-                              isActive
-                                ? "$onSecondaryContainer"
-                                : "$onSurfaceVariant"
-                            }
-                            flex={1}
-                          >
-                            {dest.label}
-                          </Text>
-                          {dest.badgeCount !== undefined &&
-                            dest.badgeCount > 0 && (
-                              <Badge size="large" count={dest.badgeCount} />
-                            )}
-                        </ActiveIndicator>
-                      </Pressable>
-                    );
-                  })}
-                </YStack>
-              ))}
-            </YStack>
-          </DrawerContainer>
-        </Animated.View>
+        <Animated.View style={animatedStyle}>{drawerContent}</Animated.View>
         <Pressable style={{ flex: 1 }} onPress={onClose} />
       </View>
     </Modal>
