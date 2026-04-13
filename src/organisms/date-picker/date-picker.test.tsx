@@ -402,6 +402,90 @@ describe("DatePicker", () => {
     });
   });
 
+  describe("docked variant", () => {
+    it("renders without crash", () => {
+      render(
+        <DatePicker
+          visible={false}
+          variant="docked"
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+          testID="dp-docked"
+        />,
+      );
+      expect(screen.getByTestId("dp-docked")).toBeTruthy();
+    });
+
+    it("is visible without visible prop being true", () => {
+      render(
+        <DatePicker
+          visible={false}
+          variant="docked"
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+          testID="dp-docked"
+        />,
+      );
+      expect(screen.getByTestId("dp-docked")).toBeTruthy();
+    });
+
+    it("renders calendar by default", () => {
+      render(
+        <DatePicker
+          visible={false}
+          variant="docked"
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+          testID="dp-docked"
+        />,
+      );
+      expect(screen.getByText("Su")).toBeTruthy();
+    });
+
+    it("renders confirm and cancel buttons", () => {
+      render(
+        <DatePicker
+          visible={false}
+          variant="docked"
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+          testID="dp-docked"
+        />,
+      );
+      expect(screen.getByText("OK")).toBeTruthy();
+      expect(screen.getByText("Cancel")).toBeTruthy();
+    });
+
+    it("calls onDismiss when cancel pressed in docked variant", () => {
+      const onDismiss = jest.fn();
+      render(
+        <DatePicker
+          visible={false}
+          variant="docked"
+          onConfirm={jest.fn()}
+          onDismiss={onDismiss}
+          testID="dp-docked"
+        />,
+      );
+      fireEvent.press(screen.getByText("Cancel"));
+      expect(onDismiss).toHaveBeenCalled();
+    });
+
+    it("renders docked variant in dark mode", () => {
+      render(
+        <DatePicker
+          visible={false}
+          variant="docked"
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+          testID="dp-docked-dark"
+        />,
+        { theme: "dark" },
+      );
+      expect(screen.getByTestId("dp-docked-dark")).toBeTruthy();
+    });
+  });
+
   describe("year selector", () => {
     it("opens year grid when header is tapped", () => {
       const date = new Date(2026, 3, 15);

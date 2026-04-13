@@ -139,6 +139,7 @@ export function DatePicker({
   mode: initialMode = "calendar",
   minDate,
   maxDate,
+  variant = "modal",
   testID,
 }: DatePickerProps) {
   const today = new Date();
@@ -275,6 +276,235 @@ export function DatePicker({
   const headerLabel =
     selectionMode === "range" ? "Select date range" : "Select date";
 
+  const content = (
+    <Container testID={variant === "docked" ? testID : undefined}>
+      <XStack
+        justifyContent="space-between"
+        alignItems="center"
+        marginBottom={16}
+      >
+        <Text role="body" size="small" color="$onSurfaceVariant">
+          {headerLabel}
+        </Text>
+        <IconButton
+          variant="standard"
+          icon={displayMode === "calendar" ? "keyboard" : "calendar_today"}
+          testID={testID ? `${testID}-mode-toggle` : undefined}
+          onPress={() => {
+            setDisplayMode((m) => (m === "calendar" ? "input" : "calendar"));
+            setViewMode("calendar");
+          }}
+        />
+      </XStack>
+
+      {displayMode === "calendar" ? (
+        viewMode === "year" ? (
+          <YStack gap={8} testID={testID ? `${testID}-year-grid` : undefined}>
+            <ScrollView
+              style={{ maxHeight: 280 }}
+              showsVerticalScrollIndicator={false}
+            >
+              <View
+                flexWrap="wrap"
+                flexDirection="row"
+                justifyContent="center"
+                gap={8}
+              >
+                {years.map((year) => {
+                  const isCurrentYear = year === currentYear;
+                  return (
+                    <Pressable
+                      key={year}
+                      onPress={() => handleYearSelect(year)}
+                    >
+                      <YearCell
+                        backgroundColor={
+                          isCurrentYear ? "$primary" : "transparent"
+                        }
+                        borderWidth={
+                          year === today.getFullYear() && !isCurrentYear ? 1 : 0
+                        }
+                        borderColor="$primary"
+                      >
+                        <Text
+                          role="body"
+                          size="small"
+                          color={isCurrentYear ? "$onPrimary" : "$onSurface"}
+                        >
+                          {year}
+                        </Text>
+                      </YearCell>
+                    </Pressable>
+                  );
+                })}
+              </View>
+            </ScrollView>
+          </YStack>
+        ) : (
+          <YStack gap={8}>
+            <XStack justifyContent="space-between" alignItems="center">
+              <IconButton
+                variant="standard"
+                icon="chevron_left"
+                testID={testID ? `${testID}-prev-month` : undefined}
+                onPress={prevMonth}
+              />
+              <Pressable
+                onPress={() => setViewMode("year")}
+                testID={testID ? `${testID}-year-toggle` : undefined}
+                accessibilityHint="Open year selector"
+              >
+                <XStack alignItems="center" gap={4}>
+                  <Text role="title" size="small">
+                    {MONTHS[currentMonth]} {currentYear}
+                  </Text>
+                  <Text role="body" size="small" color="$onSurfaceVariant">
+                    ▾
+                  </Text>
+                </XStack>
+              </Pressable>
+              <IconButton
+                variant="standard"
+                icon="chevron_right"
+                testID={testID ? `${testID}-next-month` : undefined}
+                onPress={nextMonth}
+              />
+            </XStack>
+
+            <XStack justifyContent="space-around">
+              {DAYS_OF_WEEK.map((d) => (
+                <View key={d} width={40} alignItems="center">
+                  <Text role="label" size="small" color="$onSurfaceVariant">
+                    {d}
+                  </Text>
+                </View>
+              ))}
+            </XStack>
+
+            <View flexWrap="wrap" flexDirection="row">
+              {cells.map((cell, idx) => {
+                const selected = cell.thisMonth && isSelected(cell.day);
+                const today_ = cell.thisMonth && isToday(cell.day);
+                const disabled = cell.thisMonth && isDisabled(cell.day);
+
+                const rangeStartCell =
+                  selectionMode === "range" &&
+                  cell.thisMonth &&
+                  isRangeStart(cell.day);
+                const rangeEndCell =
+                  selectionMode === "range" &&
+                  cell.thisMonth &&
+                  isRangeEnd(cell.day);
+                const inRange =
+                  selectionMode === "range" &&
+                  cell.thisMonth &&
+                  isInRange(cell.day);
+
+                const isEndpoint = rangeStartCell || rangeEndCell;
+
+                return (
+                  <Pressable
+                    key={idx}
+                    onPress={() => {
+                      if (cell.thisMonth && !disabled) {
+                        handleDayPress(cell.day);
+                      }
+                    }}
+                    disabled={!cell.thisMonth || disabled}
+                    style={{ position: "relative" }}
+                  >
+                    {inRange && <RangeHighlight />}
+                    {rangeStartCell && (
+                      <RangeHighlight
+                        borderTopLeftRadius={20}
+                        borderBottomLeftRadius={20}
+                        left="50%"
+                      />
+                    )}
+                    {rangeEndCell && (
+                      <RangeHighlight
+                        borderTopRightRadius={20}
+                        borderBottomRightRadius={20}
+                        right="50%"
+                      />
+                    )}
+                    <DayCell
+                      backgroundColor={
+                        isEndpoint
+                          ? "$primary"
+                          : selected
+                            ? "$primary"
+                            : "transparent"
+                      }
+                      borderWidth={today_ && !selected && !isEndpoint ? 1 : 0}
+                      borderColor="$primary"
+                    >
+                      <Text
+                        role="body"
+                        size="medium"
+                        color={
+                          isEndpoint || selected
+                            ? "$onPrimary"
+                            : !cell.thisMonth || disabled
+                              ? "$onSurfaceVariant"
+                              : "$onSurface"
+                        }
+                        opacity={!cell.thisMonth ? 0.38 : 1}
+                      >
+                        {cell.day}
+                      </Text>
+                    </DayCell>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </YStack>
+        )
+      ) : selectionMode === "range" ? (
+        <YStack
+          gap={16}
+          marginBottom={8}
+          testID={testID ? `${testID}-range-inputs` : undefined}
+        >
+          <TextField
+            label="Start date"
+            placeholder="mm/dd/yyyy"
+            value={rangeStartInput}
+            onChangeText={setRangeStartInput}
+          />
+          <TextField
+            label="End date"
+            placeholder="mm/dd/yyyy"
+            value={rangeEndInput}
+            onChangeText={setRangeEndInput}
+          />
+        </YStack>
+      ) : (
+        <YStack gap={16} marginBottom={8}>
+          <TextField
+            label="Date"
+            placeholder="mm/dd/yyyy"
+            value={inputValue}
+            onChangeText={setInputValue}
+          />
+        </YStack>
+      )}
+
+      <XStack justifyContent="flex-end" gap={8} marginTop={16}>
+        <Button variant="text" onPress={onDismiss}>
+          Cancel
+        </Button>
+        <Button variant="text" onPress={handleConfirm}>
+          OK
+        </Button>
+      </XStack>
+    </Container>
+  );
+
+  if (variant === "docked") {
+    return content;
+  }
+
   return (
     <Modal
       visible={visible}
@@ -292,251 +522,7 @@ export function DatePicker({
         }}
         onPress={onDismiss}
       >
-        <Pressable onPress={(e) => e.stopPropagation()}>
-          <Container>
-            <XStack
-              justifyContent="space-between"
-              alignItems="center"
-              marginBottom={16}
-            >
-              <Text role="body" size="small" color="$onSurfaceVariant">
-                {headerLabel}
-              </Text>
-              <IconButton
-                variant="standard"
-                icon={
-                  displayMode === "calendar" ? "keyboard" : "calendar_today"
-                }
-                testID={testID ? `${testID}-mode-toggle` : undefined}
-                onPress={() => {
-                  setDisplayMode((m) =>
-                    m === "calendar" ? "input" : "calendar",
-                  );
-                  setViewMode("calendar");
-                }}
-              />
-            </XStack>
-
-            {displayMode === "calendar" ? (
-              viewMode === "year" ? (
-                <YStack
-                  gap={8}
-                  testID={testID ? `${testID}-year-grid` : undefined}
-                >
-                  <ScrollView
-                    style={{ maxHeight: 280 }}
-                    showsVerticalScrollIndicator={false}
-                  >
-                    <View
-                      flexWrap="wrap"
-                      flexDirection="row"
-                      justifyContent="center"
-                      gap={8}
-                    >
-                      {years.map((year) => {
-                        const isCurrentYear = year === currentYear;
-                        return (
-                          <Pressable
-                            key={year}
-                            onPress={() => handleYearSelect(year)}
-                          >
-                            <YearCell
-                              backgroundColor={
-                                isCurrentYear ? "$primary" : "transparent"
-                              }
-                              borderWidth={
-                                year === today.getFullYear() && !isCurrentYear
-                                  ? 1
-                                  : 0
-                              }
-                              borderColor="$primary"
-                            >
-                              <Text
-                                role="body"
-                                size="small"
-                                color={
-                                  isCurrentYear ? "$onPrimary" : "$onSurface"
-                                }
-                              >
-                                {year}
-                              </Text>
-                            </YearCell>
-                          </Pressable>
-                        );
-                      })}
-                    </View>
-                  </ScrollView>
-                </YStack>
-              ) : (
-                <YStack gap={8}>
-                  <XStack justifyContent="space-between" alignItems="center">
-                    <IconButton
-                      variant="standard"
-                      icon="chevron_left"
-                      testID={testID ? `${testID}-prev-month` : undefined}
-                      onPress={prevMonth}
-                    />
-                    <Pressable
-                      onPress={() => setViewMode("year")}
-                      testID={testID ? `${testID}-year-toggle` : undefined}
-                      accessibilityHint="Open year selector"
-                    >
-                      <XStack alignItems="center" gap={4}>
-                        <Text role="title" size="small">
-                          {MONTHS[currentMonth]} {currentYear}
-                        </Text>
-                        <Text
-                          role="body"
-                          size="small"
-                          color="$onSurfaceVariant"
-                        >
-                          ▾
-                        </Text>
-                      </XStack>
-                    </Pressable>
-                    <IconButton
-                      variant="standard"
-                      icon="chevron_right"
-                      testID={testID ? `${testID}-next-month` : undefined}
-                      onPress={nextMonth}
-                    />
-                  </XStack>
-
-                  <XStack justifyContent="space-around">
-                    {DAYS_OF_WEEK.map((d) => (
-                      <View key={d} width={40} alignItems="center">
-                        <Text
-                          role="label"
-                          size="small"
-                          color="$onSurfaceVariant"
-                        >
-                          {d}
-                        </Text>
-                      </View>
-                    ))}
-                  </XStack>
-
-                  <View flexWrap="wrap" flexDirection="row">
-                    {cells.map((cell, idx) => {
-                      const selected = cell.thisMonth && isSelected(cell.day);
-                      const today_ = cell.thisMonth && isToday(cell.day);
-                      const disabled = cell.thisMonth && isDisabled(cell.day);
-
-                      const rangeStartCell =
-                        selectionMode === "range" &&
-                        cell.thisMonth &&
-                        isRangeStart(cell.day);
-                      const rangeEndCell =
-                        selectionMode === "range" &&
-                        cell.thisMonth &&
-                        isRangeEnd(cell.day);
-                      const inRange =
-                        selectionMode === "range" &&
-                        cell.thisMonth &&
-                        isInRange(cell.day);
-
-                      const isEndpoint = rangeStartCell || rangeEndCell;
-
-                      return (
-                        <Pressable
-                          key={idx}
-                          onPress={() => {
-                            if (cell.thisMonth && !disabled) {
-                              handleDayPress(cell.day);
-                            }
-                          }}
-                          disabled={!cell.thisMonth || disabled}
-                          style={{ position: "relative" }}
-                        >
-                          {inRange && <RangeHighlight />}
-                          {rangeStartCell && (
-                            <RangeHighlight
-                              borderTopLeftRadius={20}
-                              borderBottomLeftRadius={20}
-                              left="50%"
-                            />
-                          )}
-                          {rangeEndCell && (
-                            <RangeHighlight
-                              borderTopRightRadius={20}
-                              borderBottomRightRadius={20}
-                              right="50%"
-                            />
-                          )}
-                          <DayCell
-                            backgroundColor={
-                              isEndpoint
-                                ? "$primary"
-                                : selected
-                                  ? "$primary"
-                                  : "transparent"
-                            }
-                            borderWidth={
-                              today_ && !selected && !isEndpoint ? 1 : 0
-                            }
-                            borderColor="$primary"
-                          >
-                            <Text
-                              role="body"
-                              size="medium"
-                              color={
-                                isEndpoint || selected
-                                  ? "$onPrimary"
-                                  : !cell.thisMonth || disabled
-                                    ? "$onSurfaceVariant"
-                                    : "$onSurface"
-                              }
-                              opacity={!cell.thisMonth ? 0.38 : 1}
-                            >
-                              {cell.day}
-                            </Text>
-                          </DayCell>
-                        </Pressable>
-                      );
-                    })}
-                  </View>
-                </YStack>
-              )
-            ) : selectionMode === "range" ? (
-              <YStack
-                gap={16}
-                marginBottom={8}
-                testID={testID ? `${testID}-range-inputs` : undefined}
-              >
-                <TextField
-                  label="Start date"
-                  placeholder="mm/dd/yyyy"
-                  value={rangeStartInput}
-                  onChangeText={setRangeStartInput}
-                />
-                <TextField
-                  label="End date"
-                  placeholder="mm/dd/yyyy"
-                  value={rangeEndInput}
-                  onChangeText={setRangeEndInput}
-                />
-              </YStack>
-            ) : (
-              <YStack gap={16} marginBottom={8}>
-                <TextField
-                  label="Date"
-                  placeholder="mm/dd/yyyy"
-                  value={inputValue}
-                  onChangeText={setInputValue}
-                />
-              </YStack>
-            )}
-
-            <XStack justifyContent="flex-end" gap={8} marginTop={16}>
-              <Button variant="text" onPress={onDismiss}>
-                Cancel
-              </Button>
-              <Button variant="text" onPress={handleConfirm}>
-                OK
-              </Button>
-            </XStack>
-          </Container>
-        </Pressable>
+        <Pressable onPress={(e) => e.stopPropagation()}>{content}</Pressable>
       </Pressable>
     </Modal>
   );

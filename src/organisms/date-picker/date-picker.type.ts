@@ -26,6 +26,8 @@ export type DatePickerProps = {
   minDate?: Date;
   /** Maximum selectable date */
   maxDate?: Date;
+  /** Display variant. "modal" wraps in a Modal overlay; "docked" renders inline. Default: "modal" */
+  variant?: "modal" | "docked";
   /** Test ID */
   testID?: string;
 };
