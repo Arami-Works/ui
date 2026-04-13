@@ -135,7 +135,17 @@ export function Slider({
         onRangeChange?.(currentLow, newHigh);
       }
     },
-    [disabled, trackWidth, max, min, type, step, currentLow, currentHigh, onRangeChange],
+    [
+      disabled,
+      trackWidth,
+      max,
+      min,
+      type,
+      step,
+      currentLow,
+      currentHigh,
+      onRangeChange,
+    ],
   );
 
   const panResponder = useMemo(
