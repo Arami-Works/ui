@@ -19,14 +19,11 @@ export function useConfirmDialog(): UseConfirmDialogReturn {
   const onConfirmRef = useRef<() => void>(() => {});
   const onDismissRef = useRef<(() => void) | undefined>(undefined);
 
-  const showConfirmDialog = useCallback(
-    (options: ShowConfirmDialogOptions) => {
-      onConfirmRef.current = options.onConfirm;
-      onDismissRef.current = options.onDismiss;
-      setState({ ...options, visible: true });
-    },
-    [],
-  );
+  const showConfirmDialog = useCallback((options: ShowConfirmDialogOptions) => {
+    onConfirmRef.current = options.onConfirm;
+    onDismissRef.current = options.onDismiss;
+    setState({ ...options, visible: true });
+  }, []);
 
   const handleConfirm = useCallback(() => {
     setState((prev) => ({ ...prev, visible: false }));
