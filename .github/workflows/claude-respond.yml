@@ -213,7 +213,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ steps.app-token.outputs.token }}
-          claude_args: '--allowedTools "mcp__github,Edit,Read,Glob,Grep,Bash(npm test:*),Bash(npx:*),Bash(gh api:*),Bash(gh run view:*),Bash(git diff:*),Bash(git log:*),Bash(git show:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*)"'
+          claude_args: '--allowedTools "mcp__github,Edit,Read,Glob,Grep,Bash(npm test:*),Bash(npx:*),Bash(gh api:*),Bash(gh run view:*),Bash(gh pr comment:*),Bash(git diff:*),Bash(git log:*),Bash(git show:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*)"'
           prompt: |
             The following CI checks failed on PR #${{ steps.pr.outputs.pr_number }} in ${{ github.repository }}:
             **Failed checks:** ${{ steps.failures.outputs.claude_failures }}
@@ -230,11 +230,16 @@ jobs:
                - **build failure** → fix build errors
                - **codecov failure** → add unit tests to bring patch coverage above 80%
             5. Commit and push your fixes to the `${{ steps.pr.outputs.head_branch }}` branch.
+            6. **Always** post a PR comment using `gh pr comment ${{ steps.pr.outputs.pr_number }} --repo ${{ github.repository }} --edit-last --body "..."` with a summary:
+               - Which checks failed and why (root cause)
+               - What was fixed (file + one-line description per change), or why nothing was fixed
+               - The commit SHA if code was changed
+               Format the comment with a `## CI Fix Summary` heading and bullet points.
 
             Rules:
             - Use descriptive commit messages: `fix: ...` or `test: ...`
             - Do not modify files unrelated to the failures.
-            - If a failure is pre-existing (also fails on main), skip it and post a PR comment explaining why.
+            - If a failure is pre-existing (also fails on main), skip the fix but still post the summary comment.
             - Keep changes minimal and focused.
             - Do NOT fix formatting or lint issues — those are handled separately.
 
