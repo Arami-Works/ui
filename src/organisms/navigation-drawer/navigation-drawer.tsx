@@ -33,8 +33,8 @@ const ActiveIndicator = styled(View, {
 });
 
 export function NavigationDrawer({
-  open,
-  onClose,
+  open = false,
+  onClose = () => {},
   sections,
   activeKey,
   onDestinationPress,

@@ -1,3 +1,4 @@
+import { Modal } from "react-native";
 import { render, screen, fireEvent } from "@/test-utils";
 import { NavigationDrawer } from "./navigation-drawer";
 
@@ -79,14 +80,23 @@ describe("NavigationDrawer", () => {
           testID="drawer"
         />,
       );
-      const { Modal } = require("react-native");
       expect(UNSAFE_queryByType(Modal)).toBeNull();
     });
 
     it("standard variant is always visible regardless of open prop", () => {
-      render(
+      const { rerender } = render(
         <NavigationDrawer
           open={false}
+          onClose={jest.fn()}
+          sections={sections}
+          variant="standard"
+          testID="drawer"
+        />,
+      );
+      expect(screen.getByTestId("drawer")).toBeTruthy();
+      rerender(
+        <NavigationDrawer
+          open={true}
           onClose={jest.fn()}
           sections={sections}
           variant="standard"
