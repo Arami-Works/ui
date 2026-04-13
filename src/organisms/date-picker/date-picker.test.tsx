@@ -402,6 +402,105 @@ describe("DatePicker", () => {
     });
   });
 
+  describe("docked variant", () => {
+    it("renders without crash", () => {
+      render(
+        <DatePicker
+          visible={true}
+          variant="docked"
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+          testID="dp-docked"
+        />,
+      );
+      expect(screen.getByTestId("dp-docked")).toBeTruthy();
+    });
+
+    it("does not render when visible is false", () => {
+      render(
+        <DatePicker
+          visible={false}
+          variant="docked"
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+          testID="dp-docked"
+        />,
+      );
+      expect(screen.queryByTestId("dp-docked")).toBeNull();
+    });
+
+    it("renders calendar by default", () => {
+      render(
+        <DatePicker
+          visible={true}
+          variant="docked"
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+          testID="dp-docked"
+        />,
+      );
+      expect(screen.getByText("Su")).toBeTruthy();
+    });
+
+    it("renders confirm and cancel buttons", () => {
+      render(
+        <DatePicker
+          visible={true}
+          variant="docked"
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+          testID="dp-docked"
+        />,
+      );
+      expect(screen.getByText("OK")).toBeTruthy();
+      expect(screen.getByText("Cancel")).toBeTruthy();
+    });
+
+    it("calls onDismiss when cancel pressed in docked variant", () => {
+      const onDismiss = jest.fn();
+      render(
+        <DatePicker
+          visible={true}
+          variant="docked"
+          onConfirm={jest.fn()}
+          onDismiss={onDismiss}
+          testID="dp-docked"
+        />,
+      );
+      fireEvent.press(screen.getByText("Cancel"));
+      expect(onDismiss).toHaveBeenCalled();
+    });
+
+    it("calls onConfirm when OK pressed in docked variant", () => {
+      const onConfirm = jest.fn();
+      render(
+        <DatePicker
+          visible={true}
+          variant="docked"
+          onConfirm={onConfirm}
+          onDismiss={jest.fn()}
+          testID="dp-docked"
+        />,
+      );
+      fireEvent.press(screen.getByText("OK"));
+      expect(onConfirm).toHaveBeenCalled();
+    });
+
+    it("renders docked variant in dark mode", () => {
+      render(
+        <DatePicker
+          visible={true}
+          variant="docked"
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+          testID="dp-docked-dark"
+        />,
+        { theme: "dark" },
+      );
+      expect(screen.getByTestId("dp-docked-dark")).toBeTruthy();
+    });
+  });
+
   describe("year selector", () => {
     it("opens year grid when header is tapped", () => {
       const date = new Date(2026, 3, 15);

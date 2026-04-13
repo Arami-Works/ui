@@ -4,7 +4,7 @@ export type DatePickerMode = "calendar" | "input";
 export type DatePickerSelectionMode = "single" | "range";
 
 export type DatePickerProps = {
-  /** Whether the picker is visible */
+  /** Whether the picker is visible. For the "docked" variant, `false` unmounts the picker; the modal variant passes this directly to `<Modal visible>`. */
   visible: boolean;
   /** Currently selected date (single mode) */
   value?: Date;
@@ -26,6 +26,8 @@ export type DatePickerProps = {
   minDate?: Date;
   /** Maximum selectable date */
   maxDate?: Date;
+  /** Display variant. "modal" wraps in a Modal overlay; "docked" renders inline. Default: "modal" */
+  variant?: "modal" | "docked";
   /** Test ID */
   testID?: string;
 };

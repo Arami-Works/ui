@@ -44,3 +44,20 @@ export const RangeInput: Story = {
     mode: "input",
   },
 };
+
+export const Docked: Story = {
+  args: {
+    variant: "docked",
+    visible: false,
+  },
+};
+
+export const DockedRange: Story = {
+  args: {
+    variant: "docked",
+    visible: false,
+    selectionMode: "range",
+    startDate: new Date(2026, 3, 10),
+    endDate: new Date(2026, 3, 20),
+  },
+};
