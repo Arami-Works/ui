@@ -21,10 +21,12 @@ export type DrawerSection = {
 };
 
 export type NavigationDrawerProps = {
-  /** Whether the drawer is open */
+  /** Whether the drawer is open (ignored for standard variant) */
   open: boolean;
-  /** Close handler */
+  /** Close handler (ignored for standard variant) */
   onClose: () => void;
+  /** Drawer variant — modal overlays content, standard renders inline */
+  variant?: "modal" | "standard";
   /** Navigation sections */
   sections: DrawerSection[];
   /** Currently active destination key */
