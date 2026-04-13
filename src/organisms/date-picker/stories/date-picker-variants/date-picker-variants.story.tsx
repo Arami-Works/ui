@@ -48,14 +48,14 @@ export const RangeInput: Story = {
 export const Docked: Story = {
   args: {
     variant: "docked",
-    visible: false,
+    visible: true,
   },
 };
 
 export const DockedRange: Story = {
   args: {
     variant: "docked",
-    visible: false,
+    visible: true,
     selectionMode: "range",
     startDate: new Date(2026, 3, 10),
     endDate: new Date(2026, 3, 20),
