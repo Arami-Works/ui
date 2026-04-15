@@ -35,9 +35,13 @@ jobs:
 
       - run: npm ci --legacy-peer-deps
 
+      - name: Verify changeset binary
+        run: ls -la node_modules/.bin/changeset* || echo "Binary missing — listing @changesets/cli:" && ls -la node_modules/@changesets/cli/
+
       - uses: changesets/action@v1
         id: changesets
         with:
+          version: node node_modules/@changesets/cli/bin.js version
           publish: npm publish
           title: "chore: version packages"
           commit: "chore: version packages"
