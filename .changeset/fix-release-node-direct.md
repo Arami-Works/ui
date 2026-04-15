@@ -2,4 +2,4 @@
 "@aramiworks/ui": patch
 ---
 
-fix(ci): use node directly to run changeset CLI in release workflow, bypassing missing binary symlink
+fix(ci): remove accidentally committed node_modules symlink that broke release workflow
