@@ -38,7 +38,7 @@ jobs:
       - uses: changesets/action@v1
         id: changesets
         with:
-          version: npx changeset version
+          version: ./node_modules/.bin/changeset version
           publish: npm publish
           title: "chore: version packages"
           commit: "chore: version packages"
