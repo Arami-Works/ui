@@ -39,6 +39,13 @@ const config: StorybookConfig = {
       ),
       "@": join(__dirname, "../src"),
     };
+    viteConfig.optimizeDeps = {
+      ...(viteConfig.optimizeDeps || {}),
+      exclude: [
+        ...((viteConfig.optimizeDeps || {}).exclude || []),
+        "react-native-reanimated",
+      ],
+    };
     viteConfig.define = {
       ...(viteConfig.define || {}),
       __DEV__: JSON.stringify(false),
