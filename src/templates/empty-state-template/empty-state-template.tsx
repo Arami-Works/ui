@@ -23,11 +23,9 @@ export function EmptyStateTemplate({
           gap: 16,
         }}
       >
-        {typeof icon === "string" ? (
-          icon && <Icon name={icon} size={48} color="$onSurfaceVariant" />
-        ) : (
-          icon
-        )}
+        {typeof icon === "string"
+          ? icon && <Icon name={icon} size={48} color="$onSurfaceVariant" />
+          : icon}
         {title && (
           <Text role="title" size="large" color="$onSurface">
             {title}
