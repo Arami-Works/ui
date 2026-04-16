@@ -1,5 +1,8 @@
 // Components
 export * from "./atoms";
+
+// Layout primitives
+export * from "./layouts";
 export * from "./molecules";
 export * from "./organisms";
 export * from "./templates";
