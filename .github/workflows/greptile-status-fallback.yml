@@ -1,0 +1,43 @@
+name: Greptile Status Fallback
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  statuses: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for reviewable files
+        id: reviewable
+        run: |
+          BASE=${{ github.event.pull_request.base.sha }}
+          HEAD=${{ github.event.pull_request.head.sha }}
+          ALL_FILES=$(git diff --name-only "$BASE" "$HEAD")
+          REVIEWABLE=$(echo "$ALL_FILES" | grep -Ev '^(\.github/|\.changeset/)' | grep -v '^\s*$' || true)
+          if [ -z "$REVIEWABLE" ]; then
+            echo "has_reviewable=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_reviewable=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Post passing Greptile status (no reviewable files)
+        if: steps.reviewable.outputs.has_reviewable == 'false'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.payload.pull_request.head.sha,
+              state: 'success',
+              context: 'Greptile Review',
+              description: 'No reviewable files',
+            });
