@@ -1,15 +1,32 @@
 procs:
   ios:
-    cmd: ["sh", "-c", "lsof -ti :8082 | xargs kill 2>/dev/null; npx expo start --port 8082 --ios"]
+    cmd:
+      [
+        "sh",
+        "-c",
+        "lsof -ti :8082 | xargs kill -9 2>/dev/null; sleep 1; npx expo start --port 8082 --ios",
+      ]
     stop: "SIGTERM"
     autostart: true
 
   android:
-    cmd: ["sh", "-c", "lsof -ti :8083 | xargs kill 2>/dev/null; $ANDROID_HOME/emulator/emulator @Pixel_7_API_35 & sleep 15 && npx expo start --port 8083 --android"]
+    cmd:
+      [
+        "sh",
+        "-c",
+        "lsof -ti :8083 | xargs kill -9 2>/dev/null; sleep 1; $ANDROID_HOME/emulator/emulator @Pixel_7_API_35 & sleep 15 && npx expo start --port 8083 --android",
+      ]
     stop: "SIGTERM"
     autostart: true
 
   storybook:
-    cmd: ["sh", "-c", "lsof -ti :6006 | xargs kill 2>/dev/null; npm run storybook:web"]
+    cmd:
+      [
+        "sh",
+        "-c",
+        "lsof -ti :6006 | xargs kill -9 2>/dev/null; sleep 1; npm run storybook:web",
+      ]
+    env:
+      BROWSER: "none"
     stop: "SIGTERM"
     autostart: true
