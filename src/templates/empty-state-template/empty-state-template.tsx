@@ -24,7 +24,7 @@ export function EmptyStateTemplate({
         }}
       >
         {typeof icon === "string" ? (
-          <Icon name={icon} size={48} color="$onSurfaceVariant" />
+          icon && <Icon name={icon} size={48} color="$onSurfaceVariant" />
         ) : (
           icon
         )}
