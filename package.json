@@ -26,7 +26,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "storybook:web": "storybook dev -p 6006 -c .storybook --disable-telemetry",
+    "storybook:web": "set -a; . ./scripts/ports.env; set +a; storybook dev -p ${STORYBOOK_PORT:-6007} -c .storybook --disable-telemetry",
     "storybook:build": "storybook build -c .storybook --disable-telemetry",
     "tokens:fetch": "tsx scripts/tokens-fetch.ts --input",
     "tokens:build": "tsx scripts/tokens-build.ts",

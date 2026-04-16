@@ -4,7 +4,7 @@ procs:
       [
         "sh",
         "-c",
-        "lsof -ti :8082 | xargs kill -9 2>/dev/null; sleep 1; npx expo start --port 8082 --ios",
+        "set -a; . ./scripts/ports.env; set +a; lsof -ti :$IOS_PORT | xargs kill -9 2>/dev/null; sleep 1; npx expo start --port $IOS_PORT --ios",
       ]
     stop: "SIGTERM"
     autostart: true
@@ -14,7 +14,7 @@ procs:
       [
         "sh",
         "-c",
-        "lsof -ti :8083 | xargs kill -9 2>/dev/null; sleep 1; $ANDROID_HOME/emulator/emulator @Pixel_7_API_35 & sleep 15 && npx expo start --port 8083 --android",
+        "set -a; . ./scripts/ports.env; set +a; lsof -ti :$ANDROID_PORT | xargs kill -9 2>/dev/null; sleep 1; $ANDROID_HOME/emulator/emulator @Pixel_7_API_35 & sleep 15 && npx expo start --port $ANDROID_PORT --android",
       ]
     stop: "SIGTERM"
     autostart: true
@@ -24,7 +24,7 @@ procs:
       [
         "sh",
         "-c",
-        "lsof -ti :6006 | xargs kill -9 2>/dev/null; sleep 1; npm run storybook:web",
+        "set -a; . ./scripts/ports.env; set +a; lsof -ti :$STORYBOOK_PORT | xargs kill -9 2>/dev/null; sleep 1; npm run storybook:web",
       ]
     env:
       BROWSER: "none"
