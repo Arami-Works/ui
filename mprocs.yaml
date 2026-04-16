@@ -5,7 +5,7 @@ procs:
     autostart: true
 
   android:
-    cmd: ["sh", "-c", "lsof -ti :8083 | xargs kill 2>/dev/null; /Users/jaemincheun/Library/Android/sdk/emulator/emulator @Pixel_7_API_35 & sleep 15 && npx expo start --port 8083 --android"]
+    cmd: ["sh", "-c", "lsof -ti :8083 | xargs kill 2>/dev/null; $ANDROID_HOME/emulator/emulator @Pixel_7_API_35 & sleep 15 && npx expo start --port 8083 --android"]
     stop: "SIGTERM"
     autostart: true
 
