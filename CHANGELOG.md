@@ -1,5 +1,65 @@
 # @aramiworks/ui
 
+## 0.6.0
+
+### Minor Changes
+
+- [#223](https://github.com/aramiworks/ui/pull/223) [`f82d163`](https://github.com/aramiworks/ui/commit/f82d163b25f492bbb88e048f7d2215098ae5bcd4) Thanks [@cheunjm](https://github.com/cheunjm)! - Add docked (inline) variant to DatePicker.
+
+- [#212](https://github.com/aramiworks/ui/pull/212) [`a59fcc9`](https://github.com/aramiworks/ui/commit/a59fcc938eaf6c1d659b17146c3e2bb3c46a3101) Thanks [@cheunjm](https://github.com/cheunjm)! - Add hero image variant to Dialog with `heroImage` prop for full-width images above the title.
+
+- [#217](https://github.com/aramiworks/ui/pull/217) [`c999ca9`](https://github.com/aramiworks/ui/commit/c999ca9fff71cc1cc8e68a8a9df5bcb10bfa5119) Thanks [@cheunjm](https://github.com/cheunjm)! - Add `leadingAvatar` and `trailingElement` props to ListItem for avatar leading content and interactive trailing elements.
+
+- [#214](https://github.com/aramiworks/ui/pull/214) [`e80af13`](https://github.com/aramiworks/ui/commit/e80af13eb16f03432203fc370ffb1f23a4a1a585) Thanks [@cheunjm](https://github.com/cheunjm)! - Add divider support and cascading submenus to Menu with `MenuDivider` type and `submenu` prop on `MenuItem`.
+
+- [#222](https://github.com/aramiworks/ui/pull/222) [`cb1c1cd`](https://github.com/aramiworks/ui/commit/cb1c1cda5ddfb800cb6e77354500c66782399c30) Thanks [@cheunjm](https://github.com/cheunjm)! - Add standard (inline) variant to NavigationDrawer.
+
+- [#210](https://github.com/aramiworks/ui/pull/210) [`6e9dadd`](https://github.com/aramiworks/ui/commit/6e9dadd825ca82c8a5939267eef707c4664062b8) Thanks [@cheunjm](https://github.com/cheunjm)! - Add optional menu icon to NavigationRail with `menuIcon` prop for hamburger menu at the top.
+
+- [#213](https://github.com/aramiworks/ui/pull/213) [`739d80c`](https://github.com/aramiworks/ui/commit/739d80cd07775aacf5b11a0e6694ab1c4542e565) Thanks [@cheunjm](https://github.com/cheunjm)! - Add full-screen variant to Search with `variant` prop for overlay search experience.
+
+- [#216](https://github.com/aramiworks/ui/pull/216) [`2c9da54`](https://github.com/aramiworks/ui/commit/2c9da54674df7602596e0e9f03059a97fa5aaace) Thanks [@cheunjm](https://github.com/cheunjm)! - Add range variant to Slider with dual-thumb support and `lowValue`/`highValue`/`onRangeChange` props.
+
+- [#209](https://github.com/aramiworks/ui/pull/209) [`9be678b`](https://github.com/aramiworks/ui/commit/9be678b1ad7988a1a8883c5bf86d4e5587aad65e) Thanks [@cheunjm](https://github.com/cheunjm)! - Add two-line variant to Snackbar with `lines` prop for multi-line messages.
+
+- [#218](https://github.com/aramiworks/ui/pull/218) [`6b94fdc`](https://github.com/aramiworks/ui/commit/6b94fdce20c61b9e869c8d3df718fb7d78c747fe) Thanks [@cheunjm](https://github.com/cheunjm)! - Add refreshControl, contentContainerStyle, showsVerticalScrollIndicator props to DashboardTemplate, ListTemplate, and DetailTemplate. Add fab slot to DashboardTemplate and ListTemplate.
+
+- [#219](https://github.com/aramiworks/ui/pull/219) [`2f455e2`](https://github.com/aramiworks/ui/commit/2f455e2fff53fab3c91c0dd1d2a8dc660715e315) Thanks [@cheunjm](https://github.com/cheunjm)! - Add useConfirmDialog hook — imperative API for showing MD3-styled confirm dialogs without managing visible state at the call site.
+
+### Patch Changes
+
+- [#225](https://github.com/aramiworks/ui/pull/225) [`2125fc4`](https://github.com/aramiworks/ui/commit/2125fc4a002d31bb98e136691528a6729a572ebb) Thanks [@cheunjm](https://github.com/cheunjm)! - claude/respond posts a PR summary comment after each CI fix attempt.
+
+- [#224](https://github.com/aramiworks/ui/pull/224) [`66dc4b4`](https://github.com/aramiworks/ui/commit/66dc4b45a0c90331545c08d9226456e115813380) Thanks [@cheunjm](https://github.com/cheunjm)! - Fix ci-autofix workflow by inlining jobs — workflow_run triggers cannot call reusable workflows.
+
+- [#215](https://github.com/aramiworks/ui/pull/215) [`b8de819`](https://github.com/aramiworks/ui/commit/b8de81918d50659613e2562762374bee94ec4ef9) Thanks [@cheunjm](https://github.com/cheunjm)! - Fix ci-autofix triggering on main branch pushes causing startup_failure spam.
+
+- [#231](https://github.com/aramiworks/ui/pull/231) [`d94862d`](https://github.com/aramiworks/ui/commit/d94862df0098a1f88b21c2bba10608f975cad3f9) Thanks [@cheunjm](https://github.com/cheunjm)! - fix(ci): remove accidentally committed node_modules symlink that broke release workflow
+
+- [#226](https://github.com/aramiworks/ui/pull/226) [`9481fdc`](https://github.com/aramiworks/ui/commit/9481fdcfe5cb45b535f998e33173098114f3132b) Thanks [@cheunjm](https://github.com/cheunjm)! - fix(ci): use direct binary path for changeset CLI in release workflow
+
+- [#229](https://github.com/aramiworks/ui/pull/229) [`f2a7e01`](https://github.com/aramiworks/ui/commit/f2a7e015f93a0466658866ee6e264035642db9f9) Thanks [@cheunjm](https://github.com/cheunjm)! - Remove custom version command from release workflow; use action-bundled changeset instead.
+
+- [#228](https://github.com/aramiworks/ui/pull/228) [`34c9b5b`](https://github.com/aramiworks/ui/commit/34c9b5b1da5e00c9eb48ef7d4031cd7e407beeda) Thanks [@cheunjm](https://github.com/cheunjm)! - fix(ci): use node directly to run changeset CLI in release workflow, bypassing missing binary symlink
+
+- [#227](https://github.com/aramiworks/ui/pull/227) [`477bdf5`](https://github.com/aramiworks/ui/commit/477bdf5eccb25f4ec01906629ec228be32cbf060) Thanks [@cheunjm](https://github.com/cheunjm)! - Use local changeset binary in release workflow to avoid npx registry resolution failure.
+
+- [#220](https://github.com/aramiworks/ui/pull/220) [`664da7a`](https://github.com/aramiworks/ui/commit/664da7ab8729f76af5ac683d2cf462d784e8bb31) Thanks [@cheunjm](https://github.com/cheunjm)! - Add keyboardAvoiding prop to FullScreenDialog — wraps body ScrollView in KeyboardAvoidingView when true, recommended for dialogs containing form inputs.
+
+- [#212](https://github.com/aramiworks/ui/pull/212) [`9e1b47a`](https://github.com/aramiworks/ui/commit/9e1b47a06a722c04160d777a01eea4aeaf66fb27) Thanks [@cheunjm](https://github.com/cheunjm)! - fix(useConfirmDialog): stabilize callbacks with refs to prevent stale closures and Modal remounts; remove redundant react-native Text wrapper inside Dialog body
+
+  fix(menu): reset submenu state on close, guard disabled subitems, add submenu accessibility role
+
+  fix(full-screen-dialog): scope keyboardShouldPersistTaps to keyboardAvoiding=true only
+
+- [#232](https://github.com/aramiworks/ui/pull/232) [`b41b897`](https://github.com/aramiworks/ui/commit/b41b897c74007ec9099f9b6c03f1664d0827f296) Thanks [@cheunjm](https://github.com/cheunjm)! - Add workflow to post passing Greptile Review status when PR has no reviewable files.
+
+- [#211](https://github.com/aramiworks/ui/pull/211) [`e19e04e`](https://github.com/aramiworks/ui/commit/e19e04e903255f81118449b78e7b28f23b6daa66) Thanks [@cheunjm](https://github.com/cheunjm)! - Add story sort order to on-device Storybook to match web (overview, variants, anatomy, specs).
+
+- [#221](https://github.com/aramiworks/ui/pull/221) [`875305b`](https://github.com/aramiworks/ui/commit/875305b08d164bd573ea477fff54f55c01b0019d) Thanks [@cheunjm](https://github.com/cheunjm)! - Remove deploy-storybook.yml workflow — Storybook deploy is now handled by the eas-build web job per profile.
+
+- [#230](https://github.com/aramiworks/ui/pull/230) [`bf395c4`](https://github.com/aramiworks/ui/commit/bf395c45253ba131d06457fc1e288ca43c26afbb) Thanks [@cheunjm](https://github.com/cheunjm)! - Remove accidentally committed node_modules symlink that broke CI release workflow.
+
 ## 0.5.0
 
 ### Minor Changes
