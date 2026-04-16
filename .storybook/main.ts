@@ -2,7 +2,7 @@
 import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from "@storybook/react-vite";
 import { join, dirname } from "path";
-import "../src/storybook-sort";
+import "../src/storybook-sort.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -25,6 +25,13 @@ const config: StorybookConfig = {
     viteConfig.resolve = viteConfig.resolve || {};
     viteConfig.resolve.alias = {
       ...viteConfig.resolve.alias,
+      // Specific alias must come before the general "react-native" alias,
+      // otherwise Vite matches "react-native" first and rewrites the path
+      // to react-native-web/... which doesn't have this shim.
+      "react-native/Libraries/Renderer/shims/ReactFabric": join(
+        __dirname,
+        "../src/mocks/react-native-ReactFabric.ts",
+      ),
       "react-native": "react-native-web",
       "@expo/vector-icons/MaterialIcons": join(
         __dirname,
