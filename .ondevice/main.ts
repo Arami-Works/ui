@@ -1,5 +1,4 @@
 import type { StorybookConfig } from "@storybook/react-native";
-import "../src/storybook-sort";
 
 const main: StorybookConfig = {
   stories: ["../src/**/*.story.tsx"],
