@@ -12,7 +12,7 @@
     "access": "public"
   },
   "scripts": {
-    "dev:dashboard": "mprocs",
+    "dev:dashboard": "bash scripts/dev-dashboard.sh",
     "start": "expo start",
     "ios": "expo start --ios",
     "android": "expo start --android",
