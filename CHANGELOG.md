@@ -1,5 +1,25 @@
 # @aramiworks/ui
 
+## 0.7.0
+
+### Minor Changes
+
+- [#236](https://github.com/aramiworks/ui/pull/236) [`76da34b`](https://github.com/aramiworks/ui/commit/76da34b0f89d54e5d9346b427efbb872dcabf0c6) Thanks [@cheunjm](https://github.com/cheunjm)! - Add `layouts` re-exports (`XStack`, `YStack`, `ZStack`, `Stack`, `View` from Tamagui) so consumers have a single import source. Update `EmptyStateTemplate` `icon` prop from `string` to `ReactNode | string` to support custom icon nodes alongside MaterialIcons names.
+
+### Patch Changes
+
+- [#234](https://github.com/aramiworks/ui/pull/234) [`acc1bd9`](https://github.com/aramiworks/ui/commit/acc1bd9ea6395b0fd3e905f7cba386823152b2ec) Thanks [@cheunjm](https://github.com/cheunjm)! - Improve mprocs.yaml: add port-kill prefix, SIGTERM stop signals, and consistent cmd format.
+
+- [#238](https://github.com/aramiworks/ui/pull/238) [`3ba4b2f`](https://github.com/aramiworks/ui/commit/3ba4b2fd07085242227d956107e7509d3301975e) Thanks [@cheunjm](https://github.com/cheunjm)! - Add dev-dashboard wrapper script with npm install and port cleanup phases, matching stock-tracker pattern.
+
+- [#240](https://github.com/aramiworks/ui/pull/240) [`ae2e9f2`](https://github.com/aramiworks/ui/commit/ae2e9f2ae8f9cd1a3335d378a38f57259ac41cbb) Thanks [@cheunjm](https://github.com/cheunjm)! - Add sleep after port kill in mprocs commands to prevent Expo port conflict prompt.
+
+- [#239](https://github.com/aramiworks/ui/pull/239) [`1be0617`](https://github.com/aramiworks/ui/commit/1be0617321b919bba7e20b621bba9733e107b59c) Thanks [@cheunjm](https://github.com/cheunjm)! - Exclude react-native-reanimated from Vite dep optimization to fix ReactFabric error in Storybook dev server.
+
+- [#241](https://github.com/aramiworks/ui/pull/241) [`59d1d9a`](https://github.com/aramiworks/ui/commit/59d1d9aea7bf1909eac998f04444579117f8adbc) Thanks [@cheunjm](https://github.com/cheunjm)! - Fix iOS on-device Storybook errors: move storybook-sort import to preview (fixes deeperSort undefined), remove Tamagui config path from babel plugin (fixes parse error when extraction is disabled).
+
+- [#237](https://github.com/aramiworks/ui/pull/237) [`a3a56b0`](https://github.com/aramiworks/ui/commit/a3a56b011ebf765c1f1c60947010d37cc4aeda66) Thanks [@cheunjm](https://github.com/cheunjm)! - Fix Storybook build errors: ReactFabric alias ordering and extensionless import warning.
+
 ## 0.6.0
 
 ### Minor Changes
