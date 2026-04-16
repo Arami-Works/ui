@@ -3,7 +3,10 @@
 # @aramiworks/ui — Kill dev processes and free ports
 # Runs automatically after mprocs exits.
 
-PORTS=(8082 8083 6006)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+set -a; . "$SCRIPT_DIR/ports.env"; set +a
+
+PORTS=("$IOS_PORT" "$ANDROID_PORT" "$STORYBOOK_PORT")
 
 for port in "${PORTS[@]}"; do
   pid=$(lsof -iTCP:"$port" -sTCP:LISTEN -P -t 2>/dev/null)
