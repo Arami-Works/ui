@@ -1,4 +1,5 @@
 import { Modal } from "react-native";
+import { Text } from "react-native";
 import { render, screen, fireEvent } from "@/test-utils";
 import { NavigationDrawer } from "./navigation-drawer";
 
@@ -41,6 +42,70 @@ describe("NavigationDrawer", () => {
     );
     fireEvent.press(screen.getByTestId("drawer-dest-home"));
     expect(onPress).toHaveBeenCalledWith("home");
+  });
+
+  it("modal variant with open=false (animation closed branch)", () => {
+    const { toJSON } = render(
+      <NavigationDrawer
+        open={false}
+        onClose={jest.fn()}
+        sections={sections}
+        testID="drawer"
+      />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("renders with header prop", () => {
+    const { toJSON } = render(
+      <NavigationDrawer
+        open
+        onClose={jest.fn()}
+        sections={sections}
+        header={<Text>Header content</Text>}
+        testID="drawer"
+      />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("pressing destination without onDestinationPress does not throw", () => {
+    render(
+      <NavigationDrawer
+        open
+        onClose={jest.fn()}
+        sections={sections}
+        testID="drawer"
+      />,
+    );
+    expect(() =>
+      fireEvent.press(screen.getByTestId("drawer-dest-home")),
+    ).not.toThrow();
+  });
+
+  it("renders activeIcon when destination is active and has activeIcon", () => {
+    const sectionsWithActiveIcon = [
+      {
+        destinations: [
+          {
+            key: "home",
+            icon: "home-outlined",
+            activeIcon: "home",
+            label: "Home",
+          },
+        ],
+      },
+    ];
+    render(
+      <NavigationDrawer
+        open
+        onClose={jest.fn()}
+        sections={sectionsWithActiveIcon}
+        activeKey="home"
+        testID="drawer"
+      />,
+    );
+    expect(screen.getByTestId("drawer-dest-home")).toBeTruthy();
   });
 
   it("highlights active destination", () => {

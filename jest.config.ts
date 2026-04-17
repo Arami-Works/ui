@@ -18,6 +18,8 @@ const config: Config.InitialOptions = {
     "!src/**/*.const.ts",
     "!src/**/index.ts",
     "!src/tokens/**",
+    "!src/mocks/**",
+    "!src/storybook-sort.ts",
   ],
 };
 

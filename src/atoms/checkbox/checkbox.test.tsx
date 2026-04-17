@@ -72,6 +72,18 @@ describe("Checkbox", () => {
     );
   });
 
+  it("renders checked + error state (backgroundColor override branch)", () => {
+    const { toJSON } = render(<Checkbox state="checked" error testID="cb" />);
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("renders indeterminate + error state", () => {
+    const { toJSON } = render(
+      <Checkbox state="indeterminate" error testID="cb" />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
   describe("dark mode", () => {
     it("renders in dark theme without crashing", () => {
       render(<Checkbox testID="dark-test" />, { theme: "dark" });

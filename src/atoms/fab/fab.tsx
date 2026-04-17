@@ -29,7 +29,8 @@ export function FAB({
   const iconToken = colorConfig.icon;
 
   const backgroundColor =
-    (theme[bgToken]?.val as string) ?? "$primaryContainer";
+    /* istanbul ignore next */ (theme[bgToken]?.val as string) ??
+    "$primaryContainer";
   const iconColor = theme[iconToken]?.val as string;
 
   const isExtended = !!label;

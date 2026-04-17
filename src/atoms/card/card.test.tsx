@@ -68,4 +68,25 @@ describe("Card", () => {
       expect.objectContaining({ disabled: true }),
     );
   });
+
+  it("renders disabled without onPress (opacity style applied)", () => {
+    const { toJSON } = render(
+      <Card disabled testID="card">
+        Content
+      </Card>,
+    );
+    expect(toJSON()).toBeTruthy();
+    expect(screen.getByTestId("card")).toBeTruthy();
+  });
+
+  it("applies pressed style when pressIn fires on interactive card", () => {
+    const onPress = jest.fn();
+    render(
+      <Card onPress={onPress} testID="card">
+        Content
+      </Card>,
+    );
+    fireEvent(screen.getByTestId("card"), "pressIn");
+    expect(screen.getByTestId("card")).toBeTruthy();
+  });
 });

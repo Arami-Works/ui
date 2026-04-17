@@ -104,6 +104,26 @@ describe("Chip", () => {
     );
   });
 
+  it("renders selected filter chip with leadingIcon (selectedIconColor branch)", () => {
+    const { toJSON } = render(
+      <Chip
+        label="Category"
+        type="filter"
+        selected
+        leadingIcon="event"
+        testID="chip"
+      />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("renders input chip with trailing icon but no testID (undefined branch)", () => {
+    const { toJSON } = render(
+      <Chip label="Tag" type="input" trailingIcon="close" />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
   describe("dark mode", () => {
     it("renders in dark theme without crashing", () => {
       render(<Chip label="Test" testID="dark-test" />, { theme: "dark" });

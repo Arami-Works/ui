@@ -105,4 +105,16 @@ describe("Banner", () => {
     const container = banner.children[0];
     expect(container.props.accessibilityLiveRegion).toBe("polite");
   });
+
+  it("renders with visible=false (animates out)", () => {
+    const { toJSON } = render(
+      <Banner message="Hidden" visible={false} testID="banner" />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("renders icon without testID (undefined branch)", () => {
+    const { toJSON } = render(<Banner message="With icon" icon="info" />);
+    expect(toJSON()).toBeTruthy();
+  });
 });

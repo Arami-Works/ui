@@ -134,6 +134,50 @@ describe("SegmentedButton", () => {
     );
   });
 
+  it("deselects item in multi-select mode when pressed again", () => {
+    const onSelectionChange = jest.fn();
+    render(
+      <SegmentedButton
+        segments={segments}
+        selected={["day", "week"]}
+        multiSelect
+        onSelectionChange={onSelectionChange}
+        testID="seg"
+      />,
+    );
+    fireEvent.press(screen.getByTestId("seg-segment-day"));
+    expect(onSelectionChange).toHaveBeenCalledWith(["week"]);
+  });
+
+  it("does not fire onSelectionChange when disabled", () => {
+    const onSelectionChange = jest.fn();
+    render(
+      <SegmentedButton
+        segments={segments}
+        selected="day"
+        disabled
+        onSelectionChange={onSelectionChange}
+        testID="seg"
+      />,
+    );
+    fireEvent.press(screen.getByTestId("seg-segment-week"));
+    expect(onSelectionChange).not.toHaveBeenCalled();
+  });
+
+  it("does not throw when no onSelectionChange provided", () => {
+    render(<SegmentedButton segments={segments} selected="day" testID="seg" />);
+    expect(() =>
+      fireEvent.press(screen.getByTestId("seg-segment-week")),
+    ).not.toThrow();
+  });
+
+  it("renders without testID (undefined branch for segment testIDs)", () => {
+    const { toJSON } = render(
+      <SegmentedButton segments={segments} selected="day" />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
   describe("dark mode", () => {
     it("renders in dark theme without crashing", () => {
       render(

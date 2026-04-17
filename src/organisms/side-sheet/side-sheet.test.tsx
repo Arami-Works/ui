@@ -112,6 +112,15 @@ describe("SideSheet", () => {
     });
   });
 
+  it("renders with side=left (left position branch)", () => {
+    const { toJSON } = render(
+      <SideSheet open onClose={jest.fn()} side="left" testID="sheet">
+        <Text>Left content</Text>
+      </SideSheet>,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
   describe("modal variant (default)", () => {
     it("renders with Modal", () => {
       render(

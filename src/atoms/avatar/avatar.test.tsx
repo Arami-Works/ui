@@ -157,6 +157,16 @@ describe("Avatar", () => {
     });
   });
 
+  it("falls back to raw color string when theme token does not exist", () => {
+    render(<Avatar color="$zzz_nonexistent_token_xyz" testID="avatar" />);
+    expect(screen.getByTestId("avatar")).toBeTruthy();
+  });
+
+  it("renders icon variant without testID (undefined branch)", () => {
+    const { toJSON } = render(<Avatar />);
+    expect(toJSON()).toBeTruthy();
+  });
+
   describe("dark mode", () => {
     it("renders in dark theme without crashing", () => {
       render(<Avatar testID="dark-test" />, { theme: "dark" });

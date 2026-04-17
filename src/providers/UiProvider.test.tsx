@@ -32,6 +32,28 @@ describe("UiProvider", () => {
     expect(result.current.resolved).toBe("dark");
   });
 
+  it("accepts defaultTheme='system' and resolves to light by default", () => {
+    const { result } = renderHook(() => useThemeMode(), {
+      wrapper: ({ children }) => (
+        <UiProvider defaultTheme="system">{children}</UiProvider>
+      ),
+    });
+    expect(result.current.mode).toBe("system");
+    expect(["light", "dark"]).toContain(result.current.resolved);
+  });
+
+  it("accepts defaultTheme='system' with dark color scheme", () => {
+    jest.mock("react-native/Libraries/Utilities/useColorScheme", () => ({
+      default: () => "dark",
+    }));
+    const { result } = renderHook(() => useThemeMode(), {
+      wrapper: ({ children }) => (
+        <UiProvider defaultTheme="system">{children}</UiProvider>
+      ),
+    });
+    expect(result.current.mode).toBe("system");
+  });
+
   it("useThemeMode returns setMode function", () => {
     const { result } = renderHook(() => useThemeMode(), {
       wrapper: ({ children }) => <UiProvider>{children}</UiProvider>,

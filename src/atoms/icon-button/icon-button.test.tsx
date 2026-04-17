@@ -70,6 +70,17 @@ describe("IconButton", () => {
     expect(element.props.accessibilityLabel).toBe("Close");
   });
 
+  it("falls back to raw token string when iconColor token does not exist", () => {
+    const { toJSON } = render(
+      <IconButton
+        icon="close"
+        iconColor="$zzz_nonexistent_token_xyz"
+        testID="ib"
+      />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
   describe("dark mode", () => {
     it("renders in dark theme without crashing", () => {
       render(<IconButton icon="close" testID="dark-test" />, { theme: "dark" });

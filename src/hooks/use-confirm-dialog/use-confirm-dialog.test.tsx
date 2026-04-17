@@ -67,6 +67,43 @@ describe("useConfirmDialog", () => {
     expect(onDismiss).toHaveBeenCalledTimes(1);
   });
 
+  it("dismiss without onDismiss does not throw (?.() undefined branch)", () => {
+    const { result } = renderHook(() => useConfirmDialog());
+    act(() => {
+      result.current.showConfirmDialog({
+        title: "Confirm",
+        message: "Are you sure?",
+        onConfirm: jest.fn(),
+      });
+    });
+    const portal = result.current.ConfirmDialogPortal() as ReactElement<
+      Record<string, unknown>
+    >;
+    expect(() => {
+      act(() => {
+        (portal.props.onDismiss as () => void)();
+      });
+    }).not.toThrow();
+  });
+
+  it("uses custom labels when provided", () => {
+    const { result } = renderHook(() => useConfirmDialog());
+    act(() => {
+      result.current.showConfirmDialog({
+        title: "Confirm",
+        message: "Are you sure?",
+        onConfirm: jest.fn(),
+        confirmLabel: "Yes",
+        dismissLabel: "No",
+      });
+    });
+    const portal = result.current.ConfirmDialogPortal() as ReactElement<
+      Record<string, unknown>
+    >;
+    expect(portal.props.confirmLabel).toBe("Yes");
+    expect(portal.props.dismissLabel).toBe("No");
+  });
+
   it("uses default labels when none provided", () => {
     const { result } = renderHook(() => useConfirmDialog());
     act(() => {

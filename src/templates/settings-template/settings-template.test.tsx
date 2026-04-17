@@ -122,6 +122,18 @@ describe("SettingsTemplate", () => {
     expect(screen.getByText("No Title Item")).toBeTruthy();
   });
 
+  it("renders collapsible section without title (title ?? '' fallback)", () => {
+    const noTitleCollapsible: SettingsSection[] = [
+      {
+        items: [<Text key="1">Hidden Item</Text>],
+        collapsible: true,
+        defaultExpanded: true,
+      },
+    ];
+    render(<SettingsTemplate sections={noTitleCollapsible} />);
+    expect(screen.getByText("Hidden Item")).toBeTruthy();
+  });
+
   it("renders collapsible section without testID", () => {
     const collapsibleSections: SettingsSection[] = [
       {

@@ -42,4 +42,21 @@ describe("EmptyStateTemplate", () => {
     expect(screen.getByTestId("empty-state")).toBeTruthy();
     expect(toJSON()).toBeTruthy();
   });
+
+  it("renders React element as icon (non-string branch)", () => {
+    const { toJSON } = render(
+      <EmptyStateTemplate
+        icon={<Text testID="icon-el">Custom Icon</Text>}
+        testID="empty-state"
+      />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("renders empty string icon (falsy string icon branch)", () => {
+    const { toJSON } = render(
+      <EmptyStateTemplate icon="" testID="empty-state" />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
 });
