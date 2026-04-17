@@ -137,7 +137,9 @@ describe("FormField", () => {
     });
 
     it("renders characterCount with only spacer when no supportText", () => {
-      render(<FormField characterCount={{ current: 0, max: 100 }} testID="ff" />);
+      render(
+        <FormField characterCount={{ current: 0, max: 100 }} testID="ff" />,
+      );
       expect(screen.getByTestId("ff-counter")).toBeTruthy();
     });
   });

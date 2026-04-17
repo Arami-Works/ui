@@ -182,7 +182,11 @@ describe("Dialog", () => {
 
   it("renders hero image without testID (undefined testID branch)", () => {
     const { toJSON } = render(
-      <Dialog visible heroImage={{ uri: "https://example.com/image.jpg" }} title="Photo">
+      <Dialog
+        visible
+        heroImage={{ uri: "https://example.com/image.jpg" }}
+        title="Photo"
+      >
         Content
       </Dialog>,
     );

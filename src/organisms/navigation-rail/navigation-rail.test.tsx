@@ -99,7 +99,11 @@ describe("NavigationRail", () => {
       <NavigationRail
         destinations={destinations}
         menuIcon={{ onPress: jest.fn() }}
-        fab={{ icon: "edit", onPress: jest.fn(), accessibilityLabel: "Compose" }}
+        fab={{
+          icon: "edit",
+          onPress: jest.fn(),
+          accessibilityLabel: "Compose",
+        }}
       />,
     );
     expect(toJSON()).toBeTruthy();

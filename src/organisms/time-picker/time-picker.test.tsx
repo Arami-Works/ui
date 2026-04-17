@@ -426,7 +426,9 @@ describe("TimePicker", () => {
         testID="tp"
       />,
     );
-    fireEvent.press(screen.getByText("Enter time"), { stopPropagation: jest.fn() });
+    fireEvent.press(screen.getByText("Enter time"), {
+      stopPropagation: jest.fn(),
+    });
     expect(onDismiss).not.toHaveBeenCalled();
   });
 

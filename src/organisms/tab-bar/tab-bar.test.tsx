@@ -67,7 +67,9 @@ describe("TabBar", () => {
 
   it("pressing tab without onTabPress does not throw", () => {
     render(<TabBar tabs={tabs} testID="tabbar" />);
-    expect(() => fireEvent.press(screen.getByTestId("tabbar-tab-1"))).not.toThrow();
+    expect(() =>
+      fireEvent.press(screen.getByTestId("tabbar-tab-1")),
+    ).not.toThrow();
   });
 
   it("renders tab with individual testID (tab.testID branch)", () => {
@@ -86,12 +88,19 @@ describe("TabBar", () => {
 
   it("secondary variant pressing without onTabPress does not throw", () => {
     render(<TabBar tabs={tabs} variant="secondary" testID="tabbar" />);
-    expect(() => fireEvent.press(screen.getByTestId("tabbar-tab-0"))).not.toThrow();
+    expect(() =>
+      fireEvent.press(screen.getByTestId("tabbar-tab-0")),
+    ).not.toThrow();
   });
 
   it("secondary variant with individual tab testID", () => {
-    const tabsWithTestID = [{ label: "Tab 1", testID: "my-tab-1" }, { label: "Tab 2" }];
-    render(<TabBar tabs={tabsWithTestID} variant="secondary" testID="tabbar" />);
+    const tabsWithTestID = [
+      { label: "Tab 1", testID: "my-tab-1" },
+      { label: "Tab 2" },
+    ];
+    render(
+      <TabBar tabs={tabsWithTestID} variant="secondary" testID="tabbar" />,
+    );
     expect(screen.getByTestId("my-tab-1")).toBeTruthy();
   });
 });

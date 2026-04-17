@@ -179,14 +179,7 @@ describe("Menu", () => {
 
   it("pressing inner stop-prop Pressable does not dismiss menu", () => {
     const onDismiss = jest.fn();
-    render(
-      <Menu
-        visible
-        onDismiss={onDismiss}
-        items={items}
-        testID="menu"
-      />,
-    );
+    render(<Menu visible onDismiss={onDismiss} items={items} testID="menu" />);
     fireEvent.press(screen.getByTestId("menu"), { stopPropagation: jest.fn() });
     expect(screen.getByTestId("menu")).toBeTruthy();
   });

@@ -147,7 +147,12 @@ describe("Snackbar", () => {
 
   it("renders actionLabel without testID (undefined branch for action testID)", () => {
     const { toJSON } = render(
-      <Snackbar visible message="Deleted" actionLabel="Undo" onAction={jest.fn()} />,
+      <Snackbar
+        visible
+        message="Deleted"
+        actionLabel="Undo"
+        onAction={jest.fn()}
+      />,
     );
     expect(toJSON()).toBeTruthy();
   });
@@ -161,7 +166,13 @@ describe("Snackbar", () => {
 
   it("renders two-line with closeButton without testID (undefined close testID)", () => {
     const { toJSON } = render(
-      <Snackbar visible message="Info" lines="two" showCloseIcon onDismiss={jest.fn()} />,
+      <Snackbar
+        visible
+        message="Info"
+        lines="two"
+        showCloseIcon
+        onDismiss={jest.fn()}
+      />,
     );
     expect(toJSON()).toBeTruthy();
   });

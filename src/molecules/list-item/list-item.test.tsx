@@ -167,10 +167,9 @@ describe("ListItem", () => {
         testID="list-item"
       />,
     );
-    fireEvent.press(
-      screen.getByTestId("trailing-el"),
-      { stopPropagation: jest.fn() },
-    );
+    fireEvent.press(screen.getByTestId("trailing-el"), {
+      stopPropagation: jest.fn(),
+    });
     expect(screen.getByTestId("list-item")).toBeTruthy();
   });
 });

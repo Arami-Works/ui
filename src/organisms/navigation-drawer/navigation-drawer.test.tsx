@@ -87,7 +87,12 @@ describe("NavigationDrawer", () => {
     const sectionsWithActiveIcon = [
       {
         destinations: [
-          { key: "home", icon: "home-outlined", activeIcon: "home", label: "Home" },
+          {
+            key: "home",
+            icon: "home-outlined",
+            activeIcon: "home",
+            label: "Home",
+          },
         ],
       },
     ];

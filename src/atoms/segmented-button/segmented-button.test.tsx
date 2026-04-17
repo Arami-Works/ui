@@ -165,9 +165,7 @@ describe("SegmentedButton", () => {
   });
 
   it("does not throw when no onSelectionChange provided", () => {
-    render(
-      <SegmentedButton segments={segments} selected="day" testID="seg" />,
-    );
+    render(<SegmentedButton segments={segments} selected="day" testID="seg" />);
     expect(() =>
       fireEvent.press(screen.getByTestId("seg-segment-week")),
     ).not.toThrow();
