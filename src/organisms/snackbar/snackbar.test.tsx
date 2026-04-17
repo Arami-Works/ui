@@ -145,6 +145,27 @@ describe("Snackbar", () => {
     expect(screen.getByTestId("snackbar-action")).toBeTruthy();
   });
 
+  it("renders actionLabel without testID (undefined branch for action testID)", () => {
+    const { toJSON } = render(
+      <Snackbar visible message="Deleted" actionLabel="Undo" onAction={jest.fn()} />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("renders showCloseIcon without testID (undefined branch for close testID)", () => {
+    const { toJSON } = render(
+      <Snackbar visible message="Info" showCloseIcon onDismiss={jest.fn()} />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("renders two-line with closeButton without testID (undefined close testID)", () => {
+    const { toJSON } = render(
+      <Snackbar visible message="Info" lines="two" showCloseIcon onDismiss={jest.fn()} />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
   it("defaults to single line when lines prop is omitted", () => {
     render(<Snackbar visible message="Short message" testID="snackbar" />);
     expect(screen.getByTestId("snackbar")).toBeTruthy();

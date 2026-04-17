@@ -83,6 +83,23 @@ describe("SearchBar", () => {
     expect(element.props.accessibilityLabel).toBe("Search items");
   });
 
+  it("clears text when clear button pressed with onChangeText", () => {
+    const onChangeText = jest.fn();
+    render(<SearchBar value="hello" onChangeText={onChangeText} testID="sb" />);
+    fireEvent.press(screen.getByTestId("sb-clear"));
+    expect(onChangeText).toHaveBeenCalledWith("");
+  });
+
+  it("does not throw when clear button pressed without onChangeText", () => {
+    render(<SearchBar value="text" testID="sb" />);
+    expect(() => fireEvent.press(screen.getByTestId("sb-clear"))).not.toThrow();
+  });
+
+  it("renders without testID (undefined branch for input and trailing)", () => {
+    const { toJSON } = render(<SearchBar value="text" />);
+    expect(toJSON()).toBeTruthy();
+  });
+
   describe("dark mode", () => {
     it("renders in dark theme without crashing", () => {
       render(<SearchBar testID="dark-test" />, { theme: "dark" });

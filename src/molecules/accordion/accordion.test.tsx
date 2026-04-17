@@ -141,6 +141,49 @@ describe("AccordionItem", () => {
   });
 });
 
+  it("toggles controlled accordion without updating internal state", () => {
+    const onToggle = jest.fn();
+    render(
+      <AccordionItem
+        title="Controlled"
+        expanded={false}
+        onToggle={onToggle}
+        testID="item"
+      >
+        <Text>Content</Text>
+      </AccordionItem>,
+    );
+    fireEvent.press(screen.getByText("Controlled"));
+    expect(onToggle).toHaveBeenCalledWith(true);
+  });
+
+  it("renders with leadingIcon", () => {
+    const { toJSON } = render(
+      <AccordionItem title="With icon" leadingIcon="info" testID="item">
+        <Text>Content</Text>
+      </AccordionItem>,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("pressing without onToggle does not throw", () => {
+    render(
+      <AccordionItem title="No handler" testID="item">
+        <Text>Content</Text>
+      </AccordionItem>,
+    );
+    expect(() => fireEvent.press(screen.getByText("No handler"))).not.toThrow();
+  });
+
+  it("renders without testID (undefined branch for chevron)", () => {
+    const { toJSON } = render(
+      <AccordionItem title="No ID">
+        <Text>Content</Text>
+      </AccordionItem>,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
 describe("Accordion", () => {
   it("renders multiple items", () => {
     render(

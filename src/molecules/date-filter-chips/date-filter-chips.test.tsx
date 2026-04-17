@@ -59,4 +59,16 @@ describe("DateFilterChips", () => {
     const element = screen.getByTestId("a11y-filter");
     expect(element.props.accessibilityRole).toBe("radiogroup");
   });
+
+  it("renders without testID (undefined branch for chip testIDs)", () => {
+    const { toJSON } = render(<DateFilterChips options={options} />);
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("does not throw when no onSelectionChange provided", () => {
+    render(<DateFilterChips options={options} testID="date-filter" />);
+    expect(() =>
+      fireEvent.press(screen.getByTestId("date-filter-chip-today")),
+    ).not.toThrow();
+  });
 });

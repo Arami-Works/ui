@@ -313,6 +313,102 @@ describe("Slider", () => {
     expect(onRangeChange).not.toHaveBeenCalled();
   });
 
+  it("invokes onValueChange when regular slider pan responder triggers", () => {
+    const onValueChange = jest.fn();
+    render(
+      <Slider
+        min={0}
+        max={100}
+        value={50}
+        onValueChange={onValueChange}
+        testID="slider"
+      />,
+    );
+    const container = screen.getByTestId("slider");
+    const trackView = container.children[0];
+    const touchHistory = {
+      touchBank: [],
+      numberActiveTouches: 0,
+      indexOfSingleActiveTouch: -1,
+      mostRecentTimeStamp: 0,
+    };
+
+    fireEvent(trackView, "layout", {
+      nativeEvent: { layout: { width: 200, height: 4 } },
+    });
+    fireEvent(trackView, "responderGrant", {
+      touchHistory,
+      nativeEvent: { locationX: 100 },
+    });
+    fireEvent(trackView, "responderMove", {
+      touchHistory,
+      nativeEvent: { locationX: 120 },
+    });
+
+    expect(onValueChange).toHaveBeenCalled();
+  });
+
+  it("skips update when trackWidth is zero (early return branch)", () => {
+    const onValueChange = jest.fn();
+    render(
+      <Slider
+        min={0}
+        max={100}
+        value={50}
+        onValueChange={onValueChange}
+        testID="slider"
+      />,
+    );
+    const container = screen.getByTestId("slider");
+    const trackView = container.children[0];
+    const touchHistory = {
+      touchBank: [],
+      numberActiveTouches: 0,
+      indexOfSingleActiveTouch: -1,
+      mostRecentTimeStamp: 0,
+    };
+
+    fireEvent(trackView, "responderGrant", {
+      touchHistory,
+      nativeEvent: { locationX: 100 },
+    });
+
+    expect(onValueChange).not.toHaveBeenCalled();
+  });
+
+  it("invokes onValueChange for discrete type regular slider", () => {
+    const onValueChange = jest.fn();
+    render(
+      <Slider
+        type="discrete"
+        min={0}
+        max={50}
+        step={10}
+        value={20}
+        onValueChange={onValueChange}
+        testID="slider"
+      />,
+    );
+    const container = screen.getByTestId("slider");
+    const trackView = container.children[0];
+    const touchHistory = {
+      touchBank: [],
+      numberActiveTouches: 0,
+      indexOfSingleActiveTouch: -1,
+      mostRecentTimeStamp: 0,
+    };
+
+    fireEvent(trackView, "layout", {
+      nativeEvent: { layout: { width: 200, height: 4 } },
+    });
+    fireEvent(trackView, "responderGrant", {
+      touchHistory,
+      nativeEvent: { locationX: 80 },
+    });
+
+    expect(onValueChange).toHaveBeenCalled();
+  });
+
   describe("dark mode", () => {
     it("renders in dark theme without crashing", () => {
       render(<Slider testID="dark-test" />, { theme: "dark" });

@@ -94,6 +94,24 @@ describe("NavigationRail", () => {
     expect(screen.queryByTestId("rail-menu")).toBeNull();
   });
 
+  it("renders without testID (undefined branch for dest/menu/fab testIDs)", () => {
+    const { toJSON } = render(
+      <NavigationRail
+        destinations={destinations}
+        menuIcon={{ onPress: jest.fn() }}
+        fab={{ icon: "edit", onPress: jest.fn(), accessibilityLabel: "Compose" }}
+      />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("pressing destination without onDestinationPress does not throw", () => {
+    render(<NavigationRail destinations={destinations} testID="rail" />);
+    expect(() =>
+      fireEvent.press(screen.getByTestId("rail-dest-1")),
+    ).not.toThrow();
+  });
+
   it("calls menuIcon.onPress when menu icon is pressed", () => {
     const onPress = jest.fn();
     render(

@@ -190,6 +190,13 @@ describe("Search", () => {
     expect(onActiveChange).not.toHaveBeenCalled();
   });
 
+  it("pressing recent item without onRecentSearchPress does not throw", () => {
+    render(<Search active recentSearches={recentSearches} testID="search" />);
+    expect(() =>
+      fireEvent.press(screen.getByTestId("search-recent-0")),
+    ).not.toThrow();
+  });
+
   it("fires onBack when back button pressed in fullScreen variant", () => {
     const onBack = jest.fn();
     render(<Search variant="fullScreen" onBack={onBack} testID="search" />);

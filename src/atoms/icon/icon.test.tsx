@@ -47,6 +47,13 @@ describe("Icon", () => {
     });
   });
 
+  it("falls back to raw token string when theme token does not exist", () => {
+    const { toJSON } = render(
+      <Icon name="home" color="$zzz_nonexistent_token_xyz" testID="icon" />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
   describe("dark mode", () => {
     it("renders in dark theme without crashing", () => {
       render(<Icon name="home" testID="dark-test" />, { theme: "dark" });

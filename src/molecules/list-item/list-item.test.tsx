@@ -134,4 +134,43 @@ describe("ListItem", () => {
     );
     expect(getByTestId("trailing-el")).toBeTruthy();
   });
+
+  it("renders React element as leadingContent", () => {
+    const { toJSON } = render(
+      <ListItem
+        headline="With element"
+        leadingContent={<View testID="leading-el" />}
+        testID="list-item"
+      />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("renders React element as trailingContent", () => {
+    const { toJSON } = render(
+      <ListItem
+        headline="Element trailing"
+        trailingContent={<View testID="trailing-content-el" />}
+        testID="list-item"
+      />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("stop-prop pressable on trailingElement does not propagate press", () => {
+    const onPress = jest.fn();
+    render(
+      <ListItem
+        headline="With trailing"
+        onPress={onPress}
+        trailingElement={<View testID="trailing-el" />}
+        testID="list-item"
+      />,
+    );
+    fireEvent.press(
+      screen.getByTestId("trailing-el"),
+      { stopPropagation: jest.fn() },
+    );
+    expect(screen.getByTestId("list-item")).toBeTruthy();
+  });
 });

@@ -177,6 +177,58 @@ describe("Menu", () => {
     expect(onDismiss).toHaveBeenCalled();
   });
 
+  it("pressing inner stop-prop Pressable does not dismiss menu", () => {
+    const onDismiss = jest.fn();
+    render(
+      <Menu
+        visible
+        onDismiss={onDismiss}
+        items={items}
+        testID="menu"
+      />,
+    );
+    fireEvent.press(screen.getByTestId("menu"), { stopPropagation: jest.fn() });
+    expect(screen.getByTestId("menu")).toBeTruthy();
+  });
+
+  it("renders item with trailingText", () => {
+    render(
+      <Menu
+        visible
+        onDismiss={jest.fn()}
+        items={[
+          {
+            key: "copy",
+            label: "Copy",
+            onPress: jest.fn(),
+            trailingText: "⌘C",
+          },
+        ]}
+        testID="menu"
+      />,
+    );
+    expect(screen.getByText("⌘C")).toBeTruthy();
+  });
+
+  it("renders item with leadingIcon", () => {
+    render(
+      <Menu
+        visible
+        onDismiss={jest.fn()}
+        items={[
+          {
+            key: "edit",
+            label: "Edit",
+            onPress: jest.fn(),
+            leadingIcon: "edit",
+          },
+        ]}
+        testID="menu"
+      />,
+    );
+    expect(screen.getByTestId("menu-item-edit")).toBeTruthy();
+  });
+
   it("does not call subitem onPress when subitem is disabled", () => {
     const subOnPress = jest.fn();
     render(

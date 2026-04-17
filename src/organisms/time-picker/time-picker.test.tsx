@@ -353,6 +353,83 @@ describe("TimePicker", () => {
     expect(onConfirm).toHaveBeenCalledWith(9, 45);
   });
 
+  it("ignores non-numeric hour input (if (!isNaN) false branch)", () => {
+    const onConfirm = jest.fn();
+    render(
+      <TimePicker
+        visible
+        mode="input"
+        hour={9}
+        minute={0}
+        onConfirm={onConfirm}
+        onDismiss={jest.fn()}
+        testID="tp"
+      />,
+    );
+    fireEvent.changeText(screen.getByDisplayValue("9"), "ab");
+    fireEvent.press(screen.getByText("OK"));
+    expect(onConfirm).toHaveBeenCalledWith(9, 0);
+  });
+
+  it("ignores non-numeric minute input (if (!isNaN) false branch)", () => {
+    const onConfirm = jest.fn();
+    render(
+      <TimePicker
+        visible
+        mode="input"
+        hour={9}
+        minute={0}
+        onConfirm={onConfirm}
+        onDismiss={jest.fn()}
+        testID="tp"
+      />,
+    );
+    fireEvent.changeText(screen.getByDisplayValue("00"), "ab");
+    fireEvent.press(screen.getByText("OK"));
+    expect(onConfirm).toHaveBeenCalledWith(9, 0);
+  });
+
+  it("switches from clock to input mode via mode toggle button", () => {
+    render(
+      <TimePicker
+        visible
+        onConfirm={jest.fn()}
+        onDismiss={jest.fn()}
+        testID="tp"
+      />,
+    );
+    fireEvent.press(screen.getAllByRole("button")[0]);
+    expect(screen.getByText("Hour")).toBeTruthy();
+  });
+
+  it("switches from input to clock mode via mode toggle button", () => {
+    render(
+      <TimePicker
+        visible
+        mode="input"
+        onConfirm={jest.fn()}
+        onDismiss={jest.fn()}
+        testID="tp"
+      />,
+    );
+    fireEvent.press(screen.getAllByRole("button")[0]);
+    expect(screen.getByText("12")).toBeTruthy();
+  });
+
+  it("pressing inner stop-prop Pressable does not dismiss", () => {
+    const onDismiss = jest.fn();
+    render(
+      <TimePicker
+        visible
+        onConfirm={jest.fn()}
+        onDismiss={onDismiss}
+        testID="tp"
+      />,
+    );
+    fireEvent.press(screen.getByText("Enter time"), { stopPropagation: jest.fn() });
+    expect(onDismiss).not.toHaveBeenCalled();
+  });
+
   it("clamps minute to 59 in input mode", () => {
     const onConfirm = jest.fn();
     render(

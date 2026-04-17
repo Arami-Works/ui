@@ -180,6 +180,15 @@ describe("Dialog", () => {
     expect(screen.queryByTestId("dialog-hero")).toBeNull();
   });
 
+  it("renders hero image without testID (undefined testID branch)", () => {
+    const { toJSON } = render(
+      <Dialog visible heroImage={{ uri: "https://example.com/image.jpg" }} title="Photo">
+        Content
+      </Dialog>,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
   it("renders hero image with title and actions together", () => {
     render(
       <Dialog

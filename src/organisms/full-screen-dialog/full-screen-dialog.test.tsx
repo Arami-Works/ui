@@ -65,6 +65,15 @@ describe("FullScreenDialog", () => {
     expect(onAction).not.toHaveBeenCalled();
   });
 
+  it("renders with keyboardAvoiding (KeyboardAvoidingView branch)", () => {
+    render(
+      <FullScreenDialog {...defaultProps} keyboardAvoiding>
+        <Text testID="kav-content">Content</Text>
+      </FullScreenDialog>,
+    );
+    expect(screen.getByTestId("kav-content")).toBeTruthy();
+  });
+
   it("renders without testID", () => {
     const { title, actionLabel, onAction, onClose } = defaultProps;
     render(

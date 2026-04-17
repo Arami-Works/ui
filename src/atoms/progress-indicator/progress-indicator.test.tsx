@@ -60,4 +60,54 @@ describe("ProgressIndicator", () => {
       expect.objectContaining({ min: 0, max: 100, now: 75 }),
     );
   });
+
+  describe("circular determinate arc branches", () => {
+    it("renders circular determinate at progress=0 (no arcs)", () => {
+      const { toJSON } = render(
+        <ProgressIndicator
+          type="circular"
+          mode="determinate"
+          progress={0}
+          testID="progress"
+        />,
+      );
+      expect(toJSON()).toBeTruthy();
+    });
+
+    it("renders circular determinate at progress=0.3 (showBottom branch)", () => {
+      const { toJSON } = render(
+        <ProgressIndicator
+          type="circular"
+          mode="determinate"
+          progress={0.3}
+          testID="progress"
+        />,
+      );
+      expect(toJSON()).toBeTruthy();
+    });
+
+    it("renders circular determinate at progress=0.6 (showLeft branch)", () => {
+      const { toJSON } = render(
+        <ProgressIndicator
+          type="circular"
+          mode="determinate"
+          progress={0.6}
+          testID="progress"
+        />,
+      );
+      expect(toJSON()).toBeTruthy();
+    });
+
+    it("renders circular determinate at progress=0.9 (showTopArc branch)", () => {
+      const { toJSON } = render(
+        <ProgressIndicator
+          type="circular"
+          mode="determinate"
+          progress={0.9}
+          testID="progress"
+        />,
+      );
+      expect(toJSON()).toBeTruthy();
+    });
+  });
 });

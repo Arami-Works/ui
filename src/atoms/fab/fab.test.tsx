@@ -68,6 +68,11 @@ describe("FAB", () => {
     expect(element.props.accessibilityLabel).toBe("Add item");
   });
 
+  it("renders without crash when theme token may be absent", () => {
+    const { toJSON } = render(<FAB icon="add" color="tertiary" testID="fab" />);
+    expect(toJSON()).toBeTruthy();
+  });
+
   describe("dark mode", () => {
     it("renders in dark theme without crashing", () => {
       render(<FAB icon="add" testID="dark-test" />, { theme: "dark" });

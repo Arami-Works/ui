@@ -60,4 +60,13 @@ describe("ListTemplate", () => {
     render(<ListTemplate testID="lt" fab={<Text testID="fab">FAB</Text>} />);
     expect(screen.getByTestId("fab")).toBeTruthy();
   });
+
+  it("renders without testID (undefined branch for scroll testID)", () => {
+    const { toJSON } = render(
+      <ListTemplate>
+        <Text>Content</Text>
+      </ListTemplate>,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
 });

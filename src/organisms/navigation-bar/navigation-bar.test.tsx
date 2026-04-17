@@ -95,6 +95,18 @@ describe("NavigationBar", () => {
     expect(toJSON()).toBeTruthy();
   });
 
+  it("renders without testID (undefined branch for dest testIDs)", () => {
+    const { toJSON } = render(<NavigationBar destinations={destinations} />);
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("pressing destination without onDestinationPress does not throw", () => {
+    render(<NavigationBar destinations={destinations} testID="nav" />);
+    expect(() =>
+      fireEvent.press(screen.getByTestId("nav-dest-1")),
+    ).not.toThrow();
+  });
+
   it("sets accessibility role and state on destinations", () => {
     render(
       <NavigationBar

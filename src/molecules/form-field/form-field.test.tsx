@@ -118,5 +118,27 @@ describe("FormField", () => {
       const support = screen.getByTestId("ff-support");
       expect(support.props.accessibilityRole).not.toBe("alert");
     });
+
+    it("renders label without testID (undefined branch)", () => {
+      const { toJSON } = render(<FormField label="Name" />);
+      expect(toJSON()).toBeTruthy();
+    });
+
+    it("renders support text without testID (undefined branch)", () => {
+      const { toJSON } = render(<FormField helperText="Hint" />);
+      expect(toJSON()).toBeTruthy();
+    });
+
+    it("renders counter without testID (undefined branch)", () => {
+      const { toJSON } = render(
+        <FormField characterCount={{ current: 5, max: 20 }} />,
+      );
+      expect(toJSON()).toBeTruthy();
+    });
+
+    it("renders characterCount with only spacer when no supportText", () => {
+      render(<FormField characterCount={{ current: 0, max: 100 }} testID="ff" />);
+      expect(screen.getByTestId("ff-counter")).toBeTruthy();
+    });
   });
 });

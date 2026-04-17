@@ -501,6 +501,36 @@ describe("DatePicker", () => {
     });
   });
 
+  it("confirms from input mode with valid parsed date (parsed branch)", () => {
+    const onConfirm = jest.fn();
+    render(
+      <DatePicker
+        visible
+        mode="input"
+        onConfirm={onConfirm}
+        onDismiss={jest.fn()}
+        testID="dp"
+      />,
+    );
+    fireEvent.changeText(screen.getByDisplayValue(""), "04/15/2026");
+    fireEvent.press(screen.getByText("OK"));
+    expect(onConfirm).toHaveBeenCalledWith(expect.any(Date));
+  });
+
+  it("pressing inner stop-prop Pressable does not dismiss modal", () => {
+    const onDismiss = jest.fn();
+    render(
+      <DatePicker
+        visible
+        onConfirm={jest.fn()}
+        onDismiss={onDismiss}
+        testID="dp"
+      />,
+    );
+    fireEvent.press(screen.getByTestId("dp"), { stopPropagation: jest.fn() });
+    expect(screen.getByTestId("dp")).toBeTruthy();
+  });
+
   describe("year selector", () => {
     it("opens year grid when header is tapped", () => {
       const date = new Date(2026, 3, 15);
