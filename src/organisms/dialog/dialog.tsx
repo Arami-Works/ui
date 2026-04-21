@@ -8,17 +8,17 @@ import type { DialogProps } from "./dialog.type";
 const Scrim = styled(View, {
   name: "DialogScrim",
   flex: 1,
-  backgroundColor: "rgba(0,0,0,0.32)",
+  backgroundColor: "$scrim",
   justifyContent: "center",
   alignItems: "center",
 });
 
-const DIALOG_RADIUS = 28;
+const DIALOG_RADIUS = 24;
 
 const Container = styled(View, {
   name: "Dialog",
   backgroundColor: "$surfaceContainerHigh",
-  borderRadius: DIALOG_RADIUS,
+  borderRadius: "$2xl",
   minWidth: 280,
   maxWidth: 560,
   overflow: "hidden",

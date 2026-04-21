@@ -4,19 +4,23 @@ import { styled, View, YStack } from "tamagui";
 import { Divider } from "../../atoms/divider";
 import { Icon } from "../../atoms/icon";
 import { Text } from "../../atoms/text";
+import {
+  DISABLED_OPACITY,
+  PRESSED_OPACITY,
+} from "../../tokens/custom/interaction";
 import type { MenuDivider, MenuEntry, MenuProps } from "./menu.type";
 
 const Container = styled(View, {
   name: "Menu",
   backgroundColor: "$surfaceContainer",
-  borderRadius: 4,
+  borderRadius: "$xs",
   minWidth: 112,
   maxWidth: 280,
   paddingVertical: 8,
-  shadowColor: "#000",
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.15,
-  shadowRadius: 6,
+  shadowColor: "#171717",
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.07,
+  shadowRadius: 15,
 } as const);
 
 function isDivider(entry: MenuEntry): entry is MenuDivider {
@@ -85,7 +89,11 @@ export function Menu({
                           alignItems: "center",
                           paddingHorizontal: 12,
                           paddingVertical: 12,
-                          opacity: item.disabled ? 0.38 : pressed ? 0.7 : 1,
+                          opacity: item.disabled
+                            ? DISABLED_OPACITY
+                            : pressed
+                              ? PRESSED_OPACITY
+                              : 1,
                         })}
                         accessibilityRole="menuitem"
                         accessibilityState={
@@ -156,9 +164,9 @@ export function Menu({
                                     paddingHorizontal: 12,
                                     paddingVertical: 12,
                                     opacity: subItem.disabled
-                                      ? 0.38
+                                      ? DISABLED_OPACITY
                                       : pressed
-                                        ? 0.7
+                                        ? PRESSED_OPACITY
                                         : 1,
                                   })}
                                   accessibilityRole="menuitem"

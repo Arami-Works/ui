@@ -75,7 +75,7 @@
     "@storybook/react-native": "^10.3.1",
     "@storybook/react-vite": "^10.3.4",
     "@tamagui/animations-react-native": "^1.112.0",
-    "@tamagui/babel-plugin": "^2.0.0-rc.31",
+    "@tamagui/babel-plugin": "^1.144.0",
     "@tamagui/config": "^1.112.0",
     "@tamagui/core": "^1.112.0",
     "@tamagui/font-inter": "^1.112.0",

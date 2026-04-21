@@ -1,6 +1,7 @@
 import { styled, View, useTheme } from "tamagui";
 import { Pressable } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
 import type { SwitchProps } from "./switch.type";
 
 const Track = styled(View, {
@@ -77,7 +78,7 @@ export function Switch({
       testID={testID}
       style={{ minWidth: 52, minHeight: 48, justifyContent: "center" }}
     >
-      <View opacity={disabled ? 0.38 : 1} {...props}>
+      <View opacity={disabled ? DISABLED_OPACITY : 1} {...props}>
         <Track selected={selected as any}>
           <Thumb
             width={thumbSize}

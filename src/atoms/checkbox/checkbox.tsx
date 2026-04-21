@@ -1,6 +1,7 @@
 import { styled, View, useTheme } from "tamagui";
 import { Pressable } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
 import type { CheckboxProps } from "./checkbox.type";
 
 const StyledCheckbox = styled(View, {
@@ -73,7 +74,7 @@ export function Checkbox({
         height: 48,
         justifyContent: "center",
         alignItems: "center",
-        opacity: disabled ? 0.38 : 1,
+        opacity: disabled ? DISABLED_OPACITY : 1,
       }}
     >
       <StyledCheckbox

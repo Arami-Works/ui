@@ -5,6 +5,7 @@ import { Avatar } from "../../atoms/avatar";
 import { Icon } from "../../atoms/icon";
 import { Text } from "../../atoms/text";
 import { Divider } from "../../atoms/divider";
+import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
 import type { ListItemProps } from "./list-item.type";
 
 const Row = styled(View, {
@@ -117,7 +118,7 @@ export function ListItem({
         accessibilityLabel={accessibilityLabel}
         accessibilityRole={onPress ? "button" : undefined}
         accessibilityState={disabled ? { disabled: true } : undefined}
-        style={{ opacity: disabled ? 0.38 : 1 }}
+        style={{ opacity: disabled ? DISABLED_OPACITY : 1 }}
       >
         <Row minHeight={minHeight}>
           {renderLeading()}

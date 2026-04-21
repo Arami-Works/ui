@@ -8,7 +8,7 @@ import type { TooltipProps, TooltipPlacement } from "./tooltip.type";
 const PlainContainer = styled(View, {
   name: "TooltipPlain",
   backgroundColor: "$inverseSurface",
-  borderRadius: 4,
+  borderRadius: "$xs",
   paddingHorizontal: 8,
   paddingVertical: 4,
   maxWidth: 200,
@@ -17,13 +17,13 @@ const PlainContainer = styled(View, {
 const RichContainer = styled(View, {
   name: "TooltipRich",
   backgroundColor: "$surfaceContainer",
-  borderRadius: 12,
+  borderRadius: "$md",
   padding: 16,
   maxWidth: 280,
-  shadowColor: "#000",
+  shadowColor: "#171717",
   shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.15,
-  shadowRadius: 4,
+  shadowOpacity: 0.06,
+  shadowRadius: 6,
 });
 
 function getTooltipOffset(placement: TooltipPlacement): object {
@@ -68,8 +68,9 @@ export function Tooltip({
   actionLabel,
   onAction,
   testID,
+  defaultVisible = false,
 }: TooltipProps) {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(defaultVisible);
 
   const tooltipStyle = {
     position: "absolute" as const,

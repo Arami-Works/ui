@@ -8,6 +8,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { Divider } from "../../atoms/divider";
 import { Icon } from "../../atoms/icon";
+import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
 import { Text } from "../../atoms/text";
 import type { AccordionItemProps, AccordionProps } from "./accordion.type";
 
@@ -78,7 +79,7 @@ export function AccordionItem({
         accessibilityRole="button"
         accessibilityHint={accessibilityHint}
         accessibilityState={{ expanded: isExpanded }}
-        style={{ opacity: disabled ? 0.38 : 1 }}
+        style={{ opacity: disabled ? DISABLED_OPACITY : 1 }}
       >
         <HeaderRow>
           {leadingIcon ? (

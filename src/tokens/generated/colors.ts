@@ -1,55 +1,58 @@
 /**
- * MD3 Color Tokens
+ * MD3 Color Tokens — Montage-matched
  * Auto-generated from Figma Variables via Token Studio
  * DO NOT EDIT — run the token pipeline to regenerate
+ *
+ * Source: Montage (wanteddev/montage-web) semantic tokens
+ * Mapping: scripts/figma-docs/montage-tokens.md
  */
 export const colors = {
   // Primary
-  primary: "#6750A4",
+  primary: "#0066FF",
   onPrimary: "#FFFFFF",
-  primaryContainer: "#EADDFF",
-  onPrimaryContainer: "#21005D",
+  primaryContainer: "#70737C29",
+  onPrimaryContainer: "#0066FF",
 
   // Secondary
-  secondary: "#625B71",
+  secondary: "#37383C9C",
   onSecondary: "#FFFFFF",
-  secondaryContainer: "#E8DEF8",
-  onSecondaryContainer: "#1D192B",
+  secondaryContainer: "#70737C14",
+  onSecondaryContainer: "#171719",
 
   // Tertiary
-  tertiary: "#7D5260",
+  tertiary: "#989BA2",
   onTertiary: "#FFFFFF",
-  tertiaryContainer: "#FFD8E4",
-  onTertiaryContainer: "#31111D",
+  tertiaryContainer: "#70737C0D",
+  onTertiaryContainer: "#2E2F33E0",
 
   // Error
-  error: "#B3261E",
+  error: "#FF4242",
   onError: "#FFFFFF",
-  errorContainer: "#F9DEDC",
-  onErrorContainer: "#410E0B",
+  errorContainer: "#FF42421F",
+  onErrorContainer: "#FF4242",
 
   // Surface
-  surface: "#FFFBFE",
-  onSurface: "#1C1B1F",
-  surfaceVariant: "#E7E0EC",
-  onSurfaceVariant: "#49454F",
+  surface: "#FFFFFF",
+  onSurface: "#171719",
+  surfaceVariant: "#F7F7F8",
+  onSurfaceVariant: "#2E2F33E0",
   surfaceContainerLowest: "#FFFFFF",
-  surfaceContainerLow: "#F7F2FA",
-  surfaceContainer: "#F3EDF7",
-  surfaceContainerHigh: "#ECE6F0",
-  surfaceContainerHighest: "#E6E0E9",
+  surfaceContainerLow: "#F7F7F8",
+  surfaceContainer: "#70737C0D",
+  surfaceContainerHigh: "#FFFFFF",
+  surfaceContainerHighest: "#70737C14",
 
   // Outline
-  outline: "#79747E",
-  outlineVariant: "#CAC4D0",
+  outline: "#E1E2E4",
+  outlineVariant: "#EAEBEC",
 
   // Inverse
-  inverseSurface: "#313033",
-  inverseOnSurface: "#F4EFF4",
-  inversePrimary: "#D0BCFF",
+  inverseSurface: "#1B1C1E",
+  inverseOnSurface: "#F7F7F8",
+  inversePrimary: "#3385FF",
 
   // Scrim
-  scrim: "#000000",
+  scrim: "#17171985",
   shadow: "#000000",
 } as const;
 

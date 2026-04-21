@@ -1,6 +1,7 @@
 import { useTheme, Text } from "tamagui";
 import { Pressable, type ViewStyle } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { shadows } from "../../tokens/custom/shadows";
 import type { FabProps } from "./fab.type";
 import {
   FAB_SIZE_MAP,
@@ -45,11 +46,7 @@ export function FAB({
         paddingHorizontal: FAB_EXTENDED_PADDING_HORIZONTAL,
         gap: FAB_EXTENDED_GAP,
         backgroundColor,
-        elevation: 3,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
+        ...shadows.medium,
       }
     : {
         width: sizeConfig.width,
@@ -58,11 +55,7 @@ export function FAB({
         alignItems: "center",
         justifyContent: "center",
         backgroundColor,
-        elevation: 3,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
+        ...shadows.medium,
       };
 
   return (

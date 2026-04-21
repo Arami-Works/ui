@@ -1,11 +1,10 @@
-import { createTamagui, createTokens } from "tamagui";
-import { createInterFont } from "@tamagui/font-inter";
+import { createTamagui, createTokens, createFont } from "tamagui";
 import { shorthands } from "@tamagui/shorthands";
 import { createAnimations } from "@tamagui/animations-react-native";
 import { colors } from "./generated/colors";
 import { darkColors } from "./generated/colors-dark";
 import { spacing } from "./generated/spacing";
-import { fontSize, lineHeight } from "./generated/typography";
+import { fontSize, lineHeight, letterSpacing } from "./generated/typography";
 import { radii } from "./generated/radii";
 
 const animations = createAnimations({
@@ -17,9 +16,9 @@ const animations = createAnimations({
   },
   standard: {
     type: "spring",
-    damping: 20,
+    damping: 25,
     mass: 1,
-    stiffness: 200,
+    stiffness: 220,
   },
   standardDecelerate: {
     type: "spring",
@@ -35,9 +34,9 @@ const animations = createAnimations({
   },
   emphasized: {
     type: "spring",
-    damping: 15,
+    damping: 20,
     mass: 1,
-    stiffness: 150,
+    stiffness: 180,
   },
   emphasizedDecelerate: {
     type: "spring",
@@ -53,7 +52,24 @@ const animations = createAnimations({
   },
 });
 
-const interFont = createInterFont();
+const pretendardFont = createFont({
+  family: "Pretendard-Regular",
+  size: fontSize,
+  lineHeight,
+  letterSpacing,
+  weight: {
+    4: "400",
+    5: "500",
+    6: "600",
+    7: "700",
+  },
+  face: {
+    400: { normal: "Pretendard-Regular" },
+    500: { normal: "Pretendard-Medium" },
+    600: { normal: "Pretendard-SemiBold" },
+    700: { normal: "Pretendard-Bold" },
+  },
+});
 
 const tokens = createTokens({
   color: {
@@ -97,9 +113,9 @@ const config = createTamagui({
   shorthands,
   animations,
   fonts: {
-    heading: interFont,
-    body: interFont,
-    label: interFont,
+    heading: pretendardFont,
+    body: pretendardFont,
+    label: pretendardFont,
   },
   settings: {
     allowedStyleValues: "somewhat-strict-web",
