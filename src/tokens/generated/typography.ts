@@ -1,61 +1,65 @@
 /**
- * MD3 Typography Tokens
+ * MD3 Typography Tokens — Montage-matched
  * Auto-generated from Figma Variables via Token Studio
  * DO NOT EDIT — run the token pipeline to regenerate
+ *
+ * Source: Montage (wanteddev/montage-web) typography scale
+ * Mapping: scripts/figma-docs/montage-tokens.md
+ * Letter spacing converted from em to px (em * fontSize)
  */
 
 export const fontSize = {
-  displayLarge: 57,
-  displayMedium: 45,
+  displayLarge: 56,
+  displayMedium: 40,
   displaySmall: 36,
   headlineLarge: 32,
   headlineMedium: 28,
   headlineSmall: 24,
   titleLarge: 22,
-  titleMedium: 16,
-  titleSmall: 14,
+  titleMedium: 20,
+  titleSmall: 18,
   labelLarge: 14,
-  labelMedium: 12,
-  labelSmall: 11,
-  bodyLarge: 16,
-  bodyMedium: 14,
-  bodySmall: 12,
+  labelMedium: 13,
+  labelSmall: 12,
+  bodyLarge: 17,
+  bodyMedium: 16,
+  bodySmall: 15,
 } as const;
 
 export const lineHeight = {
-  displayLarge: 64,
+  displayLarge: 72,
   displayMedium: 52,
-  displaySmall: 44,
-  headlineLarge: 40,
-  headlineMedium: 36,
+  displaySmall: 48,
+  headlineLarge: 44,
+  headlineMedium: 38,
   headlineSmall: 32,
-  titleLarge: 28,
-  titleMedium: 24,
-  titleSmall: 20,
+  titleLarge: 30,
+  titleMedium: 28,
+  titleSmall: 26,
   labelLarge: 20,
-  labelMedium: 16,
+  labelMedium: 18,
   labelSmall: 16,
   bodyLarge: 24,
-  bodyMedium: 20,
-  bodySmall: 16,
+  bodyMedium: 24,
+  bodySmall: 22,
 } as const;
 
 export const letterSpacing = {
-  displayLarge: -0.25,
-  displayMedium: 0,
-  displaySmall: 0,
-  headlineLarge: 0,
-  headlineMedium: 0,
-  headlineSmall: 0,
-  titleLarge: 0,
-  titleMedium: 0.15,
-  titleSmall: 0.1,
-  labelLarge: 0.1,
-  labelMedium: 0.5,
-  labelSmall: 0.5,
-  bodyLarge: 0.5,
-  bodyMedium: 0.25,
-  bodySmall: 0.4,
+  displayLarge: -1.79,
+  displayMedium: -1.13,
+  displaySmall: -0.97,
+  headlineLarge: -0.81,
+  headlineMedium: -0.66,
+  headlineSmall: -0.55,
+  titleLarge: -0.43,
+  titleMedium: -0.24,
+  titleSmall: -0.04,
+  labelLarge: 0.2,
+  labelMedium: 0.25,
+  labelSmall: 0.3,
+  bodyLarge: 0,
+  bodyMedium: 0.09,
+  bodySmall: 0.14,
 } as const;
 
 export type TypographyToken = keyof typeof fontSize;

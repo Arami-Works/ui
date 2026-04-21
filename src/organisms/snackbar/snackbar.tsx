@@ -13,7 +13,7 @@ const Container = styled(View, {
   right: 16,
   minHeight: 48,
   backgroundColor: "$inverseSurface",
-  borderRadius: 4,
+  borderRadius: "$xs",
   paddingHorizontal: 16,
   paddingVertical: 12,
 });

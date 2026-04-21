@@ -1,12 +1,13 @@
 import { Pressable } from "react-native";
 import { styled, View, Text, useTheme } from "tamagui";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
 import type { ChipProps } from "./chip.type";
 
 const StyledChipContainer = styled(View, {
   name: "Chip",
   height: 32,
-  borderRadius: 8,
+  borderRadius: "$sm",
   flexDirection: "row",
   alignItems: "center",
   paddingHorizontal: 16,
@@ -72,7 +73,7 @@ export function Chip({
       <StyledChipContainer
         selected={isSelected as any}
         hasLeadingIcon={hasLeadingIcon as any}
-        opacity={disabled ? 0.38 : 1}
+        opacity={disabled ? DISABLED_OPACITY : 1}
         {...props}
       >
         {isSelected && !leadingIcon && (
