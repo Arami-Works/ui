@@ -8,6 +8,7 @@ import {
   DISABLED_OPACITY,
   PRESSED_OPACITY,
 } from "../../tokens/custom/interaction";
+import { shadows } from "../../tokens/custom/shadows";
 import type { MenuDivider, MenuEntry, MenuProps } from "./menu.type";
 
 const Container = styled(View, {
@@ -17,10 +18,7 @@ const Container = styled(View, {
   minWidth: 112,
   maxWidth: 280,
   paddingVertical: 8,
-  shadowColor: "#171717",
-  shadowOffset: { width: 0, height: 4 },
-  shadowOpacity: 0.07,
-  shadowRadius: 15,
+  ...shadows.medium,
 } as const);
 
 function isDivider(entry: MenuEntry): entry is MenuDivider {

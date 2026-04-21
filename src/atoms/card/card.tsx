@@ -4,6 +4,7 @@ import {
   DISABLED_OPACITY,
   PRESSED_OPACITY,
 } from "../../tokens/custom/interaction";
+import { shadows } from "../../tokens/custom/shadows";
 import type { CardProps } from "./card.type";
 
 const ElevatedCard = styled(View, {
@@ -11,10 +12,7 @@ const ElevatedCard = styled(View, {
   backgroundColor: "$surfaceContainerLow",
   borderRadius: "$md",
   padding: 16,
-  shadowColor: "#171717",
-  shadowOffset: { width: 0, height: 1 },
-  shadowOpacity: 0.1,
-  shadowRadius: 2,
+  ...shadows.xsmall,
 });
 
 const FilledCard = styled(View, {
