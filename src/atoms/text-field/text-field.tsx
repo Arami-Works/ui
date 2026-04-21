@@ -2,14 +2,15 @@ import { useState, useCallback } from "react";
 import { TextInput, Pressable } from "react-native";
 import { styled, View, Text, useTheme } from "tamagui";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
 import type { TextFieldProps } from "./text-field.type";
 
 const FilledContainer = styled(View, {
   name: "TextFieldFilledContainer",
   height: 56,
   backgroundColor: "$surfaceContainerHighest",
-  borderTopLeftRadius: 4,
-  borderTopRightRadius: 4,
+  borderTopLeftRadius: 12,
+  borderTopRightRadius: 12,
   borderBottomLeftRadius: 0,
   borderBottomRightRadius: 0,
   flexDirection: "row",
@@ -19,7 +20,7 @@ const FilledContainer = styled(View, {
   variants: {
     isDisabled: {
       true: {
-        opacity: 0.38,
+        opacity: DISABLED_OPACITY,
       },
     },
   } as const,
@@ -29,7 +30,7 @@ const OutlinedContainer = styled(View, {
   name: "TextFieldOutlinedContainer",
   height: 56,
   backgroundColor: "transparent",
-  borderRadius: 4,
+  borderRadius: "$md",
   borderWidth: 1,
   borderColor: "$outline",
   flexDirection: "row",
@@ -51,7 +52,7 @@ const OutlinedContainer = styled(View, {
     },
     isDisabled: {
       true: {
-        opacity: 0.38,
+        opacity: DISABLED_OPACITY,
       },
     },
   } as const,

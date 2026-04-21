@@ -18,7 +18,7 @@ const NUMBER_RADIUS = CLOCK_RADIUS - 32;
 const Container = styled(View, {
   name: "TimePicker",
   backgroundColor: "$surfaceContainerHigh",
-  borderRadius: 28,
+  borderRadius: "$2xl",
   padding: 24,
   minWidth: 328,
 });
@@ -26,7 +26,7 @@ const Container = styled(View, {
 const TimeSegment = styled(View, {
   name: "TimeSegment",
   backgroundColor: "$surfaceContainerHighest",
-  borderRadius: 8,
+  borderRadius: "$sm",
   paddingHorizontal: 12,
   paddingVertical: 8,
   alignItems: "center",
@@ -104,7 +104,7 @@ function ClockFace({ isHours, selected, use24Hour, onSelect }: ClockFaceProps) {
               width: 36,
               height: 36,
               borderRadius: 18,
-              backgroundColor: isActive ? "#6750A4" : "transparent",
+              backgroundColor: isActive ? "$primary" : "transparent",
               alignItems: "center",
               justifyContent: "center",
               ...pos,
@@ -172,7 +172,7 @@ export function TimePicker({
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "rgba(0,0,0,0.32)",
+          backgroundColor: "#17171985",
         }}
         onPress={onDismiss}
       >

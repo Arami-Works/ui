@@ -1,5 +1,6 @@
 import { styled, View } from "tamagui";
 import { Pressable } from "react-native";
+import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
 import type { RadioButtonProps } from "./radio-button.type";
 
 const OuterCircle = styled(View, {
@@ -64,7 +65,7 @@ export function RadioButton({
         height: 48,
         justifyContent: "center",
         alignItems: "center",
-        opacity: disabled ? 0.38 : 1,
+        opacity: disabled ? DISABLED_OPACITY : 1,
       }}
       testID={testID}
     >

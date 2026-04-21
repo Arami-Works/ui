@@ -20,4 +20,6 @@ export type TooltipProps = {
   onAction?: () => void;
   /** Test ID */
   testID?: string;
+  /** Start visible without requiring a touch event. Useful for stories and testing. Default: false */
+  defaultVisible?: boolean;
 };

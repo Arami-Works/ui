@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 import { PanResponder, type LayoutChangeEvent } from "react-native";
 import { styled, View, Text, useTheme } from "tamagui";
+import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
 import type { SliderProps } from "./slider.type";
 
 const SliderContainer = styled(View, {
@@ -191,7 +192,7 @@ export function Slider({
   const primaryColor = theme.primary?.val as string;
   const primaryContainerColor = theme.primaryContainer?.val as string;
   const onPrimaryColor = theme.onPrimary?.val as string;
-  const containerOpacity = disabled ? 0.38 : 1;
+  const containerOpacity = disabled ? DISABLED_OPACITY : 1;
 
   const tickMarks = useMemo(() => {
     if (type !== "discrete" || trackWidth === 0) return null;

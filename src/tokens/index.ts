@@ -4,3 +4,5 @@ export * from "./generated/typography";
 export * from "./generated/radii";
 export * from "./generated/elevation";
 export * from "./custom/animation";
+export * from "./custom/shadows";
+export * from "./custom/interaction";
