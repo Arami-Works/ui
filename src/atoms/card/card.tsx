@@ -1,6 +1,9 @@
 import { Pressable } from "react-native";
 import { styled, View } from "tamagui";
-import { DISABLED_OPACITY, PRESSED_OPACITY } from "../../tokens/custom/interaction";
+import {
+  DISABLED_OPACITY,
+  PRESSED_OPACITY,
+} from "../../tokens/custom/interaction";
 import type { CardProps } from "./card.type";
 
 const ElevatedCard = styled(View, {
@@ -69,7 +72,10 @@ export function Card({
   }
 
   return (
-    <Container testID={testID} style={disabled ? { opacity: DISABLED_OPACITY } : undefined}>
+    <Container
+      testID={testID}
+      style={disabled ? { opacity: DISABLED_OPACITY } : undefined}
+    >
       {children}
     </Container>
   );

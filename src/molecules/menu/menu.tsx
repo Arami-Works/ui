@@ -4,7 +4,10 @@ import { styled, View, YStack } from "tamagui";
 import { Divider } from "../../atoms/divider";
 import { Icon } from "../../atoms/icon";
 import { Text } from "../../atoms/text";
-import { DISABLED_OPACITY, PRESSED_OPACITY } from "../../tokens/custom/interaction";
+import {
+  DISABLED_OPACITY,
+  PRESSED_OPACITY,
+} from "../../tokens/custom/interaction";
 import type { MenuDivider, MenuEntry, MenuProps } from "./menu.type";
 
 const Container = styled(View, {
@@ -86,7 +89,11 @@ export function Menu({
                           alignItems: "center",
                           paddingHorizontal: 12,
                           paddingVertical: 12,
-                          opacity: item.disabled ? DISABLED_OPACITY : pressed ? PRESSED_OPACITY : 1,
+                          opacity: item.disabled
+                            ? DISABLED_OPACITY
+                            : pressed
+                              ? PRESSED_OPACITY
+                              : 1,
                         })}
                         accessibilityRole="menuitem"
                         accessibilityState={
