@@ -7,14 +7,14 @@ import config from "./src/tokens/tamagui.config";
 const StorybookUI = require("./.ondevice").default;
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
+  const [fontsLoaded, fontError] = useFonts({
     "Pretendard-Regular": require("./assets/fonts/Pretendard-Regular.otf"),
     "Pretendard-Medium": require("./assets/fonts/Pretendard-Medium.otf"),
     "Pretendard-SemiBold": require("./assets/fonts/Pretendard-SemiBold.otf"),
     "Pretendard-Bold": require("./assets/fonts/Pretendard-Bold.otf"),
   });
 
-  if (!fontsLoaded) return null;
+  if (!fontsLoaded && !fontError) return null;
 
   return (
     <TamaguiProvider config={config}>
