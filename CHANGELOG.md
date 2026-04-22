@@ -1,5 +1,19 @@
 # @aramiworks/ui
 
+## 0.8.0
+
+### Minor Changes
+
+- [#247](https://github.com/aramiworks/ui/pull/247) [`9b007f6`](https://github.com/aramiworks/ui/commit/9b007f68b4dd9e635e806c595313c61b94a52f5d) Thanks [@cheunjm](https://github.com/cheunjm)! - Retheme design system to match Wanted Montage visual language: blue primary palette, Pretendard font, 10px button radius, Montage shadow presets, and updated interaction states across 19 components.
+
+### Patch Changes
+
+- [#242](https://github.com/aramiworks/ui/pull/242) [`f3fca43`](https://github.com/aramiworks/ui/commit/f3fca436165711c9e1458730e6a73a5e4e8debdb) Thanks [@cheunjm](https://github.com/cheunjm)! - Centralize dev ports into scripts/ports.env and change Storybook port to 6007 (avoids conflict with stock-tracker which uses 6006).
+
+- [#246](https://github.com/aramiworks/ui/pull/246) [`3a6ffd4`](https://github.com/aramiworks/ui/commit/3a6ffd4c348c8ed96e025a460676f52c4e70f29f) Thanks [@cheunjm](https://github.com/cheunjm)! - Fix accessibilityValue.now always reporting min for range slider variant.
+
+- [#244](https://github.com/aramiworks/ui/pull/244) [`f83a9ce`](https://github.com/aramiworks/ui/commit/f83a9cee9997e939c45e226395e7f06749eaf8b5) Thanks [@cheunjm](https://github.com/cheunjm)! - Add branch coverage tests to achieve 100% Jest test coverage across all components.
+
 ## 0.7.0
 
 ### Minor Changes
