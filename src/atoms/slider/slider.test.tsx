@@ -121,6 +121,23 @@ describe("Slider", () => {
     });
   });
 
+  it("has correct accessibility value for range variant", () => {
+    render(
+      <Slider
+        variant="range"
+        min={0}
+        max={100}
+        lowValue={20}
+        highValue={80}
+        testID="slider"
+      />,
+    );
+    const element = screen.getByTestId("slider");
+    expect(element.props.accessibilityValue).toEqual(
+      expect.objectContaining({ min: 0, max: 100, now: 20, text: "20–80" }),
+    );
+  });
+
   it("renders range variant", () => {
     render(
       <Slider variant="range" lowValue={20} highValue={80} testID="slider" />,

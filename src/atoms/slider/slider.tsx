@@ -236,7 +236,16 @@ export function Slider({
       accessibilityRole="adjustable"
       accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}
-      accessibilityValue={{ min, max, now: currentValue }}
+      accessibilityValue={
+        isRange
+          ? {
+              min,
+              max,
+              now: currentLow,
+              text: `${Math.round(currentLow)}–${Math.round(currentHigh)}`,
+            }
+          : { min, max, now: currentValue }
+      }
     >
       <View
         position="relative"
