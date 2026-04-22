@@ -3,12 +3,13 @@ import { TextInput, View as RNView } from "react-native";
 import { styled, View, useTheme } from "tamagui";
 import { Icon } from "../../atoms/icon";
 import { IconButton } from "../../atoms/icon-button";
+import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
 import type { SearchBarProps } from "./search-bar.type";
 
 const PillContainer = styled(View, {
   name: "SearchBarContainer",
   height: 56,
-  borderRadius: 28,
+  borderRadius: "$2xl",
   backgroundColor: "$surfaceContainerHigh",
   flexDirection: "row",
   alignItems: "center",
@@ -17,7 +18,7 @@ const PillContainer = styled(View, {
   variants: {
     isDisabled: {
       true: {
-        opacity: 0.38,
+        opacity: DISABLED_OPACITY,
       },
     },
   } as const,

@@ -5,6 +5,7 @@ import { IconButton } from "../../atoms/icon-button";
 import { Text } from "../../atoms/text";
 import { Button } from "../../atoms/button";
 import { TextField } from "../../atoms/text-field";
+import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
 import type { DatePickerMode, DatePickerProps } from "./date-picker.type";
 
 const DAYS_OF_WEEK = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
@@ -26,7 +27,7 @@ const MONTHS = [
 const Container = styled(View, {
   name: "DatePicker",
   backgroundColor: "$surfaceContainerHigh",
-  borderRadius: 28,
+  borderRadius: "$2xl",
   padding: 24,
   minWidth: 328,
 });
@@ -449,7 +450,7 @@ export function DatePicker({
                               ? "$onSurfaceVariant"
                               : "$onSurface"
                         }
-                        opacity={!cell.thisMonth ? 0.38 : 1}
+                        opacity={!cell.thisMonth ? DISABLED_OPACITY : 1}
                       >
                         {cell.day}
                       </Text>
@@ -519,7 +520,7 @@ export function DatePicker({
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "rgba(0,0,0,0.32)",
+          backgroundColor: "#17171985",
         }}
         onPress={onDismiss}
       >

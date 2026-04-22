@@ -1,3 +1,4 @@
+import { useFonts } from "expo-font";
 import { TamaguiProvider } from "tamagui";
 import config from "./src/tokens/tamagui.config";
 
@@ -6,6 +7,15 @@ import config from "./src/tokens/tamagui.config";
 const StorybookUI = require("./.ondevice").default;
 
 export default function App() {
+  const [fontsLoaded, fontError] = useFonts({
+    "Pretendard-Regular": require("./assets/fonts/Pretendard-Regular.otf"),
+    "Pretendard-Medium": require("./assets/fonts/Pretendard-Medium.otf"),
+    "Pretendard-SemiBold": require("./assets/fonts/Pretendard-SemiBold.otf"),
+    "Pretendard-Bold": require("./assets/fonts/Pretendard-Bold.otf"),
+  });
+
+  if (!fontsLoaded && !fontError) return null;
+
   return (
     <TamaguiProvider config={config}>
       <StorybookUI />

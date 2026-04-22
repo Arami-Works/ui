@@ -1,6 +1,7 @@
 import { styled, View, Text, useTheme } from "tamagui";
 import { Pressable } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
 import type { SegmentedButtonProps } from "./segmented-button.type";
 
 const StyledGroup = styled(View, {
@@ -67,7 +68,7 @@ export function SegmentedButton({
       accessibilityHint={accessibilityHint}
       accessibilityRole="tablist"
       testID={testID}
-      opacity={disabled ? 0.38 : 1}
+      opacity={disabled ? DISABLED_OPACITY : 1}
     >
       {segments.map((segment, index) => {
         const isSelected = selectedSet.has(segment.value);
@@ -100,7 +101,7 @@ export function SegmentedButton({
                 borderBottomLeftRadius: isFirst ? 20 : 0,
                 borderTopRightRadius: isLast ? 20 : 0,
                 borderBottomRightRadius: isLast ? 20 : 0,
-                opacity: segment.disabled ? 0.38 : 1,
+                opacity: segment.disabled ? DISABLED_OPACITY : 1,
               }}
             >
               {isSelected && (

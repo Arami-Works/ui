@@ -3,7 +3,7 @@ import type { ButtonProps } from "./button.type";
 
 const StyledButton = styled(TamaguiButton, {
   name: "Button",
-  borderRadius: "$full",
+  borderRadius: "$sm",
   paddingHorizontal: "$2xl",
   paddingVertical: "$sm",
   fontFamily: "$label",
