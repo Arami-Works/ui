@@ -13,7 +13,7 @@ const PillContainer = styled(View, {
   backgroundColor: "$surfaceContainerHigh",
   flexDirection: "row",
   alignItems: "center",
-  paddingHorizontal: 16,
+  paddingHorizontal: "$lg",
 
   variants: {
     isDisabled: {
@@ -76,7 +76,7 @@ export function SearchBar({
       accessibilityHint={accessibilityHint}
     >
       <PillContainer isDisabled={disabled ? true : undefined}>
-        <View marginRight={12}>
+        <View marginRight="$md">
           <Icon name={leadingIcon} size={24} color="$onSurface" />
         </View>
 

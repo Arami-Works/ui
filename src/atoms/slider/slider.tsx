@@ -8,7 +8,7 @@ const SliderContainer = styled(View, {
   name: "SliderContainer",
   width: "100%",
   justifyContent: "center",
-  paddingVertical: 16,
+  paddingVertical: "$lg",
 } as const);
 
 const Track = styled(View, {
@@ -50,8 +50,8 @@ const ValueLabel = styled(View, {
   position: "absolute",
   top: -32,
   borderRadius: 8,
-  paddingHorizontal: 8,
-  paddingVertical: 4,
+  paddingHorizontal: "$sm",
+  paddingVertical: "$xs",
   alignItems: "center",
 } as const);
 

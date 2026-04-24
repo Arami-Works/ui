@@ -23,6 +23,14 @@ const Container = styled(View, {
   minWidth: 328,
 });
 
+const Scrim = styled(View, {
+  name: "TimePickerScrim",
+  flex: 1,
+  backgroundColor: "$scrim",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
 const TimeSegment = styled(View, {
   name: "TimeSegment",
   backgroundColor: "$surfaceContainerHighest",
@@ -167,165 +175,159 @@ export function TimePicker({
       onRequestClose={onDismiss}
       testID={testID}
     >
-      <Pressable
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#17171985",
-        }}
-        onPress={onDismiss}
-      >
-        <Pressable onPress={(e) => e.stopPropagation()}>
-          <Container>
-            <XStack
-              justifyContent="space-between"
-              alignItems="center"
-              marginBottom={20}
-            >
-              <Text role="body" size="small" color="$onSurfaceVariant">
-                Enter time
-              </Text>
-              <IconButton
-                variant="standard"
-                icon={displayMode === "clock" ? "keyboard" : "schedule"}
-                onPress={() =>
-                  setDisplayMode((m) => (m === "clock" ? "input" : "clock"))
-                }
-              />
-            </XStack>
-
-            <XStack gap={8} alignItems="center" marginBottom={24}>
-              <Pressable onPress={() => setClockFocus("hours")}>
-                <TimeSegment
-                  backgroundColor={
-                    clockFocus === "hours" && displayMode === "clock"
-                      ? "$primaryContainer"
-                      : "$surfaceContainerHighest"
+      <Pressable style={{ flex: 1 }} onPress={onDismiss}>
+        <Scrim>
+          <Pressable onPress={(e) => e.stopPropagation()}>
+            <Container>
+              <XStack
+                justifyContent="space-between"
+                alignItems="center"
+                marginBottom={20}
+              >
+                <Text role="body" size="small" color="$onSurfaceVariant">
+                  Enter time
+                </Text>
+                <IconButton
+                  variant="standard"
+                  icon={displayMode === "clock" ? "keyboard" : "schedule"}
+                  onPress={() =>
+                    setDisplayMode((m) => (m === "clock" ? "input" : "clock"))
                   }
-                >
-                  <Text role="display" size="small" color="$onSurface">
-                    {String(displayHour).padStart(2, "0")}
-                  </Text>
-                </TimeSegment>
-              </Pressable>
-              <Text role="display" size="small" color="$onSurface">
-                :
-              </Text>
-              <Pressable onPress={() => setClockFocus("minutes")}>
-                <TimeSegment
-                  backgroundColor={
-                    clockFocus === "minutes" && displayMode === "clock"
-                      ? "$primaryContainer"
-                      : "$surfaceContainerHighest"
-                  }
-                >
-                  <Text role="display" size="small" color="$onSurface">
-                    {String(minute).padStart(2, "0")}
-                  </Text>
-                </TimeSegment>
-              </Pressable>
-              {!use24Hour && (
-                <YStack
-                  borderRadius={8}
-                  overflow="hidden"
-                  borderWidth={1}
-                  borderColor="$outline"
-                >
-                  <Pressable onPress={() => setPeriod("AM")}>
-                    <PeriodButton
-                      backgroundColor={
-                        period === "AM" ? "$tertiaryContainer" : "transparent"
-                      }
-                    >
-                      <Text
-                        role="label"
-                        size="medium"
-                        color={
-                          period === "AM"
-                            ? "$onTertiaryContainer"
-                            : "$onSurface"
-                        }
-                      >
-                        AM
-                      </Text>
-                    </PeriodButton>
-                  </Pressable>
-                  <View height={1} backgroundColor="$outline" />
-                  <Pressable onPress={() => setPeriod("PM")}>
-                    <PeriodButton
-                      backgroundColor={
-                        period === "PM" ? "$tertiaryContainer" : "transparent"
-                      }
-                    >
-                      <Text
-                        role="label"
-                        size="medium"
-                        color={
-                          period === "PM"
-                            ? "$onTertiaryContainer"
-                            : "$onSurface"
-                        }
-                      >
-                        PM
-                      </Text>
-                    </PeriodButton>
-                  </Pressable>
-                </YStack>
-              )}
-            </XStack>
-
-            {displayMode === "clock" ? (
-              <View alignItems="center" marginBottom={16}>
-                <ClockFace
-                  isHours={clockFocus === "hours"}
-                  selected={clockFocus === "hours" ? hour : minute}
-                  use24Hour={use24Hour}
-                  onSelect={(val) => {
-                    if (clockFocus === "hours") {
-                      setHour(val);
-                      setClockFocus("minutes");
-                    } else setMinute(val);
-                  }}
                 />
-              </View>
-            ) : (
-              <XStack gap={8} marginBottom={16}>
-                <View flex={1}>
-                  <TextField
-                    label="Hour"
-                    placeholder={use24Hour ? "00" : "12"}
-                    value={String(displayHour)}
-                    onChangeText={(v) => {
-                      const n = parseInt(v);
-                      if (!isNaN(n)) setHour(n);
-                    }}
-                  />
-                </View>
-                <View flex={1}>
-                  <TextField
-                    label="Minute"
-                    placeholder="00"
-                    value={String(minute).padStart(2, "0")}
-                    onChangeText={(v) => {
-                      const n = parseInt(v);
-                      if (!isNaN(n)) setMinute(Math.min(59, n));
-                    }}
-                  />
-                </View>
               </XStack>
-            )}
 
-            <XStack justifyContent="flex-end" gap={8}>
-              <Button variant="text" onPress={onDismiss}>
-                Cancel
-              </Button>
-              <Button variant="text" onPress={handleConfirm}>
-                OK
-              </Button>
-            </XStack>
-          </Container>
-        </Pressable>
+              <XStack gap={8} alignItems="center" marginBottom={24}>
+                <Pressable onPress={() => setClockFocus("hours")}>
+                  <TimeSegment
+                    backgroundColor={
+                      clockFocus === "hours" && displayMode === "clock"
+                        ? "$primaryContainer"
+                        : "$surfaceContainerHighest"
+                    }
+                  >
+                    <Text role="display" size="small" color="$onSurface">
+                      {String(displayHour).padStart(2, "0")}
+                    </Text>
+                  </TimeSegment>
+                </Pressable>
+                <Text role="display" size="small" color="$onSurface">
+                  :
+                </Text>
+                <Pressable onPress={() => setClockFocus("minutes")}>
+                  <TimeSegment
+                    backgroundColor={
+                      clockFocus === "minutes" && displayMode === "clock"
+                        ? "$primaryContainer"
+                        : "$surfaceContainerHighest"
+                    }
+                  >
+                    <Text role="display" size="small" color="$onSurface">
+                      {String(minute).padStart(2, "0")}
+                    </Text>
+                  </TimeSegment>
+                </Pressable>
+                {!use24Hour && (
+                  <YStack
+                    borderRadius={8}
+                    overflow="hidden"
+                    borderWidth={1}
+                    borderColor="$outline"
+                  >
+                    <Pressable onPress={() => setPeriod("AM")}>
+                      <PeriodButton
+                        backgroundColor={
+                          period === "AM" ? "$tertiaryContainer" : "transparent"
+                        }
+                      >
+                        <Text
+                          role="label"
+                          size="medium"
+                          color={
+                            period === "AM"
+                              ? "$onTertiaryContainer"
+                              : "$onSurface"
+                          }
+                        >
+                          AM
+                        </Text>
+                      </PeriodButton>
+                    </Pressable>
+                    <View height={1} backgroundColor="$outline" />
+                    <Pressable onPress={() => setPeriod("PM")}>
+                      <PeriodButton
+                        backgroundColor={
+                          period === "PM" ? "$tertiaryContainer" : "transparent"
+                        }
+                      >
+                        <Text
+                          role="label"
+                          size="medium"
+                          color={
+                            period === "PM"
+                              ? "$onTertiaryContainer"
+                              : "$onSurface"
+                          }
+                        >
+                          PM
+                        </Text>
+                      </PeriodButton>
+                    </Pressable>
+                  </YStack>
+                )}
+              </XStack>
+
+              {displayMode === "clock" ? (
+                <View alignItems="center" marginBottom={16}>
+                  <ClockFace
+                    isHours={clockFocus === "hours"}
+                    selected={clockFocus === "hours" ? hour : minute}
+                    use24Hour={use24Hour}
+                    onSelect={(val) => {
+                      if (clockFocus === "hours") {
+                        setHour(val);
+                        setClockFocus("minutes");
+                      } else setMinute(val);
+                    }}
+                  />
+                </View>
+              ) : (
+                <XStack gap={8} marginBottom={16}>
+                  <View flex={1}>
+                    <TextField
+                      label="Hour"
+                      placeholder={use24Hour ? "00" : "12"}
+                      value={String(displayHour)}
+                      onChangeText={(v) => {
+                        const n = parseInt(v);
+                        if (!isNaN(n)) setHour(n);
+                      }}
+                    />
+                  </View>
+                  <View flex={1}>
+                    <TextField
+                      label="Minute"
+                      placeholder="00"
+                      value={String(minute).padStart(2, "0")}
+                      onChangeText={(v) => {
+                        const n = parseInt(v);
+                        if (!isNaN(n)) setMinute(Math.min(59, n));
+                      }}
+                    />
+                  </View>
+                </XStack>
+              )}
+
+              <XStack justifyContent="flex-end" gap={8}>
+                <Button variant="text" onPress={onDismiss}>
+                  Cancel
+                </Button>
+                <Button variant="text" onPress={handleConfirm}>
+                  OK
+                </Button>
+              </XStack>
+            </Container>
+          </Pressable>
+        </Scrim>
       </Pressable>
     </Modal>
   );

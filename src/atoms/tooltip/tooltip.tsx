@@ -3,14 +3,15 @@ import { View as RNView } from "react-native";
 import { styled, View, XStack, YStack } from "tamagui";
 import { Text } from "../text";
 import { Button } from "../button";
+import { shadows } from "../../tokens/custom/shadows";
 import type { TooltipProps, TooltipPlacement } from "./tooltip.type";
 
 const PlainContainer = styled(View, {
   name: "TooltipPlain",
   backgroundColor: "$inverseSurface",
   borderRadius: "$xs",
-  paddingHorizontal: 8,
-  paddingVertical: 4,
+  paddingHorizontal: "$sm",
+  paddingVertical: "$xs",
   maxWidth: 200,
 });
 
@@ -18,12 +19,9 @@ const RichContainer = styled(View, {
   name: "TooltipRich",
   backgroundColor: "$surfaceContainer",
   borderRadius: "$md",
-  padding: 16,
+  padding: "$lg",
   maxWidth: 280,
-  shadowColor: "#171717",
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.06,
-  shadowRadius: 6,
+  ...shadows.small,
 });
 
 function getTooltipOffset(placement: TooltipPlacement): object {
@@ -96,7 +94,7 @@ export function Tooltip({
             </PlainContainer>
           ) : (
             <RichContainer>
-              <YStack gap={4}>
+              <YStack gap="$xs">
                 <Text role="title" size="small" color="$onSurface">
                   {label}
                 </Text>
@@ -106,7 +104,7 @@ export function Tooltip({
                   </Text>
                 )}
                 {actionLabel && onAction && (
-                  <XStack justifyContent="flex-end" marginTop={8}>
+                  <XStack justifyContent="flex-end" marginTop="$sm">
                     <Button variant="text" onPress={onAction}>
                       {actionLabel}
                     </Button>

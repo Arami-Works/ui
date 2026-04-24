@@ -10,7 +10,7 @@ const StyledChipContainer = styled(View, {
   borderRadius: "$sm",
   flexDirection: "row",
   alignItems: "center",
-  paddingHorizontal: 16,
+  paddingHorizontal: "$lg",
   borderWidth: 1,
   borderColor: "$outline",
   backgroundColor: "transparent",
@@ -24,7 +24,7 @@ const StyledChipContainer = styled(View, {
     },
     hasLeadingIcon: {
       true: {
-        paddingLeft: 8,
+        paddingLeft: "$sm",
       },
     },
   } as const,

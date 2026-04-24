@@ -9,6 +9,7 @@ import {
   PRESSED_OPACITY,
 } from "../../tokens/custom/interaction";
 import { shadows } from "../../tokens/custom/shadows";
+import { spacing } from "../../tokens/generated/spacing";
 import type { MenuDivider, MenuEntry, MenuProps } from "./menu.type";
 
 const Container = styled(View, {
@@ -17,7 +18,7 @@ const Container = styled(View, {
   borderRadius: "$xs",
   minWidth: 112,
   maxWidth: 280,
-  paddingVertical: 8,
+  paddingVertical: "$sm",
   ...shadows.medium,
 } as const);
 
@@ -85,8 +86,8 @@ export function Menu({
                         style={({ pressed }) => ({
                           flexDirection: "row",
                           alignItems: "center",
-                          paddingHorizontal: 12,
-                          paddingVertical: 12,
+                          paddingHorizontal: spacing.md,
+                          paddingVertical: spacing.md,
                           opacity: item.disabled
                             ? DISABLED_OPACITY
                             : pressed
@@ -100,7 +101,7 @@ export function Menu({
                         testID={`${testID}-item-${item.key}`}
                       >
                         {item.leadingIcon && (
-                          <View marginRight={12}>
+                          <View marginRight="$md">
                             <Icon
                               name={item.leadingIcon}
                               size={24}
@@ -117,7 +118,7 @@ export function Menu({
                           {item.label}
                         </Text>
                         {hasSubmenu ? (
-                          <View marginLeft={12}>
+                          <View marginLeft="$md">
                             <Icon
                               name="chevron_right"
                               size={24}
@@ -130,7 +131,7 @@ export function Menu({
                               role="label"
                               size="small"
                               color="$onSurfaceVariant"
-                              marginLeft={12}
+                              marginLeft="$md"
                             >
                               {item.trailingText}
                             </Text>
