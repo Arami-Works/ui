@@ -32,6 +32,14 @@ const Container = styled(View, {
   minWidth: 328,
 });
 
+const Scrim = styled(View, {
+  name: "DatePickerScrim",
+  flex: 1,
+  backgroundColor: "$scrim",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
 function buildCalendarGrid(year: number, month: number) {
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -515,16 +523,10 @@ export function DatePicker({
       onRequestClose={onDismiss}
       testID={testID}
     >
-      <Pressable
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#17171985",
-        }}
-        onPress={onDismiss}
-      >
-        <Pressable onPress={(e) => e.stopPropagation()}>{content}</Pressable>
+      <Pressable style={{ flex: 1 }} onPress={onDismiss}>
+        <Scrim>
+          <Pressable onPress={(e) => e.stopPropagation()}>{content}</Pressable>
+        </Scrim>
       </Pressable>
     </Modal>
   );

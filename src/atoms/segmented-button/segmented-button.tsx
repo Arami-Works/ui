@@ -2,6 +2,8 @@ import { styled, View, Text, useTheme } from "tamagui";
 import { Pressable } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
+import { spacing } from "../../tokens/generated/spacing";
+import { radii } from "../../tokens/generated/radii";
 import type { SegmentedButtonProps } from "./segmented-button.type";
 
 const StyledGroup = styled(View, {
@@ -9,7 +11,7 @@ const StyledGroup = styled(View, {
   flexDirection: "row",
   borderWidth: 1,
   borderColor: "$outline",
-  borderRadius: 20,
+  borderRadius: "$xl",
   overflow: "hidden",
   height: 40,
 } as const);
@@ -93,14 +95,14 @@ export function SegmentedButton({
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "center",
-                gap: 8,
+                gap: spacing.sm,
                 backgroundColor: isSelected
                   ? secondaryContainerColor
                   : "transparent",
-                borderTopLeftRadius: isFirst ? 20 : 0,
-                borderBottomLeftRadius: isFirst ? 20 : 0,
-                borderTopRightRadius: isLast ? 20 : 0,
-                borderBottomRightRadius: isLast ? 20 : 0,
+                borderTopLeftRadius: isFirst ? radii.xl : 0,
+                borderBottomLeftRadius: isFirst ? radii.xl : 0,
+                borderTopRightRadius: isLast ? radii.xl : 0,
+                borderBottomRightRadius: isLast ? radii.xl : 0,
                 opacity: segment.disabled ? DISABLED_OPACITY : 1,
               }}
             >

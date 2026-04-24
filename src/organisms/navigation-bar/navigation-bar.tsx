@@ -25,14 +25,14 @@ const Destination = styled(View, {
   flex: 1,
   alignItems: "center",
   justifyContent: "center",
-  gap: 4,
+  gap: "$xs",
 });
 
 const ActiveIndicator = styled(View, {
   name: "NavigationBarIndicator",
   width: 64,
   height: 32,
-  borderRadius: 16,
+  borderRadius: "$lg",
   backgroundColor: "$secondaryContainer",
   justifyContent: "center",
   alignItems: "center",
