@@ -182,7 +182,7 @@ export function TimePicker({
               <XStack
                 justifyContent="space-between"
                 alignItems="center"
-                marginBottom={20}
+                marginBottom="$xl"
               >
                 <Text role="body" size="small" color="$onSurfaceVariant">
                   Enter time
@@ -196,7 +196,7 @@ export function TimePicker({
                 />
               </XStack>
 
-              <XStack gap={8} alignItems="center" marginBottom={24}>
+              <XStack gap="$sm" alignItems="center" marginBottom="$2xl">
                 <Pressable onPress={() => setClockFocus("hours")}>
                   <TimeSegment
                     backgroundColor={
@@ -277,7 +277,7 @@ export function TimePicker({
               </XStack>
 
               {displayMode === "clock" ? (
-                <View alignItems="center" marginBottom={16}>
+                <View alignItems="center" marginBottom="$lg">
                   <ClockFace
                     isHours={clockFocus === "hours"}
                     selected={clockFocus === "hours" ? hour : minute}
@@ -291,7 +291,7 @@ export function TimePicker({
                   />
                 </View>
               ) : (
-                <XStack gap={8} marginBottom={16}>
+                <XStack gap="$sm" marginBottom="$lg">
                   <View flex={1}>
                     <TextField
                       label="Hour"
@@ -317,7 +317,7 @@ export function TimePicker({
                 </XStack>
               )}
 
-              <XStack justifyContent="flex-end" gap={8}>
+              <XStack justifyContent="flex-end" gap="$sm">
                 <Button variant="text" onPress={onDismiss}>
                   Cancel
                 </Button>
