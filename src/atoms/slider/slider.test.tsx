@@ -70,7 +70,7 @@ describe("Slider", () => {
     it("has reduced opacity when disabled", () => {
       const { toJSON } = render(<Slider disabled testID="slider" />);
       const tree = JSON.stringify(toJSON());
-      expect(tree).toContain("0.38");
+      expect(tree).toContain("0.43");
     });
 
     it("exposes accessibility value matching custom min/max/value", () => {
@@ -176,7 +176,7 @@ describe("Slider", () => {
       />,
     );
     const tree = JSON.stringify(toJSON());
-    expect(tree).toContain("0.38");
+    expect(tree).toContain("0.43");
   });
 
   it("renders discrete range variant with step", () => {

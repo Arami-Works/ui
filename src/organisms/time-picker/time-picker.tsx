@@ -190,6 +190,7 @@ export function TimePicker({
                 <IconButton
                   variant="standard"
                   icon={displayMode === "clock" ? "keyboard" : "schedule"}
+                  testID={testID ? `${testID}-mode-toggle` : undefined}
                   onPress={() =>
                     setDisplayMode((m) => (m === "clock" ? "input" : "clock"))
                   }

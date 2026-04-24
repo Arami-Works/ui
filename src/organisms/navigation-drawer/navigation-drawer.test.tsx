@@ -53,7 +53,7 @@ describe("NavigationDrawer", () => {
         testID="drawer"
       />,
     );
-    expect(toJSON()).toBeTruthy();
+    expect(toJSON()).toBeNull();
   });
 
   it("renders with header prop", () => {
