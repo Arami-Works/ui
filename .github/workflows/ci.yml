@@ -118,6 +118,30 @@ jobs:
       - name: Build Storybook
         run: npm run storybook:build
 
+  contrast:
+    needs: [paths-filter]
+    if: needs.paths-filter.outputs.code == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: WCAG contrast report
+        run: npm run tokens:check-contrast | tee contrast-report.md
+      - name: Publish to job summary
+        if: always()
+        run: cat contrast-report.md >> $GITHUB_STEP_SUMMARY
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: contrast-report
+          path: contrast-report.md
+
   paths-filter:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
