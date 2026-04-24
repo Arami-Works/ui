@@ -14,7 +14,7 @@ const StyledContainer = styled(YStack, {
   name: "TopAppBar",
   width: "100%",
   justifyContent: "flex-end",
-  paddingHorizontal: 4,
+  paddingHorizontal: "$xs",
 
   variants: {
     elevated: {
@@ -36,8 +36,8 @@ const TopRow = styled(XStack, {
   name: "TopAppBarRow",
   height: 64,
   alignItems: "center",
-  paddingHorizontal: 4,
-  gap: 4,
+  paddingHorizontal: "$xs",
+  gap: "$xs",
 });
 
 export function TopAppBar({
@@ -76,7 +76,7 @@ export function TopAppBar({
             flex={1}
             numberOfLines={1}
             textAlign={isCenterAligned ? "center" : "left"}
-            paddingHorizontal={isCenterAligned ? 0 : 12}
+            paddingHorizontal={isCenterAligned ? 0 : "$md"}
             testID="top-app-bar-title"
           >
             {title}
@@ -97,7 +97,7 @@ export function TopAppBar({
       </TopRow>
 
       {isMedium ? (
-        <YStack paddingHorizontal={16} paddingBottom={20}>
+        <YStack paddingHorizontal="$lg" paddingBottom="$xl">
           <Text
             role="headline"
             size="small"
@@ -110,7 +110,7 @@ export function TopAppBar({
       ) : null}
 
       {isLarge ? (
-        <YStack paddingHorizontal={16} paddingBottom={28}>
+        <YStack paddingHorizontal="$lg" paddingBottom={28}>
           <Text
             role="headline"
             size="medium"

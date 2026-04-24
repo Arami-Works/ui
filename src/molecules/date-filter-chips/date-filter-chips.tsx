@@ -1,6 +1,7 @@
 import { ScrollView } from "react-native";
 import { XStack } from "tamagui";
 import { Chip } from "../../atoms";
+import { spacing } from "../../tokens/generated/spacing";
 import type { DateFilterChipsProps } from "./date-filter-chips.type";
 
 export function DateFilterChips({
@@ -15,12 +16,12 @@ export function DateFilterChips({
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={{ paddingHorizontal: 16 }}
+      contentContainerStyle={{ paddingHorizontal: spacing.lg }}
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="radiogroup"
       testID={testID}
     >
-      <XStack gap={8}>
+      <XStack gap="$sm">
         {options.map((option) => (
           <Chip
             key={option.value}

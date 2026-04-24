@@ -8,14 +8,14 @@ import type { SnackbarProps } from "./snackbar.type";
 const Container = styled(View, {
   name: "Snackbar",
   position: "absolute",
-  bottom: 16,
-  left: 16,
-  right: 16,
+  bottom: "$lg",
+  left: "$lg",
+  right: "$lg",
   minHeight: 48,
   backgroundColor: "$inverseSurface",
   borderRadius: "$xs",
-  paddingHorizontal: 16,
-  paddingVertical: 12,
+  paddingHorizontal: "$lg",
+  paddingVertical: "$md",
 });
 
 export function Snackbar({
@@ -88,14 +88,14 @@ export function Snackbar({
             {message}
           </Text>
           {(actionButton || closeButton) && (
-            <XStack justifyContent="flex-end" alignItems="center" gap={8}>
+            <XStack justifyContent="flex-end" alignItems="center" gap="$sm">
               {actionButton}
               {closeButton}
             </XStack>
           )}
         </YStack>
       ) : (
-        <XStack alignItems="center" gap={8}>
+        <XStack alignItems="center" gap="$sm">
           <Text
             role="body"
             size="medium"

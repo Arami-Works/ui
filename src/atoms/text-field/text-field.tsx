@@ -9,13 +9,13 @@ const FilledContainer = styled(View, {
   name: "TextFieldFilledContainer",
   height: 56,
   backgroundColor: "$surfaceContainerHighest",
-  borderTopLeftRadius: 12,
-  borderTopRightRadius: 12,
+  borderTopLeftRadius: "$md",
+  borderTopRightRadius: "$md",
   borderBottomLeftRadius: 0,
   borderBottomRightRadius: 0,
   flexDirection: "row",
   alignItems: "center",
-  paddingHorizontal: 16,
+  paddingHorizontal: "$lg",
 
   variants: {
     isDisabled: {
@@ -35,7 +35,7 @@ const OutlinedContainer = styled(View, {
   borderColor: "$outline",
   flexDirection: "row",
   alignItems: "center",
-  paddingHorizontal: 16,
+  paddingHorizontal: "$lg",
 
   variants: {
     isFocused: {
@@ -61,17 +61,17 @@ const OutlinedContainer = styled(View, {
 const LabelText = styled(Text, {
   name: "TextFieldLabel",
   position: "absolute",
-  left: 16,
+  left: "$lg",
 
   variants: {
     isFloating: {
       true: {
-        top: 8,
+        top: "$sm",
         fontSize: 12,
         lineHeight: 16,
       },
       false: {
-        top: 16,
+        top: "$lg",
         fontSize: 16,
         lineHeight: 24,
       },
@@ -83,16 +83,16 @@ const HelperText = styled(Text, {
   name: "TextFieldHelperText",
   fontSize: 12,
   lineHeight: 16,
-  paddingHorizontal: 16,
-  paddingTop: 4,
+  paddingHorizontal: "$lg",
+  paddingTop: "$xs",
 } as const);
 
 const CounterText = styled(Text, {
   name: "TextFieldCounterText",
   fontSize: 12,
   lineHeight: 16,
-  paddingTop: 4,
-  paddingRight: 16,
+  paddingTop: "$xs",
+  paddingRight: "$lg",
   color: "$onSurfaceVariant",
 } as const);
 
@@ -205,14 +205,14 @@ export function TextField({
   );
 
   const leadingIconElement = leadingIcon ? (
-    <View marginRight={12}>
+    <View marginRight="$md">
       <MaterialIcons name={leadingIcon as any} size={24} color={iconColor} />
     </View>
   ) : null;
 
   const trailingIconElement = trailingIcon ? (
     <Pressable onPress={disabled ? undefined : onTrailingIconPress}>
-      <View marginLeft={12}>
+      <View marginLeft="$md">
         <MaterialIcons name={trailingIcon as any} size={24} color={iconColor} />
       </View>
     </Pressable>
