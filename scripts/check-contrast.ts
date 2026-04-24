@@ -20,7 +20,6 @@ type ColorMap = Record<string, string>;
 // WCAG pass thresholds
 const AA_TEXT = 4.5;
 const AA_UI = 3.0;
-const AAA_TEXT = 7.0;
 
 type PairKind = "text" | "ui";
 
@@ -133,12 +132,14 @@ interface Result {
   kind: PairKind;
   ratio: number;
   passAA: boolean;
-  passAAA: boolean;
 }
 
 function evaluate(theme: ColorMap, pair: Pair): Result {
-  const fg = resolveOpaque(theme, pair.fg);
   const bg = resolveOpaque(theme, pair.bg);
+  const fgHex = theme[pair.fg];
+  if (!fgHex) throw new Error(`Missing token: ${pair.fg}`);
+  const fgParsed = parseHex(fgHex);
+  const fg = fgParsed.a === 1 ? fgParsed : compositeOver(fgParsed, bg);
   const ratio = contrastRatio(fg, bg);
   const aaThreshold = pair.kind === "text" ? AA_TEXT : AA_UI;
   return {
@@ -147,7 +148,6 @@ function evaluate(theme: ColorMap, pair: Pair): Result {
     kind: pair.kind,
     ratio,
     passAA: ratio >= aaThreshold,
-    passAAA: pair.kind === "text" ? ratio >= AAA_TEXT : ratio >= AA_UI,
   };
 }
 
