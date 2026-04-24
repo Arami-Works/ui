@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { FAB } from "../../fab";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -46,42 +47,23 @@ function Anatomy() {
         justifyContent="center"
         alignItems="center"
       >
-        <View position="relative" width={56} height={56}>
-          <View
-            backgroundColor="#EADDFF"
-            borderRadius={16}
-            width={56}
-            height={56}
-            justifyContent="center"
-            alignItems="center"
-          >
-            <View
-              width={24}
-              height={24}
-              borderRadius={4}
-              borderWidth={1.5}
-              borderColor="#6750A4"
-              borderStyle="dashed"
-              opacity={0.7}
-            />
-          </View>
+        <View position="relative">
+          <FAB icon="edit" label="Create" />
 
+          {/* Callout 1 — Container */}
           <View position="absolute" top={-36} right={-30}>
             <Callout number={1} />
           </View>
 
-          <View position="absolute" bottom={-36} right={-30}>
+          {/* Callout 2 — Icon */}
+          <View position="absolute" bottom={-36} left={-10}>
             <Callout number={2} />
           </View>
-        </View>
 
-        <View position="absolute" bottom={20} left={40}>
-          <XStack alignItems="center" gap={8}>
-            <Text fontSize={12} color="#49454F" fontStyle="italic">
-              Label text (extended only)
-            </Text>
+          {/* Callout 3 — Label text (extended only) */}
+          <View position="absolute" bottom={-36} right={-30}>
             <Callout number={3} />
-          </XStack>
+          </View>
         </View>
       </YStack>
 

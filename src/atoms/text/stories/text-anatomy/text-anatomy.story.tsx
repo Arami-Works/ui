@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { Text as UIText } from "../../text";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -47,9 +48,9 @@ function Anatomy() {
         alignItems="center"
       >
         <View position="relative">
-          <Text fontSize={16} color="#1C1B1F">
+          <UIText role="body" size="medium">
             Text content
-          </Text>
+          </UIText>
 
           <View position="absolute" top={-30} right={-30}>
             <Callout number={1} />

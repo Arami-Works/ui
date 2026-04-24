@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { Switch } from "../../switch";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -47,23 +48,7 @@ function Anatomy() {
         alignItems="center"
       >
         <View position="relative">
-          <View
-            width={52}
-            height={32}
-            borderRadius={16}
-            backgroundColor="#E6E0E9"
-            borderWidth={2}
-            borderColor="#79747E"
-            justifyContent="center"
-            paddingLeft={6}
-          >
-            <View
-              width={16}
-              height={16}
-              borderRadius={8}
-              backgroundColor="#79747E"
-            />
-          </View>
+          <Switch selected={false} />
 
           <View position="absolute" top={-36} right={-20}>
             <Callout number={1} />

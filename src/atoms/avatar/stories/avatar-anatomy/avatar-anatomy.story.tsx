@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { Avatar } from "../../avatar";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -47,18 +48,7 @@ function Anatomy() {
         alignItems="center"
       >
         <View position="relative">
-          <View
-            backgroundColor="#EADDFF"
-            borderRadius={9999}
-            width={40}
-            height={40}
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Text fontSize={16} fontWeight="500" color="#21005D">
-              JD
-            </Text>
-          </View>
+          <Avatar name="Jane Doe" />
 
           <View position="absolute" top={-36} right={-40}>
             <Callout number={1} />

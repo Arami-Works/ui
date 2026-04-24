@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { SegmentedButton } from "../../segmented-button";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -29,6 +30,12 @@ function LegendItem({ number, label }: { number: number; label: string }) {
   );
 }
 
+const SEGMENTS = [
+  { value: "day", label: "Day" },
+  { value: "week", label: "Week" },
+  { value: "month", label: "Month" },
+];
+
 function Anatomy() {
   return (
     <XStack
@@ -46,51 +53,8 @@ function Anatomy() {
         justifyContent="center"
         alignItems="center"
       >
-        <View position="relative">
-          <XStack
-            borderWidth={1}
-            borderColor="#79747E"
-            borderRadius={9999}
-            overflow="hidden"
-          >
-            <View
-              width={80}
-              height={40}
-              backgroundColor="#E8DEF8"
-              justifyContent="center"
-              alignItems="center"
-              borderRightWidth={1}
-              borderRightColor="#79747E"
-            >
-              <Text fontSize={14} fontWeight="500" color="#1D192B">
-                Day
-              </Text>
-            </View>
-            <View
-              width={80}
-              height={40}
-              backgroundColor="#FFFBFE"
-              justifyContent="center"
-              alignItems="center"
-              borderRightWidth={1}
-              borderRightColor="#79747E"
-            >
-              <Text fontSize={14} fontWeight="500" color="#49454F">
-                Week
-              </Text>
-            </View>
-            <View
-              width={80}
-              height={40}
-              backgroundColor="#FFFBFE"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Text fontSize={14} fontWeight="500" color="#49454F">
-                Month
-              </Text>
-            </View>
-          </XStack>
+        <View position="relative" width={240}>
+          <SegmentedButton segments={SEGMENTS} selected="day" />
 
           <View position="absolute" top={-36} left={80}>
             <Callout number={1} />

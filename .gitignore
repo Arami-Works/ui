@@ -19,3 +19,7 @@ coverage/
 logs/
 debug-storybook.log
 src/tokens/.figma-raw/
+.worktrees/
+*.log
+*.png
+mprocs.log

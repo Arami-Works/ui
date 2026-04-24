@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { Skeleton } from "../../skeleton";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -47,24 +48,14 @@ function Anatomy() {
         alignItems="center"
         gap={12}
       >
-        <View
-          position="relative"
-          width={160}
-          height={16}
-          borderRadius={4}
-          backgroundColor="#E6E1E5"
-        >
+        <View position="relative" width={160} height={16}>
+          <Skeleton width={160} height={16} />
           <View position="absolute" top={-32} right={-24}>
             <Callout number={1} />
           </View>
         </View>
-        <View
-          position="relative"
-          width={160}
-          height={16}
-          borderRadius={4}
-          backgroundColor="#E6E1E5"
-        >
+        <View position="relative" width={160} height={16}>
+          <Skeleton width={160} height={16} />
           <View position="absolute" bottom={-32} right={-24}>
             <Callout number={2} />
           </View>

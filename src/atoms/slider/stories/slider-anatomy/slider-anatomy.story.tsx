@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { Slider } from "../../slider";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -47,47 +48,7 @@ function Anatomy() {
         alignItems="center"
       >
         <View position="relative" width={200}>
-          <View
-            height={4}
-            backgroundColor="#E6E0E9"
-            borderRadius={2}
-            width="100%"
-          />
-          <View
-            position="absolute"
-            top={0}
-            left={0}
-            height={4}
-            backgroundColor="#6750A4"
-            borderRadius={2}
-            width="40%"
-          />
-          <View
-            position="absolute"
-            top={-8}
-            left="37%"
-            width={20}
-            height={20}
-            borderRadius={10}
-            backgroundColor="#6750A4"
-          />
-
-          <XStack
-            position="absolute"
-            top={14}
-            width="100%"
-            justifyContent="space-between"
-          >
-            {[0, 1, 2, 3, 4].map((i) => (
-              <View
-                key={i}
-                width={4}
-                height={4}
-                borderRadius={2}
-                backgroundColor="#49454F"
-              />
-            ))}
-          </XStack>
+          <Slider type="discrete" value={40} min={0} max={100} step={25} />
 
           <View position="absolute" top={-40} right={60}>
             <Callout number={1} />

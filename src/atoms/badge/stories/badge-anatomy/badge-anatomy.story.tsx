@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { Badge } from "../../badge";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -45,20 +46,11 @@ function Anatomy() {
         height={140}
         justifyContent="center"
         alignItems="center"
+        gap={24}
       >
+        {/* Large badge with count */}
         <View position="relative">
-          <View
-            backgroundColor="#B3261E"
-            borderRadius={9999}
-            width={16}
-            height={16}
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Text fontSize={11} fontWeight="500" color="#FFFFFF">
-              3
-            </Text>
-          </View>
+          <Badge size="large" count={3} />
 
           <View position="absolute" top={-36} right={-40}>
             <Callout number={1} />
@@ -67,6 +59,11 @@ function Anatomy() {
           <View position="absolute" bottom={-36} right={-40}>
             <Callout number={2} />
           </View>
+        </View>
+
+        {/* Small badge (dot indicator) */}
+        <View position="relative">
+          <Badge size="small" />
 
           <View position="absolute" bottom={-36} left={-40}>
             <Callout number={3} />

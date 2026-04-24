@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { Tooltip } from "../../tooltip";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -42,42 +43,41 @@ function Anatomy() {
     >
       <YStack
         width={220}
-        height={160}
-        justifyContent="center"
+        height={200}
+        justifyContent="flex-end"
         alignItems="center"
+        paddingBottom={24}
       >
         <View position="relative">
-          <View
-            backgroundColor="#313033"
-            borderRadius={4}
-            paddingHorizontal={12}
-            paddingVertical={8}
-            width={160}
+          <Tooltip
+            label="Tooltip title"
+            variant="rich"
+            description="Description text"
+            actionLabel="Action"
+            placement="top"
+            defaultVisible
           >
-            <Text fontSize={14} fontWeight="500" color="#FFFFFF">
-              Tooltip title
-            </Text>
-            <Text fontSize={12} color="#E6E1E5" marginTop={4}>
-              Description text
-            </Text>
-            <Text fontSize={12} fontWeight="500" color="#CCC2DC" marginTop={8}>
-              Action
-            </Text>
-          </View>
+            {/* Zero-height trigger so only the popup is visible */}
+            <View width={160} height={0} />
+          </Tooltip>
 
-          <View position="absolute" top={-30} right={-20}>
+          {/* Callout 1 — Container (top-right of popup) */}
+          <View position="absolute" top={-120} right={-20}>
             <Callout number={1} />
           </View>
 
-          <View position="absolute" top={2} left={-30}>
+          {/* Callout 2 — Label (top-left of popup) */}
+          <View position="absolute" top={-120} left={-20}>
             <Callout number={2} />
           </View>
 
-          <View position="absolute" top={24} right={-30}>
+          {/* Callout 3 — Description (mid-right of popup) */}
+          <View position="absolute" top={-80} right={-20}>
             <Callout number={3} />
           </View>
 
-          <View position="absolute" bottom={2} left={-30}>
+          {/* Callout 4 — Action (bottom-left of popup) */}
+          <View position="absolute" top={-40} left={-20}>
             <Callout number={4} />
           </View>
         </View>

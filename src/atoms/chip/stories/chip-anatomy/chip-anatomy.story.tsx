@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { Chip } from "../../chip";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -46,54 +47,30 @@ function Anatomy() {
         justifyContent="center"
         alignItems="center"
       >
-        <View position="relative" width={140} height={32}>
-          <View
-            backgroundColor="#FFFFFF"
-            borderRadius={8}
-            borderWidth={1}
-            borderColor="#79747E"
-            width={140}
-            height={32}
-            justifyContent="center"
-            alignItems="center"
-            flexDirection="row"
-            gap={8}
-          >
-            <View
-              width={14}
-              height={14}
-              borderRadius={3}
-              borderWidth={1.5}
-              borderColor="#49454F"
-              borderStyle="dashed"
-              opacity={0.7}
-            />
-            <Text fontSize={14} fontWeight="500" color="#49454F">
-              Chip
-            </Text>
-            <View
-              width={14}
-              height={14}
-              borderRadius={3}
-              borderWidth={1.5}
-              borderColor="#49454F"
-              borderStyle="dashed"
-              opacity={0.7}
-            />
-          </View>
+        <View position="relative">
+          <Chip
+            type="input"
+            label="Chip"
+            leadingIcon="star"
+            trailingIcon="close"
+          />
 
+          {/* Callout 1 — Container */}
           <View position="absolute" top={-36} right={-20}>
             <Callout number={1} />
           </View>
 
+          {/* Callout 2 — Label text */}
           <View position="absolute" bottom={-36} right={10}>
             <Callout number={2} />
           </View>
 
+          {/* Callout 3 — Leading icon */}
           <View position="absolute" bottom={-36} left={-10}>
             <Callout number={3} />
           </View>
 
+          {/* Callout 4 — Trailing icon */}
           <View position="absolute" top={-36} left={-10}>
             <Callout number={4} />
           </View>

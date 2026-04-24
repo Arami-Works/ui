@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { ProgressIndicator } from "../../progress-indicator";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -47,21 +48,7 @@ function Anatomy() {
         alignItems="center"
       >
         <View position="relative" width={200}>
-          <View
-            height={4}
-            backgroundColor="#E6E0E9"
-            borderRadius={2}
-            width="100%"
-          />
-          <View
-            position="absolute"
-            top={0}
-            left={0}
-            height={4}
-            backgroundColor="#6750A4"
-            borderRadius={2}
-            width="60%"
-          />
+          <ProgressIndicator type="linear" mode="determinate" progress={0.6} />
 
           <View position="absolute" top={-36} right={20}>
             <Callout number={1} />

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { RadioButton } from "../../radio-button";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -47,22 +48,7 @@ function Anatomy() {
         alignItems="center"
       >
         <View position="relative">
-          <View
-            width={20}
-            height={20}
-            borderRadius={10}
-            borderWidth={2}
-            borderColor="#49454F"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <View
-              width={10}
-              height={10}
-              borderRadius={5}
-              backgroundColor="#6750A4"
-            />
-          </View>
+          <RadioButton selected={true} />
 
           <View position="absolute" top={-36} right={-40}>
             <Callout number={1} />

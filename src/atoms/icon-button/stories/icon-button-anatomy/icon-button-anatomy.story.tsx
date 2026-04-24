@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { IconButton } from "../../icon-button";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -47,18 +48,7 @@ function Anatomy() {
         alignItems="center"
       >
         <View position="relative">
-          <View
-            width={40}
-            height={40}
-            borderRadius={9999}
-            backgroundColor="#E8DEF8"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Text fontSize={24} color="#6750A4">
-              &#x2605;
-            </Text>
-          </View>
+          <IconButton icon="star" variant="filledTonal" />
 
           <View position="absolute" top={-36} right={-30}>
             <Callout number={1} />

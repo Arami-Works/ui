@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { Button } from "../../button";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -47,38 +48,22 @@ function Anatomy() {
         justifyContent="center"
         alignItems="center"
       >
-        {/* Button container shape */}
-        <View position="relative" width={160} height={48}>
-          <View
-            backgroundColor="#6750A4"
-            borderRadius={9999}
-            width={160}
-            height={48}
-            justifyContent="center"
-            alignItems="center"
-            flexDirection="row"
-            gap={8}
+        <View position="relative">
+          <Button
+            icon={
+              <View
+                width={18}
+                height={18}
+                borderRadius={4}
+                borderWidth={1.5}
+                borderColor="#FFFFFF"
+                borderStyle="dashed"
+                opacity={0.7}
+              />
+            }
           >
-            {/* Icon placeholder */}
-            <View
-              width={18}
-              height={18}
-              borderRadius={4}
-              borderWidth={1.5}
-              borderColor="#FFFFFF"
-              borderStyle="dashed"
-              opacity={0.7}
-            />
-            {/* Label */}
-            <Text
-              fontSize={14}
-              fontWeight="500"
-              color="#FFFFFF"
-              letterSpacing={0.1}
-            >
-              Button
-            </Text>
-          </View>
+            Button
+          </Button>
 
           {/* Callout 1 — Container (top-right) */}
           <View position="absolute" top={-36} right={-20}>
