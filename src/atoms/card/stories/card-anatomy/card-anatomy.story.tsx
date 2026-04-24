@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { Card } from "../../card";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -46,21 +47,15 @@ function Anatomy() {
         justifyContent="center"
         alignItems="center"
       >
-        <View position="relative" width={200} height={120}>
-          <View
-            backgroundColor="#FFFBFE"
-            borderRadius={12}
-            width={200}
-            height={120}
-            padding={16}
-          >
+        <View position="relative" width={200}>
+          <Card variant="elevated">
             <Text fontSize={14} fontWeight="600" color="#1C1B1F">
               Title
             </Text>
             <Text fontSize={12} color="#49454F" marginTop={4}>
               Supporting text content
             </Text>
-          </View>
+          </Card>
 
           <View position="absolute" top={-30} right={-20}>
             <Callout number={1} />

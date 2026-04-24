@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { TextField } from "../../text-field";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -46,27 +47,13 @@ function Anatomy() {
         justifyContent="center"
         alignItems="center"
       >
-        <View position="relative" width={240} height={56}>
-          <View
-            backgroundColor="#E7E0EC"
-            borderTopLeftRadius={4}
-            borderTopRightRadius={4}
-            width={240}
-            height={56}
-            paddingHorizontal={16}
-            paddingTop={8}
-          >
-            <Text fontSize={12} color="#49454F">
-              Label
-            </Text>
-            <Text fontSize={16} color="#1C1B1F" marginTop={4}>
-              Input text
-            </Text>
-          </View>
-          <View height={1} backgroundColor="#49454F" width={240} />
-          <Text fontSize={12} color="#49454F" marginTop={4} paddingLeft={16}>
-            Helper text
-          </Text>
+        <View position="relative" width={240}>
+          <TextField
+            label="Label"
+            value="Input text"
+            helperText="Helper text"
+            variant="filled"
+          />
 
           <View position="absolute" top={-30} right={-20}>
             <Callout number={1} />

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { Checkbox } from "../../checkbox";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -47,20 +48,7 @@ function Anatomy() {
         alignItems="center"
       >
         <View position="relative">
-          <View
-            width={18}
-            height={18}
-            borderRadius={2}
-            borderWidth={2}
-            borderColor="#49454F"
-            backgroundColor="#FFFFFF"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Text fontSize={14} fontWeight="700" color="#FFFFFF">
-              {" "}
-            </Text>
-          </View>
+          <Checkbox state="checked" />
 
           <View position="absolute" top={-36} right={-40}>
             <Callout number={1} />

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { Spacer } from "../../spacer";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -47,15 +48,17 @@ function Anatomy() {
         alignItems="center"
       >
         <View position="relative">
+          {/* Dashed border wrapper visualises the invisible spacer */}
           <View
             width={60}
-            height={16}
-            backgroundColor="#E8DEF8"
-            borderRadius={2}
             borderWidth={1}
-            borderColor="#6750A4"
             borderStyle="dashed"
-          />
+            borderColor="#6750A4"
+            backgroundColor="#EADDFF"
+            opacity={0.5}
+          >
+            <Spacer direction="vertical" size={40} />
+          </View>
 
           <View position="absolute" top={-30} right={-30}>
             <Callout number={1} />

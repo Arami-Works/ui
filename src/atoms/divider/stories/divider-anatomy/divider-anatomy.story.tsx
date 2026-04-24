@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text, View } from "tamagui";
+import { Divider } from "../../divider";
 
 function Callout({ number }: { number: number }) {
   return (
@@ -47,7 +48,7 @@ function Anatomy() {
         alignItems="center"
       >
         <View position="relative" width={160}>
-          <View height={1} backgroundColor="#CAC4D0" width="100%" />
+          <Divider />
 
           <View position="absolute" top={-30} right={-20}>
             <Callout number={1} />
