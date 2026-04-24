@@ -17,15 +17,31 @@ const OUT_DIR = join(process.cwd(), "src/tokens/generated");
 
 // ── Types for intermediate JSON ──────────────────────────────────────
 interface TokenLeaf {
-  $value: string | number;
   $type: "color" | "number";
+  $value?: string | number;
+  /** Present when Figma collection has multiple modes (e.g., Light/Dark). */
+  $valuesByMode?: Record<string, string | number>;
   $description?: string;
 }
 
 type TokenTree = { [key: string]: TokenLeaf | TokenTree };
 
 function isLeaf(node: unknown): node is TokenLeaf {
-  return typeof node === "object" && node !== null && "$value" in node;
+  if (typeof node !== "object" || node === null) return false;
+  return "$value" in node || "$valuesByMode" in node;
+}
+
+/** Resolve a leaf's value for a specific mode name, falling back to $value. */
+function leafValue(leaf: TokenLeaf, mode?: string): string | number {
+  if (mode && leaf.$valuesByMode && mode in leaf.$valuesByMode) {
+    return leaf.$valuesByMode[mode];
+  }
+  if (leaf.$value !== undefined) return leaf.$value;
+  if (leaf.$valuesByMode) {
+    // No exact mode match — use first available.
+    return Object.values(leaf.$valuesByMode)[0];
+  }
+  throw new Error("Token leaf has neither $value nor $valuesByMode");
 }
 
 function readJson(name: string): TokenTree {
@@ -89,7 +105,18 @@ const COLOR_GROUPS: Array<{ name: string; test: (k: string) => boolean }> = [
   { name: "Scrim", test: (k) => k === "scrim" || k === "shadow" },
 ];
 
-function buildColors(tokens: TokenTree): string {
+interface ColorEmitOptions {
+  /** Mode name (e.g., "Light", "Dark") to resolve $valuesByMode against. */
+  mode?: string;
+  /** Title for the file header (e.g., "Color", "Dark Color"). */
+  title: string;
+  /** Exported const name (e.g., "colors", "darkColors"). */
+  exportName: string;
+  /** Exported type alias name (e.g., "ColorToken", "DarkColorToken"). */
+  typeName: string;
+}
+
+function buildColors(tokens: TokenTree, opts: ColorEmitOptions): string {
   const lines: string[] = [];
   const used = new Set<string>();
 
@@ -106,7 +133,7 @@ function buildColors(tokens: TokenTree): string {
     lines.push(`  // ${group.name}`);
     for (const key of members) {
       const leaf = tokens[key] as TokenLeaf;
-      lines.push(`  ${propKey(key)}: "${leaf.$value}",`);
+      lines.push(`  ${propKey(key)}: "${leafValue(leaf, opts.mode)}",`);
       used.add(key);
     }
     lines.push("");
@@ -116,7 +143,7 @@ function buildColors(tokens: TokenTree): string {
   for (const key of Object.keys(tokens)) {
     if (used.has(key) || !isLeaf(tokens[key])) continue;
     const leaf = tokens[key] as TokenLeaf;
-    lines.push(`  ${propKey(key)}: "${leaf.$value}",`);
+    lines.push(`  ${propKey(key)}: "${leafValue(leaf, opts.mode)}",`);
   }
 
   // Remove trailing blank line inside object
@@ -125,14 +152,27 @@ function buildColors(tokens: TokenTree): string {
   }
 
   return [
-    HEADER("Color"),
-    `export const colors = {`,
+    HEADER(opts.title),
+    `export const ${opts.exportName} = {`,
     ...lines,
     "} as const;",
     "",
-    "export type ColorToken = keyof typeof colors;",
+    `export type ${opts.typeName} = keyof typeof ${opts.exportName};`,
     "",
   ].join("\n");
+}
+
+/** Detect which mode names are present in a color tokens tree. */
+function detectColorModes(tokens: TokenTree): string[] {
+  const modes = new Set<string>();
+  for (const key of Object.keys(tokens)) {
+    const leaf = tokens[key];
+    if (!isLeaf(leaf) || !leaf.$valuesByMode) continue;
+    for (const mode of Object.keys(leaf.$valuesByMode)) {
+      modes.add(mode);
+    }
+  }
+  return Array.from(modes);
 }
 
 // ── Numeric object builder (spacing, radii, elevation) ───────────────
@@ -149,12 +189,13 @@ function buildNumericObject(
     const leaf = tokens[key];
     if (!isLeaf(leaf)) continue;
 
+    const value = leafValue(leaf);
     if (leaf.$description) {
       lines.push(`  /** ${leaf.$description} */`);
     } else {
-      lines.push(`  /** ${leaf.$value}px */`);
+      lines.push(`  /** ${value}px */`);
     }
-    lines.push(`  ${propKey(key)}: ${leaf.$value},`);
+    lines.push(`  ${propKey(key)}: ${value},`);
   }
 
   return [
@@ -181,7 +222,7 @@ function buildTypography(tokens: TokenTree): string {
     for (const key of Object.keys(subtree)) {
       const leaf = (subtree as TokenTree)[key];
       if (!isLeaf(leaf)) continue;
-      lines.push(`  ${propKey(key)}: ${leaf.$value},`);
+      lines.push(`  ${propKey(key)}: ${leafValue(leaf)},`);
     }
 
     sections.push(`export const ${group} = {`, ...lines, "} as const;", "");
@@ -200,13 +241,50 @@ function main() {
 
   mkdirSync(OUT_DIR, { recursive: true });
 
+  // Colors may emit one or two files depending on mode count in raw JSON.
+  const colorBuilds: Array<{
+    file: string;
+    source: string;
+    builder: () => string;
+  }> = [];
+  const colorsRawPath = join(RAW_DIR, "colors.json");
+  if (existsSync(colorsRawPath)) {
+    const colorsTree = readJson("colors");
+    const modes = detectColorModes(colorsTree);
+    const hasDark = modes.some((m) => /dark/i.test(m));
+    const lightMode = modes.find((m) => /light/i.test(m));
+    const darkMode = modes.find((m) => /dark/i.test(m));
+
+    colorBuilds.push({
+      file: "colors.ts",
+      source: "colors",
+      builder: () =>
+        buildColors(colorsTree, {
+          mode: lightMode,
+          title: "Color",
+          exportName: "colors",
+          typeName: "ColorToken",
+        }),
+    });
+
+    if (hasDark) {
+      colorBuilds.push({
+        file: "colors-dark.ts",
+        source: "colors",
+        builder: () =>
+          buildColors(colorsTree, {
+            mode: darkMode,
+            title: "Dark Color",
+            exportName: "darkColors",
+            typeName: "DarkColorToken",
+          }),
+      });
+    }
+  }
+
   const builds: Array<{ file: string; source: string; builder: () => string }> =
     [
-      {
-        file: "colors.ts",
-        source: "colors",
-        builder: () => buildColors(readJson("colors")),
-      },
+      ...colorBuilds,
       {
         file: "spacing.ts",
         source: "spacing",
