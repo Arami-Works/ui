@@ -120,4 +120,33 @@ describe("Table", () => {
     expect(screen.getByText("b")).toBeTruthy();
     expect(screen.getByText("c")).toBeTruthy();
   });
+
+  it("preserves non-element children (text nodes)", () => {
+    render(
+      <Table testID="table">
+        {"plain text node"}
+        <TableRow>
+          <TableCell>
+            <Text>row</Text>
+          </TableCell>
+        </TableRow>
+      </Table>,
+    );
+    expect(screen.getByText("row")).toBeTruthy();
+  });
+
+  it("preserves unknown element children (not header/row)", () => {
+    render(
+      <Table testID="table">
+        <Text>caption above rows</Text>
+        <TableRow>
+          <TableCell>
+            <Text>row</Text>
+          </TableCell>
+        </TableRow>
+      </Table>,
+    );
+    expect(screen.getByText("caption above rows")).toBeTruthy();
+    expect(screen.getByText("row")).toBeTruthy();
+  });
 });
