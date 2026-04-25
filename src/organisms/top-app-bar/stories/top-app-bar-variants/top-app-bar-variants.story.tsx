@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Pressable } from "react-native";
+import { XStack, Text } from "tamagui";
 import { TopAppBar } from "../../top-app-bar";
 import type { TopAppBarProps } from "../../top-app-bar.type";
 
@@ -36,4 +38,25 @@ export const Medium: Story = {
 
 export const Large: Story = {
   args: { type: "large" },
+};
+
+export const WithTrailingContent: Story = {
+  args: {
+    type: "small",
+    actions: undefined,
+    trailingContent: (
+      <XStack gap="$xs" alignItems="center" paddingHorizontal="$md">
+        <Pressable onPress={() => {}}>
+          <Text fontSize={14} color="$primary">
+            Edit
+          </Text>
+        </Pressable>
+        <Pressable onPress={() => {}}>
+          <Text fontSize={14} color="$error">
+            Delete
+          </Text>
+        </Pressable>
+      </XStack>
+    ),
+  },
 };
