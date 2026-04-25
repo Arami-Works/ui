@@ -1,5 +1,19 @@
 # @aramiworks/ui
 
+## 0.9.0
+
+### Minor Changes
+
+- [#255](https://github.com/aramiworks/ui/pull/255) [`8b766c1`](https://github.com/aramiworks/ui/commit/8b766c167cad0fead2b6b77087b758e180789a54) Thanks [@cheunjm](https://github.com/cheunjm)! - TopAppBar: apply top safe-area inset internally via `useSafeAreaInsets`, and add a `trailingContent?: ReactNode` slot to support text/destructive actions (e.g. 수정/삭제 in stock-tracker accounts-detail) when the icon-only `actions` API isn't sufficient. The `trailingContent` slot replaces `actions` when both are provided.
+
+### Patch Changes
+
+- [#251](https://github.com/aramiworks/ui/pull/251) [`41c9441`](https://github.com/aramiworks/ui/commit/41c9441ebb349ebd598236a7ec308b41dc148af4) Thanks [@cheunjm](https://github.com/cheunjm)! - Refactor anatomy stories to use actual library components instead of hardcoded mock elements.
+
+- [#248](https://github.com/aramiworks/ui/pull/248) [`21ffa76`](https://github.com/aramiworks/ui/commit/21ffa76ccbc582ce26298944ef6b9328dc6ecde5) Thanks [@cheunjm](https://github.com/cheunjm)! - Replace hardcoded colors and spacing with tokens — montage phase 4a.
+
+- [#250](https://github.com/aramiworks/ui/pull/250) [`e832d6b`](https://github.com/aramiworks/ui/commit/e832d6baeeefc14da3ce330019cfe142057707ad) Thanks [@cheunjm](https://github.com/cheunjm)! - Add WCAG AA contrast check script (non-blocking CI report) — montage phase 4b.
+
 ## 0.8.0
 
 ### Minor Changes
