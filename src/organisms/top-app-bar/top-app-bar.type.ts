@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { GetProps } from "tamagui";
 import type { XStack } from "tamagui";
 
@@ -23,8 +24,10 @@ export type TopAppBarProps = Omit<GetProps<typeof XStack>, "children"> & {
   navigationIcon?: string;
   /** Callback when navigation icon is pressed */
   onNavigationPress?: () => void;
-  /** Trailing action icons — up to 3 */
+  /** Trailing action icons — up to 3. Ignored when `trailingContent` is provided. */
   actions?: TopAppBarAction[];
+  /** Custom trailing content slot. Replaces `actions` when provided — use for text/destructive actions or any non-icon trailing UI. */
+  trailingContent?: ReactNode;
   /** Whether the bar is elevated (scroll state). Default: false */
   elevated?: boolean;
 };
