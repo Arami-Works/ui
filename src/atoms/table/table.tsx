@@ -6,11 +6,18 @@ import {
 } from "react";
 import { styled, View } from "tamagui";
 import type {
+  TableDensity,
   TableProps,
   TableHeaderProps,
   TableRowProps,
   TableCellProps,
 } from "./table.type";
+
+type TableHeaderInternalProps = TableHeaderProps & { density?: TableDensity };
+type TableRowInternalProps = TableRowProps & {
+  density?: TableDensity;
+  stripe?: boolean;
+};
 
 const StyledTable = styled(View, {
   name: "Table",
@@ -59,12 +66,12 @@ export function Table({ children, density = "default", testID }: TableProps) {
   const enhancedChildren = Children.map(children, (child) => {
     if (!isValidElement(child)) return child;
     if (child.type === TableHeader) {
-      return cloneElement(child as ReactElement<TableHeaderProps>, { density });
+      return cloneElement(child as ReactElement<TableHeaderInternalProps>, { density });
     }
     if (child.type === TableRow) {
       const stripe = rowIndex % 2 === 1;
       rowIndex += 1;
-      return cloneElement(child as ReactElement<TableRowProps>, {
+      return cloneElement(child as ReactElement<TableRowInternalProps>, {
         density,
         stripe,
       });
@@ -75,7 +82,7 @@ export function Table({ children, density = "default", testID }: TableProps) {
   return <StyledTable testID={testID}>{enhancedChildren}</StyledTable>;
 }
 
-export function TableHeader({ children, density }: TableHeaderProps) {
+export function TableHeader({ children, density }: TableHeaderInternalProps) {
   return (
     <StyledRow isHeader density={density}>
       {children}
@@ -83,7 +90,7 @@ export function TableHeader({ children, density }: TableHeaderProps) {
   );
 }
 
-export function TableRow({ children, density, stripe }: TableRowProps) {
+export function TableRow({ children, density, stripe }: TableRowInternalProps) {
   return (
     <StyledRow density={density} stripe={stripe}>
       {children}

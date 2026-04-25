@@ -4,7 +4,13 @@ import type { ReactNode } from "react";
 export type TableDensity = "default" | "compact";
 
 export type TableProps = {
-  /** Table content — TableHeader + TableRow children */
+  /**
+   * Table content — TableHeader + TableRow children.
+   *
+   * Only direct TableHeader/TableRow children are enhanced with density and
+   * stripe props. Children wrapped in another component or behind a conditional
+   * expression won't be detected and will render at default density without stripes.
+   */
   children?: ReactNode;
   /** Row height density. Default: "default" */
   density?: TableDensity;
@@ -15,17 +21,11 @@ export type TableProps = {
 export type TableHeaderProps = {
   /** Header cells */
   children?: ReactNode;
-  /** @internal injected by Table */
-  density?: TableDensity;
 };
 
 export type TableRowProps = {
   /** Row cells */
   children?: ReactNode;
-  /** @internal injected by Table — alternating stripe */
-  stripe?: boolean;
-  /** @internal injected by Table */
-  density?: TableDensity;
 };
 
 export type TableCellProps = {
