@@ -59,10 +59,10 @@ export function TopAppBar({
 
   return (
     <StyledContainer
+      {...props}
       height={heightMap[type] + insets.top}
       paddingTop={insets.top}
       elevated={elevated as any}
-      {...props}
     >
       <TopRow>
         {navigationIcon ? (
