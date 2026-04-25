@@ -1,4 +1,9 @@
-import { Children, cloneElement, isValidElement, type ReactElement } from "react";
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  type ReactElement,
+} from "react";
 import { styled, View } from "tamagui";
 import type {
   TableProps,
