@@ -1,7 +1,7 @@
 import "@testing-library/react-native/matchers";
 
 jest.mock("react-native-safe-area-context", () => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
+   
   const mock = require("react-native-safe-area-context/jest/mock");
   return mock.default ?? mock;
 });
