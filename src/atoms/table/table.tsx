@@ -66,7 +66,9 @@ export function Table({ children, density = "default", testID }: TableProps) {
   const enhancedChildren = Children.map(children, (child) => {
     if (!isValidElement(child)) return child;
     if (child.type === TableHeader) {
-      return cloneElement(child as ReactElement<TableHeaderInternalProps>, { density });
+      return cloneElement(child as ReactElement<TableHeaderInternalProps>, {
+        density,
+      });
     }
     if (child.type === TableRow) {
       const stripe = rowIndex % 2 === 1;
