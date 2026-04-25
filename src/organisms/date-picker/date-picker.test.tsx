@@ -512,7 +512,10 @@ describe("DatePicker", () => {
         testID="dp"
       />,
     );
-    fireEvent.changeText(screen.getByPlaceholderText("mm/dd/yyyy"), "04/15/2026");
+    fireEvent.changeText(
+      screen.getByPlaceholderText("mm/dd/yyyy"),
+      "04/15/2026",
+    );
     fireEvent.press(screen.getByText("OK"));
     expect(onConfirm).toHaveBeenCalledWith(expect.any(Date));
   });
