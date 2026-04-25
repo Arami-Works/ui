@@ -1,3 +1,4 @@
+import { Text } from "react-native";
 import { render, screen, fireEvent } from "@/test-utils";
 import { TopAppBar } from "./top-app-bar";
 
@@ -81,5 +82,27 @@ describe("TopAppBar", () => {
   it("renders with custom testID", () => {
     render(<TopAppBar title="Title" testID="custom-tab" />);
     expect(screen.getByTestId("custom-tab")).toBeTruthy();
+  });
+
+  it("renders trailingContent slot when provided", () => {
+    render(
+      <TopAppBar
+        title="Title"
+        trailingContent={<Text testID="custom-trailing">Edit</Text>}
+      />,
+    );
+    expect(screen.getByTestId("custom-trailing")).toBeTruthy();
+  });
+
+  it("trailingContent overrides actions when both provided", () => {
+    render(
+      <TopAppBar
+        title="Title"
+        actions={[{ icon: "search", onPress: jest.fn() }]}
+        trailingContent={<Text testID="custom-trailing">Save</Text>}
+      />,
+    );
+    expect(screen.getByTestId("custom-trailing")).toBeTruthy();
+    expect(screen.queryByTestId("top-app-bar-action-0")).toBeNull();
   });
 });
