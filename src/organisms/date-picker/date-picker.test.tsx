@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@/test-utils";
 import { DatePicker } from "./date-picker";
 
-const FIXED_NOW = new Date(2026, 0, 1); // 2026-01-01 — keeps all test dates in the future
+const FIXED_NOW = new Date(2026, 0, 1); // 2026-01-01 — anchor for fake timers; test dates like 04/15/2026 are in the future relative to this mock
 
 describe("DatePicker", () => {
   beforeEach(() => {
