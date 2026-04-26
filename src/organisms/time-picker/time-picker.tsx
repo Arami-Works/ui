@@ -188,7 +188,6 @@ export function TimePicker({
                   Enter time
                 </Text>
                 <IconButton
-                  testID="tp-mode-toggle"
                   accessibilityLabel={
                     displayMode === "clock"
                       ? "Switch to keyboard input"
@@ -196,6 +195,7 @@ export function TimePicker({
                   }
                   variant="standard"
                   icon={displayMode === "clock" ? "keyboard" : "schedule"}
+                  testID={testID ? `${testID}-mode-toggle` : undefined}
                   onPress={() =>
                     setDisplayMode((m) => (m === "clock" ? "input" : "clock"))
                   }

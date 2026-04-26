@@ -59,7 +59,9 @@ jobs:
                   name: v.name,
                   resolvedType: v.resolvedDataType,
                   description: v.description || "",
-                  value: v.valuesByMode[c.defaultModeId],
+                  valuesByMode: Object.fromEntries(
+                    c.modes.map((m) => [m.name, v.valuesByMode[m.modeId]])
+                  ),
                 });
               }
               result[c.name] = { name: c.name, modes: c.modes,
