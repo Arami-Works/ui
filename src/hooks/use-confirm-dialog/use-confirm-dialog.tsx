@@ -5,18 +5,15 @@ import type {
   UseConfirmDialogReturn,
 } from "./use-confirm-dialog.type";
 
-type DialogState = ShowConfirmDialogOptions & { visible: boolean };
+type DialogState =
+  | (ShowConfirmDialogOptions & { visible: true })
+  | { visible: false };
 
-const INITIAL_STATE: DialogState = {
-  visible: false,
-  title: "",
-  message: "",
-  onConfirm: () => {},
-};
+const INITIAL_STATE: DialogState = { visible: false };
 
 export function useConfirmDialog(): UseConfirmDialogReturn {
   const [state, setState] = useState<DialogState>(INITIAL_STATE);
-  const onConfirmRef = useRef<() => void>(() => {});
+  const onConfirmRef = useRef<(() => void) | undefined>(undefined);
   const onDismissRef = useRef<(() => void) | undefined>(undefined);
 
   const showConfirmDialog = useCallback((options: ShowConfirmDialogOptions) => {

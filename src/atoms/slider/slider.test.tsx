@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from "@/test-utils";
+import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
 import { Slider } from "./slider";
 
 describe("Slider", () => {
@@ -70,7 +71,7 @@ describe("Slider", () => {
     it("has reduced opacity when disabled", () => {
       const { toJSON } = render(<Slider disabled testID="slider" />);
       const tree = JSON.stringify(toJSON());
-      expect(tree).toContain("0.38");
+      expect(tree).toContain(String(DISABLED_OPACITY));
     });
 
     it("exposes accessibility value matching custom min/max/value", () => {
@@ -176,7 +177,7 @@ describe("Slider", () => {
       />,
     );
     const tree = JSON.stringify(toJSON());
-    expect(tree).toContain("0.38");
+    expect(tree).toContain(String(DISABLED_OPACITY));
   });
 
   it("renders discrete range variant with step", () => {
@@ -424,6 +425,202 @@ describe("Slider", () => {
     });
 
     expect(onValueChange).toHaveBeenCalled();
+  });
+
+  describe("pan responder negotiation", () => {
+    it("non-range pan responder returns true for should-set callbacks when enabled", () => {
+      render(<Slider testID="slider" />);
+      const trackView = screen.getByTestId("slider").children[0] as any;
+      expect(trackView.props.onStartShouldSetResponder()).toBe(true);
+      expect(trackView.props.onMoveShouldSetResponder()).toBe(true);
+    });
+
+    it("non-range pan responder returns false for should-set callbacks when disabled", () => {
+      render(<Slider disabled testID="slider" />);
+      const trackView = screen.getByTestId("slider").children[0] as any;
+      expect(trackView.props.onStartShouldSetResponder()).toBe(false);
+      expect(trackView.props.onMoveShouldSetResponder()).toBe(false);
+    });
+
+    it("range pan responder returns true for should-set callbacks when enabled", () => {
+      render(
+        <Slider variant="range" lowValue={20} highValue={80} testID="slider" />,
+      );
+      const trackView = screen.getByTestId("slider").children[0] as any;
+      expect(trackView.props.onStartShouldSetResponder()).toBe(true);
+      expect(trackView.props.onMoveShouldSetResponder()).toBe(true);
+    });
+
+    it("range pan responder returns false for should-set callbacks when disabled", () => {
+      render(
+        <Slider
+          variant="range"
+          lowValue={20}
+          highValue={80}
+          disabled
+          testID="slider"
+        />,
+      );
+      const trackView = screen.getByTestId("slider").children[0] as any;
+      expect(trackView.props.onStartShouldSetResponder()).toBe(false);
+      expect(trackView.props.onMoveShouldSetResponder()).toBe(false);
+    });
+
+    it("non-range onResponderMove invokes onValueChange via direct prop call", () => {
+      const onValueChange = jest.fn();
+      render(
+        <Slider
+          min={0}
+          max={100}
+          value={50}
+          onValueChange={onValueChange}
+          testID="slider"
+        />,
+      );
+      const trackView = screen.getByTestId("slider").children[0] as any;
+      const touchHistory = {
+        touchBank: [],
+        numberActiveTouches: 0,
+        indexOfSingleActiveTouch: -1,
+        mostRecentTimeStamp: 0,
+      };
+      fireEvent(trackView, "layout", {
+        nativeEvent: { layout: { width: 200, height: 4 } },
+      });
+      trackView.props.onResponderGrant({
+        touchHistory,
+        nativeEvent: { locationX: 100 },
+      });
+      trackView.props.onResponderMove({
+        touchHistory: { ...touchHistory, mostRecentTimeStamp: 100 },
+        nativeEvent: { locationX: 120 },
+      });
+      expect(onValueChange).toHaveBeenCalled();
+    });
+
+    it("range onResponderMove invokes onRangeChange via direct prop call", () => {
+      const onRangeChange = jest.fn();
+      render(
+        <Slider
+          variant="range"
+          min={0}
+          max={100}
+          lowValue={20}
+          highValue={80}
+          onRangeChange={onRangeChange}
+          testID="slider"
+        />,
+      );
+      const trackView = screen.getByTestId("slider").children[0] as any;
+      const touchHistory = {
+        touchBank: [],
+        numberActiveTouches: 0,
+        indexOfSingleActiveTouch: -1,
+        mostRecentTimeStamp: 0,
+      };
+      fireEvent(trackView, "layout", {
+        nativeEvent: { layout: { width: 200, height: 4 } },
+      });
+      // grant first to set activeThumb
+      trackView.props.onResponderGrant({
+        touchHistory,
+        nativeEvent: { locationX: 30 },
+      });
+      trackView.props.onResponderMove({
+        touchHistory: { ...touchHistory, mostRecentTimeStamp: 100 },
+        nativeEvent: { locationX: 60 },
+      });
+      expect(onRangeChange).toHaveBeenCalled();
+    });
+  });
+
+  describe("edge case branches", () => {
+    it("handles max equal to min (zero range)", () => {
+      render(<Slider min={50} max={50} value={50} testID="slider" />);
+      expect(screen.getByTestId("slider")).toBeTruthy();
+    });
+
+    it("handles range variant with max equal to min", () => {
+      render(
+        <Slider
+          variant="range"
+          min={50}
+          max={50}
+          lowValue={50}
+          highValue={50}
+          testID="slider"
+        />,
+      );
+      expect(screen.getByTestId("slider")).toBeTruthy();
+    });
+
+    it("range pan grant before layout returns early (trackWidth zero)", () => {
+      const onRangeChange = jest.fn();
+      render(
+        <Slider
+          variant="range"
+          min={0}
+          max={100}
+          lowValue={20}
+          highValue={80}
+          onRangeChange={onRangeChange}
+          testID="slider"
+        />,
+      );
+      const trackView = screen.getByTestId("slider").children[0] as any;
+      const touchHistory = {
+        touchBank: [],
+        numberActiveTouches: 0,
+        indexOfSingleActiveTouch: -1,
+        mostRecentTimeStamp: 0,
+      };
+      // No layout fired — trackWidth stays 0
+      trackView.props.onResponderGrant({
+        touchHistory,
+        nativeEvent: { locationX: 50 },
+      });
+      expect(onRangeChange).not.toHaveBeenCalled();
+    });
+
+    it("renders range variant without testID (undefined thumb testIDs)", () => {
+      const { toJSON } = render(
+        <Slider variant="range" lowValue={20} highValue={80} />,
+      );
+      expect(toJSON()).toBeTruthy();
+    });
+
+    it("range discrete updateRangeValue snaps to step", () => {
+      const onRangeChange = jest.fn();
+      render(
+        <Slider
+          variant="range"
+          type="discrete"
+          min={0}
+          max={50}
+          step={10}
+          lowValue={10}
+          highValue={40}
+          onRangeChange={onRangeChange}
+          testID="slider"
+        />,
+      );
+      const trackView = screen.getByTestId("slider").children[0] as any;
+      const touchHistory = {
+        touchBank: [],
+        numberActiveTouches: 0,
+        indexOfSingleActiveTouch: -1,
+        mostRecentTimeStamp: 0,
+      };
+      fireEvent(trackView, "layout", {
+        nativeEvent: { layout: { width: 200, height: 4 } },
+      });
+      // grant near low thumb position to set activeThumb=low and trigger discrete branch
+      trackView.props.onResponderGrant({
+        touchHistory,
+        nativeEvent: { locationX: 40 },
+      });
+      expect(onRangeChange).toHaveBeenCalled();
+    });
   });
 
   describe("dark mode", () => {

@@ -525,7 +525,12 @@ export function DatePicker({
     >
       <Pressable style={{ flex: 1 }} onPress={onDismiss}>
         <Scrim>
-          <Pressable onPress={(e) => e.stopPropagation()}>{content}</Pressable>
+          <Pressable
+            onPress={(e) => e.stopPropagation()}
+            testID={testID ? `${testID}-content` : undefined}
+          >
+            {content}
+          </Pressable>
         </Scrim>
       </Pressable>
     </Modal>

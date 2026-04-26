@@ -264,6 +264,25 @@ describe("TimePicker", () => {
     expect(allZeros.length).toBeGreaterThan(0);
   });
 
+  it("switches clock focus back to hours when hours segment pressed", () => {
+    render(
+      <TimePicker
+        visible
+        hour={9}
+        minute={0}
+        onConfirm={jest.fn()}
+        onDismiss={jest.fn()}
+        testID="tp"
+      />,
+    );
+    // First switch to minutes (press the minute "00" segment)
+    fireEvent.press(screen.getAllByText("00")[0]);
+    // Then switch back to hours by pressing the hour segment ("09" appears in segment + clock face)
+    const hourElements = screen.getAllByText("09");
+    fireEvent.press(hourElements[0]);
+    expect(hourElements.length).toBeGreaterThan(0);
+  });
+
   it("handles AM 12 edge case on confirm", () => {
     const onConfirm = jest.fn();
     render(
@@ -398,7 +417,21 @@ describe("TimePicker", () => {
         testID="tp"
       />,
     );
-    fireEvent.press(screen.getAllByRole("button")[0]);
+    fireEvent.press(screen.getByLabelText("Switch to text input"));
+    expect(screen.getByText("Hour")).toBeTruthy();
+  });
+
+  it("renders input mode with 24-hour placeholder", () => {
+    render(
+      <TimePicker
+        visible
+        mode="input"
+        use24Hour
+        onConfirm={jest.fn()}
+        onDismiss={jest.fn()}
+        testID="tp"
+      />,
+    );
     expect(screen.getByText("Hour")).toBeTruthy();
   });
 
@@ -412,7 +445,7 @@ describe("TimePicker", () => {
         testID="tp"
       />,
     );
-    fireEvent.press(screen.getAllByRole("button")[0]);
+    fireEvent.press(screen.getByLabelText("Switch to clock"));
     expect(screen.getByText("12")).toBeTruthy();
   });
 

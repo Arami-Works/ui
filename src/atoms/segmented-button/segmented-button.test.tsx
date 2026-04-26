@@ -134,6 +134,21 @@ describe("SegmentedButton", () => {
     );
   });
 
+  it("adds item in multi-select mode when unselected pressed (line 59 branch)", () => {
+    const onSelectionChange = jest.fn();
+    render(
+      <SegmentedButton
+        segments={segments}
+        selected={["day"]}
+        multiSelect
+        onSelectionChange={onSelectionChange}
+        testID="seg"
+      />,
+    );
+    fireEvent.press(screen.getByTestId("seg-segment-week"));
+    expect(onSelectionChange).toHaveBeenCalledWith(["day", "week"]);
+  });
+
   it("deselects item in multi-select mode when pressed again", () => {
     const onSelectionChange = jest.fn();
     render(
@@ -169,6 +184,43 @@ describe("SegmentedButton", () => {
     expect(() =>
       fireEvent.press(screen.getByTestId("seg-segment-week")),
     ).not.toThrow();
+  });
+
+  it("renders segment with segment.disabled (line 106 branch)", () => {
+    const segmentsWithDisabled = [
+      { value: "day", label: "Day" },
+      { value: "week", label: "Week", disabled: true },
+    ];
+    render(
+      <SegmentedButton
+        segments={segmentsWithDisabled}
+        selected="day"
+        testID="seg"
+      />,
+    );
+    expect(screen.getByTestId("seg-segment-week")).toBeTruthy();
+  });
+
+  it("handlePress early-returns when component disabled (line 52 branch)", () => {
+    const onSelectionChange = jest.fn();
+    const { UNSAFE_root } = render(
+      <SegmentedButton
+        segments={segments}
+        selected="day"
+        disabled
+        onSelectionChange={onSelectionChange}
+        testID="seg"
+      />,
+    );
+    // Pressable is disabled → fireEvent.press doesn't fire onPress.
+    // Invoke onPress directly to cover the `if (disabled) return;` branch.
+    const segPressable = UNSAFE_root.findAll(
+      (node: { props?: Record<string, unknown> }) =>
+        node.props?.testID === "seg-segment-week" &&
+        typeof node.props?.onPress === "function",
+    )[0];
+    segPressable.props.onPress();
+    expect(onSelectionChange).not.toHaveBeenCalled();
   });
 
   it("renders without testID (undefined branch for segment testIDs)", () => {

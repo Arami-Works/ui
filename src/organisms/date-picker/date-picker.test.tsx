@@ -512,7 +512,7 @@ describe("DatePicker", () => {
         testID="dp"
       />,
     );
-    fireEvent.changeText(screen.getByDisplayValue(""), "04/15/2026");
+    fireEvent.changeText(screen.getByLabelText("Date"), "04/15/2026");
     fireEvent.press(screen.getByText("OK"));
     expect(onConfirm).toHaveBeenCalledWith(expect.any(Date));
   });
@@ -527,8 +527,195 @@ describe("DatePicker", () => {
         testID="dp"
       />,
     );
-    fireEvent.press(screen.getByTestId("dp"), { stopPropagation: jest.fn() });
-    expect(screen.getByTestId("dp")).toBeTruthy();
+    fireEvent.press(screen.getByTestId("dp-content"), {
+      stopPropagation: jest.fn(),
+    });
+    expect(onDismiss).not.toHaveBeenCalled();
+  });
+
+  it("confirms with selectedDate when input mode parses to null (single date)", () => {
+    const onConfirm = jest.fn();
+    render(
+      <DatePicker
+        visible
+        mode="input"
+        onConfirm={onConfirm}
+        onDismiss={jest.fn()}
+        testID="dp"
+      />,
+    );
+    // Provide an unparseable date string — parseDate returns null,
+    // confirm falls through to onConfirm(selectedDate)
+    fireEvent.changeText(screen.getByLabelText("Date"), "not-a-date");
+    fireEvent.press(screen.getByText("OK"));
+    expect(onConfirm).toHaveBeenCalledWith(expect.any(Date));
+  });
+
+  describe("branch coverage", () => {
+    it("normalizeRange swaps when end date is before start date", () => {
+      const onConfirmRange = jest.fn();
+      const date = new Date(2026, 3, 15);
+      render(
+        <DatePicker
+          visible
+          selectionMode="range"
+          value={date}
+          onConfirm={jest.fn()}
+          onConfirmRange={onConfirmRange}
+          onDismiss={jest.fn()}
+          testID="dp"
+        />,
+      );
+      // Click later date first, then earlier — normalizeRange swaps to [earlier, later]
+      fireEvent.press(screen.getAllByText("20")[0]);
+      fireEvent.press(screen.getAllByText("10")[0]);
+      fireEvent.press(screen.getByText("OK"));
+      expect(onConfirmRange).toHaveBeenCalled();
+      const [start, end] = onConfirmRange.mock.calls[0];
+      expect(start.getTime()).toBeLessThan(end.getTime());
+    });
+
+    it("parseDate returns null when 3 parts produce an invalid Date (NaN)", () => {
+      const onConfirm = jest.fn();
+      render(
+        <DatePicker
+          visible
+          mode="input"
+          onConfirm={onConfirm}
+          onDismiss={jest.fn()}
+          testID="dp"
+        />,
+      );
+      // 3 parts but all unparseable — Number("foo") === NaN → Date is invalid
+      fireEvent.changeText(screen.getByLabelText("Date"), "foo/bar/baz");
+      fireEvent.press(screen.getByText("OK"));
+      // Falls through to onConfirm(selectedDate)
+      expect(onConfirm).toHaveBeenCalledWith(expect.any(Date));
+    });
+
+    it("range input mode with empty inputs does not call onConfirmRange", () => {
+      const onConfirmRange = jest.fn();
+      render(
+        <DatePicker
+          visible
+          selectionMode="range"
+          mode="input"
+          onConfirm={jest.fn()}
+          onConfirmRange={onConfirmRange}
+          onDismiss={jest.fn()}
+          testID="dp"
+        />,
+      );
+      // No startDate/endDate provided → both inputs empty → parseDate returns null
+      fireEvent.press(screen.getByText("OK"));
+      expect(onConfirmRange).not.toHaveBeenCalled();
+    });
+
+    it("range mode without onConfirmRange does not throw on calendar OK", () => {
+      const date = new Date(2026, 3, 15);
+      render(
+        <DatePicker
+          visible
+          selectionMode="range"
+          startDate={new Date(2026, 3, 5)}
+          endDate={new Date(2026, 3, 10)}
+          value={date}
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+          testID="dp"
+        />,
+      );
+      // No onConfirmRange — `if (rangeStart && rangeEnd && onConfirmRange)` short-circuits
+      expect(() => fireEvent.press(screen.getByText("OK"))).not.toThrow();
+    });
+
+    it("renders modal variant without testID (testID-undefined branches)", () => {
+      const { toJSON } = render(
+        <DatePicker visible onConfirm={jest.fn()} onDismiss={jest.fn()} />,
+      );
+      // Hits the false branch of every `testID ? ... : undefined` ternary
+      expect(toJSON()).toBeTruthy();
+    });
+
+    it("renders range input mode without testID", () => {
+      const { toJSON } = render(
+        <DatePicker
+          visible
+          selectionMode="range"
+          mode="input"
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+        />,
+      );
+      expect(toJSON()).toBeTruthy();
+    });
+
+    it("opens year grid without testID (docked variant)", () => {
+      // Use docked variant so we don't bubble through the modal stop-prop Pressable
+      render(
+        <DatePicker
+          visible
+          variant="docked"
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+        />,
+      );
+      fireEvent.press(screen.getByText(/^[A-Z][a-z]+ \d{4}$/));
+      expect(screen.getByText(String(new Date().getFullYear()))).toBeTruthy();
+    });
+
+    it("year grid shows border on today's year when not currently selected", () => {
+      // Today is 2026-04-26 → today.getFullYear() = 2026
+      // Render with value in 2025 → currentYear=2025, then open year grid.
+      // Year 2026 (today's year) is not currentYear → borderWidth=1 branch
+      const date = new Date(2025, 5, 15);
+      render(
+        <DatePicker
+          visible
+          value={date}
+          onConfirm={jest.fn()}
+          onDismiss={jest.fn()}
+          testID="dp"
+        />,
+      );
+      fireEvent.press(screen.getByTestId("dp-year-toggle"));
+      expect(screen.getByText("2026")).toBeTruthy();
+    });
+
+    it("invoking onPress on a disabled day cell short-circuits handleDayPress", () => {
+      const onConfirm = jest.fn();
+      const value = new Date(2026, 3, 15);
+      const minDate = new Date(2026, 3, 10);
+      const maxDate = new Date(2026, 3, 20);
+      const { UNSAFE_root } = render(
+        <DatePicker
+          visible
+          value={value}
+          minDate={minDate}
+          maxDate={maxDate}
+          onConfirm={onConfirm}
+          onDismiss={jest.fn()}
+          testID="dp"
+        />,
+      );
+      // fireEvent.press respects Pressable.disabled and won't fire onPress;
+      // call onPress directly to exercise the inner `cell.thisMonth && !disabled`
+      // false branch (defense-in-depth guard inside the handler).
+      const disabledDayCell = UNSAFE_root.findAll(
+        (node: {
+          props?: Record<string, unknown> & { style?: { position?: string } };
+        }) =>
+          node.props?.disabled === true &&
+          typeof node.props?.onPress === "function" &&
+          node.props?.style?.position === "relative",
+      )[0];
+      expect(disabledDayCell).toBeTruthy();
+      disabledDayCell.props.onPress();
+      // Confirms selectedDate stayed at the initial value (15)
+      fireEvent.press(screen.getByText("OK"));
+      const confirmed = onConfirm.mock.calls[0][0];
+      expect(confirmed.getDate()).toBe(15);
+    });
   });
 
   describe("year selector", () => {

@@ -100,6 +100,39 @@ describe("SearchBar", () => {
     expect(toJSON()).toBeTruthy();
   });
 
+  it("trailing icon onPress is undefined when disabled (disabled-true branch)", () => {
+    const onTrailingIconPress = jest.fn();
+    render(
+      <SearchBar
+        trailingIcon="mic"
+        disabled
+        onTrailingIconPress={onTrailingIconPress}
+        testID="sb"
+      />,
+    );
+    fireEvent.press(screen.getByTestId("sb-trailing"));
+    expect(onTrailingIconPress).not.toHaveBeenCalled();
+  });
+
+  it("clear button onPress is undefined when disabled with value", () => {
+    const onChangeText = jest.fn();
+    render(
+      <SearchBar
+        value="hello"
+        disabled
+        onChangeText={onChangeText}
+        testID="sb"
+      />,
+    );
+    fireEvent.press(screen.getByTestId("sb-clear"));
+    expect(onChangeText).not.toHaveBeenCalled();
+  });
+
+  it("trailing icon renders without testID (testID-undefined branch)", () => {
+    const { toJSON } = render(<SearchBar trailingIcon="mic" />);
+    expect(toJSON()).toBeTruthy();
+  });
+
   describe("dark mode", () => {
     it("renders in dark theme without crashing", () => {
       render(<SearchBar testID="dark-test" />, { theme: "dark" });

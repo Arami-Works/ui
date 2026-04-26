@@ -157,6 +157,38 @@ describe("ListItem", () => {
     expect(toJSON()).toBeTruthy();
   });
 
+  it("renders null when leadingContent is non-string non-element value", () => {
+    // hasLeading is true (leadingContent is truthy), but it's neither a string
+    // nor a valid element → renderLeading returns null (line 85 branch).
+    const { toJSON } = render(
+      <ListItem
+        headline="Weird leading"
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        leadingContent={42 as any}
+        testID="list-item"
+      />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("renders trailingSupportingText (line 99 branch)", () => {
+    render(
+      <ListItem
+        headline="Email"
+        trailingSupportingText="2m ago"
+        testID="list-item"
+      />,
+    );
+    expect(screen.getByText("2m ago")).toBeTruthy();
+  });
+
+  it("renders overlineText (line 126 branch)", () => {
+    render(
+      <ListItem headline="Item" overlineText="OVERLINE" testID="list-item" />,
+    );
+    expect(screen.getByText("OVERLINE")).toBeTruthy();
+  });
+
   it("stop-prop pressable on trailingElement does not propagate press", () => {
     const onPress = jest.fn();
     render(

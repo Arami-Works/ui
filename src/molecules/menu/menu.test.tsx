@@ -222,6 +222,54 @@ describe("Menu", () => {
     expect(screen.getByTestId("menu-item-edit")).toBeTruthy();
   });
 
+  it("style function returns pressed opacity for enabled menu item (pressed branch)", () => {
+    const { UNSAFE_root } = render(
+      <Menu
+        visible
+        onDismiss={jest.fn()}
+        items={[{ key: "a", label: "A", onPress: jest.fn() }]}
+        testID="menu"
+      />,
+    );
+    const item = UNSAFE_root.findAll(
+      (node: { props?: Record<string, unknown> }) =>
+        node.props?.testID === "menu-item-a",
+    )[0];
+    // Invoke the style function with pressed=true to cover the inner ternary
+    expect(typeof item.props.style).toBe("function");
+    const pressed = item.props.style({ pressed: true });
+    const notPressed = item.props.style({ pressed: false });
+    expect(pressed.opacity).toBeLessThan(1);
+    expect(notPressed.opacity).toBe(1);
+  });
+
+  it("style function on submenu item exercises pressed branch", () => {
+    const { UNSAFE_root } = render(
+      <Menu
+        visible
+        onDismiss={jest.fn()}
+        items={[
+          {
+            key: "more",
+            label: "More options",
+            onPress: jest.fn(),
+            submenu: [{ key: "sub1", label: "Sub item", onPress: jest.fn() }],
+          },
+        ]}
+        testID="menu"
+      />,
+    );
+    fireEvent.press(screen.getByTestId("menu-item-more"));
+    const subItem = UNSAFE_root.findAll(
+      (node: { props?: Record<string, unknown> }) =>
+        node.props?.testID === "menu-item-more-sub1",
+    )[0];
+    const pressed = subItem.props.style({ pressed: true });
+    const notPressed = subItem.props.style({ pressed: false });
+    expect(pressed.opacity).toBeLessThan(1);
+    expect(notPressed.opacity).toBe(1);
+  });
+
   it("does not call subitem onPress when subitem is disabled", () => {
     const subOnPress = jest.fn();
     render(
