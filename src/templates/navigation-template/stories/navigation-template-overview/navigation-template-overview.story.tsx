@@ -27,7 +27,12 @@ function Overview() {
               <NavigationBar destinations={navDestinations} activeIndex={0} />
             }
           >
-            <View flex={1} padding={24} justifyContent="center" alignItems="center">
+            <View
+              flex={1}
+              padding={24}
+              justifyContent="center"
+              alignItems="center"
+            >
               <Text fontSize={16} color="#49454F">
                 Screen Content
               </Text>
@@ -46,7 +51,12 @@ function Overview() {
           overflow="hidden"
         >
           <NavigationTemplate>
-            <View flex={1} padding={24} justifyContent="center" alignItems="center">
+            <View
+              flex={1}
+              padding={24}
+              justifyContent="center"
+              alignItems="center"
+            >
               <Text fontSize={16} color="#49454F">
                 Full bleed screen
               </Text>

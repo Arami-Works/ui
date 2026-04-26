@@ -16,10 +16,13 @@ function Overview() {
           borderRadius={12}
           overflow="hidden"
         >
-          <AppBarTemplate
-            topBar={<TopAppBar type="small" title="대시보드" />}
-          >
-            <View flex={1} padding={24} justifyContent="center" alignItems="center">
+          <AppBarTemplate topBar={<TopAppBar type="small" title="대시보드" />}>
+            <View
+              flex={1}
+              padding={24}
+              justifyContent="center"
+              alignItems="center"
+            >
               <Text fontSize={16} color="#49454F">
                 Screen Content
               </Text>
@@ -46,7 +49,12 @@ function Overview() {
               />
             }
           >
-            <View flex={1} padding={24} justifyContent="center" alignItems="center">
+            <View
+              flex={1}
+              padding={24}
+              justifyContent="center"
+              alignItems="center"
+            >
               <Text fontSize={16} color="#49454F">
                 Detail screen
               </Text>

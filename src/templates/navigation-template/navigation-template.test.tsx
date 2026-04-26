@@ -23,21 +23,13 @@ describe("NavigationTemplate", () => {
   });
 
   it("renders navBar slot when provided", () => {
-    render(
-      <NavigationTemplate
-        testID="nav"
-        navBar={<Text>Nav Bar</Text>}
-      />,
-    );
+    render(<NavigationTemplate testID="nav" navBar={<Text>Nav Bar</Text>} />);
     expect(screen.getByText("Nav Bar")).toBeTruthy();
   });
 
   it("renders children and navBar together", () => {
     render(
-      <NavigationTemplate
-        testID="nav"
-        navBar={<Text>Bottom Nav</Text>}
-      >
+      <NavigationTemplate testID="nav" navBar={<Text>Bottom Nav</Text>}>
         <Text>Content</Text>
       </NavigationTemplate>,
     );

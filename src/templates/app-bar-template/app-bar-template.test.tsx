@@ -23,21 +23,13 @@ describe("AppBarTemplate", () => {
   });
 
   it("renders topBar slot when provided", () => {
-    render(
-      <AppBarTemplate
-        testID="abt"
-        topBar={<Text>App Bar</Text>}
-      />,
-    );
+    render(<AppBarTemplate testID="abt" topBar={<Text>App Bar</Text>} />);
     expect(screen.getByText("App Bar")).toBeTruthy();
   });
 
   it("renders children and topBar together", () => {
     render(
-      <AppBarTemplate
-        testID="abt"
-        topBar={<Text>Top App Bar</Text>}
-      >
+      <AppBarTemplate testID="abt" topBar={<Text>Top App Bar</Text>}>
         <Text>Content</Text>
       </AppBarTemplate>,
     );
