@@ -53,7 +53,9 @@ describe("NavigationDrawer", () => {
         testID="drawer"
       />,
     );
-    expect(toJSON()).toBeTruthy();
+    // Modal with visible={false} renders nothing — assertion confirms the
+    // closed branch of the open-driven useEffect ran without throwing.
+    expect(toJSON()).toBeNull();
   });
 
   it("renders with header prop", () => {
