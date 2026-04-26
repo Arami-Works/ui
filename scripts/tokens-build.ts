@@ -165,13 +165,21 @@ function buildColors(tokens: TokenTree, opts: ColorEmitOptions): string {
 /** Detect which mode names are present in a color tokens tree. */
 function detectColorModes(tokens: TokenTree): string[] {
   const modes = new Set<string>();
-  for (const key of Object.keys(tokens)) {
-    const leaf = tokens[key];
-    if (!isLeaf(leaf) || !leaf.$valuesByMode) continue;
-    for (const mode of Object.keys(leaf.$valuesByMode)) {
-      modes.add(mode);
+  function walk(tree: TokenTree): void {
+    for (const key of Object.keys(tree)) {
+      const node = tree[key];
+      if (isLeaf(node)) {
+        if (node.$valuesByMode) {
+          for (const mode of Object.keys(node.$valuesByMode)) {
+            modes.add(mode);
+          }
+        }
+      } else {
+        walk(node as TokenTree);
+      }
     }
   }
+  walk(tokens);
   return Array.from(modes);
 }
 
