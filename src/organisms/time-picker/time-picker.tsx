@@ -188,13 +188,14 @@ export function TimePicker({
                   Enter time
                 </Text>
                 <IconButton
-                  variant="standard"
-                  icon={displayMode === "clock" ? "keyboard" : "schedule"}
                   accessibilityLabel={
                     displayMode === "clock"
-                      ? "Switch to text input"
+                      ? "Switch to keyboard input"
                       : "Switch to clock"
                   }
+                  variant="standard"
+                  icon={displayMode === "clock" ? "keyboard" : "schedule"}
+                  testID={testID ? `${testID}-mode-toggle` : undefined}
                   onPress={() =>
                     setDisplayMode((m) => (m === "clock" ? "input" : "clock"))
                   }

@@ -14,6 +14,11 @@ describe("TimePicker", () => {
     expect(screen.getByTestId("time-picker")).toBeTruthy();
   });
 
+  it("renders without testID (mode toggle has no testID)", () => {
+    render(<TimePicker visible onConfirm={jest.fn()} onDismiss={jest.fn()} />);
+    expect(screen.getByText("Enter time")).toBeTruthy();
+  });
+
   it("does not render when not visible", () => {
     render(
       <TimePicker
@@ -417,7 +422,7 @@ describe("TimePicker", () => {
         testID="tp"
       />,
     );
-    fireEvent.press(screen.getByLabelText("Switch to text input"));
+    fireEvent.press(screen.getByTestId("tp-mode-toggle"));
     expect(screen.getByText("Hour")).toBeTruthy();
   });
 
@@ -445,7 +450,7 @@ describe("TimePicker", () => {
         testID="tp"
       />,
     );
-    fireEvent.press(screen.getByLabelText("Switch to clock"));
+    fireEvent.press(screen.getByTestId("tp-mode-toggle"));
     expect(screen.getByText("12")).toBeTruthy();
   });
 

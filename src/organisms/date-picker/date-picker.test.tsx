@@ -1,7 +1,18 @@
 import { render, screen, fireEvent } from "@/test-utils";
 import { DatePicker } from "./date-picker";
 
+const FIXED_NOW = new Date(2026, 0, 1); // 2026-01-01 — anchor for fake timers; test dates like 04/15/2026 are in the future relative to this mock
+
 describe("DatePicker", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+    jest.setSystemTime(FIXED_NOW);
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   it("renders when visible", () => {
     render(
       <DatePicker
@@ -512,7 +523,10 @@ describe("DatePicker", () => {
         testID="dp"
       />,
     );
-    fireEvent.changeText(screen.getByLabelText("Date"), "04/15/2026");
+    fireEvent.changeText(
+      screen.getByPlaceholderText("mm/dd/yyyy"),
+      "04/15/2026",
+    );
     fireEvent.press(screen.getByText("OK"));
     expect(onConfirm).toHaveBeenCalledWith(expect.any(Date));
   });

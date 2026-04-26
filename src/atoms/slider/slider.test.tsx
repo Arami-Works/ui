@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@/test-utils";
-import { DISABLED_OPACITY } from "../../tokens/custom/interaction";
+import { DISABLED_OPACITY } from "@/tokens/custom/interaction";
 import { Slider } from "./slider";
 
 describe("Slider", () => {
