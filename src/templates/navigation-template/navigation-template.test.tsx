@@ -36,4 +36,13 @@ describe("NavigationTemplate", () => {
     expect(screen.getByText("Content")).toBeTruthy();
     expect(screen.getByText("Bottom Nav")).toBeTruthy();
   });
+
+  it("renders without testID (undefined branch)", () => {
+    const { toJSON } = render(
+      <NavigationTemplate>
+        <Text>Content</Text>
+      </NavigationTemplate>,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
 });
