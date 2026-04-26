@@ -188,7 +188,6 @@ export function TimePicker({
                   Enter time
                 </Text>
                 <IconButton
-                  testID="tp-mode-toggle"
                   accessibilityLabel={
                     displayMode === "clock"
                       ? "Switch to keyboard input"
