@@ -24,7 +24,9 @@
  *         name: v.name,
  *         resolvedType: v.resolvedDataType,
  *         description: v.description || "",
- *         value: v.valuesByMode[c.defaultModeId],
+ *         valuesByMode: Object.fromEntries(
+ *           c.modes.map((m) => [m.name, v.valuesByMode[m.modeId]])
+ *         ),
  *       });
  *     }
  *     result[c.name] = { name: c.name, modes: c.modes,
@@ -48,11 +50,16 @@ interface FigmaColor {
   a: number;
 }
 
+type PluginValue = FigmaColor | number | string | boolean;
+
 interface PluginVariable {
   name: string;
   resolvedType?: string;
   description: string;
-  value: FigmaColor | number | string | boolean;
+  /** New multi-mode format — keyed by mode name (e.g., "Light", "Dark"). */
+  valuesByMode?: Record<string, PluginValue>;
+  /** Legacy single-mode format — kept for backwards compat. */
+  value?: PluginValue;
 }
 
 interface PluginCollection {
@@ -65,8 +72,10 @@ interface PluginCollection {
 type PluginOutput = Record<string, PluginCollection>;
 
 interface TokenLeaf {
-  $value: string | number;
   $type: "color" | "number";
+  $value?: string | number;
+  /** Present when Figma collection has multiple modes (e.g., Light/Dark). */
+  $valuesByMode?: Record<string, string | number>;
   $description?: string;
 }
 
@@ -267,15 +276,37 @@ function main() {
     const tokens: TokenTree = {};
 
     for (const v of sorted) {
-      const valueIsColor = isColor(v.value);
-      const resolved = valueIsColor
-        ? rgbaToHex(v.value as FigmaColor)
-        : cleanNumber(v.value as number);
+      // Prefer new multi-mode format; fall back to legacy single value.
+      const valuesByMode = v.valuesByMode;
+      const hasMultipleModes =
+        valuesByMode && Object.keys(valuesByMode).length > 1;
+      const sampleValue = valuesByMode
+        ? Object.values(valuesByMode)[0]
+        : v.value;
+      const valueIsColor = isColor(sampleValue);
+
+      const resolve = (raw: PluginValue) =>
+        isColor(raw)
+          ? rgbaToHex(raw as FigmaColor)
+          : cleanNumber(raw as number);
 
       const leaf: TokenLeaf = {
-        $value: resolved,
         $type: valueIsColor ? "color" : "number",
       };
+
+      if (hasMultipleModes) {
+        leaf.$valuesByMode = Object.fromEntries(
+          Object.entries(valuesByMode!).map(([mode, raw]) => [
+            mode,
+            resolve(raw),
+          ]),
+        );
+      } else if (valuesByMode) {
+        // Single mode — unwrap to $value for stable output.
+        leaf.$value = resolve(Object.values(valuesByMode)[0]);
+      } else if (v.value !== undefined) {
+        leaf.$value = resolve(v.value);
+      }
 
       // Use variable description, or fallback to hardcoded description map
       const desc = v.description || (descMap ? descMap[v.name] : undefined);

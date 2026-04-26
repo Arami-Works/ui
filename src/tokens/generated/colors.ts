@@ -1,10 +1,7 @@
 /**
- * MD3 Color Tokens — Montage-matched
- * Auto-generated from Figma Variables via Token Studio
- * DO NOT EDIT — run the token pipeline to regenerate
- *
- * Source: Montage (wanteddev/montage-web) semantic tokens
- * Mapping: scripts/figma-docs/montage-tokens.md
+ * MD3 Color Tokens
+ * Auto-generated from Figma Variables — DO NOT EDIT
+ * Regenerate: npm run tokens:sync
  */
 export const colors = {
   // Primary
