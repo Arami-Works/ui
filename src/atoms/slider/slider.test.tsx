@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from "@/test-utils";
+import { DISABLED_OPACITY } from "@/tokens/custom/interaction";
 import { Slider } from "./slider";
 
 describe("Slider", () => {
@@ -70,7 +71,7 @@ describe("Slider", () => {
     it("has reduced opacity when disabled", () => {
       const { toJSON } = render(<Slider disabled testID="slider" />);
       const tree = JSON.stringify(toJSON());
-      expect(tree).toContain("0.43");
+      expect(tree).toContain(String(DISABLED_OPACITY));
     });
 
     it("exposes accessibility value matching custom min/max/value", () => {
@@ -176,7 +177,7 @@ describe("Slider", () => {
       />,
     );
     const tree = JSON.stringify(toJSON());
-    expect(tree).toContain("0.43");
+    expect(tree).toContain(String(DISABLED_OPACITY));
   });
 
   it("renders discrete range variant with step", () => {
