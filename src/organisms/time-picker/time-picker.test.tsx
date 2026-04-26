@@ -398,7 +398,7 @@ describe("TimePicker", () => {
         testID="tp"
       />,
     );
-    fireEvent.press(screen.getAllByRole("button")[0]);
+    fireEvent.press(screen.getByTestId("tp-mode-toggle"));
     expect(screen.getByText("Hour")).toBeTruthy();
   });
 
@@ -412,7 +412,7 @@ describe("TimePicker", () => {
         testID="tp"
       />,
     );
-    fireEvent.press(screen.getAllByRole("button")[0]);
+    fireEvent.press(screen.getByTestId("tp-mode-toggle"));
     expect(screen.getByText("12")).toBeTruthy();
   });
 
