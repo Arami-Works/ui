@@ -1,3 +1,4 @@
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { styled, XStack, YStack } from "tamagui";
 import { IconButton } from "../../atoms/icon-button";
 import { Text } from "../../atoms/text";
@@ -46,9 +47,11 @@ export function TopAppBar({
   navigationIcon,
   onNavigationPress,
   actions = [],
+  trailingContent,
   elevated = false,
   ...props
 }: TopAppBarProps) {
+  const insets = useSafeAreaInsets();
   const isCenterAligned = type === "center-aligned";
   const isMedium = type === "medium";
   const isLarge = type === "large";
@@ -56,9 +59,10 @@ export function TopAppBar({
 
   return (
     <StyledContainer
-      height={heightMap[type]}
-      elevated={elevated as any}
       {...props}
+      height={heightMap[type] + insets.top}
+      paddingTop={insets.top}
+      elevated={elevated as any}
     >
       <TopRow>
         {navigationIcon ? (
@@ -85,15 +89,17 @@ export function TopAppBar({
           <XStack flex={1} />
         )}
 
-        {displayedActions.map((action, index) => (
-          <IconButton
-            key={index}
-            icon={action.icon}
-            onPress={action.onPress}
-            accessibilityLabel={action.accessibilityLabel}
-            testID={`top-app-bar-action-${index}`}
-          />
-        ))}
+        {trailingContent
+          ? trailingContent
+          : displayedActions.map((action, index) => (
+              <IconButton
+                key={index}
+                icon={action.icon}
+                onPress={action.onPress}
+                accessibilityLabel={action.accessibilityLabel}
+                testID={`top-app-bar-action-${index}`}
+              />
+            ))}
       </TopRow>
 
       {isMedium ? (
