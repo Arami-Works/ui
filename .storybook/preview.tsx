@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/react-vite";
 import React from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { UiProvider } from "../src/providers";
 
 const env = (import.meta as any).env?.STORYBOOK_ENV as string | undefined;
@@ -55,12 +56,19 @@ const preview: Preview = {
     (Story, context) => {
       const theme = context.globals.theme || "light";
       return (
-        <UiProvider defaultTheme={theme}>
-          <EnvBanner />
-          <div style={{ paddingTop: env && env !== "master" ? 24 : 0 }}>
-            <Story />
-          </div>
-        </UiProvider>
+        <SafeAreaProvider
+          initialMetrics={{
+            insets: { top: 0, left: 0, right: 0, bottom: 0 },
+            frame: { x: 0, y: 0, width: 0, height: 0 },
+          }}
+        >
+          <UiProvider defaultTheme={theme}>
+            <EnvBanner />
+            <div style={{ paddingTop: env && env !== "master" ? 24 : 0 }}>
+              <Story />
+            </div>
+          </UiProvider>
+        </SafeAreaProvider>
       );
     },
   ],
