@@ -13,3 +13,7 @@ export type {
 } from "./settings-template/settings-template.type";
 export { DashboardTemplate } from "./dashboard-template";
 export type { DashboardTemplateProps } from "./dashboard-template/dashboard-template.type";
+export { NavigationTemplate } from "./navigation-template";
+export type { NavigationTemplateProps } from "./navigation-template/navigation-template.type";
+export { AppBarTemplate } from "./app-bar-template";
+export type { AppBarTemplateProps } from "./app-bar-template/app-bar-template.type";
