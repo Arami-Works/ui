@@ -1,4 +1,5 @@
 import { radii } from "../../tokens/generated/radii";
+import { spacing } from "../../tokens/generated/spacing";
 import type { FabSize, FabColor } from "./fab.type";
 
 export const FAB_SIZE_MAP: Record<
@@ -23,6 +24,6 @@ export const FAB_COLOR_MAP: Record<
   tertiary: { background: "tertiaryContainer", icon: "onTertiaryContainer" },
 } as const;
 
-export const FAB_EXTENDED_GAP = 12;
-export const FAB_EXTENDED_PADDING_HORIZONTAL = 16;
+export const FAB_EXTENDED_GAP = spacing.md;
+export const FAB_EXTENDED_PADDING_HORIZONTAL = spacing.lg;
 export const FAB_EXTENDED_BORDER_RADIUS = radii.lg;
