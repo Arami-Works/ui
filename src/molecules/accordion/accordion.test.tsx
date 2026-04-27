@@ -175,6 +175,24 @@ it("pressing without onToggle does not throw", () => {
   expect(() => fireEvent.press(screen.getByText("No handler"))).not.toThrow();
 });
 
+it("invoking onPress directly when disabled covers the disabled-true branch", () => {
+  const onToggle = jest.fn();
+  const { UNSAFE_root } = render(
+    <AccordionItem title="Direct" disabled onToggle={onToggle} testID="item">
+      <Text>Content</Text>
+    </AccordionItem>,
+  );
+  // Pressable.disabled blocks fireEvent.press from firing onPress;
+  // call onPress directly to exercise `if (disabled) return;` true branch.
+  const pressable = UNSAFE_root.findAll(
+    (node: { props?: Record<string, unknown> }) =>
+      node.props?.accessibilityRole === "button" &&
+      typeof node.props?.onPress === "function",
+  )[0];
+  pressable.props.onPress();
+  expect(onToggle).not.toHaveBeenCalled();
+});
+
 it("renders without testID (undefined branch for chevron)", () => {
   const { toJSON } = render(
     <AccordionItem title="No ID">

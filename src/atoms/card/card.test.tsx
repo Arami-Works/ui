@@ -89,4 +89,45 @@ describe("Card", () => {
     fireEvent(screen.getByTestId("card"), "pressIn");
     expect(screen.getByTestId("card")).toBeTruthy();
   });
+
+  it("style and children-render functions cover pressed=true and disabled branches", () => {
+    const { UNSAFE_root, rerender } = render(
+      <Card onPress={jest.fn()} testID="card">
+        Content
+      </Card>,
+    );
+    const pressable = UNSAFE_root.findAll(
+      (node: { props?: Record<string, unknown> }) =>
+        node.props?.testID === "card" &&
+        typeof node.props?.style === "function",
+    )[0];
+    // style fn — pressed=true (PRESSED_OPACITY) and pressed=false (1)
+    expect(pressable.props.style({ pressed: true }).opacity).toBeLessThan(1);
+    expect(pressable.props.style({ pressed: false }).opacity).toBe(1);
+    // children-render fn — pressed=true with !disabled → scale 0.98
+    const childPressed = pressable.props.children({ pressed: true });
+    const childIdle = pressable.props.children({ pressed: false });
+    expect(childPressed).toBeTruthy();
+    expect(childIdle).toBeTruthy();
+
+    // Now re-render with disabled to cover style fn disabled-true branch
+    rerender(
+      <Card onPress={jest.fn()} disabled testID="card">
+        Content
+      </Card>,
+    );
+    const disabledPressable = UNSAFE_root.findAll(
+      (node: { props?: Record<string, unknown> }) =>
+        node.props?.testID === "card" &&
+        typeof node.props?.style === "function",
+    )[0];
+    expect(
+      disabledPressable.props.style({ pressed: true }).opacity,
+    ).toBeLessThan(1);
+    // children-render with disabled+pressed: scale stays 1
+    const childDisabledPressed = disabledPressable.props.children({
+      pressed: true,
+    });
+    expect(childDisabledPressed).toBeTruthy();
+  });
 });

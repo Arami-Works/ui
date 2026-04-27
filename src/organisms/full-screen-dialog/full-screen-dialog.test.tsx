@@ -1,3 +1,4 @@
+import { Platform } from "react-native";
 import { render, screen, fireEvent } from "@/test-utils";
 import { Text } from "tamagui";
 import { FullScreenDialog } from "./full-screen-dialog";
@@ -72,6 +73,24 @@ describe("FullScreenDialog", () => {
       </FullScreenDialog>,
     );
     expect(screen.getByTestId("kav-content")).toBeTruthy();
+  });
+
+  it("renders with keyboardAvoiding on Android (Platform.OS !== ios branch)", () => {
+    const original = Platform.OS;
+    Object.defineProperty(Platform, "OS", { value: "android", writable: true });
+    try {
+      render(
+        <FullScreenDialog {...defaultProps} keyboardAvoiding>
+          <Text testID="kav-android">Content</Text>
+        </FullScreenDialog>,
+      );
+      expect(screen.getByTestId("kav-android")).toBeTruthy();
+    } finally {
+      Object.defineProperty(Platform, "OS", {
+        value: original,
+        writable: true,
+      });
+    }
   });
 
   it("renders without testID", () => {

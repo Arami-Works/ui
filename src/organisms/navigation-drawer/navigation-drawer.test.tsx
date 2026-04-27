@@ -53,8 +53,8 @@ describe("NavigationDrawer", () => {
         testID="drawer"
       />,
     );
-    // Modal with visible={false} renders nothing — assertion confirms the
-    // closed branch of the open-driven useEffect ran without throwing.
+    // Modal with visible={false} returns null in the test environment;
+    // exercising this path covers the closed-animation branch without crashing.
     expect(toJSON()).toBeNull();
   });
 
@@ -121,6 +121,30 @@ describe("NavigationDrawer", () => {
       />,
     );
     expect(screen.getByTestId("drawer-dest-home")).toBeTruthy();
+  });
+
+  it("uses default open=false when prop omitted", () => {
+    // Type assertion: testing the runtime default for `open` (required in type)
+    const { toJSON } = render(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      <NavigationDrawer sections={sections} {...({} as any)} />,
+    );
+    // Modal with visible={false} returns null
+    expect(toJSON()).toBeNull();
+  });
+
+  it("uses default onClose noop when prop omitted (invoking it does not throw)", () => {
+    const { UNSAFE_getByType } = render(
+      <NavigationDrawer
+        open
+        sections={sections}
+        testID="drawer"
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        {...({} as any)}
+      />,
+    );
+    const modal = UNSAFE_getByType(Modal);
+    expect(() => modal.props.onRequestClose()).not.toThrow();
   });
 
   describe("standard variant", () => {

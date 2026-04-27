@@ -93,6 +93,23 @@ describe("TabBar", () => {
     ).not.toThrow();
   });
 
+  it("secondary variant with scrollable prop", () => {
+    const { toJSON } = render(
+      <TabBar tabs={tabs} variant="secondary" scrollable testID="tabbar" />,
+    );
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("primary variant renders without testID (testID-undefined branch)", () => {
+    const { toJSON } = render(<TabBar tabs={tabs} />);
+    expect(toJSON()).toBeTruthy();
+  });
+
+  it("secondary variant renders without testID (testID-undefined branch)", () => {
+    const { toJSON } = render(<TabBar tabs={tabs} variant="secondary" />);
+    expect(toJSON()).toBeTruthy();
+  });
+
   it("secondary variant with individual tab testID", () => {
     const tabsWithTestID = [
       { label: "Tab 1", testID: "my-tab-1" },

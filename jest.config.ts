@@ -21,6 +21,14 @@ const config: Config.InitialOptions = {
     "!src/mocks/**",
     "!src/storybook-sort.ts",
   ],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    },
+  },
 };
 
 export default config;

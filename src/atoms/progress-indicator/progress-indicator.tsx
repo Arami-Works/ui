@@ -17,12 +17,17 @@ const LinearIndicator = styled(View, {
   borderRadius: 2,
 } as const);
 
+type LinearProgressProps = Required<
+  Pick<ProgressIndicatorProps, "mode" | "progress">
+> &
+  Pick<ProgressIndicatorProps, "accessibilityLabel" | "testID">;
+
 function LinearProgress({
-  mode = "indeterminate",
-  progress = 0,
+  mode,
+  progress,
   accessibilityLabel,
   testID,
-}: Omit<ProgressIndicatorProps, "type" | "size">) {
+}: LinearProgressProps) {
   const clampedProgress = Math.min(1, Math.max(0, progress));
   const widthPercent = mode === "determinate" ? clampedProgress * 100 : 30;
 
@@ -59,13 +64,18 @@ const CircularIndicatorArc = styled(View, {
   borderTopColor: "$primary",
 } as const);
 
+type CircularProgressProps = Required<
+  Pick<ProgressIndicatorProps, "mode" | "progress" | "size">
+> &
+  Pick<ProgressIndicatorProps, "accessibilityLabel" | "testID">;
+
 function CircularProgress({
-  mode = "indeterminate",
-  progress = 0,
-  size = 48,
+  mode,
+  progress,
+  size,
   accessibilityLabel,
   testID,
-}: Omit<ProgressIndicatorProps, "type">) {
+}: CircularProgressProps) {
   const clampedProgress = Math.min(1, Math.max(0, progress));
   const borderRadius = size / 2;
 

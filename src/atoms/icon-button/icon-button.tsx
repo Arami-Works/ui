@@ -58,7 +58,9 @@ export function IconButton({
   } else if (iconColor) {
     resolvedColor = iconColor;
   } else {
-    const tokenKey = variantIconColor[variant] ?? "onSurfaceVariant";
+    const tokenKey =
+      variantIconColor[variant] ??
+      /* istanbul ignore next */ "onSurfaceVariant";
     resolvedColor = theme[tokenKey]?.val as string;
   }
 

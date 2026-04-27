@@ -30,8 +30,8 @@ export function FAB({
   const iconToken = colorConfig.icon;
 
   const backgroundColor =
-    /* istanbul ignore next */ (theme[bgToken]?.val as string) ??
-    "$primaryContainer";
+    (theme[bgToken]?.val as string) ??
+    /* istanbul ignore next */ "$primaryContainer";
   const iconColor = theme[iconToken]?.val as string;
 
   const isExtended = !!label;
