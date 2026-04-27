@@ -4,13 +4,13 @@ import { NavigationTemplate } from "../../navigation-template";
 import type { NavigationTemplateProps } from "../../navigation-template.type";
 
 const FIGMA_BASE =
-  "https://www.figma.com/design/HaGgCBIkDbJ2jVZp0dUFR0/templates?node-id=";
+  "https://www.figma.com/design/b79qv459pnXaypgNQfNXuc/ui?node-id=";
 
 const meta: Meta<NavigationTemplateProps> = {
   title: "templates/navigation-template/variants",
   component: NavigationTemplate,
   parameters: {
-    design: { type: "figma", url: `${FIGMA_BASE}10-8` },
+    design: { type: "figma", url: `${FIGMA_BASE}1037-2` },
   },
 };
 

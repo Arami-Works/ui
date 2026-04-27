@@ -4,13 +4,13 @@ import { AppBarTemplate } from "../../app-bar-template";
 import type { AppBarTemplateProps } from "../../app-bar-template.type";
 
 const FIGMA_BASE =
-  "https://www.figma.com/design/HaGgCBIkDbJ2jVZp0dUFR0/templates?node-id=";
+  "https://www.figma.com/design/b79qv459pnXaypgNQfNXuc/ui?node-id=";
 
 const meta: Meta<AppBarTemplateProps> = {
   title: "templates/app-bar-template/variants",
   component: AppBarTemplate,
   parameters: {
-    design: { type: "figma", url: `${FIGMA_BASE}10-15` },
+    design: { type: "figma", url: `${FIGMA_BASE}1037-10` },
   },
 };
 
