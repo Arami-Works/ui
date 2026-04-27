@@ -28,7 +28,7 @@ const Container = styled(View, {
   name: "DatePicker",
   backgroundColor: "$surfaceContainerHigh",
   borderRadius: "$2xl",
-  padding: 24,
+  padding: "$2xl",
   minWidth: 328,
 });
 
@@ -63,7 +63,7 @@ const DayCell = styled(View, {
   name: "DatePickerDay",
   width: 40,
   height: 40,
-  borderRadius: 20,
+  borderRadius: "$full",
   justifyContent: "center",
   alignItems: "center",
 });
@@ -82,7 +82,7 @@ const YearCell = styled(View, {
   name: "DatePickerYearCell",
   width: 72,
   height: 36,
-  borderRadius: 18,
+  borderRadius: "$full",
   justifyContent: "center",
   alignItems: "center",
 });

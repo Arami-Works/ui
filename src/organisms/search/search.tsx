@@ -27,8 +27,8 @@ const SuggestionItem = styled(XStack, {
   name: "SearchSuggestionItem",
   height: 56,
   alignItems: "center",
-  paddingHorizontal: 16,
-  gap: 16,
+  paddingHorizontal: "$lg",
+  gap: "$lg",
 });
 
 const SectionHeader = styled(XStack, {
@@ -36,7 +36,7 @@ const SectionHeader = styled(XStack, {
   height: 48,
   alignItems: "center",
   justifyContent: "space-between",
-  paddingHorizontal: 16,
+  paddingHorizontal: "$lg",
 });
 
 export function Search({

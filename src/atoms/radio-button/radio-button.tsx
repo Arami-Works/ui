@@ -7,7 +7,7 @@ const OuterCircle = styled(View, {
   name: "RadioButtonOuter",
   width: 20,
   height: 20,
-  borderRadius: 10,
+  borderRadius: "$full",
   borderWidth: 2,
   borderColor: "$onSurfaceVariant",
   justifyContent: "center",
@@ -31,7 +31,7 @@ const InnerCircle = styled(View, {
   name: "RadioButtonInner",
   width: 10,
   height: 10,
-  borderRadius: 5,
+  borderRadius: "$full",
   backgroundColor: "$primary",
 
   variants: {

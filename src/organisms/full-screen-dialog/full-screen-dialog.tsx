@@ -20,7 +20,7 @@ const Header = styled(XStack, {
   name: "FullScreenDialogHeader",
   height: 56,
   alignItems: "center",
-  paddingHorizontal: 4,
+  paddingHorizontal: "$xs",
   backgroundColor: "$surface",
   borderBottomWidth: 1,
   borderBottomColor: "$outlineVariant",

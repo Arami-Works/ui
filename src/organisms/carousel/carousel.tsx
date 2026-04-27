@@ -22,7 +22,7 @@ const Dot = styled(View, {
   name: "CarouselDot",
   width: 8,
   height: 8,
-  borderRadius: 4,
+  borderRadius: "$full",
 });
 
 export function Carousel({

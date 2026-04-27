@@ -43,7 +43,7 @@ const PillIndicator = styled(View, {
   right: 0,
   bottom: 0,
   backgroundColor: "$secondaryContainer",
-  borderRadius: 9999,
+  borderRadius: "$full",
 });
 
 const TabContainer = styled(View, {

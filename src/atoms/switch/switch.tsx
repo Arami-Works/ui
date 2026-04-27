@@ -8,7 +8,7 @@ const Track = styled(View, {
   name: "SwitchTrack",
   width: 52,
   height: 32,
-  borderRadius: 16,
+  borderRadius: "$full",
   justifyContent: "center",
   paddingHorizontal: 2,
 
@@ -33,7 +33,7 @@ const Track = styled(View, {
 
 const Thumb = styled(View, {
   name: "SwitchThumb",
-  borderRadius: 999,
+  borderRadius: "$full",
   justifyContent: "center",
   alignItems: "center",
 } as const);

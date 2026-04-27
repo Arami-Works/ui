@@ -14,7 +14,7 @@ const Rail = styled(YStack, {
   name: "NavigationRail",
   width: 80,
   backgroundColor: "$surfaceContainer",
-  paddingVertical: 12,
+  paddingVertical: "$md",
   alignItems: "center",
   gap: 0,
 });
@@ -30,7 +30,7 @@ const ActiveIndicator = styled(View, {
   name: "NavigationRailIndicator",
   width: 56,
   height: 32,
-  borderRadius: 16,
+  borderRadius: "$full",
   backgroundColor: "$secondaryContainer",
   justifyContent: "center",
   alignItems: "center",
