@@ -34,7 +34,7 @@ npm start          # Expo dev server (press i for iOS, a for Android, w for web)
 
 ## Token Pipeline
 
-Figma Variables (tokens file `81sGJB0y1lYCDY5oB35aBA`) are the source of truth for design tokens. The pipeline fetches variables via the Figma REST API and generates TypeScript files.
+Figma Variables (design system file `b79qv459pnXaypgNQfNXuc`) are the source of truth for design tokens. Local variable collections (`color` with light/dark modes, `radii`, `spacing`) live in this file. The pipeline fetches variables via the Figma Plugin API and generates TypeScript files.
 
 ```bash
 npm run tokens:sync -- <export.json> # fetch + build in one step (recommended)
@@ -48,9 +48,10 @@ npm run tokens:build                 # build .figma-raw/ → src/tokens/generate
 2. **Fetch** — `npm run tokens:fetch -- <export.json>` normalises the plugin output into `.figma-raw/` (gitignored).
 3. **Build** — `npm run tokens:build` generates TypeScript from `.figma-raw/`.
 
-- **Tokens file**: `https://www.figma.com/design/81sGJB0y1lYCDY5oB35aBA/tokens`
+- **Design system file**: `https://www.figma.com/design/b79qv459pnXaypgNQfNXuc` — source of truth for `color`/`radii`/`spacing`
+- **Tokens file (legacy)**: `https://www.figma.com/design/81sGJB0y1lYCDY5oB35aBA/tokens` — still source of truth for `typography` and `elevation` (not yet migrated)
 - **FIGMA_ACCESS_TOKEN**: Stored in Doppler (`ui/master`) and 1Password (`figma.token.claude-code`) for future REST API use (requires Enterprise `file_variables:read` scope)
-- Generated files: `colors.ts`, `spacing.ts`, `typography.ts`, `radii.ts`, `elevation.ts` — DO NOT EDIT manually
+- Generated files: `colors.ts`, `colors-dark.ts`, `spacing.ts`, `typography.ts`, `radii.ts`, `elevation.ts` — DO NOT EDIT manually
 
 ### CI Automation
 
