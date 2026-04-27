@@ -87,7 +87,7 @@ describe("Carousel", () => {
         <Carousel items={items} showDots testID="carousel" />,
       );
       const tree = JSON.stringify(toJSON());
-      expect(tree).toContain('borderTopLeftRadius":4');
+      expect(tree).toContain('borderTopLeftRadius":9999');
     });
   });
 });

@@ -15,8 +15,8 @@ const Sheet = styled(View, {
 const Header = styled(XStack, {
   name: "SideSheetHeader",
   alignItems: "center",
-  paddingHorizontal: 16,
-  paddingVertical: 8,
+  paddingHorizontal: "$lg",
+  paddingVertical: "$sm",
   height: 56,
 });
 
