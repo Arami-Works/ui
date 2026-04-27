@@ -9,7 +9,7 @@ const Bar = styled(View, {
   backgroundColor: "$surfaceContainer",
   flexDirection: "row",
   alignItems: "center",
-  paddingHorizontal: 16,
+  paddingHorizontal: "$lg",
 });
 
 export function BottomAppBar({ actions, fab, testID }: BottomAppBarProps) {

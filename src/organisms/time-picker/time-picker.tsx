@@ -19,7 +19,7 @@ const Container = styled(View, {
   name: "TimePicker",
   backgroundColor: "$surfaceContainerHigh",
   borderRadius: "$2xl",
-  padding: 24,
+  padding: "$2xl",
   minWidth: 328,
 });
 
@@ -35,8 +35,8 @@ const TimeSegment = styled(View, {
   name: "TimeSegment",
   backgroundColor: "$surfaceContainerHighest",
   borderRadius: "$sm",
-  paddingHorizontal: 12,
-  paddingVertical: 8,
+  paddingHorizontal: "$md",
+  paddingVertical: "$sm",
   alignItems: "center",
   justifyContent: "center",
   minWidth: 96,
@@ -45,7 +45,7 @@ const TimeSegment = styled(View, {
 
 const PeriodButton = styled(View, {
   name: "TimePeriodButton",
-  paddingHorizontal: 12,
+  paddingHorizontal: "$md",
   paddingVertical: 10,
   alignItems: "center",
   justifyContent: "center",

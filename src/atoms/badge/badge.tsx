@@ -12,13 +12,13 @@ const StyledBadge = styled(View, {
       small: {
         width: 6,
         height: 6,
-        borderRadius: 3,
+        borderRadius: "$full",
       },
       large: {
         minWidth: 16,
         height: 16,
-        borderRadius: 8,
-        paddingHorizontal: 4,
+        borderRadius: "$full",
+        paddingHorizontal: "$xs",
       },
     },
   } as const,

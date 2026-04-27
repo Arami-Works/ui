@@ -15,13 +15,13 @@ const Track = styled(View, {
   name: "SliderTrack",
   height: 4,
   width: "100%",
-  borderRadius: 2,
+  borderRadius: "$full",
 } as const);
 
 const ActiveTrack = styled(View, {
   name: "SliderActiveTrack",
   height: 4,
-  borderRadius: 2,
+  borderRadius: "$full",
   position: "absolute",
   left: 0,
   top: 0,
@@ -31,7 +31,7 @@ const Thumb = styled(View, {
   name: "SliderThumb",
   width: 20,
   height: 20,
-  borderRadius: 10,
+  borderRadius: "$full",
   position: "absolute",
   top: -8,
 } as const);
@@ -40,7 +40,7 @@ const TickMark = styled(View, {
   name: "SliderTickMark",
   width: 4,
   height: 4,
-  borderRadius: 2,
+  borderRadius: "$full",
   position: "absolute",
   top: 0,
 } as const);

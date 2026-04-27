@@ -11,7 +11,7 @@ const ElevatedCard = styled(View, {
   name: "CardElevated",
   backgroundColor: "$surfaceContainerLow",
   borderRadius: "$md",
-  padding: 16,
+  padding: "$lg",
   ...shadows.xsmall,
 });
 
@@ -19,14 +19,14 @@ const FilledCard = styled(View, {
   name: "CardFilled",
   backgroundColor: "$surfaceContainerHighest",
   borderRadius: "$md",
-  padding: 16,
+  padding: "$lg",
 });
 
 const OutlinedCard = styled(View, {
   name: "CardOutlined",
   backgroundColor: "$surface",
   borderRadius: "$md",
-  padding: 16,
+  padding: "$lg",
   borderWidth: 1,
   borderColor: "$outlineVariant",
 });

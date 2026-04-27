@@ -18,18 +18,18 @@ const DrawerContainer = styled(View, {
   width: DRAWER_WIDTH,
   height: "100%",
   backgroundColor: "$surfaceContainerLow",
-  paddingVertical: 12,
+  paddingVertical: "$md",
 });
 
 const ActiveIndicator = styled(View, {
   name: "DrawerActiveIndicator",
-  borderRadius: 28,
+  borderRadius: "$full",
   height: 56,
-  paddingHorizontal: 16,
+  paddingHorizontal: "$lg",
   flexDirection: "row",
   alignItems: "center",
-  gap: 12,
-  marginHorizontal: 12,
+  gap: "$md",
+  marginHorizontal: "$md",
 });
 
 export function NavigationDrawer({
