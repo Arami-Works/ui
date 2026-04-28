@@ -9,7 +9,7 @@ jest.mock("react-native/Libraries/Utilities/useColorScheme", () => ({
   default: jest.fn(() => "light"),
 }));
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
+ 
 const useColorScheme =
   require("react-native/Libraries/Utilities/useColorScheme") as {
     default: jest.MockedFunction<() => "light" | "dark" | null | undefined>;
