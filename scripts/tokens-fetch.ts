@@ -152,7 +152,7 @@ function rgbaToHex(c: FigmaColor): string {
       .toUpperCase();
   const base = `#${hex(c.r)}${hex(c.g)}${hex(c.b)}`;
   // Append alpha only when not fully opaque, so opaque colors stay 6-digit.
-  return c.a !== undefined && c.a < 1 ? `${base}${hex(c.a)}` : base;
+  return c.a < 1 ? `${base}${hex(c.a)}` : base;
 }
 
 /** Round to avoid floating-point noise (e.g. 0.15000000596046448 → 0.15) */
