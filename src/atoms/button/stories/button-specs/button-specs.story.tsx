@@ -4,12 +4,15 @@ import { XStack, YStack, Text, View } from "tamagui";
 const specs = [
   { property: "Height", value: "40 dp" },
   { property: "Min width", value: "64 dp" },
-  { property: "Corner radius", value: "20 dp (full)" },
-  { property: "Padding horizontal", value: "24 dp (16 with icon)" },
+  { property: "Corner radius", value: "10 dp (radii.sm)" },
+  {
+    property: "Padding horizontal",
+    value: "24 dp (spacing.2xl, 16 with icon)",
+  },
   { property: "Icon size", value: "18 dp" },
   { property: "Font", value: "Label Large (14sp, Medium)" },
-  { property: "Container color", value: "md.sys.color.primary" },
-  { property: "Label color", value: "md.sys.color.on-primary" },
+  { property: "Container color", value: "primary" },
+  { property: "Label color", value: "onPrimary" },
 ];
 
 function SpecRow({
