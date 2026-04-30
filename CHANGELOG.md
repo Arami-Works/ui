@@ -1,5 +1,39 @@
 # @aramiworks/ui
 
+## 0.10.0
+
+### Minor Changes
+
+- [#254](https://github.com/aramiworks/ui/pull/254) [`b8e388a`](https://github.com/aramiworks/ui/commit/b8e388ad02ab57ee267f9680b509eaee89e84bda) Thanks [@cheunjm](https://github.com/cheunjm)! - Add Table atom with compound API (Table, TableHeader, TableRow, TableCell). Supports default (52px) and compact (36px) density, automatic alternating row stripes, and follows MD3 Data Table spec.
+
+- [#261](https://github.com/aramiworks/ui/pull/261) [`44535cb`](https://github.com/aramiworks/ui/commit/44535cbd74328d15c3da15f7ced2164648cddc99) Thanks [@cheunjm](https://github.com/cheunjm)! - Add `NavigationTemplate` and `AppBarTemplate` for EFCV-leveled layouts. NavigationTemplate owns the experience-level nav bar slot; AppBarTemplate owns the flow-level top app bar slot. Templates compose: NavigationTemplate → AppBarTemplate → DashboardTemplate/ListTemplate/etc.
+
+- [#268](https://github.com/aramiworks/ui/pull/268) [`06e2b0f`](https://github.com/aramiworks/ui/commit/06e2b0f9336ea0cee4fb83b002572caa1a773546) Thanks [@cheunjm](https://github.com/cheunjm)! - Add `AppShellTemplate` — full-screen page chrome composing topAppBar, content slot, and bottomNavigationBar. Closes the Figma↔code parity gap for the design system Templates file.
+
+- [#270](https://github.com/aramiworks/ui/pull/270) [`60fdfb4`](https://github.com/aramiworks/ui/commit/60fdfb47ff0009f88772eabf5e63b9f9144060b5) Thanks [@cheunjm](https://github.com/cheunjm)! - Add `onLongPress` prop to Card atom. The Card now becomes interactive when either `onPress` or `onLongPress` is provided, wiring the handler through the inner Pressable.
+
+### Patch Changes
+
+- [#262](https://github.com/aramiworks/ui/pull/262) [`e0a851c`](https://github.com/aramiworks/ui/commit/e0a851cfe488a21df74877a77b50101e48d0fe0d) Thanks [@cheunjm](https://github.com/cheunjm)! - Add tests to bring Jest coverage to 100% across statements/branches/functions/lines and enforce a 100% coverage threshold in jest.config.ts.
+
+- [#265](https://github.com/aramiworks/ui/pull/265) [`eaa2e3d`](https://github.com/aramiworks/ui/commit/eaa2e3d911acf34e411523ffa950abeb14e2ac1b) Thanks [@cheunjm](https://github.com/cheunjm)! - Bind design system Figma file to Montage tokens. The design system file (`b79qv459pnXaypgNQfNXuc`) now owns `color` (light + dark modes), `radii`, and `spacing` variable collections, with all master components rebound from MD3 defaults to these variables. The token pipeline gains alpha-aware hex output and aliases for the new collection names, allowing `colors.ts` to round-trip identically from the Figma file.
+
+- [#256](https://github.com/aramiworks/ui/pull/256) [`f949efd`](https://github.com/aramiworks/ui/commit/f949efda85ea93c673b3174ecf35ddbf9c049001) Thanks [@cheunjm](https://github.com/cheunjm)! - Fix date-picker test using stale hardcoded date that's now in the past.
+
+- [#257](https://github.com/aramiworks/ui/pull/257) [`e78c28a`](https://github.com/aramiworks/ui/commit/e78c28a66fe67cfc445b4387e2ac118556bc0b5b) Thanks [@cheunjm](https://github.com/cheunjm)! - Fix slider test asserting stale literal disabled opacity (0.38 → DISABLED_OPACITY).
+
+- [#260](https://github.com/aramiworks/ui/pull/260) [`83cbf8f`](https://github.com/aramiworks/ui/commit/83cbf8fe9bdb0a0f8cdb7821f174773a0b706515) Thanks [@cheunjm](https://github.com/cheunjm)! - Wrap Storybook web preview in `SafeAreaProvider` so stories using `useSafeAreaInsets` (e.g. top-app-bar) render correctly in Chromatic.
+
+- [#258](https://github.com/aramiworks/ui/pull/258) [`fcec597`](https://github.com/aramiworks/ui/commit/fcec59706ceba1c9e0db06b911a2aaf9b6cda92d) Thanks [@cheunjm](https://github.com/cheunjm)! - Fix time-picker and navigation-drawer test drift against current component output.
+
+- [#267](https://github.com/aramiworks/ui/pull/267) [`6550c2b`](https://github.com/aramiworks/ui/commit/6550c2bfe946d5c8f7b0d76d158415d77f399ffe) Thanks [@cheunjm](https://github.com/cheunjm)! - Add conflict-fix trigger to ci-autofix wrapper.
+
+- [#252](https://github.com/aramiworks/ui/pull/252) [`caabc5e`](https://github.com/aramiworks/ui/commit/caabc5e77b3093e3787e005395242ec6ff5ab2d1) Thanks [@cheunjm](https://github.com/cheunjm)! - Token pipeline now extracts all Figma modes (Light + Dark) and auto-generates `colors.ts` and `colors-dark.ts` in a single pass. `colors-dark.ts` was previously hand-maintained — it is now regenerated from Figma Variables with identical values.
+
+- [#264](https://github.com/aramiworks/ui/pull/264) [`b859705`](https://github.com/aramiworks/ui/commit/b8597056c5f8eb286b3b02c82c1ee1c1c58ce1b3) Thanks [@cheunjm](https://github.com/cheunjm)! - Replace hardcoded radius and spacing values with design tokens across atoms and organisms — circles and pills now use `$full`, padding/gaps use semantic spacing tokens (`$xs`/`$sm`/`$md`/`$lg`/`$2xl`).
+
+- [#263](https://github.com/aramiworks/ui/pull/263) [`e77b451`](https://github.com/aramiworks/ui/commit/e77b4516a16ea92a91409847d4b457e44fda9c15) Thanks [@cheunjm](https://github.com/cheunjm)! - Update Figma URLs in NavigationTemplate and AppBarTemplate stories to point to the canonical ui Figma file (`b79qv459pnXaypgNQfNXuc`) after the standalone templates file was deleted. Templates now live alongside atoms/molecules/organisms in the unified design system file.
+
 ## 0.9.0
 
 ### Minor Changes
