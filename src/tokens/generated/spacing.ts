@@ -1,7 +1,7 @@
 /**
  * MD3 Spacing Tokens
- * Auto-generated from Figma Variables via Token Studio
- * DO NOT EDIT — run the token pipeline to regenerate
+ * Auto-generated from Figma Variables — DO NOT EDIT
+ * Regenerate: npm run tokens:sync
  */
 export const spacing = {
   /** 0px */

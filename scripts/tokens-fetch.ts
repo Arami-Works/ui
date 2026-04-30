@@ -36,7 +36,8 @@
  *
  * ── End snippet ──────────────────────────────────────────────────
  *
- * Tokens file: https://www.figma.com/design/81sGJB0y1lYCDY5oB35aBA/tokens
+ * Source file: https://www.figma.com/design/b79qv459pnXaypgNQfNXuc
+ * (the design system file — local variable collections live here)
  */
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -83,11 +84,16 @@ type TokenTree = { [key: string]: TokenLeaf | TokenTree };
 
 // ── Collection → output file name ────────────────────────────────────
 const COLLECTION_MAP: Record<string, string> = {
+  // Legacy `md.sys.*` names (tokens file 81sGJB0y1lYCDY5oB35aBA)
   "md.sys.color": "colors",
   "md.sys.spacing": "spacing",
   "md.sys.typography": "typography",
   "md.sys.shape": "shape",
   "md.sys.elevation": "elevation",
+  // Design system file collections (b79qv459pnXaypgNQfNXuc)
+  color: "colors",
+  spacing: "spacing",
+  radii: "shape",
 };
 
 // ── Token descriptions (hardcoded for non-Enterprise plans) ──────────
@@ -108,12 +114,12 @@ const SPACING_DESC: Record<string, string> = {
 const SHAPE_DESC: Record<string, string> = {
   none: "0px — sharp corners",
   xs: "4px — extra small rounding",
-  sm: "8px — small rounding",
-  md: "12px — medium rounding",
+  sm: "10px — small rounding (Montage button medium)",
+  md: "12px — medium rounding (Montage card/textfield)",
   lg: "16px — large rounding",
-  xl: "20px",
-  "2xl": "28px — extra large rounding",
-  full: "9999px — fully rounded (pill)",
+  xl: "20px — Montage modal large",
+  "2xl": "24px — extra large rounding (Montage featured card)",
+  full: "9999px — fully rounded (pill/avatar)",
 };
 
 const ELEVATION_DESC: Record<string, string> = {
@@ -144,7 +150,9 @@ function rgbaToHex(c: FigmaColor): string {
       .toString(16)
       .padStart(2, "0")
       .toUpperCase();
-  return `#${hex(c.r)}${hex(c.g)}${hex(c.b)}`;
+  const base = `#${hex(c.r)}${hex(c.g)}${hex(c.b)}`;
+  // Append alpha only when not fully opaque, so opaque colors stay 6-digit.
+  return c.a < 1 ? `${base}${hex(c.a)}` : base;
 }
 
 /** Round to avoid floating-point noise (e.g. 0.15000000596046448 → 0.15) */
