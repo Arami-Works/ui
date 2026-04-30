@@ -67,6 +67,17 @@ describe("Card", () => {
     expect(onPress).not.toHaveBeenCalled();
   });
 
+  it("does not call onLongPress when disabled", () => {
+    const onLongPress = jest.fn();
+    render(
+      <Card onLongPress={onLongPress} disabled testID="card">
+        Content
+      </Card>,
+    );
+    fireEvent(screen.getByTestId("card"), "longPress");
+    expect(onLongPress).not.toHaveBeenCalled();
+  });
+
   it("has button accessibility role when interactive", () => {
     render(
       <Card onPress={jest.fn()} testID="card">
