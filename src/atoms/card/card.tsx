@@ -41,15 +41,17 @@ export function Card({
   variant = "elevated",
   children,
   onPress,
+  onLongPress,
   disabled = false,
   testID,
 }: CardProps) {
   const Container = cardComponents[variant];
 
-  if (onPress) {
+  if (onPress || onLongPress) {
     return (
       <Pressable
         onPress={onPress}
+        onLongPress={onLongPress}
         disabled={disabled}
         testID={testID}
         accessibilityRole="button"
