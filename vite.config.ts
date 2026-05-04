@@ -2,6 +2,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 
+const WEB_EXTENSIONS = [".web.tsx", ".web.ts", ".web.js", ".tsx", ".ts", ".js"];
+
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -14,7 +16,7 @@ export default defineConfig({
       ),
       "react-native": "react-native-web",
     },
-    extensions: [".web.tsx", ".web.ts", ".web.js", ".tsx", ".ts", ".js"],
+    extensions: WEB_EXTENSIONS,
   },
   // esbuild's optimizeDeps pass doesn't inherit resolve.extensions, so the
   // `.web.js` variants in packages like react-native-safe-area-context get
@@ -22,14 +24,7 @@ export default defineConfig({
   // priority here so dev pre-bundling picks the web implementations.
   optimizeDeps: {
     esbuildOptions: {
-      resolveExtensions: [
-        ".web.tsx",
-        ".web.ts",
-        ".web.js",
-        ".tsx",
-        ".ts",
-        ".js",
-      ],
+      resolveExtensions: WEB_EXTENSIONS,
     },
   },
   define: {
