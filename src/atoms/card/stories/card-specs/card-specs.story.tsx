@@ -2,20 +2,14 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { XStack, YStack, Text } from "tamagui";
 
 const specs = [
-  { property: "Corner radius", value: "12 dp" },
-  { property: "Padding", value: "16 dp" },
+  { property: "Corner radius", value: "12 dp (radii.md)" },
+  { property: "Padding", value: "16 dp (spacing.lg)" },
   { property: "Elevation (elevated)", value: "Level 1" },
   { property: "Elevation (filled)", value: "Level 0" },
-  {
-    property: "Container (elevated)",
-    value: "md.sys.color.surface-container-low",
-  },
-  {
-    property: "Container (filled)",
-    value: "md.sys.color.surface-container-highest",
-  },
-  { property: "Container (outlined)", value: "md.sys.color.surface" },
-  { property: "Outline color", value: "md.sys.color.outline-variant" },
+  { property: "Container (elevated)", value: "surface" },
+  { property: "Container (filled)", value: "surfaceVariant" },
+  { property: "Container (outlined)", value: "surface" },
+  { property: "Outline color", value: "outlineVariant" },
   { property: "Disabled opacity", value: "0.38" },
 ];
 
