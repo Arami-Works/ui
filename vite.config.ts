@@ -16,6 +16,22 @@ export default defineConfig({
     },
     extensions: [".web.tsx", ".web.ts", ".web.js", ".tsx", ".ts", ".js"],
   },
+  // esbuild's optimizeDeps pass doesn't inherit resolve.extensions, so the
+  // `.web.js` variants in packages like react-native-safe-area-context get
+  // missed and the native specs are bundled instead. Mirror the extension
+  // priority here so dev pre-bundling picks the web implementations.
+  optimizeDeps: {
+    esbuildOptions: {
+      resolveExtensions: [
+        ".web.tsx",
+        ".web.ts",
+        ".web.js",
+        ".tsx",
+        ".ts",
+        ".js",
+      ],
+    },
+  },
   define: {
     "process.env": {},
   },
