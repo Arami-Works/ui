@@ -9,7 +9,7 @@ import type { CardProps } from "./card.type";
 
 const ElevatedCard = styled(View, {
   name: "CardElevated",
-  backgroundColor: "$surfaceContainerLow",
+  backgroundColor: "$surface",
   borderRadius: "$md",
   padding: "$lg",
   ...shadows.xsmall,
@@ -17,7 +17,7 @@ const ElevatedCard = styled(View, {
 
 const FilledCard = styled(View, {
   name: "CardFilled",
-  backgroundColor: "$surfaceContainerHighest",
+  backgroundColor: "$surfaceVariant",
   borderRadius: "$md",
   padding: "$lg",
 });
