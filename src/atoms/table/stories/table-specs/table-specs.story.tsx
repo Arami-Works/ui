@@ -102,7 +102,7 @@ function Specs() {
           </TableCell>
           <TableCell>
             <Text role="body" size="medium">
-              $surfaceContainerHighest
+              $surfaceVariant
             </Text>
           </TableCell>
         </TableRow>
@@ -126,7 +126,7 @@ function Specs() {
           </TableCell>
           <TableCell>
             <Text role="body" size="medium">
-              $surfaceContainer (alternating)
+              $surfaceVariant (alternating)
             </Text>
           </TableCell>
         </TableRow>

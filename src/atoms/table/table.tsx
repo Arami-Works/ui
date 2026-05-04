@@ -37,11 +37,11 @@ const StyledRow = styled(View, {
       compact: { minHeight: 36 },
     },
     stripe: {
-      true: { backgroundColor: "$surfaceContainer" },
+      true: { backgroundColor: "$surfaceVariant" },
       false: { backgroundColor: "$surface" },
     },
     isHeader: {
-      true: { backgroundColor: "$surfaceContainerHighest" },
+      true: { backgroundColor: "$surfaceVariant" },
       false: {},
     },
   } as const,
