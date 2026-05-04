@@ -4,13 +4,13 @@ import { FormTemplate } from "../../form-template";
 import type { FormTemplateProps } from "../../form-template.type";
 
 const FIGMA_BASE =
-  "https://www.figma.com/design/HaGgCBIkDbJ2jVZp0dUFR0/templates?node-id=";
+  "https://www.figma.com/design/b79qv459pnXaypgNQfNXuc/ui?node-id=";
 
 const meta: Meta<FormTemplateProps> = {
   title: "templates/form-template/variants",
   component: FormTemplate,
   parameters: {
-    design: { type: "figma", url: `${FIGMA_BASE}3-11` },
+    design: { type: "figma", url: `${FIGMA_BASE}626-25` },
   },
 };
 
