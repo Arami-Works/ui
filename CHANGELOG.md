@@ -1,5 +1,27 @@
 # @aramiworks/ui
 
+## 0.10.1
+
+### Patch Changes
+
+- [#274](https://github.com/aramiworks/ui/pull/274) [`9fcfc1d`](https://github.com/aramiworks/ui/commit/9fcfc1d2f4607841c035f41428d891c4ac14a933) Thanks [@cheunjm](https://github.com/cheunjm)! - Bind Avatar Figma master variants to Montage tokens: cornerRadius bound to `radii.full` (was `radii.none` — broken square shape), frame fills bound to `primaryContainer` (was hardcoded white). Update avatar specs story to use Montage token names and link to the design system file.
+
+- [#271](https://github.com/aramiworks/ui/pull/271) [`575610c`](https://github.com/aramiworks/ui/commit/575610ce702637aea25900890b458371a0f191da) Thanks [@cheunjm](https://github.com/cheunjm)! - Update Button specs story to match canonical Montage bindings: corner radius 10 dp (radii.sm), removed MD3 `md.sys.color.*` references in favor of Montage token names.
+
+- [#275](https://github.com/aramiworks/ui/pull/275) [`a276d09`](https://github.com/aramiworks/ui/commit/a276d09b9d372a6c57c019fa01e75e8fbba8a6ea) Thanks [@cheunjm](https://github.com/cheunjm)! - Align Card surface tokens with Figma master (Montage canonical). Elevated card now uses `$surface` (was `$surfaceContainerLow`); filled card uses `$surfaceVariant` (was `$surfaceContainerHighest`). Outlined card unchanged. Visual change: elevated card is pure white in light mode and relies on shadow for separation; filled card is the surfaceVariant tint. Updates card specs story to drop `md.sys.color.*` references in favor of Montage token names.
+
+- [#273](https://github.com/aramiworks/ui/pull/273) [`2afed4c`](https://github.com/aramiworks/ui/commit/2afed4cbaa971b96fcabf9ee435c511334548a64) Thanks [@cheunjm](https://github.com/cheunjm)! - Bind FAB Figma master variants to Montage color tokens (primaryContainer/secondaryContainer/tertiaryContainer/surfaceContainerHigh and corresponding on-container icon colors). Bind FAB large size corner radius to `radii.2xl` (24) — was hardcoded to 28 in both Figma and `FAB_SIZE_MAP`. Updates fab specs story to reflect per-size corner radii and Montage token names.
+
+- [#278](https://github.com/aramiworks/ui/pull/278) [`029f1b1`](https://github.com/aramiworks/ui/commit/029f1b1feb5b9554a300bdef42f92779dbef9380) Thanks [@cheunjm](https://github.com/cheunjm)! - icon: canonicalize Figma master to remove hardcoded cornerRadius leftover (set to 0). Aligns Icon specs to Montage `onSurface` token vocabulary.
+
+- [#281](https://github.com/aramiworks/ui/pull/281) [`ab145b0`](https://github.com/aramiworks/ui/commit/ab145b0b1b9b68a5a948cf51efbdf35e51e8a6b4) Thanks [@cheunjm](https://github.com/cheunjm)! - slider, switch: bind hardcoded white fills in Figma masters to onPrimary token. Slider discrete-enabled ticks (5 ellipses) and Switch selected-enabled thumb were drawn with raw #FFFFFF — now bound to `onPrimary` so theme + dark mode work correctly. Code already used `onPrimary`; only Figma was drifted.
+
+- [#277](https://github.com/aramiworks/ui/pull/277) [`173fa0e`](https://github.com/aramiworks/ui/commit/173fa0ef5ba00a23700e426e93ce9cdb7598987f) Thanks [@cheunjm](https://github.com/cheunjm)! - Bind Table Figma master variants to Montage tokens: variant frame fill→`surface`, stroke→`outline`. TableHeader fill→`surfaceVariant`. Code aligned to match: header and stripe rows now use `$surfaceVariant` (was `$surfaceContainerHighest`/`$surfaceContainer`). TableRow alt stripe in Figma kept hardcoded (#FAFAFA has no exact Montage token — flagged as follow-up). Update table specs story to reference Montage token names.
+
+- [#276](https://github.com/aramiworks/ui/pull/276) [`536aa6c`](https://github.com/aramiworks/ui/commit/536aa6c214fa9282be4b7826378604db71123615) Thanks [@cheunjm](https://github.com/cheunjm)! - Fix Vite alias resolution for `react-native/Libraries/Utilities/codegenNativeComponent` so Storybook web builds (and dev server) resolve the spec import to a stub instead of failing with esbuild path errors.
+
+- [#279](https://github.com/aramiworks/ui/pull/279) [`4480c78`](https://github.com/aramiworks/ui/commit/4480c788a583c516dd150f2b2a09b47f9fb4c7cc) Thanks [@cheunjm](https://github.com/cheunjm)! - Apply web extension priority to Vite's `optimizeDeps` so packages like `react-native-safe-area-context` resolve to their `.web.js` variants in the dev server (matching `resolve.extensions`). Fixes a runtime "Element type is invalid" error in Storybook web caused by the native specs being pre-bundled instead of the web implementations.
+
 ## 0.10.0
 
 ### Minor Changes
