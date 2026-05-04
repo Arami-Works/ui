@@ -11,9 +11,9 @@ const specs = [
   { property: "Large container", value: "56 x 56 dp" },
   { property: "Large font size", value: "22 sp" },
   { property: "Large icon size", value: "32 dp" },
-  { property: "Corner radius", value: "50% (circle)" },
-  { property: "Container color", value: "md.sys.color.primary-container" },
-  { property: "Content color", value: "md.sys.color.on-primary-container" },
+  { property: "Corner radius", value: "radii.full (circular)" },
+  { property: "Container color", value: "primaryContainer" },
+  { property: "Content color", value: "onPrimaryContainer" },
 ];
 
 function SpecRow({
@@ -79,7 +79,7 @@ const meta: Meta = {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/design/placeholder",
+      url: "https://www.figma.com/design/b79qv459pnXaypgNQfNXuc/atoms?node-id=945-29",
     },
   },
 };
