@@ -6,7 +6,7 @@ const specs = [
   { property: "Size (default)", value: "24 dp" },
   { property: "Size (large)", value: "40 dp" },
   { property: "Size (xlarge)", value: "48 dp" },
-  { property: "Default color", value: "md.sys.color.on-surface" },
+  { property: "Default color", value: "onSurface" },
   { property: "Font family", value: "Material Icons" },
 ];
 
