@@ -8,7 +8,7 @@ export const FAB_SIZE_MAP: Record<
 > = {
   small: { width: 40, height: 40, borderRadius: radii.md, iconSize: 24 },
   regular: { width: 56, height: 56, borderRadius: radii.lg, iconSize: 24 },
-  large: { width: 96, height: 96, borderRadius: 28, iconSize: 36 },
+  large: { width: 96, height: 96, borderRadius: radii["2xl"], iconSize: 36 },
 } as const;
 
 export const FAB_COLOR_MAP: Record<

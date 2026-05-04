@@ -5,11 +5,13 @@ const specs = [
   { property: "Small size", value: "40 x 40 dp" },
   { property: "Regular size", value: "56 x 56 dp" },
   { property: "Large size", value: "96 x 96 dp" },
-  { property: "Corner radius", value: "16 dp" },
-  { property: "Icon size", value: "24 dp" },
+  { property: "Small corner radius", value: "12 dp (radii.md)" },
+  { property: "Regular corner radius", value: "16 dp (radii.lg)" },
+  { property: "Large corner radius", value: "24 dp (radii.2xl)" },
+  { property: "Icon size", value: "24 dp (small/regular), 36 dp (large)" },
   { property: "Elevation", value: "Level 3 (6dp)" },
-  { property: "Container color", value: "md.sys.color.primary-container" },
-  { property: "Icon color", value: "md.sys.color.on-primary-container" },
+  { property: "Container color", value: "primaryContainer (per FAB color)" },
+  { property: "Icon color", value: "onPrimaryContainer (per FAB color)" },
 ];
 
 function SpecRow({
