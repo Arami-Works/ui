@@ -4,13 +4,13 @@ import { EmptyStateTemplate } from "../../empty-state-template";
 import type { EmptyStateTemplateProps } from "../../empty-state-template.type";
 
 const FIGMA_BASE =
-  "https://www.figma.com/design/HaGgCBIkDbJ2jVZp0dUFR0/templates?node-id=";
+  "https://www.figma.com/design/b79qv459pnXaypgNQfNXuc/ui?node-id=";
 
 const meta: Meta<EmptyStateTemplateProps> = {
   title: "templates/empty-state-template/variants",
   component: EmptyStateTemplate,
   parameters: {
-    design: { type: "figma", url: `${FIGMA_BASE}2-11` },
+    design: { type: "figma", url: `${FIGMA_BASE}599-2` },
   },
 };
 

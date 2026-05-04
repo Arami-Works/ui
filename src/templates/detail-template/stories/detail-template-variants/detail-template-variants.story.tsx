@@ -4,13 +4,13 @@ import { DetailTemplate } from "../../detail-template";
 import type { DetailTemplateProps } from "../../detail-template.type";
 
 const FIGMA_BASE =
-  "https://www.figma.com/design/HaGgCBIkDbJ2jVZp0dUFR0/templates?node-id=";
+  "https://www.figma.com/design/b79qv459pnXaypgNQfNXuc/ui?node-id=";
 
 const meta: Meta<DetailTemplateProps> = {
   title: "templates/detail-template/variants",
   component: DetailTemplate,
   parameters: {
-    design: { type: "figma", url: `${FIGMA_BASE}1-11` },
+    design: { type: "figma", url: `${FIGMA_BASE}626-24` },
   },
 };
 
