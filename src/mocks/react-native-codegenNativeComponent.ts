@@ -5,5 +5,5 @@
 // web entry, not this spec file.
 import { View } from "react-native";
 
-const codegenNativeComponent = () => View;
+const codegenNativeComponent = (..._args: unknown[]) => View;
 export default codegenNativeComponent;
